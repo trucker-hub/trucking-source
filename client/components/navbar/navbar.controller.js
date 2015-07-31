@@ -5,7 +5,13 @@ angular.module('servicesApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
-    }];
+    },
+      {
+        'title': 'Sourcing',
+        'link': '/sourcing'
+      }
+
+    ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
