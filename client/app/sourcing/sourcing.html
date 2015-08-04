@@ -1,29 +1,46 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <header class="hero-unit" id="banner">
-    <h2>Sourcing</h2>
+  <h2>Sourcing</h2>
 </header>
 
-<div class="col-md-12 table-responsive">
+<div class="container">
 
-  <table class="table table-striped table-hover table-bordered">
-<tbody>
-<tr><th>From:</th><td>
-  <input type="text" ng-model="origin" size="50" placeholder ="Zip code or full address">
-  <span>   Type: </span>
-  <div class="btn-group">
-    <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Left'">N/A</label>
-    <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Left'">Residential </label>
-    <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Middle'">Hotel</label>
-    <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Right'">School</label>
-    <label class="btn btn-primary" ng-model="radioModel" btn-radio="'Right'">Airline L/H</label>
+  <div class="row">
+    <div class="col-md-2">
+      Menus
+
+    </div>
+
+    <div class="col-md-6">
+
+      <form class="form-horizontal">
+        <fieldset>
+          <div class="">
+          <legend href="#shipToLocation">Ship To</legend>
+          <div class="form-group">
+            <location info="shipTo" label="'Ship To'"></location>
+          </div>
+
+            <legend>Ship From</legend>
+            <location info="shipFrom" label="'Ship From'"></location>
+            </div>
+        </fieldset>
+      </form>
+
+
+    </div>
+    <div class="col-md-3">
+      Summary view
+
+    </div>
+
   </div>
-</td>
-   </tr>
-<tr><th>To:</th><td><input type="text" ng-model="destination"size="50" placeholder ="Zip code or full address"></td>  </tr>
-<tr><th>Weight:</th><td><input type="text" ng-model="destination"size="10" placeholder ="lbs"> <span>Pounds</span></td>  </tr>
-<tr><th>Volume:</th><td><input type="text" ng-model="destination"size="10" placeholder ="carton"> <span>cubic meters</span></td>  </tr>
-</tbody>
-  </table>
+
+</div>
+
+
+
+
 
 </div>
