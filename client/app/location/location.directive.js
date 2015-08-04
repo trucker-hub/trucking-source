@@ -10,6 +10,9 @@ angular.module('servicesApp')
         label: '=label'
       },
       link: function (scope, element, attrs) {
+        scope.isDelivery = function() {
+          return scope.label=='Ship To';
+        }
       }
     };
   });
