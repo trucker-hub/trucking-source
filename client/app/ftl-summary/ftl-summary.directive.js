@@ -1,15 +1,15 @@
 'use strict';
 
 angular.module('servicesApp')
-  .directive('location', function () {
+  .directive('ftlSummary', function () {
     return {
-      templateUrl: 'app/location/location.html',
-      restrict: 'E',
+      templateUrl: 'app/ftl-summary/ftl-summary.html',
+      restrict: 'EA',
       scope: {
         info: '=info',
-        type: '=type',
-        label: '=label'
+        type: '=type'
       },
+
       link: function (scope, element, attrs) {
         scope.isDelivery = function() {
           return scope.label=='To';
@@ -19,6 +19,5 @@ angular.module('servicesApp')
           return scope.type=='FTL';
         }
       }
-
     };
   });
