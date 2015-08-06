@@ -89,7 +89,7 @@
           </div>
           <br>
 
-          <div class="row container">
+          <div class="row container table-responsive">
 
             <div>
               <hr>
@@ -125,10 +125,10 @@
       <div class="container" ng-hide="showDetails" ng-click="enableEditing()">
         <ftl-summary info="request" type="'FTL'"></ftl-summary>
       </div>
-      <div class="" ng>
+      <div class="table-responsive">
         <table class="table table-striped">
-          <tr><th>Trucking Company</th><th>Cost</th><th>Estimate delivery time</th><th>Contact</th><th>Location</th><th>View details</th></tr>
-          <tr ng-repeat="source in sources">
+          <tr class="success"><th>Trucking Company</th><th>Cost</th><th>Estimate delivery time</th><th>Contact</th><th>Location</th><th>View details</th></tr>
+          <tr ng-repeat="source in sources" class="warning">
             <td>{{source.name}}</td>
             <td>{{source.cost | currency:"$":0}}</td>
             <td>{{source.time}}</td>
