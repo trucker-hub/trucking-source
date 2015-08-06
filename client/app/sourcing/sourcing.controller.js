@@ -19,13 +19,13 @@ angular.module('servicesApp')
         extraServices: []
       },
       lines: [{
-        weight: 0,
-        quanity: 0,
+        weight: 1000,
+        quantity: 20,
         packaging: "carton",
-        length: 0,
-        width: 0,
-        height: 0,
-        description: ""
+        length: 10,
+        width: 20,
+        height: 10,
+        description: "furnitures"
       }],
 
       trailer: {
@@ -53,6 +53,11 @@ angular.module('servicesApp')
         description: ""
       })
     };
+
+    $scope.sources = [
+      {  name: "Aspeed", cost: 301.1, contact: "310-951-3843", location: "9111 S La Cienega Blvd, Inglewood, CA 90301"
+      }
+    ];
 
     $scope.removeLine = function (index) {
       $scope.request.lines.splice(index, 1);
