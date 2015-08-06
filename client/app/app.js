@@ -6,7 +6,8 @@ angular.module('servicesApp', [
   'ngSanitize',
   'ngRoute',
   'btford.socket-io',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ngProgress'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider

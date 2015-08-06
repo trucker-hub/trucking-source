@@ -2,213 +2,159 @@
 
 
 <div class="container">
-  <div class="page-header">
-    <h3>Sourcing</h3>
-  </div>
+    <div class="page-header">
+        <h3>Sourcing</h3>
+    </div>
 
-  <tabset type="tabs">
-    <tab heading="FTL">
-      <br>
+    <tabset type="tabs">
+        <tab heading="FTL">
+            <br>
 
-      <p class="lead">Get a quote on your dry van, refrigerated, or flatbed truckload
-        (>10,000 lbs) or volume (5,000-9,999 lbs shipment.
-      </p>
-      <br>
+            <p class="lead">Get a quote on your dry van, refrigerated, or flatbed truckload
+                (>10,000 lbs) or volume (5,000-9,999 lbs shipment.
+            </p>
+            <hr>
+            <form class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <location info="request.shipTo" label="'To'" type="'FTL'"></location>
+                        </div>
 
-      <div class="row">
-        <div class="col-md-3">
-          <button class="btn btn-sm btn-primary" type="button" ng-click="query()">Query</button>
-        </div>
-        <div class="col-md-9">
-          <progressbar max="max" value="dynamic" ng-show="isQuerying"><span style="color:white; white-space:nowrap;">{{dynamic}} / {{max}}</span>
-          </progressbar>
-        </div>
-        <div class="col-md-12">
-          <hr>
-        </div>
-      </div>
-
-      <form class="form-horizontal" ng-show="showDetails">
-        <fieldset>
-          <div class="row">
-
-            <div class="col-md-6">
-
-              <div class="form-group">
-                <location info="request.shipTo" label="'To'" type="'FTL'"></location>
-              </div>
-
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <location info="request.shipFrom" label="'From'" type="'FTL'"></location>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="inputTrailerType" class="col-sm-3 control-label">Trailer Type</label>
-
-                <div class="col-sm-9" id="inputTrailerType">
-                  <div class="radio-inline">
-                    <label>
-                      <input type="radio" name="trailerType" id="locationType1" value="1"
-                             ng-model="request.trailer.type">
-                      Dry Van
-                    </label>
-                  </div>
-
-                  <div class="radio-inline">
-                    <label>
-                      <input type="radio" name="trailerType" id="locationType2" value="2"
-                             ng-model="request.trailer.type">
-                      Refrigerated
-                    </label>
-                  </div>
-
-                  <div class="radio-inline">
-                    <label>
-                      <input type="radio" name="trailerType" id="locationType4" value="4"
-                             ng-model="request.trailer.type">
-                      Flatbed
-                    </label>
-                  </div>
-                  <div class="radio-inline">
-                    <label>
-                      <input type="radio" name="trailerType" id="locationType5" value="5"
-                             ng-model="request.trailer.type">
-                      Other
-                    </label>
-                  </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <location info="request.shipFrom" label="'From'" type="'FTL'"></location>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="inputTrailerType" class="col-sm-3 control-label">Trailer Type</label>
+
+                            <div class="col-sm-9" id="inputTrailerType">
+                                <div class="radio-inline">
+                                    <label>
+                                        <input type="radio" name="trailerType" id="locationType1" value="1"
+                                               ng-model="request.trailer.type">
+                                        Dry Van
+                                    </label>
+                                </div>
+
+                                <div class="radio-inline">
+                                    <label>
+                                        <input type="radio" name="trailerType" id="locationType2" value="2"
+                                               ng-model="request.trailer.type">
+                                        Refrigerated
+                                    </label>
+                                </div>
+
+                                <div class="radio-inline">
+                                    <label>
+                                        <input type="radio" name="trailerType" id="locationType4" value="4"
+                                               ng-model="request.trailer.type">
+                                        Flatbed
+                                    </label>
+                                </div>
+                                <div class="radio-inline">
+                                    <label>
+                                        <input type="radio" name="trailerType" id="locationType5" value="5"
+                                               ng-model="request.trailer.type">
+                                        Other
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </form>
+            <div class="row container table-responsive">
+                <form class="form-inline">
+                    <table class="table table-striped">
+                        <tr>
+                            <th class="col-md-2">Total Weight (lbs)</th>
+                            <th class="col-md-1">Quantiy</th>
+                            <th class="col-md-2">Packaging</th>
+                            <th class="col-md-3">L/W/H(in)</th>
+                            <th class="col-md-3">Description</th>
+                            <th class="col-md-1"><span class="glyphicon glyphicon-plus" aria-hidden="true"
+                                                       ng-click="addLine()"></span></th>
+                        </tr>
+                        <tr ng-repeat="line in request.lines">
+                            <td><input type="text" class="form-control" size="6" ng-model="line.weight"
+                                       placeholder="weight"></td>
+                            <td><input class="form-control" type="text" size="3" ng-model="line.quantity"></td>
+                            <td>
+                                <select class="form-control" ng-model="line.packaging"
+                                        ng-options="packaging.name for packaging in packagings track by packaging.id">
+                                    <option value="">-- Packaging --</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input class="form-control" type="text" ng-model="line.length" size="3">
+                                <input class="form-control" type="text" ng-model="line.width" size="3">
+                                <input class="form-control" type="text" ng-model="line.height" size="3">
+                            </td>
+                            <td><input class="form-control" type="text" ng-model="line.description" placeholder="description"></td>
+                            <td><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="removeLine($index)"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
             </div>
-            <div class="col-md-6">
+            <hr>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <button class="btn btn-sm btn-primary" type="button" ng-click="query()">Query</button>
+                </div>
+                <div class="col-md-9">
+
+                </div>
             </div>
-          </div>
-          <br>
 
-          <div class="row container table-responsive">
+            <br>
 
-            <div>
-              <hr>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr class="success">
+                        <th class="col-md-2">Trucking Company</th>
+                        <th class="col-md-2">Cost</th>
+                        <th class="col-md-2">Delivery time</th>
+                        <th class="col-md-2">Contact</th>
+                        <th class="col-md-3">Location</th>
+                        <th class="col-md-1">View details</th>
+                    </tr>
+                    <tr ng-repeat="source in sources" class="warning">
+                        <td>{{source.name}}</td>
+                        <td>{{source.cost | currency:"$":0}}</td>
+                        <td>{{source.time}}</td>
+                        <td>{{source.contact}}</td>
+                        <td>{{source.location}}</td>
+                        <td><span class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
+                    </tr>
+                </table>
+
             </div>
-            <table class="table table-striped">
-              <tr>
-                <th>Total Weight (lbs)</th>
-                <th>Quantiy</th>
-                <th>Packaging</th>
-                <th>L, W, H (in)</th>
-                <th>Description</th>
-                <th><span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="addLine()"></span></th>
-              </tr>
-              <tr ng-repeat="line in request.lines">
-                <td><input type="text" ng-model="line.weight"></td>
-                <td><input type="text" ng-model="line.quanity"></td>
-                <td><input type="text" ng-model="line.packaging"></td>
-                <td>
-                  <input type="text" ng-model="line.length" size="3">
-                  <input type="text" ng-model="line.width" size="3">
-                  <input type="text" ng-model="line.height" size="3">
-                </td>
-                <td><input type="text" ng-model="line.description"></td>
-                <td><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="removeLine($index)"></span>
-                </td>
-              </tr>
-            </table>
-
-          </div>
-
-        </fieldset>
-      </form>
-      <div class="container" ng-hide="showDetails" ng-click="enableEditing()">
-        <ftl-summary info="request" type="'FTL'"></ftl-summary>
-      </div>
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <tr class="success"><th>Trucking Company</th><th>Cost</th><th>Estimate delivery time</th><th>Contact</th><th>Location</th><th>View details</th></tr>
-          <tr ng-repeat="source in sources" class="warning">
-            <td>{{source.name}}</td>
-            <td>{{source.cost | currency:"$":0}}</td>
-            <td>{{source.time}}</td>
-            <td>{{source.contact}}</td>
-            <td>{{source.location}}</td>
-            <td><span class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
-          </tr>
-        </table>
-
-      </div>
 
 
-    </tab>
-    <tab heading="LTL">
-    <br>
+        </tab>
+        <tab heading="LTL">
+            <br>
 
-  <p>Get a less-than-truckload (LTL) shipment quote on your
-    <mark>150-4,999 pound</mark>
-    shipment (cartons, pallets, skids, etc.)
-  </p>
-  <br>
+            <p>Get a less-than-truckload (LTL) shipment quote on your
+                <mark>150-4,999 pound</mark>
+                shipment (cartons, pallets, skids, etc.)
+            </p>
+            <br>
 
-  <form class="form-horizontal" ng-show="showDetails">
-    <fieldset>
-      <div class="row">
-
-        <div class="col-md-6">
-
-          <div class="form-group">
-            <location info="shipTo" label="'To'" type="'LTL'"></location>
-          </div>
-
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <location info="shipFrom" label="'From'" type="'LTL'"></location>
-          </div>
-        </div>
-      </div>
+        </tab>
 
 
-      <div class="row">
-
-        <legend align="right">Weight and Volume</legend>
-        <table class="table table-striped">
-          <tr>
-            <th>Total Weight (lbs)</th>
-            <th>Quantiy</th>
-            <th>Packaging</th>
-            <th>L, W, H (in)</th>
-            <th>Description</th>
-            <th><span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="addLine()"></span></th>
-          </tr>
-          <tr ng-repeat="line in lines">
-            <td><input type="text" ng-model="line.weight"></td>
-            <td><input type="text" ng-model="line.quanity"></td>
-            <td><input type="text" ng-model="line.packaging"></td>
-            <td>
-              <input type="text" ng-model="line.length" size="3">
-              <input type="text" ng-model="line.width" size="3">
-              <input type="text" ng-model="line.height" size="3">
-            </td>
-            <td><input type="text" ng-model="line.description"></td>
-            <td><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="removeLine($index)"></span></td>
-          </tr>
-        </table>
-
-      </div>
-
-    </fieldset>
-  </form>
-  <div ng-hide="showDetails">
-
-    Show Summary of the sourcing request
-
-  </div>
-</tab>
-
-
-</tabset>
+    </tabset>
 
 
 </div>

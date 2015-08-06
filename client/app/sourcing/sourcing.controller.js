@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('SourcingCtrl', function ($scope, $http) {
+  .controller('SourcingCtrl', function ($scope, $http, ngProgressFactory) {
 
     $scope.request = {
       shipTo: {
@@ -34,17 +34,31 @@ angular.module('servicesApp')
     $scope.type = 'LTL';
     $scope.isQuerying = false;
 
+        $scope.packagings = [
+            {id: 0, name: "Full container"},
+            {id: 1, name: "Pallets (48x40)"},
+            {id: 2, name: "Pallets (48x48)"},
+            {id: 3, name: "Pallets (60x48)"},
+            {id: 4, name: "Bags"},
+            {id: 5, name: "Bales"},
+            {id: 6, name: "Cartons"},
+            {id: 7, name: "Crates"},
+            {id: 8, name: "Boxes"},
+            {id: 9, name: "Rolls"},
+            {id: 10, name: "Others"}
+        ];
+
     $scope.enableEditing = function() {
       $scope.showDetails = true;
-    }
+    };
 
     $scope.showDetails = true;
 
     $scope.addLine = function () {
       $scope.request.lines.push({
         weight: 0,
-        quantity: 0,
-        packaging: "carton",
+        quantity: 1,
+        packaging: {id:0, name: "Full container"},
         length: 0,
         width: 0,
         height: 0,
@@ -52,10 +66,7 @@ angular.module('servicesApp')
       })
     };
 
-    $scope.sources = [
-      {  name: "Aspeed", cost: 301.1, contact: "310-951-3843", location: "9111 S La Cienega Blvd, Inglewood, CA 90301"
-      }
-    ];
+    $scope.sources = [];
 
     $scope.removeLine = function (index) {
       $scope.request.lines.splice(index, 1);
@@ -63,15 +74,19 @@ angular.module('servicesApp')
     };
 
     $scope.query = function () {
-      $scope.showDetails = false;
-
-      $http.get("/api/sourcing", $scope.request).then(
+        console.log("send request = " + JSON.stringify($scope.request));
+        $scope.progressbar = ngProgressFactory.createInstance();
+        $scope.progressbar.start();
+      $http.post("/api/sourcing", $scope.request).then(
         function(response) {
-          $scope.sources = response;
+            console.log(response);
+            $scope.sources = response.data;
+            $scope.progressbar.complete();
         },
         function(response) {
           //show a alert and empty the table
           console.log("called /api/sourcing but returned res = " + response);
+            $scope.progressbar.stop();
         })
     };
 
