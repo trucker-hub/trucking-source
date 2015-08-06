@@ -3,15 +3,21 @@
 var _ = require('lodash');
 var Sourcing = require('./sourcing.model');
 
+
 // Get list of sourcings
 exports.index = function(req, res) {
-  Sourcing.find(function (err, sourcings) {
-    if(err) { return handleError(res, err); }
-    return res.status(200).json(sourcings);
-  });
+
+  console.log("calling index api with req = " + req);
+  var sources = [
+    {  name: "Aspeed", cost: 301.1, time: 2, contact: "310-951-3843", location: "9111 S La Cienega Blvd, Inglewood, CA 90301"},
+    {  name: "Bspeed", cost: 342.9, time: 2, contact: "310-951-3843", location: "9111 S La Cienega Blvd, Inglewood, CA 90301"},
+    {  name: "Cspeed", cost: 335.0, time: 1, contact: "310-951-3843", location: "9111 S La Cienega Blvd, Inglewood, CA 90301"},
+    {  name: "Dspeed", cost: 500.1, time: 1, contact: "310-951-3843", location: "9111 S La Cienega Blvd, Inglewood, CA 90301"}
+  ];
+  return res.status(200).json(sources);
 };
 
-// Get a single sourcing
+// Get sourcing
 exports.show = function(req, res) {
   Sourcing.findById(req.params.id, function (err, sourcing) {
     if(err) { return handleError(res, err); }

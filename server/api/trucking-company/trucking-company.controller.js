@@ -1,0 +1,59 @@
+'use strict';
+
+var _ = require('lodash');
+var TruckingCompany = require('./trucking-company.model');
+
+// Get list of trucking-companys
+exports.index = function(req, res) {
+  TruckingCompany.find(function (err, truckingCompanys) {
+    if(err) { return handleError(res, err); }
+    return res.status(200).json(trucking-companys);
+  });
+};
+
+// Get a single trucking-company
+exports.show = function(req, res) {
+  TruckingCompany.findById(req.params.id, function (err, truckingCompany) {
+    if(err) { return handleError(res, err); }
+    if(!trucking-company) { return res.status(404).send('Not Found'); }
+    return res.json(trucking-company);
+  });
+};
+
+// Creates a new trucking-company in the DB.
+exports.create = function(req, res) {
+  TruckingCompany.create(req.body, function(err, truckingCompany) {
+    if(err) { return handleError(res, err); }
+    return res.status(201).json(trucking-company);
+  });
+};
+
+// Updates an existing trucking-company in the DB.
+exports.update = function(req, res) {
+  if(req.body._id) { delete req.body._id; }
+  TruckingCompany.findById(req.params.id, function (err, truckingCompany) {
+    if (err) { return handleError(res, err); }
+    if(!trucking-company) { return res.status(404).send('Not Found'); }
+    var updated = _.merge(trucking-company, req.body);
+    updated.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.status(200).json(trucking-company);
+    });
+  });
+};
+
+// Deletes a trucking-company from the DB.
+exports.destroy = function(req, res) {
+  TruckingCompany.findById(req.params.id, function (err, truckingCompany) {
+    if(err) { return handleError(res, err); }
+    if(!trucking-company) { return res.status(404).send('Not Found'); }
+    trucking-company.remove(function(err) {
+      if(err) { return handleError(res, err); }
+      return res.status(204).send('No Content');
+    });
+  });
+};
+
+function handleError(res, err) {
+  return res.status(500).send(err);
+}

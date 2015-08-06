@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('SourcingCtrl', function ($scope) {
-
-    $scope.message = 'Hello';
+  .controller('SourcingCtrl', function ($scope, $http) {
 
     $scope.request = {
       shipTo: {
@@ -45,7 +43,7 @@ angular.module('servicesApp')
     $scope.addLine = function () {
       $scope.request.lines.push({
         weight: 0,
-        quanity: 0,
+        quantity: 0,
         packaging: "carton",
         length: 0,
         width: 0,
@@ -66,7 +64,16 @@ angular.module('servicesApp')
 
     $scope.query = function () {
       $scope.showDetails = false;
-    }
+
+      $http.get("/api/sourcing", $scope.request).then(
+        function(response) {
+          $scope.sources = response;
+        },
+        function(response) {
+          //show a alert and empty the table
+          console.log("called /api/sourcing but returned res = " + response);
+        })
+    };
 
 
   });
