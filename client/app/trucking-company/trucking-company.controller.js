@@ -1,15 +1,36 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('TruckingCompanyCtrl', function($scope, $http, $filter, ngTableParams) {
-    var rows =   [
-    ];
+  .controller('TruckingCompanyCtrl', function($scope, $http, $filter, ngTableParams, $modal) {
+
+    var editCompanyFunc = function(id) {
+      console.log("edit a company whose id is " + id);
+      var modalInstance = $modal.open({
+        animation: true,
+        templateUrl: '/app/trucking-company/company-details/company-details.html',
+        controller: 'CompanyDetailsCtrl',
+        size: "lg",
+        resolve: {
+          id: function () {
+            return id;
+          }
+        }
+      });
+
+      modalInstance.result.then(function (status) {
+        console.log("status " + status)
+      }, function () {
+        console.info('Modal dismissed at: ' + new Date());
+      });
+    }
+
+    var companies =   [];
 
     $scope.toggleFavorite = function(id) {
 
       var index;
-      for (index =0; index < rows.length; ++index) {
-         var company = rows[index];
+      for (index =0; index < companies.length; ++index) {
+         var company = companies[index];
          if(company._id == id) {
             company.favorite = !company.favorite;
            return;
@@ -18,14 +39,12 @@ angular.module('servicesApp')
     }
 
     $scope.editCompany = function(id) {
-      console.log("edit a company whose id is " + id);
+      editCompanyFunc(id);
     };
 
     $scope.addCompany = function() {
-
+      editCompanyFunc(-1);
     };
-
-
 
     $scope.tableParams = new ngTableParams({
       page: 1,            // show first page
@@ -34,22 +53,22 @@ angular.module('servicesApp')
         name: ''       // initial filter
       }
     }, {
-      total: rows.length, // length of data
+      total: companies.length, // length of data
       getData: function($defer, params) {
         // use build-in angular filter
         var orderedData = params.filter() ?
-          $filter('filter')(rows, params.filter()) :
-          rows;
+          $filter('filter')(companies, params.filter()) :
+          companies;
 
-        rows = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+        companies = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
 
         params.total(orderedData.length); // set total for recalc pagination
-        $defer.resolve(rows);
+        $defer.resolve(companies);
       }
     });
 
     $scope.updateTable = function(data) {
-      rows = data;
+      companies = data;
       $scope.tableParams.reload();
     }
 
