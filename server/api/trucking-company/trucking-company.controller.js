@@ -7,7 +7,7 @@ var TruckingCompany = require('./trucking-company.model');
 exports.index = function(req, res) {
   TruckingCompany.find(function (err, truckingCompanys) {
     if(err) { return handleError(res, err); }
-    return res.status(200).json(trucking-companys);
+    return res.status(200).json(truckingCompanys);
   });
 };
 

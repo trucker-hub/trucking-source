@@ -1,3 +1,47 @@
-<div class="col-md-12">
-This is the trucking-company view.
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+  <div class="page-header">
+    <h3>Trucking Companies</h3>
+  </div>
+
+  <tabset type="tabs">
+    <tab heading="Southern Cal/Neveda/Arizona">
+      <div>
+        <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover">
+          <tr ng-repeat="company in $data">
+            <td><span ng-class="company.favorite? 'glyphicon glyphicon-star':'glyphicon glyphicon-star-empty' " aria-hidden="true" ng-click="toggleFavorite(company._id)"></span></td>
+            <td data-title="'Name'" filter="{ 'name': 'text' }">
+              {{company.name}}
+            </td>
+            <td data-title="'Location'">
+              {{company.location}}
+            </td>
+            <td data-title="'Contact'">
+              {{company.contact}}
+            </td>
+            <td data-title="'Edit'">
+              <span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="editCompany(company._id)"></span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </tab>
+    <tab heading="Northern Cal/Oregon/Washington"></tab>
+    <tab heading="West"></tab>
+    <tab heading="Southwest"></tab>
+    <tab heading="Midwest"></tab>
+    <tab heading="South"></tab>
+    <tab heading="NorthEast"></tab>
+  </tabset>
+
+  <div class="row">
+    <div class="col-md-9">
+      <button class="btn btn-sm btn-primary" type="button" ng-click="addCompany()">Add</button>
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-sm btn-primary" type="button" ng-click="loadCompanies()">Load Companies</button>
+    </div>
+  </div>
+
 </div>

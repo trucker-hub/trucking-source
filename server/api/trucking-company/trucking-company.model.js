@@ -5,7 +5,9 @@ var mongoose = require('mongoose'),
 
 var TruckingCompanySchema = new Schema({
   name: String,
-  info: String,
+  favorite: Boolean,
+  location: String,
+  contact: String,
   active: Boolean
 });
 

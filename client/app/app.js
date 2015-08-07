@@ -7,7 +7,8 @@ angular.module('servicesApp', [
   'ngRoute',
   'btford.socket-io',
   'ui.bootstrap',
-  'ngProgress'
+  'ngProgress',
+  'ngTable'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider

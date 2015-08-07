@@ -7,6 +7,7 @@
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+var TruckingCompany = require('../api/trucking-company/trucking-company.model');
 
 Thing.find({}).remove(function() {
   Thing.create({
@@ -28,6 +29,15 @@ Thing.find({}).remove(function() {
     name : 'Deployment Ready',
     info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
   });
+});
+
+TruckingCompany.find({}).remove(function() {
+
+  TruckingCompany.create(
+  { name: "Aspeed",  contact: "310-951-3843", location: "9111 S La Cienega Blvd, Inglewood, CA 90301", favorite:false},
+  { name: "Bspeed", contact: "310-951-3843", location: "9111 S La Cienega Blvd, Inglewood, CA 90301", favorite:true},
+  { name: "Cspeed",  contact: "310-951-3843", location: "9111 S La Cienega Blvd, Inglewood, CA 90301", favorite:false},
+  { name: "Dspeed",  contact: "310-951-3843", location: "9111 S La Cienega Blvd, Inglewood, CA 90301", favorite:false})
 });
 
 User.find({}).remove(function() {
