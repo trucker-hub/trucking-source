@@ -6,7 +6,7 @@
   </div>
 
   <tabset type="tabs">
-    <tab heading="Southern Cal/Neveda/Arizona">
+    <tab heading="Companies">
       <div>
         <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover">
           <tr ng-repeat="company in $data">
@@ -27,12 +27,11 @@
         </table>
       </div>
     </tab>
-    <tab heading="Northern Cal/Oregon/Washington"></tab>
-    <tab heading="West"></tab>
-    <tab heading="Southwest"></tab>
-    <tab heading="Midwest"></tab>
-    <tab heading="South"></tab>
-    <tab heading="NorthEast"></tab>
+    <tab ng-repeat="(id, detail) in companiesOpened " active="detail.active">
+      <tab-heading>{{detail.data.name}} <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="closeTab(id)"></span></tab-heading>
+      <div ng-controller="CompanyDetailsCtrl as dCtrl" ng-init="dCtrl.setCompany(detail.data)" ng-include="'/app/trucking-company/company-details/company-details.html'"></div>
+    </tab>
+
   </tabset>
 
   <div class="row">

@@ -1,16 +1,19 @@
 'use strict';
 
 angular.module('servicesApp')
-    .controller('CompanyDetailsCtrl', function ($scope, $modalInstance, id) {
+    .controller('CompanyDetailsCtrl', function ($scope) {
 
-        console.log("open a edit window for company whose id is " +id);
+        console.log("open a edit window for company");
 
-        $scope.status = {id: id, status: "OK"};
-        $scope.ok = function() {
-            $modalInstance.close($scope.status);
+        this.setCompany = function(company) {
+          this.company = company;
         }
 
-        $scope.cancel = function() {
-            $modalInstance.dismiss('Cancel');
+        this.ok = function() {
+
+        }
+
+        this.cancel = function() {
+
         }
     });

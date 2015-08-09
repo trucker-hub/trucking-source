@@ -1,36 +1,44 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('TruckingCompanyCtrl', function($scope, $http, $filter, ngTableParams, $modal) {
+  .controller('TruckingCompanyCtrl', function($scope, $http, $filter, ngTableParams) {
+
+    $scope.companiesOpened = {};
+
+    var allCompanies =   [];
 
     var editCompanyFunc = function(id) {
       console.log("edit a company whose id is " + id);
-      var modalInstance = $modal.open({
-        animation: true,
-        templateUrl: '/app/trucking-company/company-details/company-details.html',
-        controller: 'CompanyDetailsCtrl',
-        size: "lg",
-        resolve: {
-          id: function () {
-            return id;
-          }
-        }
-      });
 
-      modalInstance.result.then(function (status) {
-        console.log("status " + status)
-      }, function () {
-        console.info('Modal dismissed at: ' + new Date());
-      });
+      var detail = $scope.companiesOpened[id];
+      if(detail) {
+        detail.active = true;
+        return;
+      }
+
+      var index;
+      for (index =0; index < allCompanies.length; ++index) {
+        var company = allCompanies[index];
+        if(company._id == id) {
+          $scope.companiesOpened[id] = {data:company, active:true};
+          return;
+        }
+      }
     }
 
-    var companies =   [];
+
+
+
+
+    $scope.closeTab = function(id) {
+      delete $scope.companiesOpened[id];
+    };
 
     $scope.toggleFavorite = function(id) {
 
       var index;
-      for (index =0; index < companies.length; ++index) {
-         var company = companies[index];
+      for (index =0; index < allCompanies.length; ++index) {
+         var company = allCompanies[index];
          if(company._id == id) {
             company.favorite = !company.favorite;
            return;
@@ -53,22 +61,22 @@ angular.module('servicesApp')
         name: ''       // initial filter
       }
     }, {
-      total: companies.length, // length of data
+      total: allCompanies.length, // length of data
       getData: function($defer, params) {
         // use build-in angular filter
         var orderedData = params.filter() ?
-          $filter('filter')(companies, params.filter()) :
-          companies;
+          $filter('filter')(allCompanies, params.filter()) :
+          allCompanies;
 
-        companies = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+        allCompanies = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
 
         params.total(orderedData.length); // set total for recalc pagination
-        $defer.resolve(companies);
+        $defer.resolve(allCompanies);
       }
     });
 
     $scope.updateTable = function(data) {
-      companies = data;
+      allCompanies = data;
       $scope.tableParams.reload();
     }
 
