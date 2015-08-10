@@ -6,7 +6,8 @@
   </div>
 
   <tabset type="tabs">
-    <tab heading="Companies">
+    <tab >
+      <tab-heading><span>Trucking Companies</span></tab-heading>
       <div>
         <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover">
           <tr ng-repeat="company in $data">
@@ -21,7 +22,7 @@
               {{company.contact}}
             </td>
             <td data-title="'Edit'">
-              <span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="editCompany(company._id)"></span>
+              <a href=""><span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="editCompany(company._id)"></span></a>
             </td>
           </tr>
         </table>
@@ -36,7 +37,7 @@
       </div>
     </tab>
     <tab ng-repeat="(id, detail) in companiesOpened " active="detail.active">
-      <tab-heading>{{detail.data.name}} <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="closeTab(id)"></span></tab-heading>
+      <tab-heading><span>{{detail.data.name}}</span>&nbsp<a href=""><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="closeTab(id)"></span></a></tab-heading>
       <div ng-controller="CompanyDetailsCtrl as dCtrl" ng-init="dCtrl.setCompany(detail.data)" ng-include="'/app/trucking-company/company-details/company-details.html'"></div>
     </tab>
 

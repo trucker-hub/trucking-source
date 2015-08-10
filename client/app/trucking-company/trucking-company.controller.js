@@ -28,13 +28,13 @@ angular.module('servicesApp')
 
 
     $scope.save = function(company) {
-      console.log("save company info");
-      $scope.closeTab(company.id);
+      console.log("save company info " + company.name);
+      $scope.closeTab(company._id);
     }
 
     $scope.cancel = function(company) {
-      console.log("cancel company info " + company.id);
-      $scope.closeTab(company.id);
+      console.log("cancel company info " + company._id);
+      $scope.closeTab(company._id);
     }
 
 
@@ -49,6 +49,18 @@ angular.module('servicesApp')
          var company = allCompanies[index];
          if(company._id == id) {
             company.favorite = !company.favorite;
+
+           $http.put('/api/trucking-companies/' + company._id, {company: company}).then(
+               function(response) {
+                 console.log(JSON.stringify(response.data));
+
+               },
+
+               function(response) {
+                 console.log("ran into error during update");
+               }
+           );
+
            return;
          }
       }

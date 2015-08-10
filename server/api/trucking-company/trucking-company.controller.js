@@ -15,8 +15,8 @@ exports.index = function(req, res) {
 exports.show = function(req, res) {
   TruckingCompany.findById(req.params.id, function (err, truckingCompany) {
     if(err) { return handleError(res, err); }
-    if(!trucking-company) { return res.status(404).send('Not Found'); }
-    return res.json(trucking-company);
+    if(!truckingCompany) { return res.status(404).send('Not Found'); }
+    return res.json(truckingCompany);
   });
 };
 
@@ -24,7 +24,7 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   TruckingCompany.create(req.body, function(err, truckingCompany) {
     if(err) { return handleError(res, err); }
-    return res.status(201).json(trucking-company);
+    return res.status(201).json(truckingCompany);
   });
 };
 
@@ -33,11 +33,12 @@ exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
   TruckingCompany.findById(req.params.id, function (err, truckingCompany) {
     if (err) { return handleError(res, err); }
-    if(!trucking-company) { return res.status(404).send('Not Found'); }
-    var updated = _.merge(trucking-company, req.body);
+    if(!truckingCompany) { return res.status(404).send('Not Found'); }
+    var updated = _.merge(truckingCompany, req.body.company);
+    console.log("merged version "+ updated);
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
-      return res.status(200).json(trucking-company);
+      return res.status(200).json(truckingCompany);
     });
   });
 };

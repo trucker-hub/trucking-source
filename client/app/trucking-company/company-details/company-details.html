@@ -40,8 +40,8 @@
 
   <tr>
     <th></th>
-    <td><div style="float: left"><button type="button" class="btn btn-warning" >Cancel</button></div>
-      <div style="float:right"><button type="button"  class="btn btn-primary" ng-class="{'disabled': !companyInfo.$valid}">Save</button></div></td>
+    <td><div style="float: left"><button type="button" class="btn btn-warning" ng-click="dCtrl.cancel()">Close without Saving</button></div>
+      <div style="float:right"><button type="button"  class="btn btn-primary" ng-click="dCtrl.save()" ng-class="{'disabled': !companyInfo.$valid}">Save Company Info</button></div></td>
   </tr>
 
 
