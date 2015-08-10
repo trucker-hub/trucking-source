@@ -27,7 +27,15 @@ angular.module('servicesApp')
     }
 
 
+    $scope.save = function(company) {
+      console.log("save company info");
+      $scope.closeTab(company.id);
+    }
 
+    $scope.cancel = function(company) {
+      console.log("cancel company info " + company.id);
+      $scope.closeTab(company.id);
+    }
 
 
     $scope.closeTab = function(id) {

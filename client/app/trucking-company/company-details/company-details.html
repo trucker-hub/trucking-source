@@ -1,8 +1,49 @@
 
-<h3>{{dCtrl.company.name}}</h3>
-            <p>Get a less-than-truckload (LTL) shipment quote on your
-                <mark>150-4,999 pound</mark>
-                shipment (cartons, pallets, skids, etc.)
-            </p>
-            <br>
+<form name="companyInfo">
+<table class="table table-responsive">
 
+  <tr>
+    <th class="col-md-3"></th><th class="col-md-8"></th><th class="col-md-1"></th>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <td>
+      <div ng-class="{'has-error': companyInfo.name.$invalid}">
+      <input name="name"  type="text" class="form-control" size="20" ng-model="dCtrl.company.name"
+               placeholder="Company Name" required></div></td>
+  </tr>
+  <tr>
+    <th>Location</th>
+    <td>
+      <div ng-class="{'has-error': companyInfo.location.$invalid}">
+      <input name="location" type="text" class="form-control" size="20" ng-model="dCtrl.company.location"
+               placeholder="street, city, zip code" required></div></td>
+  </tr>
+
+  <tr>
+    <th>Phone</th>
+    <td><div ng-class="{'has-error': companyInfo.phone.$invalid}"><input name="phone" type="text" class="form-control" size="13" ng-model="dCtrl.company.phone"
+               placeholder="(xxx)-xxx-xxxx" ui-mask="(999) 999-9999" required></div></td>
+  </tr>
+
+  <tr>
+    <th>FAX</th>
+    <td><div ng-class="{'has-error': companyInfo.fax.$invalid}"><input name="fax" type="text" class="form-control" size="13" ng-model="dCtrl.company.fax"
+               placeholder="(xxx)-xxx-xxxx" ui-mask="(999) 999-9999" required></div></td>
+  </tr>
+
+  <tr>
+    <th>Email</th>
+    <td><div ng-class="{'has-error': companyInfo.email.$invalid}"><input name="email" type="email" class="form-control" ng-class="" size="20" ng-model="dCtrl.company.email"
+               placeholder="email" required></div></td>
+  </tr>
+
+  <tr>
+    <th></th>
+    <td><div style="float: left"><button type="button" class="btn btn-warning" >Cancel</button></div>
+      <div style="float:right"><button type="button"  class="btn btn-primary" ng-class="{'disabled': !companyInfo.$valid}">Save</button></div></td>
+  </tr>
+
+
+</table>
+</form>

@@ -26,6 +26,14 @@
           </tr>
         </table>
       </div>
+      <div class="row">
+        <div class="col-md-9">
+          <button class="btn btn-sm btn-primary" type="button" ng-click="addCompany()">Add</button>
+        </div>
+        <div class="col-md-3">
+          <button class="btn btn-sm btn-primary" type="button" ng-click="loadCompanies()">Load Companies</button>
+        </div>
+      </div>
     </tab>
     <tab ng-repeat="(id, detail) in companiesOpened " active="detail.active">
       <tab-heading>{{detail.data.name}} <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="closeTab(id)"></span></tab-heading>
@@ -33,14 +41,4 @@
     </tab>
 
   </tabset>
-
-  <div class="row">
-    <div class="col-md-9">
-      <button class="btn btn-sm btn-primary" type="button" ng-click="addCompany()">Add</button>
-    </div>
-    <div class="col-md-3">
-      <button class="btn btn-sm btn-primary" type="button" ng-click="loadCompanies()">Load Companies</button>
-    </div>
-  </div>
-
 </div>

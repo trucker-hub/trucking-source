@@ -5,15 +5,10 @@ angular.module('servicesApp')
 
         console.log("open a edit window for company");
 
-        this.setCompany = function(company) {
+        this.setCompany = function(company, okFunc, cancelFunc) {
+          console.log("company is set to " + company.name);
           this.company = company;
-        }
-
-        this.ok = function() {
-
-        }
-
-        this.cancel = function() {
-
+          this.cancel = cancelFunc;
+          this.save = okFunc;
         }
     });
