@@ -1,49 +1,76 @@
 
+<br>
 <form name="companyInfo">
-<table class="table table-responsive">
+<table class="table table-responsive table-striped">
 
   <tr>
-    <th class="col-md-3"></th><th class="col-md-8"></th><th class="col-md-1"></th>
+    <th class="col-md-3">Attribute</th><th class="col-md-8">Value</th><th class="col-md-1"></th>
   </tr>
   <tr>
     <th>Name</th>
     <td>
       <div ng-class="{'has-error': companyInfo.name.$invalid}">
       <input name="name"  type="text" class="form-control" size="20" ng-model="dCtrl.company.name"
-               placeholder="Company Name" required></div></td>
+               placeholder="Company Name" required></div></td><td></td>
   </tr>
   <tr>
     <th>Location</th>
     <td>
       <div ng-class="{'has-error': companyInfo.location.$invalid}">
       <input name="location" type="text" class="form-control" size="20" ng-model="dCtrl.company.location"
-               placeholder="street, city, zip code" required></div></td>
+               placeholder="street, city, zip code" required></div></td><td></td>
   </tr>
 
   <tr>
     <th>Phone</th>
     <td><div ng-class="{'has-error': companyInfo.phone.$invalid}"><input name="phone" type="text" class="form-control" size="13" ng-model="dCtrl.company.phone"
-               placeholder="(xxx)-xxx-xxxx" ui-mask="(999) 999-9999" required></div></td>
+               placeholder="(xxx)-xxx-xxxx" ui-mask="(999) 999-9999" required></div></td><td></td>
   </tr>
 
   <tr>
     <th>FAX</th>
     <td><div ng-class="{'has-error': companyInfo.fax.$invalid}"><input name="fax" type="text" class="form-control" size="13" ng-model="dCtrl.company.fax"
-               placeholder="(xxx)-xxx-xxxx" ui-mask="(999) 999-9999" required></div></td>
+               placeholder="(xxx)-xxx-xxxx" ui-mask="(999) 999-9999" required></div></td><td></td>
   </tr>
 
   <tr>
     <th>Email</th>
     <td><div ng-class="{'has-error': companyInfo.email.$invalid}"><input name="email" type="email" class="form-control" ng-class="" size="20" ng-model="dCtrl.company.email"
-               placeholder="email" required></div></td>
+               placeholder="email" required></div></td><td></td>
   </tr>
 
   <tr>
     <th></th>
     <td><div style="float: left"><button type="button" class="btn btn-warning" ng-click="dCtrl.cancel()">Close without Saving</button></div>
       <div style="float:right"><button type="button"  class="btn btn-primary" ng-click="dCtrl.save()" ng-class="{'disabled': !companyInfo.$valid}">Save Company Info</button></div></td>
+    <td></td>
   </tr>
 
+
+  <tr>
+    <th colspan="3">Rates</th>
+  </tr>
+
+  <tr>
+    <th>LFL Ocean Rates</th>
+    <td><div style="float: left"><button type="button" class="btn btn-info" ng-click="dCtrl.cancel()">Import</button></div>
+      <div style="float:right"><button type="button"  class="btn btn-primary" ng-click="dCtrl.save()">View</button></div></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <th>LFL Air Rates</th>
+    <td><div style="float: left"><button type="button" class="btn btn-info" ng-click="dCtrl.cancel()">Import</button></div>
+      <div style="float:right"><button type="button"  class="btn btn-primary" ng-click="dCtrl.save()">View</button></div></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <th>FTL Rates</th>
+    <td><div style="float: left"><button type="button" class="btn btn-info" ng-click="dCtrl.cancel()">Import</button></div>
+      <div style="float:right"><button type="button"  class="btn btn-primary" ng-click="dCtrl.save()">View</button></div></td>
+    <td></td>
+  </tr>
 
 </table>
 </form>
