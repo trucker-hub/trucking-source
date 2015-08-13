@@ -7,17 +7,20 @@ var TruckingCompanySchema = new Schema({
   name: String,
   favorite: Boolean,
   location: String,
-  contact: String,
+  phone: String,
+  fax: String,
+  email:String,
   active: Boolean,
   ftl: {
     fuelSurcharge: Number,
     residentialCharge: Number,
-    liftGateCharge: Number,
-    regions:[{
-      state : String,
-      county: String,
-      rateByCity : Boolean
-    }],
+    regions: [
+      {
+        state: String,
+        county: String,
+        rateByCity: Boolean
+      }
+    ],
     OverWeightCharges: [
       {
         containerSize: String,
@@ -26,13 +29,47 @@ var TruckingCompanySchema = new Schema({
         charge: Number
       }
     ],
-
     rates: [
       {
         state: String,
         city: String,
         zipCode: String,
         rate: Number,
+        dropOffCharge: Number
+      }
+    ]
+  },
+  ltl: {
+    fuelSurcharge: Number,
+    residentialCharge: Number,
+    liftGateCharge: Number,
+    regions: [
+      {
+        state: String,
+        county: String,
+        rateByCity: Boolean
+      }
+    ],
+    zones: [
+      {
+        zone: String,
+        tiers: [
+          {
+            rate: Number,
+            weightFrom: Number,
+            weightTo: Number,
+            flat: Boolean,
+            weightIncrement: Number
+          }
+        ]
+      }
+    ],
+    rates: [
+      {
+        state: String,
+        city: String,
+        zipCode: String,
+        rateZone: String,
         dropOffCharge: Number
       }
     ]
