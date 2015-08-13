@@ -58,6 +58,9 @@ angular.module('servicesApp')
 
                function(response) {
                  console.log("ran into error during update");
+
+                 //if error, revert the change
+                 company.favorite = !company.favorite;
                }
            );
 
