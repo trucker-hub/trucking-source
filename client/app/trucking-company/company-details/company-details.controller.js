@@ -9,7 +9,6 @@ angular.module('servicesApp')
 
         vm.changed = false;
 
-
         vm.setCompany = function(company) {
           console.log("company is set to " + company);
           vm.company = company;

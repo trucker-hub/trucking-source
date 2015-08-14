@@ -74,7 +74,17 @@
         <tr>
           <th>Regions</th>
           <td>
-          <span>Los Angeles County, CA, San Diego, San Bardino, Orange County</span>
+            <div class="form-inline" ng-repeat="region in dCtrl.company.ftl.regions">
+              <ui-select single ng-model="region.state">
+                <ui-select-match placeholder="Enter a state...">{{$select.selected}}</ui-select-match>
+                <ui-select-choices repeat="state in states track by $index"
+                                   refresh="refreshAddresses($select.search)"
+                                   refresh-delay="0">
+                  <div ng-bind-html="address.formatted_address | highlight: $select.search"></div>
+                </ui-select-choices>
+
+              </ui-select>
+            </div>
           </td>
           <td></td>
         </tr>

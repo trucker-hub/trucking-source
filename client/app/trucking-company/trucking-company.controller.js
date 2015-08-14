@@ -26,25 +26,15 @@ angular.module('servicesApp')
       }
     }
 
-    $scope.fetchZipCode = function() {
+    $scope.fetchStates = function() {
 
-      var url = "http://production.shippingapis.com/ShippingAPI.dll?API= ZipCodeLookup&XML=";
-      url += "<ZipCodeLookupRequest USERID='790TRUCK5238'>"
-        + "<Address ID='0'>"
-        + "<FirmName></FirmName>"
-        + "<Address1>30944 Rue de la Pierre</Address1>"
-        + "<Address2></Address2>"
-        + "<City>Rancho Palos Verdes</City>"
-        + "<State>CA</State></Address>"
-      +"</ZipCodeLookupRequest>";
-      console.log("request=" + url);
-      $http.get(url).then(
+      $http.get('/api/geoservice/states').then(
         function(response) {
-          $scope.zipCodeResponse = "<pre>" + response.data + "</pre>";
+          $scope.statesResponse = "<pre>" + response.data + "</pre>";
         },
 
         function(response) {
-          $scope.zipCodeResponse = "Error:<pre>" + response + "</pre>";
+          $scope.statesResponse = "Error:<pre>" + response + "</pre>";
         }
       )
     };
@@ -92,6 +82,23 @@ angular.module('servicesApp')
          }
       }
     };
+
+      $scope.states = [
+        "CA",
+        "NV",
+        "WA"
+      ];
+
+      $scope.counties = [
+        "Los Angeles County", "San Diego County"
+      ];
+      $scope.regions = [
+        {
+          state: "CA",
+          counties: []
+        }
+      ];
+
 
     $scope.editCompany = function(id) {
       editCompanyFunc(id);
