@@ -8,7 +8,7 @@ exports.index = function(req, res) {
   TruckingCompany.find(function (err, truckingCompanys) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(truckingCompanys);
-  });
+  }).select('-ftl -ltl');
 };
 
 // Get a single trucking-company

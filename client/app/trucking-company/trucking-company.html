@@ -27,7 +27,7 @@
           </tr>
         </table>
       </div>
-      <div class="row">
+      <div class="row" >
         <div class="col-md-9">
           <button class="btn btn-sm btn-primary" type="button" ng-click="addCompany()">Add</button>
         </div>
@@ -35,6 +35,20 @@
           <button class="btn btn-sm btn-primary" type="button" ng-click="loadCompanies()">Load Companies</button>
         </div>
       </div>
+
+      <br>
+      <div class="row" ng-hide="true">
+        <div class="col-md-9">
+          <input name="location" type="text" class="form-control" size="20" ng-model="cityString"
+                 placeholder="street, city, zip code" >
+          {{zipCodeResponse}}
+        </div>
+        <div class="col-md-3">
+          <button class="btn btn-sm btn-primary" type="button" ng-click="fetchZipCode()">Ftech</button>
+        </div>
+      </div>
+
+
     </tab>
     <tab ng-repeat="(id, detail) in companiesOpened " active="detail.active">
       <tab-heading><span>{{detail.data.name}}</span>&nbsp<a><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="closeTab(id)"></span></a></tab-heading>

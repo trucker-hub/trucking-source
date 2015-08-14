@@ -14,11 +14,11 @@ var TruckingCompanySchema = new Schema({
   ftl: {
     fuelSurcharge: Number,
     residentialCharge: Number,
+    rateByCity: Boolean,
     regions: [
       {
         state: String,
-        county: String,
-        rateByCity: Boolean
+        county: String
       }
     ],
     OverWeightCharges: [

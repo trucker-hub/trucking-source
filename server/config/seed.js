@@ -38,8 +38,8 @@ TruckingCompany.find({}).remove(function () {
                 name: "Aspeed",
                 contact: "310-951-3843",
                 location: "9111 S La Cienega Blvd, Inglewood, CA 90301",
-              phone: "(310)-911-1111",
-              fax: "(310)-911-1112",
+              phone: "3109111111",
+              fax: "3109111112",
               email: "hello@trucking-hub.com",
                 favorite: false,
                 ftl: {
@@ -80,10 +80,9 @@ TruckingCompany.find({}).remove(function () {
             },
             {
                 name: "Bspeed",
-                contact: "310-951-3843",
                 location: "9111 S La Cienega Blvd, Inglewood, CA 90301",
-              phone: "(310)-911-1111",
-              fax: "(310)-911-1112",
+              phone: "3109111111",
+              fax: "3109111112",
               email: "hello@trucking-hub.com",
                 favorite: true,
                 ftl: {
@@ -126,8 +125,8 @@ TruckingCompany.find({}).remove(function () {
                 name: "Cspeed",
                 contact: "310-951-3843",
                 location: "9111 S La Cienega Blvd, Inglewood, CA 90301",
-                phone: "(310)-911-1111",
-                fax: "(310)-911-1112",
+                phone: "3109111111",
+                fax: "3109111112",
                 email: "hello@trucking-hub.com",
                 favorite: false,
                 ftl: {
@@ -168,10 +167,9 @@ TruckingCompany.find({}).remove(function () {
             },
             {
                 name: "Dspeed",
-                contact: "310-951-3843",
                 location: "9111 S La Cienega Blvd, Inglewood, CA 90301",
-              phone: "(310)-911-1111",
-              fax: "(310)-911-1112",
+              phone: "3109111111",
+              fax: "3109111112",
               email: "hello@trucking-hub.com",
                 favorite: false,
                 ftl: {
