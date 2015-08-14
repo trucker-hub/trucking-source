@@ -46,16 +46,6 @@ TruckingCompany.find({}).remove(function () {
                     regions: [
                         {
                             state: "CA",
-                            county: "Los Angeles County",
-                            rateByCity: true
-                        },
-                        {
-                            state: "CA",
-                            county: "Orange County",
-                            rateByCity: true
-                        },
-                        {
-                            state: "CA",
                             county: "San Diego County",
                             rateByCity: true
                         }
@@ -86,11 +76,6 @@ TruckingCompany.find({}).remove(function () {
                     residentialCharge: 60.0,
                     liftGateCharge: 35.0,
                     regions: [
-                        {
-                            state: "CA",
-                            county: "Los Angeles County",
-                            rateByCity: true
-                        },
                         {
                             state: "CA",
                             county: "Orange County",
@@ -131,16 +116,6 @@ TruckingCompany.find({}).remove(function () {
                         {
                             state: "CA",
                             county: "Los Angeles County",
-                            rateByCity: true
-                        },
-                        {
-                            state: "CA",
-                            county: "Orange County",
-                            rateByCity: true
-                        },
-                        {
-                            state: "CA",
-                            county: "San Diego County",
                             rateByCity: true
                         }
                     ],
