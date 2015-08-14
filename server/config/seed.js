@@ -38,11 +38,13 @@ TruckingCompany.find({}).remove(function () {
                 name: "Aspeed",
                 contact: "310-951-3843",
                 location: "9111 S La Cienega Blvd, Inglewood, CA 90301",
+              phone: "3109111111",
+              fax: "3109111112",
+              email: "hello@trucking-hub.com",
                 favorite: false,
                 ftl: {
                     fuelSurcharge: 0.20,
                     residentialCharge: 60.0,
-                    liftGateCharge: 35.0,
                     regions: [
                         {
                             state: "CA",
@@ -68,13 +70,14 @@ TruckingCompany.find({}).remove(function () {
             },
             {
                 name: "Bspeed",
-                contact: "310-951-3843",
                 location: "9111 S La Cienega Blvd, Inglewood, CA 90301",
+              phone: "3109111111",
+              fax: "3109111112",
+              email: "hello@trucking-hub.com",
                 favorite: true,
                 ftl: {
                     fuelSurcharge: 0.20,
                     residentialCharge: 60.0,
-                    liftGateCharge: 35.0,
                     regions: [
                         {
                             state: "CA",
@@ -107,11 +110,13 @@ TruckingCompany.find({}).remove(function () {
                 name: "Cspeed",
                 contact: "310-951-3843",
                 location: "9111 S La Cienega Blvd, Inglewood, CA 90301",
+                phone: "3109111111",
+                fax: "3109111112",
+                email: "hello@trucking-hub.com",
                 favorite: false,
                 ftl: {
                     fuelSurcharge: 0.20,
                     residentialCharge: 60.0,
-                    liftGateCharge: 35.0,
                     regions: [
                         {
                             state: "CA",
@@ -137,13 +142,14 @@ TruckingCompany.find({}).remove(function () {
             },
             {
                 name: "Dspeed",
-                contact: "310-951-3843",
                 location: "9111 S La Cienega Blvd, Inglewood, CA 90301",
+              phone: "3109111111",
+              fax: "3109111112",
+              email: "hello@trucking-hub.com",
                 favorite: false,
                 ftl: {
                     fuelSurcharge: 0.20,
                     residentialCharge: 60.0,
-                    liftGateCharge: 35.0,
                     regions: [
                         {
                             state: "CA",
