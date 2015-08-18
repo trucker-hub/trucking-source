@@ -15,6 +15,25 @@ angular.module('servicesApp')
           vm.lastCopy = angular.copy(company);
         }
 
+        vm.selectedRegions = [];
+        vm.regions = [];
+        vm.refreshRegions = function() {
+            return $http.get('/api/geoservice/regions'
+            ).then(function(response) {
+                    vm.regions = response.data;
+                    console.log("result = " + JSON.stringify(response.data));
+                },
+
+                function(response) {
+                    console.log("Error=" + response);
+                }
+            );
+
+        }
+
+        vm.getState = function(item) {
+            return item.state;
+        }
 
         vm.change = function() {
           vm.changed = true;

@@ -3,12 +3,13 @@
 var _ = require('lodash');
 var TruckingCompany = require('./trucking-company.model');
 
+
 // Get list of trucking-companys
 exports.index = function(req, res) {
   TruckingCompany.find(function (err, truckingCompanys) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(truckingCompanys);
-  }).select('-ftl -ltl');
+  });
 };
 
 // Get a single trucking-company
@@ -47,8 +48,8 @@ exports.update = function(req, res) {
 exports.destroy = function(req, res) {
   TruckingCompany.findById(req.params.id, function (err, truckingCompany) {
     if(err) { return handleError(res, err); }
-    if(!trucking-company) { return res.status(404).send('Not Found'); }
-    trucking-company.remove(function(err) {
+    if(!truckingCompany) { return res.status(404).send('Not Found'); }
+    truckingCompany.remove(function(err) {
       if(err) { return handleError(res, err); }
       return res.status(204).send('No Content');
     });

@@ -11,10 +11,10 @@ var TruckingCompanySchema = new Schema({
   fax: String,
   email:String,
   active: Boolean,
+  rateBasis: String,
   ftl: {
     fuelSurcharge: Number,
     residentialCharge: Number,
-    rateByCity: Boolean,
     regions: [
       {
         state: String,

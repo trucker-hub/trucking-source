@@ -1,0 +1,14 @@
+[
+  {"county": "Los Angeles", "state": "CA"},
+  {"county": "Orange County", "state": "CA"},
+  {"county": "San Bernardino", "state": "CA"},
+  {"county": "Ventura", "state": "CA"},
+  {"county": "Kern", "state": "CA"},
+  {"county": "Riverside", "state": "CA"},
+  {"county": "San Diego", "state": "CA"},
+  {"county": "San Luis Obispo ", "state": "CA"},
+  {"county": "Santa Barbara ", "state": "CA"},
+  {"county": "Las Vegas", "state": "NV"},
+  {"county": "Carson", "state": "NV"},
+  {"county": "Phenoix", "state": "AZ"}
+]

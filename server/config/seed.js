@@ -42,6 +42,7 @@ TruckingCompany.find({}).remove(function () {
               fax: "3109111112",
               email: "hello@trucking-hub.com",
                 favorite: false,
+                rateBasis: "city",
                 ftl: {
                     fuelSurcharge: 0.20,
                     residentialCharge: 60.0,
@@ -49,7 +50,7 @@ TruckingCompany.find({}).remove(function () {
                         {
                             state: "CA",
                             county: "San Diego County",
-                            rateByCity: true
+
                         }
                     ],
                     OverWeightCharges: [
@@ -75,19 +76,18 @@ TruckingCompany.find({}).remove(function () {
               fax: "3109111112",
               email: "hello@trucking-hub.com",
                 favorite: true,
+                rateBasis: "city",
                 ftl: {
                     fuelSurcharge: 0.20,
                     residentialCharge: 60.0,
                     regions: [
                         {
                             state: "CA",
-                            county: "Orange County",
-                            rateByCity: true
+                            county: "Orange County"
                         },
                         {
                             state: "CA",
-                            county: "San Diego County",
-                            rateByCity: true
+                            county: "San Diego County"
                         }
                     ],
                     OverWeightCharges: [
@@ -114,14 +114,14 @@ TruckingCompany.find({}).remove(function () {
                 fax: "3109111112",
                 email: "hello@trucking-hub.com",
                 favorite: false,
+                rateBasis: "city",
                 ftl: {
                     fuelSurcharge: 0.20,
                     residentialCharge: 60.0,
                     regions: [
                         {
                             state: "CA",
-                            county: "Los Angeles County",
-                            rateByCity: true
+                            county: "Los Angeles County"
                         }
                     ],
                     OverWeightCharges: [
@@ -147,24 +147,22 @@ TruckingCompany.find({}).remove(function () {
               fax: "3109111112",
               email: "hello@trucking-hub.com",
                 favorite: false,
+                rateBasis: "city",
                 ftl: {
                     fuelSurcharge: 0.20,
                     residentialCharge: 60.0,
                     regions: [
                         {
                             state: "CA",
-                            county: "Los Angeles County",
-                            rateByCity: true
+                            county: "Los Angeles"
                         },
                         {
                             state: "CA",
-                            county: "Orange County",
-                            rateByCity: true
+                            county: "Orange County"
                         },
                         {
                             state: "CA",
-                            county: "San Diego County",
-                            rateByCity: true
+                            county: "San Diego"
                         }
                     ],
                     OverWeightCharges: [

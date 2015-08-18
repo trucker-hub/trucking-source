@@ -26,18 +26,8 @@ angular.module('servicesApp')
       }
     }
 
-    $scope.fetchStates = function() {
 
-      $http.get('/api/geoservice/states').then(
-        function(response) {
-          $scope.statesResponse = "<pre>" + response.data + "</pre>";
-        },
 
-        function(response) {
-          $scope.statesResponse = "Error:<pre>" + response + "</pre>";
-        }
-      )
-    };
 
     $scope.cancel = function(company) {
       console.log("cancel company info " + company._id);

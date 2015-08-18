@@ -4,7 +4,7 @@ var _ = require('lodash');
 var fs = require('fs');
 var path = require('path');
 
-var filePath = path.join(__dirname, './data/sample-zipcodes.json');
+var filePath = path.join(__dirname, './data/regions.json');
 
 var database = {};
 
@@ -16,38 +16,21 @@ function _initializeDatabase(callback) {
         return console.log(err);
       }
       database.data = JSON.parse(data);
-      console.log("read into data " + database.data)
+      console.log("read into data " + JSON.stringify(database.data));
       callback();
     });
+  } else {
+    callback();
   }
 }
 
-exports.getStates = function(req, res) {
+exports.getRegions = function(req, res) {
 
-  console.log("calling getStates");
+  console.log("calling regions");
 
   _initializeDatabase(function() {
-    var index, states = [];
-
-    for(index=0; index < database.data.length; ++index) {
-      var state = database.data[index];
-      states.push(state.code);
-    }
-    return res.status(201).json(states);
+    return res.status(201).json(database.data);
   });
-}
-
-
-exports.getCounties = function(req, res) {
-
-
-  return res.status(201).json("");
-}
-
-
-exports.getCityZipCodes = function(req, res) {
-
-  return res.status(201).json("");
 }
 
 

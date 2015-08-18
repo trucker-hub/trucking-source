@@ -5,8 +5,6 @@ var controller = require('./geoservice.controller');
 
 var router = express.Router();
 
-router.get('/states', controller.getStates);
-router.get('/states/:state/counties', controller.getCounties);
-router.get('/states/:state/counties/:county', controller.getCityZipCodes);
+router.get('/regions', controller.getRegions);
 
 module.exports = router;

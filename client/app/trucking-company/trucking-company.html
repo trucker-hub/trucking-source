@@ -36,41 +36,6 @@
         </div>
       </div>
 
-      <div class="row" ng-repeat="region in regions">
-        <div class="col-md-3">
-          <ui-select ng-model="region.state"  style="min-width: 50px;" title="Choose a state">
-            <ui-select-match placeholder="Choose a state...">{{$select.selected}}</ui-select-match>
-            <ui-select-choices repeat="state in states">
-              <div ng-bind-html="state | highlight: $select.search"></div>
-            </ui-select-choices>
-          </ui-select>
-        </div>
-        <div class="col-md-9">
-
-          <ui-select multiple ng-model="region.counties"  style="min-width: 50px;" title="Choose counties">
-            <ui-select-match placeholder="Choose a county...">{{$item}}</ui-select-match>
-            <ui-select-choices repeat="county in counties">
-              <div ng-bind-html="county | highlight: $item.search"></div>
-            </ui-select-choices>
-          </ui-select>
-        </div>
-      </div>
-
-      {{regions}}
-
-
-      <br>
-      <div class="row" ng-hide="false">
-        <div class="col-md-9">
-          <input name="location" type="text" class="form-control" size="20" ng-model="cityString"
-                 placeholder="street, city, zip code" >
-          {{statesResponse}}
-        </div>
-        <div class="col-md-3">
-          <button class="btn btn-sm btn-primary" type="button" ng-click="fetchStates()">Fetch States</button>
-        </div>
-      </div>
-
 
     </tab>
     <tab ng-repeat="(id, detail) in companiesOpened " active="detail.active">
