@@ -17,6 +17,7 @@
       <link rel="stylesheet" href="bower_components/ngprogress/ngProgress.css" />
       <link rel="stylesheet" href="bower_components/ng-table/dist/ng-table.min.css" />
       <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
+      <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -28,6 +29,7 @@
       <link rel="stylesheet" href="app/location/location.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/sourcing/sourcing.css">
+      <link rel="stylesheet" href="app/trucking-company/ftl-rates/ftl-rates.css">
       <link rel="stylesheet" href="app/trucking-company/trucking-company.css">
       <link rel="stylesheet" href="components/modal/modal.css">
       <!-- endinjector -->
@@ -58,8 +60,8 @@
     <![endif]-->
     <!-- build:js({client,node_modules}) app/vendor.js -->
       <!-- bower:js -->
-      <script src="bower_components/jquery/dist/jquery.min.js"></script>
-      <script src="bower_components/angular/angular.min.js"></script>
+      <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/angular/angular.js"></script>
       <script src="bower_components/angular-resource/angular-resource.js"></script>
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
       <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -69,6 +71,7 @@
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/ngprogress/build/ngProgress.js"></script>
       <script src="bower_components/ng-table/dist/ng-table.min.js"></script>
+      <script src="bower_components/angular-ui-grid/ui-grid.min.js"></script>
       <script src="bower_components/angular-ui-mask/dist/mask.js"></script>
       <script src="bower_components/angular-ui-select/dist/select.js"></script>
       <!-- endbower -->
@@ -94,6 +97,8 @@
           <script src="app/sourcing/sourcing.controller.js"></script>
           <script src="app/sourcing/sourcing.js"></script>
           <script src="app/trucking-company/company-details/company-details.controller.js"></script>
+          <script src="app/trucking-company/ftl-rates/ftl-rates.controller.js"></script>
+          <script src="app/trucking-company/ftl-rates/ftl-rates.js"></script>
           <script src="app/trucking-company/trucking-company.controller.js"></script>
           <script src="app/trucking-company/trucking-company.js"></script>
           <script src="components/auth/auth.service.js"></script>

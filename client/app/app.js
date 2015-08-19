@@ -10,7 +10,9 @@ angular.module('servicesApp', [
     'ngProgress',
     'ngTable',
     'ui.mask',
-    'ui.select'
+    'ui.select',
+    'ui.grid',
+    'ui.grid.edit'
 ])
 
     .filter('propsFilter', function () {

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-    .controller('CompanyDetailsCtrl', function ($scope, $http) {
+    .controller('CompanyDetailsCtrl', function ($scope, $http, $modal) {
 
         console.log("open a edit window for company");
 
@@ -14,6 +14,30 @@ angular.module('servicesApp')
           vm.company = company;
           vm.lastCopy = angular.copy(company);
         }
+
+        vm.openRateModal = function () {
+
+            var modalInstance = $modal.open({
+                animation: true,
+                templateUrl: 'app/trucking-company/ftl-rates/ftl-rates.html',
+                controller: 'FtlRatesCtrl',
+                windowClass: 'full-screen-modal',
+                resolve: {
+                    rates: function () {
+                        return vm.company.ftl.rates;
+                    }
+                }
+            });
+
+            modalInstance.result.then(
+                function (rates) {
+                    vm.company.ftl.rates = rates;
+                },
+                function () {
+                    console.log('Modal dismissed at: ' + new Date());
+                }
+            );
+        };
 
         vm.selectedRegions = [];
         vm.regions = [];
