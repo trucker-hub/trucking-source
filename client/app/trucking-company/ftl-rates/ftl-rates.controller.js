@@ -6,6 +6,7 @@ angular.module('servicesApp')
         $scope.gridOptions = {};
         $scope.gridOptions.data = rates;
         $scope.gridOptions.enableCellEditOnFocus = true;
+        $scope.gridOptions.enableFiltering = true;
         $scope.gridOptions.columnDefs = [
             { name: 'zipCode',       displayName: 'ZIP Code'},
             { name: 'city',          displayName: 'City'},

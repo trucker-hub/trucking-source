@@ -12,7 +12,8 @@ angular.module('servicesApp', [
     'ui.mask',
     'ui.select',
     'ui.grid',
-    'ui.grid.edit'
+    'ui.grid.edit',
+    'ui.grid.cellNav'
 ])
 
     .filter('propsFilter', function () {
