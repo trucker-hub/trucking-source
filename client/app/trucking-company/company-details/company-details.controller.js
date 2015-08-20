@@ -42,6 +42,9 @@ angular.module('servicesApp')
         vm.selectedRegions = [];
         vm.regions = [];
         vm.refreshRegions = function() {
+            if(vm.regions.length > 0) {
+                return;
+            }
             return $http.get('/api/geoservice/regions'
             ).then(function(response) {
                     vm.regions = response.data;
