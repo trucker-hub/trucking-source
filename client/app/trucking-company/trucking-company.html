@@ -40,7 +40,7 @@
     </tab>
     <tab ng-repeat="(id, detail) in companiesOpened " active="detail.active">
       <tab-heading><span>{{detail.data.name}}</span>&nbsp<a><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="closeTab(id)"></span></a></tab-heading>
-      <div ng-controller="CompanyDetailsCtrl as dCtrl" ng-init="dCtrl.setCompany(detail.data)" ng-include="'/app/trucking-company/company-details/company-details.html'"></div>
+      <div ng-controller="CompanyDetailsCtrl as dCtrl" ng-init="dCtrl.setCompany(detail.data)" ng-include="'app/trucking-company/company-details/company-details.html'"></div>
     </tab>
 
   </tabset>
