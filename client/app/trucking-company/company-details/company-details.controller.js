@@ -82,6 +82,10 @@ angular.module('servicesApp')
           )
         }
 
+      vm.delete = function() {
+        $scope.$parent.deleteCompany(vm.company);
+      }
+
         vm.loadFTL = function() {
           $http.get("/api/trucking-companies/" + vm.company._id).then(
             function(response) {

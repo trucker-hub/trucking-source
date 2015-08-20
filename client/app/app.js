@@ -13,7 +13,8 @@ angular.module('servicesApp', [
     'ui.select',
     'ui.grid',
     'ui.grid.edit',
-    'ui.grid.cellNav'
+    'ui.grid.cellNav',
+  'ngCookies'
 ])
 
     .filter('propsFilter', function () {

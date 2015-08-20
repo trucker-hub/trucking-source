@@ -47,7 +47,7 @@
     <td>
       <div class="btn-group">
         <label class="btn btn-primary" ng-model="dCtrl.company.rateBasis" btn-radio="'city'" ng-change="dCtrl.change()">City</label>
-        <label class="btn btn-primary" ng-model="dCtrl.company.rateBasis" btn-radio="'zipcode'" ng-change="dCtrl.change()">Zip Code</label>
+        <label class="btn btn-primary" ng-model="dCtrl.company.rateBasis" btn-radio="'zipcode'" ng-change="dCtrl.change()">ZIP Code</label>
         <label class="btn btn-primary" ng-model="dCtrl.company.rateBasis" btn-radio="'distance'" ng-change="dCtrl.change()">Distance</label>
       </div>
     </td>
@@ -124,7 +124,7 @@
   </tr>
 
   <tr>
-    <th></th>
+    <th><button type="button" class="btn btn-danger" ng-click="dCtrl.delete()">DELETE</button></th>
     <td><div style="float: left"><button type="button" class="btn btn-warning" ng-click="dCtrl.cancel()">Close without Saving</button></div>
       <div style="float:right"><button type="button"  class="btn btn-primary" ng-click="dCtrl.save()" ng-class="{'disabled': !companyInfo.$valid || !dCtrl.changed }">Save Company Info</button></div></td>
     <td></td>

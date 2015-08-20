@@ -1,0 +1,16 @@
+.alert-div {
+  position: absolute; /* position: absolute rather than position: fixed
+                           because you will be declaring left, right, top, etc. */
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0; /* now it covers the whole browser window because all absolute
+                  positioning properties are set to 0. Tweak to your liking
+                  using px or percentage */
+
+  z-index: 105; /* optional - if your application has a lot of layers that are
+                     already absolutely positioned, you may wish to up the z-index
+                     which is essentially the element stacking order for the current
+                     dom node */
+
+}
