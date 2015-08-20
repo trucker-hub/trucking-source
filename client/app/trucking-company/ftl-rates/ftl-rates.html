@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <span class="modal-title"><b>FTL Rates</b></span>
+    <div style="float:right"> <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancel()"></span></div>
+
+</div>
+<div class="modal-body">
+    <div id="grid" ui-grid="gridOptions" ui-grid-edit ui-grid-cellNav class="rate-grid"></div>
+</div>
+<div class="modal-footer">
+
+    <button style="float:left" class="btn btn-primary" type="button" ng-click="addRow()">Add</button>
+    <button style="float:left" class="btn btn-primary" type="button" ng-click="ok()">Save</button>
+
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+</div>
