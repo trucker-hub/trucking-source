@@ -53,20 +53,7 @@ TruckingCompany.find({}).remove(function () {
 
                         }
                     ],
-                    OverWeightCharges: [
-                        {
-                            containerSize: "20'",
-                            weightFrom: 13000,
-                            weightTo: 15000,
-                            charge: 100.0
-                        },
-                        {
-                            containerSize: "40'",
-                            weightFrom: 20000,
-                            weightTo: 28000,
-                            charge: 100.0
-                        }
-                    ]
+                    OverWeightCharges: []
                 }
             },
             {
@@ -90,20 +77,7 @@ TruckingCompany.find({}).remove(function () {
                             county: "San Diego County"
                         }
                     ],
-                    OverWeightCharges: [
-                        {
-                            containerSize: "20'",
-                            weightFrom: 13000,
-                            weightTo: 15000,
-                            charge: 100.0
-                        },
-                        {
-                            containerSize: "40'",
-                            weightFrom: 20000,
-                            weightTo: 28000,
-                            charge: 100.0
-                        }
-                    ]
+                    OverWeightCharges: []
                 }
             },
             {
@@ -124,20 +98,7 @@ TruckingCompany.find({}).remove(function () {
                             county: "Los Angeles County"
                         }
                     ],
-                    OverWeightCharges: [
-                        {
-                            containerSize: "20'",
-                            weightFrom: 13000,
-                            weightTo: 15000,
-                            charge: 100.0
-                        },
-                        {
-                            containerSize: "40'",
-                            weightFrom: 20000,
-                            weightTo: 28000,
-                            charge: 100.0
-                        }
-                    ]
+                    OverWeightCharges: []
                 }
             },
             {
@@ -165,20 +126,7 @@ TruckingCompany.find({}).remove(function () {
                             county: "San Diego"
                         }
                     ],
-                    OverWeightCharges: [
-                        {
-                            containerSize: "20'",
-                            weightFrom: 13000,
-                            weightTo: 15000,
-                            charge: 100.0
-                        },
-                        {
-                            containerSize: "40'",
-                            weightFrom: 20000,
-                            weightTo: 28000,
-                            charge: 100.0
-                        }
-                    ]
+                    OverWeightCharges: []
                 }
             });
     });

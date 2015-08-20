@@ -24,9 +24,12 @@ var TruckingCompanySchema = new Schema({
     OverWeightCharges: [
       {
         containerSize: String,
-        weightFrom: Number,
-        weightTo: Number,
-        charge: Number
+        ranges: [
+          {
+            limit: Number,
+            charge: Number
+          }
+        ]
       }
     ],
     rates: [

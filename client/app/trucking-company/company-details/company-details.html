@@ -76,6 +76,7 @@
             <td></td>
         </tr>
 
+
         <tr>
             <td colspan="3">
                 <tabset type="tabs">
@@ -123,6 +124,39 @@
                                     </ui-select>
                                 </td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <th>Weight Charges</th>
+                                <td>
+                                    <table class="table">
+                                        <tr ng-repeat="weightCharge in dCtrl.company.ftl.OverWeightCharges">
+                                            <th class="col-md-2">{{weightCharge.containerSize}}</th>
+                                            <td class="col-md-10">
+                                                <form class="form-inline">
+                                                        <div class=input-group" ng-repeat="range in weightCharge.ranges">
+
+                                                            <div class="input-group-addon">$</div>
+                                                            <input type="text" class="form-control"
+                                                                   ng-model="range.charge" placeholder="Amount" size="5">
+                                                            <div class="input-group-addon">.00</div>
+
+
+                                                            <div class="input-group-addon">Over</div>
+                                                            <input type="text" class="form-control"
+                                                                   ng-model="range.limit" placeholder="weight" size="5">
+                                                            <div class="input-group-addon">LBS</div>
+
+                                                        </div>
+                                                </form>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td></td>
+                            </tr>
+
                             </tr>
                             <tr>
                                 <th>Rates</th>

@@ -9,10 +9,40 @@ angular.module('servicesApp')
 
         vm.changed = false;
 
+        vm.ftlWeightCharges = [
+            {
+                "containerSize": "20",
+                ranges: [
+                    {limit:36000, charge: 100}, {limit:39000,charge:150}
+                ]
+            },
+            {
+                "containerSize": "40",
+                ranges: [
+                    {limit:44000, charge: 100}, {limit:48000,charge:150}
+                ]
+            },
+            {
+                "containerSize": "40HQ",
+                ranges: [
+                    {limit:44000, charge: 100}, {limit:48000,charge:150}
+                ]
+            },
+            {
+                "containerSize": "48",
+                ranges: [
+                    {limit:44000, charge: 100}, {limit:48000,charge:150}
+                ]
+            }
+        ];
         vm.setCompany = function(company) {
           console.log("company is set to " + company);
           vm.company = company;
           vm.lastCopy = angular.copy(company);
+
+          if(vm.company.ftl.OverWeightCharges.length ==0 ) {
+              vm.company.ftl.OverWeightCharges = vm.ftlWeightCharges;
+          }
         }
 
         vm.openRateModal = function () {
