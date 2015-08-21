@@ -1,5 +1,4 @@
 <br>
-<form name="companyInfo">
     <table class="table table-responsive table-striped">
         <tr>
             <th class="col-md-3">Attribute</th>
@@ -82,7 +81,6 @@
                 <tabset type="tabs">
                     <tab heading="FTL rates">
                       <br>
-
                         <table class="table table-condensed table-responsive table-striped">
                             <tr>
                                 <th class="col-xs-3">Fuel Surcharge(%)</th>
@@ -122,6 +120,33 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <th>Rates</th>
+                                <td> <div class="row ">
+                                    <div class="col-md-4 form-inline">
+                                        <span>{{dCtrl.getFTLRateSummary()}}</span>
+                                        <button class="form-control glyphicon glyphicon-pencil" ng-click="dCtrl.openRateModal()">Edit</button>
+                                    </div>
+                                    <div class="col-md-8 form-inline">
+                                        <ng-csv-import id="ftlRateFile"
+                                                    class="form-control"
+                                                    content="ftlcsv.content"
+                                                    header="ftlcsv.header"
+                                                    separator="ftlcsv.separator"
+                                                    result="ftlcsv.result">
+                                        </ng-csv-import>
+                                        <button class="form-control glyphicon glyphicon-import" ng-click="dCtrl.openRateModal()" ng-show="ftlcsv.result">Import</button>
+                                    </div>
+
+                                    </div>
+                                </div>
+                                </td>
+                                <td><div style="float: left">
+                                    <button class="form-control" ng-csv="dCtrl.getFtlRates()" filename="ftl-rates.csv">
+                                        <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></button>
+                                </div></td>
+                            </tr>
+
+                            <tr>
                                 <th>Weight Charges</th>
                                 <td>
                                   <div class="row" ng-repeat="weightCharge in dCtrl.company.ftl.OverWeightCharges">
@@ -148,139 +173,16 @@
                                     </div>
                                     </div>
                                     <br>
-                                </td>
-                                <td></td>
+                                </td><td></td>
                             </tr>
-                            <tr>
-                                <th>Rates</th>
-                                <td>
-                                    <div style="float: left"><span>Summary of the rates</span></div>
-                                    <div style="float:right">
-                                        <button type="button" class="btn btn-primary" ng-click="dCtrl.openRateModal()">
-                                            Edit
-                                        </button>
-                                    </div>
-                                </td>
-                                <td></td>
-                            </tr>
-
                         </table>
                     </tab>
                     <tab heading="LTL Freight rates">
-                        <table class="table table-responsive table-striped">
-                            <tr>
-                                <th>Fuel Surcharge(%)</th>
-                                <td>
-                                    <div ng-class="{'has-error': companyInfo.ltlSurcharge.$invalid}">
-                                        <input name="ltlSurcharge" type="text" class="form-control" size="10"
-                                               ng-model="dCtrl.company.ltl.fuelSurcharge"
-                                               placeholder="20" required ng-change="dCtrl.change()"></div>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th>Residential Delivery</th>
-                                <td>
-                                    <div ng-class="{'has-error': companyInfo.residentialChargeLTL.$invalid}">
-                                        <input name="residentialChargeLTL" type="text" class="form-control" size="13"
-                                               ng-model="dCtrl.company.ltl.residentialCharge"
-                                               placeholder="00.00" required ng-change="dCtrl.change()"></div>
-                                </td>
-                                <td></td>
-                            </tr>
 
-                            <tr>
-                                <th>Regions</th>
-                                <td>
-                                    <ui-select multiple ng-model="dCtrl.company.ltl.regions" ng-change="dCtrl.change()">
-                                        <ui-select-match placeholder="Select regions">{{$item.county}},
-                                            {{$item.state}}
-                                        </ui-select-match>
-                                        <ui-select-choices group-by="dCtrl.getState"
-                                                           repeat="region in dCtrl.regions | propsFilter: {county: $select.search}"
-                                                           refresh="dCtrl.refreshRegions()"
-                                                           refresh-delay="0">
-                                            <div ng-bind-html="region.county | highlight: $select.search"></div>
-                                        </ui-select-choices>
-                                    </ui-select>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th>Rates</th>
-                                <td>
-                                    <div style="float: left"><span>Summary of the rates</span></div>
-                                    <div style="float:right">
-                                        <button type="button" class="btn btn-primary" ng-click="dCtrl.openRateModal()">
-                                            Edit
-                                        </button>
-                                    </div>
-                                </td>
-                                <td></td>
-                            </tr>
-
-                        </table>
                     </tab>
 
                     <tab heading="Air Freight rates">
-                        <table class="table table-responsive table-striped">
-                            <tr>
-                                <th class="col-md-3">Type</th>
-                                <th class="col-md-8">Fee</th>
-                                <th class="col-md-1"></th>
-                            </tr>
-                            <tr>
-                                <th>Fuel Surcharge(%)</th>
-                                <td>
-                                    <div ng-class="{'has-error': companyInfo.airSurcharge.$invalid}">
-                                        <input name="airSurcharge" type="text" class="form-control" size="10"
-                                               ng-model="dCtrl.company.air.fuelSurcharge"
-                                               placeholder="20" required ng-change="dCtrl.change()"></div>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th>Residential Delivery</th>
-                                <td>
-                                    <div ng-class="{'has-error': companyInfo.residentialChargeAir.$invalid}">
-                                        <input name="residentialChargeAir" type="text" class="form-control" size="13"
-                                               ng-model="dCtrl.company.air.residentialCharge"
-                                               placeholder="00.00" required ng-change="dCtrl.change()"></div>
-                                </td>
-                                <td></td>
-                            </tr>
 
-                            <tr>
-                                <th>Regions</th>
-                                <td>
-                                    <ui-select multiple ng-model="dCtrl.company.air.regions" ng-change="dCtrl.change()">
-                                        <ui-select-match placeholder="Select regions">{{$item.county}},
-                                            {{$item.state}}
-                                        </ui-select-match>
-                                        <ui-select-choices group-by="dCtrl.getState"
-                                                           repeat="region in dCtrl.regions | propsFilter: {county: $select.search}"
-                                                           refresh="dCtrl.refreshRegions()"
-                                                           refresh-delay="0">
-                                            <div ng-bind-html="region.county | highlight: $select.search"></div>
-                                        </ui-select-choices>
-                                    </ui-select>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th>Rates</th>
-                                <td>
-                                    <div style="float: left"><span>Summary of the rates</span></div>
-                                    <div style="float:right">
-                                        <button type="button" class="btn btn-primary" ng-click="dCtrl.openRateModal()">
-                                            Edit
-                                        </button>
-                                    </div>
-                                </td>
-                                <td></td>
-                            </tr>
-
-                        </table>
                     </tab>
                 </tabset>
             </td>
@@ -305,6 +207,4 @@
         </tr>
 
     </table>
-
-
 </form>

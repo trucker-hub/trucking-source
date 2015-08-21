@@ -14,17 +14,34 @@ angular.module('servicesApp', [
     'ui.grid',
     'ui.grid.edit',
     'ui.grid.cellNav',
-  'ngCookies'
+    'ngCookies',
+    'ngCsv',
+    'ngCsvImport'
 ])
-
+    .directive('onReadFile', function ($parse) {
+        return {
+            restrict: 'A',
+            scope: false,
+            link: function (scope, element, attrs) {
+                var fn = $parse(attrs.onReadFile);
+                element.on('change', function (onChangeEvent) {
+                    var reader = new FileReader();
+                    reader.onload = function (onLoadEvent) {
+                        scope.$apply(function () {
+                            fn(scope, {$fileContent: onLoadEvent.target.result});
+                        });
+                    };
+                    reader.readAsText((onChangeEvent.srcElement || onChangeEvent.target).files[0]);
+                });
+            }
+        };
+    })
     .filter('propsFilter', function () {
         return function (items, props) {
             var out = [];
-
             if (angular.isArray(items)) {
                 items.forEach(function (item) {
                     var itemMatches = false;
-
                     var keys = Object.keys(props);
                     for (var i = 0; i < keys.length; i++) {
                         var prop = keys[i];
@@ -34,7 +51,6 @@ angular.module('servicesApp', [
                             break;
                         }
                     }
-
                     if (itemMatches) {
                         out.push(item);
                     }
@@ -43,7 +59,6 @@ angular.module('servicesApp', [
                 // Let the output be the input untouched
                 out = items;
             }
-
             return out;
         };
     })

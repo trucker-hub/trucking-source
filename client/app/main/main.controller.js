@@ -24,4 +24,8 @@ angular.module('servicesApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
     });
+
+      $scope.showContent = function($fileContent){
+        $scope.content = $fileContent;
+      };
   });

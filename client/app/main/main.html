@@ -29,6 +29,20 @@
   </form>
 </div>
 
+<div class="container ">
+  <h1>Select text file</h1>
+  <div class="form-group form-inline">
+    <label for="fileInput">Upload file</label>
+    <input id="fileInput" class="form-control" type="file" on-read-file="showContent($fileContent)" />
+
+  </div>
+
+  <div ng-if="content">
+    <h2>File content is:</h2>
+    <pre>{{ content }}</pre>
+  </div>
+</div>
+
 <footer class="footer">
   <div class="container">
       <p>Trucking-hub.com ©  Copyright 2015 </p>

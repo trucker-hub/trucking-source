@@ -35,6 +35,18 @@ angular.module('servicesApp')
                 ]
             }
         ];
+
+        vm.ftlcsv = {
+            content: null,
+            header: true,
+            separator: ',',
+            result: null
+        };
+
+        vm.getFtlRates = function() {
+            return vm.company.ftl.rates;
+        }
+
         vm.setCompany = function(company) {
           console.log("company is set to " + company);
           vm.company = company;
@@ -45,6 +57,14 @@ angular.module('servicesApp')
           }
         }
 
+        vm.getFTLRateSummary = function() {
+            if(vm.company.ftl.rates.length > 1) {
+                return vm.company.ftl.rates.length + " rates available"
+            } else {
+                return "Not rates yet";
+            }
+
+        }
         vm.openRateModal = function () {
 
             var modalInstance = $modal.open({
