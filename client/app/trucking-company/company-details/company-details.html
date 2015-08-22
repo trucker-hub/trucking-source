@@ -121,14 +121,14 @@
                             </tr>
                             <tr>
                                 <th>Rates</th>
-                                <td> <div class="row ">
+                                <td> <div class="row form-inline">
                                     <div class="col-md-4 form-inline">
                                         <span>{{dCtrl.getFTLRateSummary()}}</span>
-                                        <button class="form-control glyphicon glyphicon-pencil" ng-click="dCtrl.openRateModal()">Edit</button>
+                                        <button class="form-control glyphicon glyphicon-pencil" ng-click="dCtrl.openRateModal()"></button>
                                     </div>
                                     <div class="col-md-8 form-inline">
                                         <ng-csv-import id="ftlRateFile"
-                                                    class="form-control"
+                                                    class="import-btn form-control"
                                                     content="ftlcsv.content"
                                                     header="ftlcsv.header"
                                                     separator="ftlcsv.separator"
@@ -136,13 +136,11 @@
                                         </ng-csv-import>
                                         <button class="form-control glyphicon glyphicon-import" ng-click="dCtrl.openRateModal()" ng-show="ftlcsv.result">Import</button>
                                     </div>
-
                                     </div>
                                 </div>
                                 </td>
                                 <td><div style="float: left">
-                                    <button class="form-control" ng-csv="dCtrl.getFtlRates()" filename="ftl-rates.csv">
-                                        <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></button>
+                                    <button class="form-control glyphicon glyphicon-download-alt" ng-csv="dCtrl.getFtlRates()" filename="ftl-rates.csv"></button>
                                 </div></td>
                             </tr>
 
