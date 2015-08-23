@@ -39,7 +39,9 @@ angular.module('servicesApp')
         vm.ftlcsv = {
             content: null,
             header: true,
-            separator: ',',
+            headerVisible: false,
+            separator: ",",
+            separatorVisible: false,
             result: null
         };
 
@@ -63,6 +65,13 @@ angular.module('servicesApp')
             } else {
                 return "Not rates yet";
             }
+
+        }
+
+        vm.importFTLRates = function() {
+          vm.company.ftl.rates = vm.ftlcsv.result;
+          console.log(JSON.stringify(vm.ftlcsv.result))
+          vm.openRateModal();
 
         }
         vm.openRateModal = function () {

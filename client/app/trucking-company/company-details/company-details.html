@@ -130,12 +130,12 @@
                                     <div class="col-md-8 form-inline">
                                         <ng-csv-import id="ftlRateFile"
                                                     class="import-btn form-control"
-                                                    content="ftlcsv.content"
-                                                    header="ftlcsv.header"
-                                                    separator="ftlcsv.separator"
-                                                    result="ftlcsv.result">
+                                                    content="dCtrl.ftlcsv.content"
+                                                    header="dCtrl.ftlcsv.header" header-visible="dCtrl.ftlcsv.headerVisible" separator-visible="dCtrl.ftlcsv.separatorVisible"
+                                                    separator="dCtrl.ftlcsv.separator"
+                                                    result="dCtrl.ftlcsv.result">
                                         </ng-csv-import>
-                                        <button class="form-control glyphicon glyphicon-import" ng-click="dCtrl.openRateModal()" ng-show="ftlcsv.result">Import</button>
+                                        <button class="form-control glyphicon glyphicon-import" ng-click="dCtrl.importFTLRates()" ng-show="dCtrl.ftlcsv.result">Import</button>
                                     </div>
                                     </div>
                                 </div>
