@@ -1,5 +1,13 @@
+<form name="locationForm" novalidate="">
 <label for="inputLocation" class="col-sm-3 control-label">{{label}} </label>
-<div class="col-sm-9"><input type="email" size="10" class="form-control" id="inputLocation" placeholder="ZIP Code"></span>
+<div class="col-sm-9 form-inline">
+  <input type="text" size="10"
+         ng-class="{'has-error':!locationForm.inputLocation.$valid}"
+         class="form-control" id="inputLocation"
+         ng-model="info.location"
+         ng-change="fetchCityAndCounty()"
+         placeholder="ZIP Code" ng-pattern="/^\d{5}$/" required="">
+  <span ng-show="info.validated">{{info.city}}, {{info.county}}</span>
 </div>
 
 <label for="inputShipType" class="col-sm-3 control-label">Type</label>
@@ -71,3 +79,4 @@
 </div>
 
 </div>
+</form>

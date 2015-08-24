@@ -8,6 +8,13 @@ var Sourcing = require('./sourcing.model');
 exports.index = function(req, res) {
 
   console.log("calling index api with req = " + req);
+
+  var request = req.body;
+
+  console.log("to location is " + JSON.stringify(request.shipTo));
+
+  //map zip code to a county or region
+
   var sources = [
     {  name: "Aspeed", cost: 301.1, time: 2, contact: "310-951-3843", location: "9111 S La Cienega Blvd, Inglewood, CA 90301"},
     {  name: "Bspeed", cost: 342.9, time: 2, contact: "310-951-3843", location: "9111 S La Cienega Blvd, Inglewood, CA 90301"},

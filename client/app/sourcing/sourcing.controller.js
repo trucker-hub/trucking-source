@@ -6,13 +6,13 @@ angular.module('servicesApp')
     $scope.request = {
       shipTo: {
         label: "shipTo",
-        location: "90301",
+        location: "",
         locationType: 2,
         extraServices: []
       },
       shipFrom: {
         label: "shipFrom",
-        location: "90011",
+        location: "",
         locationType: 1,
         extraServices: []
       },
@@ -75,6 +75,7 @@ angular.module('servicesApp')
 
     $scope.query = function () {
         console.log("send request = " + JSON.stringify($scope.request));
+
         $scope.progressbar = ngProgressFactory.createInstance();
         $scope.progressbar.start();
       $http.post("/api/sourcing", $scope.request).then(
@@ -85,7 +86,7 @@ angular.module('servicesApp')
         },
         function(response) {
           //show a alert and empty the table
-          console.log("called /api/sourcing but returned res = " + response);
+          console.log("called /api/sourcing but returned res = " + JSON.stringify(response));
             $scope.progressbar.stop();
         })
     };
