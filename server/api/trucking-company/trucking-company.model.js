@@ -46,6 +46,10 @@ var TruckingCompanySchema = new Schema({
     fuelSurcharge: Number,
     residentialCharge: Number,
     liftGateCharge: Number,
+    additionalCharges: [{
+      name: String,
+      charge: Number
+    }],
     regions: [
       {
         state: String,

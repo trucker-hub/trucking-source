@@ -47,6 +47,26 @@ exports.show = function (req, res, next) {
   });
 };
 
+exports.update = function(req, res, next) {
+
+  var userId = req.params.id;
+
+  User.findById(userId, function (err, user) {
+    if (err) return next(err);
+    if (!user) return res.status(401).send('Unauthorized');
+    user.role = req.body.role;
+    user.email = req.body.email;
+    user.name = req.body.name;
+
+    console.log("Save user info " + JSON.stringify(user));
+    user.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.status(200).json(user);
+    });
+  });
+
+}
+
 /**
  * Deletes a user
  * restriction: 'admin'

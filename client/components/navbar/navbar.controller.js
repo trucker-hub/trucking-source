@@ -4,15 +4,18 @@ angular.module('servicesApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
       'title': 'Home',
-      'link': '/'
+      'link': '/',
+      'alwaysShow': true
     },
       {
         'title': 'Sourcing',
-        'link': '/sourcing'
+        'link': '/sourcing',
+        'alwaysShow': true
       },
       {
         'title': 'Trucking Companies',
-        'link': '/trucking-company'
+        'link': '/trucking-company',
+        'alwaysShow': true
       }
 
     ];

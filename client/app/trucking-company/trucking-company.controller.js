@@ -26,12 +26,12 @@ angular.module('servicesApp')
           return;
         }
       }
-    }
+    };
 
     $scope.cancel = function(company) {
       console.log("cancel company info " + company._id);
       $scope.closeTab(company._id);
-    }
+    };
 
 
 
@@ -51,7 +51,7 @@ angular.module('servicesApp')
         }
       );
 
-    }
+    };
 
     $scope.closeAlert = function(index) {
       $scope.alerts.splice(index, 1);
@@ -77,7 +77,7 @@ angular.module('servicesApp')
         }
       );
 
-    }
+    };
 
     $scope.toggleFavorite = function(id) {
 
@@ -135,7 +135,7 @@ angular.module('servicesApp')
 
     $scope.tableParams = new ngTableParams({
       page: 1,            // show first page
-      count: 10,          // count per page
+      count: 20,          // count per page
       filter: {
         name: ''       // initial filter
       }
@@ -155,7 +155,7 @@ angular.module('servicesApp')
     $scope.updateTable = function(data) {
       allCompanies = data;
       $scope.tableParams.reload();
-    }
+    };
 
 
 

@@ -92,6 +92,23 @@ angular.module('servicesApp')
         }).$promise;
       },
 
+      updateUser: function(userName, userRole, userEmail, userId, callback) {
+        var cb = callback || angular.noop;
+        return User.updateUser({id: userId}, {
+           name: userName, role: userRole, email: userEmail
+        },
+          function(user) {
+            if(userId == currentUser._id) {
+              currentUser = User.get();
+            }
+            return cb(user);
+          },
+            function(err) {
+              cb(err);
+            }
+        ).$promise;
+      },
+
       /**
        * Gets all available info on authenticated user
        *

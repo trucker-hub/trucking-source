@@ -17,6 +17,12 @@ angular.module('servicesApp')
         params: {
           id:'me'
         }
+      },
+      updateUser: {
+        method: 'PUT',
+        params: {
+          controller:"update"
+        }
       }
 	  });
   });
