@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Sourcing = require('./sourcing.model');
+var TruckingCompany = require('../trucking-company/trucking-company.model');
 
 
 // Get list of sourcings
@@ -15,13 +16,26 @@ exports.index = function(req, res) {
 
   //map zip code to a county or region
 
-  var sources = [
-    {  name: "Aspeed", cost: 301.1, time: 2, contact: "310-951-3843", location: "9111 S La Cienega Blvd, Inglewood, CA 90301"},
-    {  name: "Bspeed", cost: 342.9, time: 2, contact: "310-951-3843", location: "9111 S La Cienega Blvd, Inglewood, CA 90301"},
-    {  name: "Cspeed", cost: 335.0, time: 1, contact: "310-951-3843", location: "9111 S La Cienega Blvd, Inglewood, CA 90301"},
-    {  name: "Dspeed", cost: 500.1, time: 1, contact: "310-951-3843", location: "9111 S La Cienega Blvd, Inglewood, CA 90301"}
-  ];
-  return res.status(200).json(sources);
+  var countyTo = request.shipTo.county;
+
+
+  TruckingCompany.find({"ftl.regions.county": { $in: [countyTo]}}, function(err, companies) {
+
+    if(err) {
+      console.log("run into error " + err);
+      return handleError(res, err);;
+    }
+
+    console.log(JSON.stringify(companies));
+
+    var x;
+    var sources = [];
+    for(x=0; x < companies.length; ++x) {
+      var company = companies[x];
+      sources.push({name: company.name, cost:200, time:2, contact: company.phone, location: company.location, id: company._id});
+    }
+    return res.status(200).json(sources);
+  });
 };
 
 // Get sourcing

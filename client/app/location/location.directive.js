@@ -36,6 +36,7 @@ angular.module('servicesApp')
               console.log(JSON.stringify(addressComponents));
               scope.info.city = addressComponents[1].short_name;
               scope.info.county = addressComponents[2].short_name;
+              scope.info.state = addressComponents[3].short_name;
               scope.info.validated = true;
             },
             function(response) {

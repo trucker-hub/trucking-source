@@ -115,7 +115,7 @@ TruckingCompany.find({}).remove(function () {
                     regions: [
                         {
                             state: "CA",
-                            county: "Los Angeles"
+                            county: "Los Angeles County"
                         },
                         {
                             state: "CA",
@@ -123,7 +123,7 @@ TruckingCompany.find({}).remove(function () {
                         },
                         {
                             state: "CA",
-                            county: "San Diego"
+                            county: "San Diego County"
                         }
                     ],
                     OverWeightCharges: []
