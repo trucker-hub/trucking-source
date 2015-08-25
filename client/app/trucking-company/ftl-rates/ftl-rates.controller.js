@@ -12,7 +12,7 @@ angular.module('servicesApp')
             { name: 'city',          displayName: 'City'},
             { name: 'state',         enableCellEditOnFocus: false, displayName: 'State'},
             { name: 'rate',          displayName: 'Rate', type: 'number'},
-            { name: 'dropOffCharge', displayName: 'Dropoff Fee', type: 'number'},
+            { name: 'dropOffCharge', displayName: 'Dropoff Fee', type: 'number'}
         ];
 
 
