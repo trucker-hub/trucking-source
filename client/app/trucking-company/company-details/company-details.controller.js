@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-    .controller('CompanyDetailsCtrl', function ($scope, $http, $modal) {
+    .controller('CompanyDetailsCtrl', function ($rootScope, $scope, $http, $modal) {
 
         console.log("open a edit window for company");
 
@@ -99,7 +99,7 @@ angular.module('servicesApp')
         };
 
         vm.selectedRegions = [];
-        vm.regions = [];
+        vm.regions = $rootScope.regions || [];
         vm.refreshRegions = function() {
             if(vm.regions.length > 0) {
                 return;
@@ -107,6 +107,7 @@ angular.module('servicesApp')
             return $http.get('/api/geoservice/regions'
             ).then(function(response) {
                     vm.regions = response.data;
+                    $rootScope.regions = vm.regions;
                     console.log("result = " + JSON.stringify(response.data));
                 },
 

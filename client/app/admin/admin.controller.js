@@ -6,8 +6,6 @@ angular.module('servicesApp')
         // Use the User $resource to fetch all users
         $scope.users = User.query();
 
-        console.log("Users=" + JSON.stringify($scope.users));
-
         $scope.delete = function (user) {
             User.remove({id: user._id});
             angular.forEach($scope.users, function (u, i) {
