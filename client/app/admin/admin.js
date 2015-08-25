@@ -9,7 +9,6 @@ angular.module('servicesApp')
             })
             .when('/update/:id', {
                 templateUrl: 'app/admin/update/update.html',
-                controller: 'UpdateCtrl',
-                authenticate: true
+                controller: 'UpdateCtrl'
             });
     });

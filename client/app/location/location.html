@@ -1,17 +1,18 @@
-<form name="locationForm" novalidate="">
-<label for="inputLocation" class="col-sm-3 control-label">{{label}} </label>
-<div class="col-sm-9 form-inline">
-  <input type="text" size="10"
-         ng-class="{'has-error':!locationForm.inputLocation.$valid}"
-         class="form-control" id="inputLocation"
+
+<label for="inputLocation" class="col-md-2 control-label">{{label}} </label>
+<div class="col-md-10">
+  <input type="text"
+         class="form-control" id="inputLocation" size="20"
+         options="autocompleteOptions"
          ng-model="info.location"
-         ng-change="fetchCityAndCounty()"
-         placeholder="ZIP Code" ng-pattern="/^\d{5}$/" required="">
-  <span ng-show="info.validated">{{info.city}}, {{info.county}}</span>
+         ng-minlength="5"
+         g-places-autocomplete
+         force-selection="true"
+         placeholder="Address or ZIP Code" required="">
 </div>
 
-<label for="inputShipType" class="col-sm-3 control-label">Type</label>
-<div class="col-sm-9" id="inputShipType">
+<label for="inputShipType" class="col-sm-2 control-label">Type</label>
+<div class="col-sm-10" id="inputShipType">
   <div class="radio">
     <label>
       <input type="radio" name="{{label}}" id="locationType1" value="0" ng-model="info.locationType">
@@ -48,8 +49,8 @@
 <br><br>
 
 <div ng-hide="isFTL()">
-  <label for="inputShipExtra" class="col-sm-3 control-label">Extra Services Charges</label>
-  <div class="col-sm-9" id="inputShipExtra">
+  <label for="inputShipExtra" class="col-sm-2 control-label">Extra Services Charges</label>
+  <div class="col-sm-10" id="inputShipExtra">
     <div class="checkbox" ng-show="isDelivery()">
       <label>
         <input type="checkbox" value="">
@@ -79,4 +80,4 @@
 </div>
 
 </div>
-</form>
+

@@ -16,7 +16,8 @@ angular.module('servicesApp', [
     'ui.grid.cellNav',
     'ngCookies',
     'ngCsv',
-    'ngCsvImport'
+    'ngCsvImport',
+    'google.places'
 ])
     .directive('onReadFile', function ($parse) {
         return {
@@ -68,6 +69,8 @@ angular.module('servicesApp', [
                 redirectTo: '/'
             });
 
+        $httpProvider.defaults.withCredentials = true;
+        delete $httpProvider.defaults.headers.common["X-Requested-With"];
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('authInterceptor');
     })

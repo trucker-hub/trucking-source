@@ -12,41 +12,17 @@ angular.module('servicesApp')
 
       },
       link: function (scope, element, attrs) {
-        scope.isDelivery = function() {
-          return scope.label=='To';
-        }
+        scope.isDelivery = function () {
+          return scope.label == 'To';
+        };
 
-        scope.isFTL = function() {
-          return scope.type=='FTL';
-        }
+        scope.isFTL = function () {
+          return scope.type == 'FTL';
+        };
 
-        scope.fetchCityAndCounty = function() {
-
-          if(!scope.info.location || scope.info.location.length!=5) {
-            scope.info.validated = false;
-            return;
-          }
-          var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + scope.info.location;
-
-          $http.get(url).then(
-            function(response) {
-              var results = response.data.results;
-              console.log(JSON.stringify(results));
-              var addressComponents = results[0].address_components;
-              console.log(JSON.stringify(addressComponents));
-              scope.info.city = addressComponents[1].short_name;
-              scope.info.county = addressComponents[2].short_name;
-              scope.info.state = addressComponents[3].short_name;
-              scope.info.validated = true;
-            },
-            function(response) {
-              console.log(response);
-              scope.info.validated = false;
-            }
-          )
-
-        }
+        scope.autocompleteOptions = {
+          componentRestrictions: {country: 'us'}
+        };
       }
-
     };
   });

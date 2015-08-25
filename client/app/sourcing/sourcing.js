@@ -5,7 +5,6 @@ angular.module('servicesApp')
     $routeProvider
       .when('/sourcing', {
           templateUrl: 'app/sourcing/sourcing.html',
-          controller: 'SourcingCtrl',
-          authenticate: true
+          controller: 'SourcingCtrl'
       });
   });

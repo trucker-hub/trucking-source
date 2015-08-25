@@ -8,15 +8,21 @@ var TruckingCompany = require('../trucking-company/trucking-company.model');
 // Get list of sourcings
 exports.index = function(req, res) {
 
-  console.log("calling index api with req = " + req);
+  //console.log("calling index api with req = " + req);
 
   var request = req.body;
 
-  console.log("to location is " + JSON.stringify(request.shipTo));
+  //console.log("to location is " + JSON.stringify(request.shipTo));
+
+  var shipTo = request.shipTo;
 
   //map zip code to a county or region
+  //scope.info.city = addressComponents[1].short_name;
+  //scope.info.county = addressComponents[2].short_name;
+  //scope.info.state = addressComponents[3].short_name;
 
-  var countyTo = request.shipTo.county;
+
+  var countyTo = shipTo.location.address_components[2].short_name;
 
 
   TruckingCompany.find({"ftl.regions.county": { $in: [countyTo]}}, function(err, companies) {

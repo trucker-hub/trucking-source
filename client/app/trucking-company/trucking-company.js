@@ -5,7 +5,6 @@ angular.module('servicesApp')
     $routeProvider
       .when('/trucking-company', {
           templateUrl: 'app/trucking-company/trucking-company.html',
-          controller: 'TruckingCompanyCtrl',
-          authenticate: true
+          controller: 'TruckingCompanyCtrl'
       });
   });

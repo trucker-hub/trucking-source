@@ -6,13 +6,13 @@ angular.module('servicesApp')
     $scope.request = {
       shipTo: {
         label: "shipTo",
-        location: "",
+        location: null,
         locationType: 2,
         extraServices: []
       },
       shipFrom: {
         label: "shipFrom",
-        location: "",
+        location: null,
         locationType: 1,
         extraServices: []
       },
@@ -48,12 +48,6 @@ angular.module('servicesApp')
             {id: 10, name: "Others"}
         ];
 
-    $scope.enableEditing = function() {
-      $scope.showDetails = true;
-    };
-
-    $scope.showDetails = true;
-
     $scope.addLine = function () {
       $scope.request.lines.push({
         weight: 0,
@@ -74,7 +68,7 @@ angular.module('servicesApp')
     };
 
     $scope.query = function () {
-        console.log("send request = " + JSON.stringify($scope.request));
+        //console.log("send request = " + JSON.stringify($scope.request));
 
         $scope.progressbar = ngProgressFactory.createInstance();
         $scope.progressbar.start();
