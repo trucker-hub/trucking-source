@@ -8,6 +8,8 @@
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 var TruckingCompany = require('../api/trucking-company/trucking-company.model');
+var FtlLoad = require('../api/load/ftlLoad/ftlLoad.model.js');
+
 
 Thing.find({}).remove(function () {
     Thing.create({
@@ -31,6 +33,51 @@ Thing.find({}).remove(function () {
     });
 });
 
+FtlLoad.find({}).remove(function() {
+    FtlLoad.create(
+        {
+            who: "Elite Toner",
+            shipTo: {
+                location: {
+                    street:     "9111 S La Cienega Blvd, #211",
+                    state:      "CA",
+                    city:       "Inglewood",
+                    zipCode:    "90301"
+                }
+            },
+            shipFrom: {
+                location: {
+                    street:     "3476 Del Amo Blvd",
+                    state:      "CA",
+                    city:       "Torrance",
+                    zipCode:    "90503"
+                }
+            }
+
+
+        },
+        {
+            who: "Beverly Furniture",
+            shipTo: {
+                location: {
+                    street:     "9111 S La Cienega Blvd, #211",
+                    state:      "CA",
+                    city:       "Inglewood",
+                    zipCode:    "90301"
+                }
+            },
+            shipFrom: {
+                location: {
+                    street:     "3476 Del Amo Blvd",
+                    state:      "CA",
+                    city:       "Torrance",
+                    zipCode:    "90503"
+                }
+            }
+
+        }
+    )
+});
 
 TruckingCompany.find({}).remove(function () {
         TruckingCompany.create(

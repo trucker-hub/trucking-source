@@ -8,6 +8,12 @@ angular.module('servicesApp')
       'alwaysShow': true
     },
       {
+        'title': 'Loads',
+        'link': '/loads',
+        'alwaysShow': true
+      },
+
+      {
         'title': 'Sourcing',
         'link': '/sourcing',
         'alwaysShow': true
