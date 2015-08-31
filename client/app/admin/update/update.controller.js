@@ -17,10 +17,10 @@ angular.module('servicesApp')
                     .then(function () {
                         $scope.message = 'User Info successfully changed.';
                         if(Auth.getCurrentUser()._id == $scope.userId) {
-                            console.log("update via $apply() " + Auth.getCurrentUser._id + ", " + $scope.userId);
+                            console.log('update via $apply() ' + Auth.getCurrentUser._id + ','  + $scope.userId);
                             $scope.$apply();
                         };
-                        $location.path( "/admin" );
+                        $location.path( '/admin' );
                     })
                     .catch(function () {
                         $scope.errors.other = 'Failed to update User Info';
@@ -30,6 +30,6 @@ angular.module('servicesApp')
         };
 
         $scope.cancelWithoutSaving = function() {
-            $location.path( "/admin" );
+            $location.path( '/admin' );
         }
     });

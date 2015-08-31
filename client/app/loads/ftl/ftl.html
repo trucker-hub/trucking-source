@@ -1,0 +1,121 @@
+<form class="form-horizontal" name="locationForm">
+  <div class="row">
+    <div class="col-md-6">
+      <label for="customerName" class="col-md-3 control-label">Customer</label>
+      <div class="col-md-9">
+        <input type="text"
+               class="form-control" id="customerName" size="20"
+               ng-model="ftlCtrl.load.who"
+               ng-minlength="5"
+               placeholder="customer name" required="">
+      </div>
+    </div>
+    <div class="col-md-6 form-inline">
+      <label for="loadDate" class="control-label col-md-3">Expected By </label>
+      <div class="col-md-9">
+        <input type="date" class="form-control col-md-9" id="loadDate"
+               datepicker-popup ng-model="ftpCtrl.load.expectedBy" is-open="ftlCtrl.status.opened"
+               min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions"
+               ng-required="true" close-text="Close" />
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <location info="ftlCtrl.load.shipTo" label="'To'" type="'FTL'"></location>
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <location info="ftlCtrl.load.shipFrom" label="'From'" type="'FTL'"></location>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="inputTrailerType" class="col-sm-3 control-label">Trailer Type</label>
+
+        <div class="col-sm-9" id="inputTrailerType">
+          <div class="radio-inline">
+            <label>
+              <input type="radio" name="trailerType" id="locationType1" value="1"
+                     ng-model="ftlCtrl.load.trailer.type">
+              Dry Van
+            </label>
+          </div>
+
+          <div class="radio-inline">
+            <label>
+              <input type="radio" name="trailerType" id="locationType2" value="2"
+                     ng-model="ftlCtrl.load.trailer.type">
+              Refrigerated
+            </label>
+          </div>
+
+          <div class="radio-inline">
+            <label>
+              <input type="radio" name="trailerType" id="locationType4" value="4"
+                     ng-model="ftlCtrl.load.trailer.type">
+              Flatbed
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              <input type="radio" name="trailerType" id="locationType5" value="5"
+                     ng-model="ftlCtrl.load.trailer.type">
+              Other
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+    </div>
+  </div>
+</form>
+<div class="row container table-responsive">
+  <form class="form-inline">
+    <table class="table table-striped">
+      <tr>
+        <th class="col-md-2">Total Weight (lbs)</th>
+        <th class="col-md-1">Quantiy</th>
+        <th class="col-md-2">Packaging</th>
+        <th class="col-md-3">L/W/H(in)</th>
+        <th class="col-md-3">Description</th>
+        <th class="col-md-1"><span class="glyphicon glyphicon-plus" aria-hidden="true"
+                                   ng-click="ftlCtrl.addLine()"></span></th>
+      </tr>
+      <tr ng-repeat="line in ftlCtrl.load.lines">
+        <td><input type="text" class="form-control" size="6" ng-model="line.weight"
+                   placeholder="weight"></td>
+        <td><input class="form-control" type="text" size="3" ng-model="line.quantity"></td>
+        <td>
+          <select class="form-control" ng-model="line.packaging"
+                  ng-options="packaging.name for packaging in ftlCtrl.packagings track by packaging.id">
+            <option value="">-- Packaging --</option>
+          </select>
+        </td>
+        <td>
+          <input class="form-control" type="text" ng-model="line.length" size="3">
+          <input class="form-control" type="text" ng-model="line.width" size="3">
+          <input class="form-control" type="text" ng-model="line.height" size="3">
+        </td>
+        <td><input class="form-control" type="text" ng-model="line.description" placeholder="description"></td>
+        <td><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="ftlCtrl.removeLine($index)"></span>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<div class="row">
+  <div class="col-md-3">
+
+  </div>
+  <div class="col-md-9">
+    <button class="btn btn-sm btn-primary" type="button" ng-click="ftlCtrl.submit()">Request</button>
+  </div>
+</div>

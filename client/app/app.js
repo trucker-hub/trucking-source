@@ -70,7 +70,7 @@ angular.module('servicesApp', [
             });
 
         $httpProvider.defaults.withCredentials = true;
-        delete $httpProvider.defaults.headers.common["X-Requested-With"];
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('authInterceptor');
     })

@@ -25,10 +25,40 @@ angular.module('servicesApp')
         }
       });
 
+      $scope.ftlLoad  = {
+        who: '',
+        expectedBy: null,
+        shipTo: {
+          label: "shipTo",
+          location: null,
+          locationType: 0,
+          extraServices: []
+        },
+        shipFrom: {
+          label: "shipFrom",
+          location: null,
+          locationType: 0,
+          extraServices: []
+        },
+        lines: [{
+          weight: 1000,
+          quantity: 20,
+          packaging: "carton",
+          length: 10,
+          width: 20,
+          height: 10,
+          description: "furnitures"
+        }],
+
+        trailer: {
+          type: ""
+        }
+      };
+
       $scope.loadLoads = function() {
 
-        console.log("fetch loads from the db");
-        $http.get("/api/load/ftl-loads").then(
+        console.log('fetch loads from the db');
+        $http.get('/api/load/ftl-loads').then(
             function(response) {
               console.log(JSON.stringify(response.data));
               $rootScope.loads = response.data;
@@ -36,7 +66,7 @@ angular.module('servicesApp')
 
             },
             function(response) {
-              console.log("ran into error " + response);
+              console.log('ran into error ' + response);
 
             });
       };
