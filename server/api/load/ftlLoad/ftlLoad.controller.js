@@ -11,6 +11,18 @@ exports.index = function(req, res) {
   });
 };
 
+exports.constants = function(req, res) {
+
+  var constants = {
+    toLocationTypes: FtlLoad.schema.path('shipTo.locationType').enumValues,
+    fromLocationTypes: FtlLoad.schema.path('shipFrom.locationType').enumValues,
+    packagings: FtlLoad.schema.path('lines').schema.path('packaging').enumValues,
+    trailerTypes: FtlLoad.schema.path('trailer.type').enumValues
+  }
+  return res.status(200).json(constants);
+
+};
+
 // Get a single ftlLoad
 exports.show = function(req, res) {
   FtlLoad.findById(req.params.id, function (err, ftlLoad) {
@@ -23,7 +35,10 @@ exports.show = function(req, res) {
 // Creates a new ftlLoad in the DB.
 exports.create = function(req, res) {
   FtlLoad.create(req.body, function(err, ftlLoad) {
-    if(err) { return handleError(res, err); }
+    if(err) {
+      console.log("error " + err);
+      return handleError(res, err);
+    }
     return res.status(201).json(ftlLoad);
   });
 };

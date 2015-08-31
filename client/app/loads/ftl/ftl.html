@@ -1,75 +1,65 @@
 <form class="form-horizontal" name="locationForm">
   <div class="row">
     <div class="col-md-6">
-      <label for="customerName" class="col-md-3 control-label">Customer</label>
-      <div class="col-md-9">
-        <input type="text"
-               class="form-control" id="customerName" size="20"
-               ng-model="ftlCtrl.load.who"
-               ng-minlength="5"
-               placeholder="customer name" required="">
+      <div class="row ftlPadding">
+        <label for="customerName" class="col-md-3 control-label">Consignee</label>
+        <div class="col-md-9">
+          <input type="text"
+                 class="form-control" id="customerName" size="20"
+                 ng-model="ftlCtrl.load.who"
+                 ng-minlength="5"
+                 placeholder="Consignee name" required="">
+        </div>
+      </div>
+      <div class="row ftlPadding">
+        <label for="customerNote" class="col-md-3 control-label">Notes</label>
+        <div class="col-md-9 ">
+          <textarea
+                 class="form-control" id="customerNote" size="20"
+                 ng-model="ftlCtrl.load.notes"
+                 rows="4"
+                 placeholder="Note name" required=""></textarea>
+        </div>
       </div>
     </div>
     <div class="col-md-6 form-inline">
       <label for="loadDate" class="control-label col-md-3">Expected By </label>
       <div class="col-md-9">
-        <input type="date" class="form-control col-md-9" id="loadDate"
-               datepicker-popup ng-model="ftpCtrl.load.expectedBy" is-open="ftlCtrl.status.opened"
-               min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions"
-               ng-required="true" close-text="Close" />
-        <div class="col-md-3"> <span ng-show="ftlCtrl.load.expectedBy">{{ftlCtrl.load.expectedBy | elaspedTime }}</span></div>
+        <div style="display:inline-block; min-height:290px;" id="loadDate">
+          <datepicker ng-model="ftlCtrl.load.expectedBy" min-date="minDate" show-weeks="true" class="well well-sm"
+                      custom-class="getDayClass(date, mode)">
+
+          </datepicker>
+        </div>
       </div>
 
     </div>
   </div>
+  <h3>Details</h3>
   <hr>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <location info="ftlCtrl.load.shipTo" label="'To'" type="'FTL'"></location>
+        <location info="ftlCtrl.load.shipTo" label="'To'" types="ftlCtrl.toLocationTypes"></location>
       </div>
 
     </div>
     <div class="col-md-6">
       <div class="form-group">
-        <location info="ftlCtrl.load.shipFrom" label="'From'" type="'FTL'"></location>
+        <location info="ftlCtrl.load.shipFrom" label="'From'" types="ftlCtrl.fromLocationTypes"></location>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
       <div class="form-group">
-        <label for="inputTrailerType" class="col-sm-3 control-label">Trailer Type</label>
+        <label for="inputTrailerType" class="col-md-1 control-label">Trailer Type</label>
 
-        <div class="col-sm-9" id="inputTrailerType">
-          <div class="radio-inline">
+        <div class="col-md-11" id="inputTrailerType" >
+          <div class="radio-inline" ng-repeat="trailerType in ftlCtrl.trailerTypes">
             <label>
-              <input type="radio" name="trailerType" id="locationType1" value="1"
-                     ng-model="ftlCtrl.load.trailer.type">
-              Dry Van
-            </label>
-          </div>
-
-          <div class="radio-inline">
-            <label>
-              <input type="radio" name="trailerType" id="locationType2" value="2"
-                     ng-model="ftlCtrl.load.trailer.type">
-              Refrigerated
-            </label>
-          </div>
-
-          <div class="radio-inline">
-            <label>
-              <input type="radio" name="trailerType" id="locationType4" value="4"
-                     ng-model="ftlCtrl.load.trailer.type">
-              Flatbed
-            </label>
-          </div>
-          <div class="radio-inline">
-            <label>
-              <input type="radio" name="trailerType" id="locationType5" value="5"
-                     ng-model="ftlCtrl.load.trailer.type">
-              Other
+              <input type="radio" name="{{trailerType}}" ng-value="trailerType" ng-model="ftlCtrl.load.trailer.type">
+              {{trailerType}}
             </label>
           </div>
         </div>
@@ -97,7 +87,7 @@
         <td><input class="form-control" type="text" size="3" ng-model="line.quantity"></td>
         <td>
           <select class="form-control" ng-model="line.packaging"
-                  ng-options="packaging.name for packaging in ftlCtrl.packagings track by packaging.id">
+                  ng-options="packaging for packaging in ftlCtrl.packagings">
             <option value="">-- Packaging --</option>
           </select>
         </td>

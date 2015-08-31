@@ -3,6 +3,13 @@
 angular.module('servicesApp')
   .filter('elaspedTime', function () {
     return function (input) {
+
+      if(!input) {
+        return '';
+      }
+
+      console.log("input is " + input);
+
       var now = Date.now();
 
       var elapsed = (input.getTime() - now) % (1000 * 3600);

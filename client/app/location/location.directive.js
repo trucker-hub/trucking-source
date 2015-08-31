@@ -7,7 +7,7 @@ angular.module('servicesApp')
       restrict: 'E',
       scope: {
         info: '=info',
-        type: '=type',
+        types: '=types',
         label: '=label'
 
       },
@@ -15,11 +15,6 @@ angular.module('servicesApp')
         scope.isDelivery = function () {
           return scope.label == 'To';
         };
-
-        scope.isFTL = function () {
-          return scope.type == 'FTL';
-        };
-
         scope.autocompleteOptions = {
           componentRestrictions: {country: 'us'}
         };

@@ -5,13 +5,7 @@
 
     <tabset type="tabs">
 
-        <tab heading="FTL">
-            <br>
-          <div ng-include src="'app/loads/ftl/ftl.html'" ng-controller="FtlCtrl as ftlCtrl" ng-init="ftlCtrl.init(ftlLoad)"></div>
-        </tab>
 
-        <tab heading="LTL">
-        </tab>
 
         <tab heading="Loads">
             <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover">
@@ -21,9 +15,10 @@
                     <th>To</th>
                     <th>From</th>
                     <th>Requested on</th>
+                    <th>Expected By</th>
                     <th>Status</th>
                     <th>Load Description</th>
-
+                    <th></th>
                 </tr>
 
                 <tr ng-repeat="load in $data">
@@ -40,11 +35,17 @@
                     <td data-title="'Created'">
                         {{load.createdAt | date:'short'}}
                     </td>
+                    <td data-title="'Expected By'">
+                        {{load.expectedBy | date:'short'}}
+                    </td>
                     <td data-title="'Status'">
                         {{load.source }}
                     </td>
                     <td data-title="'Description'">
                         <span>{{load.description}}</span>
+                    </td>
+                    <td data-title="'Edit'">
+                        <a><span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="editLoad(load._id)"></span></a>
                     </td>
                 </tr>
             </table>
@@ -57,6 +58,13 @@
 
                 </div>
             </div>
+        </tab>
+
+        <tab heading="FTL"><br>
+            <div ng-include src="'app/loads/ftl/ftl.html'" ng-controller="FtlCtrl as ftlCtrl" ng-init="ftlCtrl.init(ftlLoad)"></div>
+        </tab>
+
+        <tab heading="LTL">
         </tab>
 
 </div>

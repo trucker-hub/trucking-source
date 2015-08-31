@@ -3,10 +3,12 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
+
 var FtlLoadSchema = new Schema({
     who: String,
     createdAt: { type: Date, required: true, default: Date.now },
     expectedBy: Date,
+    notes: String,
     shipTo: {
         location: {
             street:     String,
@@ -46,14 +48,38 @@ var FtlLoadSchema = new Schema({
     lines: [{
         weight: Number,
         quantity: Number,
-        packaging: String,
+        packaging: {
+            type: String, required: true,
+            enum: [
+                "Full container",
+                "Pallets (48x40)",
+                "Pallets (48x48)",
+                "Pallets (60x48)",
+                "Bags",
+                "Bales",
+                "Cartons",
+                "Crates",
+                "Boxes",
+                "Rolls",
+                "Others"
+            ],
+            default: 'Business with Dock/Fork'
+        },
         length: Number,
         width: Number,
         height: Number,
         description: String
     }],
     trailer: {
-        type: String,
+        type: {
+            type: String, required: true,
+            enum: [
+                'Dry Van',
+                'Refrigerated',
+                'Flatbed',
+                'Other'
+            ],
+            default: 'Other'},
         size: String
     },
 

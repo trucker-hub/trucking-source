@@ -1,83 +1,25 @@
 
-<label for="inputLocation" class="col-md-3 control-label">{{label}} </label>
-<div class="col-md-9">
+<label for="inputLocation" class="col-md-2 control-label">{{label}} </label>
+<div class="col-md-10">
   <input type="text"
          class="form-control" id="inputLocation" size="20"
          options="autocompleteOptions"
-         ng-model="info.location"
+         ng-model="info.location.raw"
          ng-minlength="5"
          g-places-autocomplete
          force-selection="true"
          placeholder="Address or ZIP Code" required="">
 </div>
 
-<label for="inputShipType" class="col-md-3 control-label">Type</label>
-<div class="col-md-9" id="inputShipType">
-  <div class="radio">
+<label for="inputShipType" class="col-md-2 control-label">Type</label>
+<div class="col-md-10" id="inputShipType">
+  <div class="radio" ng-repeat="type in types">
     <label>
-      <input type="radio" name="{{label}}" id="locationType1" value="0" ng-model="info.locationType">
-      Business with Dock/Fork
-    </label>
-  </div>
-
-  <div class="radio">
-    <label>
-      <input type="radio" name="{{label}}" id="locationType2" value="1" ng-model="info.locationType">
-      Business without Dock/Fork
-    </label>
-  </div>
-
-  <div class="radio">
-    <label>
-      <input type="radio" name="{{label}}" id="locationType4" value="2" ng-model="info.locationType">
-      Convention center or Tradeshow
-    </label>
-  </div>
-  <div class="radio">
-    <label>
-      <input type="radio" name="{{label}}" id="locationType5" value="3" ng-model="info.locationType">
-      Residential
-    </label>
-  </div>
-  <div class="radio">
-    <label>
-      <input type="radio" name="{{label}}" id="locationType6" value="4" ng-model="info.locationType">
-      Freight Carrier Terminal
+      <input type="radio" id="type" ng-value="type" ng-model="info.locationType">
+      {{type}}
     </label>
   </div>
 </div>
 <br><br>
 
-<div ng-hide="isFTL()">
-  <label for="inputShipExtra" class="col-sm-2 control-label">Extra Services Charges</label>
-  <div class="col-sm-10" id="inputShipExtra">
-    <div class="checkbox" ng-show="isDelivery()">
-      <label>
-        <input type="checkbox" value="">
-        Call before delivery
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" value="">
-        Inside pickup/delivery
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" value="">
-        Limited Access
-      </label>
-    </div>
-    <div class="checkbox" ng-show="isDelivery()">
-      <label>
-        <input type="checkbox" value="">
-        Sort & Segregate
-      </label>
-    </div>
-
-  </div>
-</div>
-
-</div>
 
