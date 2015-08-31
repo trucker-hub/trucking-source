@@ -17,7 +17,9 @@
                datepicker-popup ng-model="ftpCtrl.load.expectedBy" is-open="ftlCtrl.status.opened"
                min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions"
                ng-required="true" close-text="Close" />
+        <div class="col-md-3"> <span ng-show="ftlCtrl.load.expectedBy">{{ftlCtrl.load.expectedBy | elaspedTime }}</span></div>
       </div>
+
     </div>
   </div>
   <hr>
