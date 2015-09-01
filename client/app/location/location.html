@@ -9,9 +9,8 @@
          g-places-autocomplete
          force-selection="true"
          placeholder="Address or ZIP Code" required="" ng-show="editing" ng-change="changed()">
-  <span class="form-control" ng-hide="editing" ng-dblclick="edit()">{{info.location | location:true}}</span>
+<!--  <span class="form-control" ng-hide="editing" ng-dblclick="edit()">{{info.location | location:true}}</span> -->
 </div>
-
 <label for="inputShipType" class="col-md-2 control-label">Type</label>
 <div class="col-md-10" id="inputShipType">
   <div class="radio" ng-repeat="type in types">

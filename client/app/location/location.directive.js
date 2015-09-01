@@ -23,7 +23,7 @@ angular.module('servicesApp')
           scope.info.location.raw = null;
         };
 
-        scope.editing = (scope.info.location.raw !=null);
+        scope.editing = true;
         scope.isEditing = function() {
           return editing;
         }
@@ -53,7 +53,7 @@ angular.module('servicesApp')
           result.street = raw.formatted_address;
           result.raw = raw;
           scope.info.location = result;
-          scope.editinhg = false;
+          //scope.editing = false;
         }
       }
     };

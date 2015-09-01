@@ -80,19 +80,19 @@
         <th class="col-md-1"><span class="glyphicon glyphicon-plus" aria-hidden="true"
                                    ng-click="ftlCtrl.addLine()"></span></th>
       </tr>
-      <tr ng-repeat="line in ftlCtrl.load.lines">
+      <tr ng-repeat="line in ftlCtrl.load.lines track by $index">
         <td><input type="text" class="form-control" size="6" ng-model="line.weight"
                    placeholder="weight"></td>
         <td><input class="form-control" type="text" size="3" ng-model="line.quantity"></td>
         <td>
-          <select class="form-control" ng-model="line.packaging"
-                  ng-options="packaging for packaging in ftlCtrl.packagings">
+          <select class="form-control" ng-model="line.packaging" id="">
             <option value="">-- Packaging --</option>
+            <option ng-repeat="packaging in ftlCtrl.packagings">{{packaging}}</option>
           </select>
         </td>
         <td>
           <input class="form-control" type="text" ng-model="line.length" size="3">
-          <input class="form-control" type="text" ng-model="line.width" size="3">
+          <input class="form-control" type="text" ng-model="line.width"  size="3">
           <input class="form-control" type="text" ng-model="line.height" size="3">
         </td>
         <td><input class="form-control" type="text" ng-model="line.description" placeholder="description"></td>

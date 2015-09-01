@@ -63,7 +63,7 @@ var FtlLoadSchema = new Schema({
                 "Rolls",
                 "Others"
             ],
-            default: 'Business with Dock/Fork'
+            default: 'Full container'
         },
         length: Number,
         width: Number,

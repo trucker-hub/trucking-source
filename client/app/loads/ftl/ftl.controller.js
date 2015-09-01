@@ -2,16 +2,14 @@
 
 angular.module('servicesApp')
   .controller('FtlCtrl', function ($scope, $http) {
-    $scope.message = 'Hello';
+
 
     var vm = this;
 
-    vm.status = {
-      opened: false
-    };
+    vm.packagings = [];
 
     vm.init = function(load) {
-      console.log("initialize controller " + JSON.stringify(load));
+      console.log("initialize controller for load = " + JSON.stringify(load));
       vm.load = load;
       if(vm.load._id!=-2 ) {
         vm.load.shipTo.location.raw = vm.load.shipTo.location.street;
@@ -22,12 +20,13 @@ angular.module('servicesApp')
     };
 
     vm.setInitialExpectedDate = function () {
-      vm.load.expectedBy = new Date();
-      vm.load.expectedBy.setDate(vm.load.expectedBy.getDate() + 2);
+      if(!vm.load.expectedBy) {
+        vm.load.expectedBy = new Date();
+        vm.load.expectedBy.setDate(vm.load.expectedBy.getDate() + 2);
+      }
     };
 
 
-    vm.packagings = [];
 
     vm.loadConstants = function() {
       $http.get('/api/load/ftl-loads/util/constants').then(
@@ -45,7 +44,7 @@ angular.module('servicesApp')
       vm.load.lines.push({
         weight: 0,
         quantity: 1,
-        packaging: vm.packaings[0],
+        packaging: vm.packagings[0],
         length: 0,
         width: 0,
         height: 0,
@@ -56,10 +55,6 @@ angular.module('servicesApp')
     vm.removeLine = function (index) {
       vm.load.lines.splice(index, 1);
 
-    };
-
-    vm.open = function($event) {
-      vm.status.opened = true;
     };
 
     vm.isNew = function() {
@@ -85,7 +80,7 @@ angular.module('servicesApp')
 
     vm.submit = function() {
 
-      console.log("request is " + JSON.stringify(vm.load));
+      console.log("updating load = " + JSON.stringify(vm.load));
       //populate location with raw data.
 
       var id = vm.load._id;
@@ -102,10 +97,10 @@ angular.module('servicesApp')
           }
         );
       }else {
-        $http.put('/api/load/ftl-loads/'+vm.load._id, vm.load).then(
+        $http.put('/api/load/ftl-loads/'+vm.load._id, {load: vm.load}).then(
 
           function(response) {
-            console.log("request saved succesfully " + response);
+            console.log("request saved succesfully " + JSON.stringify(response));
             $scope.$parent.closeTab(id, true);
           },
           function(err) {

@@ -35,9 +35,11 @@ exports.update = function(req, res) {
   TruckingCompany.findById(req.params.id, function (err, truckingCompany) {
     if (err) { return handleError(res, err); }
     if(!truckingCompany) { return res.status(404).send('Not Found'); }
+
     var updated = _.merge(truckingCompany, req.body.company);
-    console.log("merged version "+ updated);
-    updated.save(function (err) {
+
+    console.log("merged version "+ JSON.stringify(updated));
+    truckingCompany.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.status(200).json(truckingCompany);
     });
