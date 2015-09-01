@@ -16,9 +16,9 @@ exports.register = function(socket) {
 }
 
 function onSave(socket, doc, cb) {
-  socket.emit('ftlLoad:save', doc);
+  socket.emit('emptyFtlLoad:save', doc);
 }
 
 function onRemove(socket, doc, cb) {
-  socket.emit('ftlLoad:remove', doc);
+  socket.emit('emptyFtlLoad:remove', doc);
 }

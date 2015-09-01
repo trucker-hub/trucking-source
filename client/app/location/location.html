@@ -8,7 +8,8 @@
          ng-minlength="5"
          g-places-autocomplete
          force-selection="true"
-         placeholder="Address or ZIP Code" required="">
+         placeholder="Address or ZIP Code" required="" ng-hide="info.location.raw" ng-change="changed()">
+  <span class="form-control" ng-hide="!info.location.raw" ng-dblclick="clear()">{{info.location | location:true}}</span>
 </div>
 
 <label for="inputShipType" class="col-md-2 control-label">Type</label>

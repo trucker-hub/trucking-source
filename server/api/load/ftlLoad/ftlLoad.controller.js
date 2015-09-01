@@ -23,7 +23,7 @@ exports.constants = function(req, res) {
 
 };
 
-// Get a single ftlLoad
+// Get a single emptyFtlLoad
 exports.show = function(req, res) {
   FtlLoad.findById(req.params.id, function (err, ftlLoad) {
     if(err) { return handleError(res, err); }
@@ -32,7 +32,7 @@ exports.show = function(req, res) {
   });
 };
 
-// Creates a new ftlLoad in the DB.
+// Creates a new emptyFtlLoad in the DB.
 exports.create = function(req, res) {
   FtlLoad.create(req.body, function(err, ftlLoad) {
     if(err) {
@@ -43,7 +43,7 @@ exports.create = function(req, res) {
   });
 };
 
-// Updates an existing ftlLoad in the DB.
+// Updates an existing emptyFtlLoad in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
   FtlLoad.findById(req.params.id, function (err, ftlLoad) {
@@ -57,7 +57,7 @@ exports.update = function(req, res) {
   });
 };
 
-// Deletes a ftlLoad from the DB.
+// Deletes a emptyFtlLoad from the DB.
 exports.destroy = function(req, res) {
   FtlLoad.findById(req.params.id, function (err, ftlLoad) {
     if(err) { return handleError(res, err); }

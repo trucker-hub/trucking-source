@@ -32,7 +32,6 @@
           </datepicker>
         </div>
       </div>
-
     </div>
   </div>
   <h3>Details</h3>
@@ -105,9 +104,10 @@
 </div>
 <div class="row">
   <div class="col-md-3">
-
+    <button style="float:left" ng-hide="ftlCtrl.isNew()" class="btn btn-sm btn-danger" type="button" ng-click="ftlCtrl.delete()">DELETE</button>
   </div>
   <div class="col-md-9">
-    <button class="btn btn-sm btn-primary" type="button" ng-click="ftlCtrl.submit()">Request</button>
+    <button style="float:left" class="btn btn-sm btn-warning" type="button" ng-click="ftlCtrl.close()">Close</button>
+    <button style="float:right" class="btn btn-sm btn-primary" type="button" ng-click="ftlCtrl.submit()">Submit</button>
   </div>
 </div>
