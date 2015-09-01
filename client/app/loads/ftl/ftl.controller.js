@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('FtlCtrl', function ($scope, $http) {
+  .controller('FtlCtrl', function ($rootScope, $scope, $http) {
 
 
     var vm = this;
@@ -27,18 +27,33 @@ angular.module('servicesApp')
     };
 
 
+    var extractConstantsFromRootScope = function () {
+      vm.packagings = $rootScope.constants.ftl.packagings;
+      vm.toLocationTypes = $rootScope.constants.ftl.toLocationTypes;
+      vm.fromLocationTypes = $rootScope.constants.ftl.fromLocationTypes;
+      vm.trailerTypes = $rootScope.constants.ftl.trailerTypes;
+    }
 
     vm.loadConstants = function() {
-      $http.get('/api/load/ftl-loads/util/constants').then(
-        function(response) {
-          var data = response.data;
-          vm.packagings = data.packagings;
-          vm.toLocationTypes = data.toLocationTypes;
-          vm.fromLocationTypes = data.fromLocationTypes;
-          vm.trailerTypes = data.trailerTypes;
-        }, function(err) {
+      if($rootScope.constants) {
+        extractConstantsFromRootScope();
+      }else {
+        $http.get('/api/load/ftl-loads/util/constants').then(
+          function(response) {
+            var data = response.data;
+            $rootScope.constants = {
+              ftl: {
+                packagings: data.packagings,
+                toLocationTypes: data.toLocationTypes,
+                fromLocationTypes: data.fromLocationTypes,
+                trailerTypes: data.trailerTypes
+              }
+            };
+            extractConstantsFromRootScope();
+          }, function(err) {
             console.log(err);}
-      );
+        );
+      }
     };
     vm.addLine = function () {
       vm.load.lines.push({
