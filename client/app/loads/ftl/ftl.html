@@ -1,41 +1,6 @@
 <form class="form-horizontal" name="locationForm">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="row ftlPadding">
-        <label for="customerName" class="col-md-3 control-label">Consignee</label>
-        <div class="col-md-9">
-          <input type="text"
-                 class="form-control" id="customerName" size="20"
-                 ng-model="ftlCtrl.load.who"
-                 ng-minlength="5"
-                 placeholder="Consignee name" required="">
-        </div>
-      </div>
-      <div class="row ftlPadding">
-        <label for="customerNote" class="col-md-3 control-label">Notes</label>
-        <div class="col-md-9 ">
-          <textarea
-                 class="form-control" id="customerNote" size="20"
-                 ng-model="ftlCtrl.load.notes"
-                 rows="4"
-                 placeholder="Note name" required=""></textarea>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 form-inline">
-      <label for="loadDate" class="control-label col-md-3">Expected By </label>
-      <div class="col-md-9">
-        <div style="display:inline-block; min-height:290px;" id="loadDate">
-          <datepicker ng-model="ftlCtrl.load.expectedBy" min-date="minDate" show-weeks="true" class="well well-sm"
-                      custom-class="getDayClass(date, mode)">
+  <br>
 
-          </datepicker>
-        </div>
-      </div>
-    </div>
-  </div>
-  <h3>Details</h3>
-  <hr>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
@@ -67,6 +32,43 @@
     <div class="col-md-6">
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row ftlPadding" ng-class="{'has-error':locationForm.customerName.$invalid}">
+        <label for="customerName" class="col-md-2 control-label">Consignee</label>
+        <div class="col-md-10">
+          <input type="text"
+                 class="form-control" id="customerName" size="20" name="customerName"
+                 ng-model="ftlCtrl.load.who"
+                 ng-minlength="5"
+                 placeholder="Consignee name" required="">
+        </div>
+      </div>
+      <div class="row ftlPadding">
+        <label for="customerNote" class="col-md-2 control-label">Notes</label>
+        <div class="col-md-10">
+          <textarea
+            class="form-control" id="customerNote" size="20"
+            ng-model="ftlCtrl.load.notes"
+            rows="4"
+            placeholder="Note name"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 form-inline">
+      <label for="loadDate" class="control-label col-md-2">Expected By </label>
+      <div class="col-md-10">
+        <div style="display:inline-block; min-height:290px;" id="loadDate">
+          <datepicker ng-model="ftlCtrl.load.expectedBy" min-date="minDate" show-weeks="true" class="well well-sm"
+                      custom-class="getDayClass(date, mode)">
+
+          </datepicker>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </form>
 <div class="row container table-responsive">
   <form class="form-inline">
@@ -81,9 +83,14 @@
                                    ng-click="ftlCtrl.addLine()"></span></th>
       </tr>
       <tr ng-repeat="line in ftlCtrl.load.lines track by $index">
-        <td><input type="text" class="form-control" size="6" ng-model="line.weight"
-                   placeholder="weight"></td>
-        <td><input class="form-control" type="text" size="3" ng-model="line.quantity"></td>
+        <form name="innerForm" novalidate>
+        <td><div class="form-group" ng-class="{'has-error':innerForm.weight.$invalid}">
+          <input type="number" class="form-control" size="6" ng-model="line.weight" name="weight"
+                   placeholder="weight" required min="100"></div></td>
+        <td><div ng-class="{'has-error':innerForm.quantity.$invalid}">
+          <input class="form-control" type="number" size="3" ng-model="line.quantity" min="1" name="quantity" required>
+          </div>
+        </td>
         <td>
           <select class="form-control" ng-model="line.packaging" id="">
             <option value="">-- Packaging --</option>
@@ -91,13 +98,14 @@
           </select>
         </td>
         <td>
-          <input class="form-control" type="text" ng-model="line.length" size="3">
-          <input class="form-control" type="text" ng-model="line.width"  size="3">
-          <input class="form-control" type="text" ng-model="line.height" size="3">
+          <input class="form-control" type="text" ng-model="line.length" size="2" min="1">
+          <input class="form-control" type="text" ng-model="line.width"  size="2" min="1">
+          <input class="form-control" type="text" ng-model="line.height" size="2" min="1">
         </td>
         <td><input class="form-control" type="text" ng-model="line.description" placeholder="description"></td>
         <td><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="ftlCtrl.removeLine($index)"></span>
         </td>
+        </form>
       </tr>
     </table>
   </form>
@@ -108,6 +116,8 @@
   </div>
   <div class="col-md-9">
     <button style="float:left" class="btn btn-sm btn-warning" type="button" ng-click="ftlCtrl.close()">Close</button>
-    <button style="float:right" class="btn btn-sm btn-primary" type="button" ng-click="ftlCtrl.submit()">Submit</button>
+    <button style="float:right" class="btn btn-sm btn-primary" type="button" ng-disabled="locationForm.$invalid" ng-click="ftlCtrl.submit()">Submit</button>
   </div>
+</div>
+<div>
 </div>

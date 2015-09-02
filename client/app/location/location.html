@@ -1,25 +1,30 @@
-
-<label for="inputLocation" class="col-md-2 control-label">{{label}} </label>
-<div class="col-md-10">
-  <input type="text"
-         class="form-control" id="inputLocation" size="20"
-         options="autocompleteOptions"
-         ng-model="info.location.raw"
-         ng-minlength="5"
-         g-places-autocomplete
-         force-selection="true"
-         placeholder="Address or ZIP Code" required="" ng-show="editing" ng-change="changed()">
-<!--  <span class="form-control" ng-hide="editing" ng-dblclick="edit()">{{info.location | location:true}}</span> -->
-</div>
-<label for="inputShipType" class="col-md-2 control-label">Type</label>
-<div class="col-md-10" id="inputShipType">
-  <div class="radio" ng-repeat="type in types">
-    <label>
-      <input type="radio" id="type" ng-value="type" ng-model="info.locationType">
-      {{type}}
-    </label>
+<form name="innerForm" novalidate>
+  <div class="row" ng-class="{'has-error':innerForm.address.$invalid}">
+    <label for="inputLocation" class="col-md-2 control-label">{{label}} </label>
+    <div class="col-md-10">
+      <input type="text"
+             class="form-control" id="inputLocation" size="20"
+             options="autocompleteOptions"
+             ng-model="info.location.raw"
+             name="address"
+             ng-minlength="5"
+             g-places-autocomplete
+             force-selection="true"
+             placeholder="Address or ZIP Code" required ng-show="editing" ng-change="changed()">
+    </div>
   </div>
-</div>
+  <div class="row">
+    <label for="inputShipType" class="col-md-2 control-label">Type</label>
+    <div class="col-md-10" id="inputShipType">
+      <div class="radio" ng-repeat="type in types">
+        <label>
+          <input type="radio" id="type" ng-value="type" ng-model="info.locationType">
+          {{type}}
+        </label>
+      </div>
+    </div>
+  </div>
+</form>
 <br><br>
 
 
