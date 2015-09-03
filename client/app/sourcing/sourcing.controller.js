@@ -1,90 +1,78 @@
 'use strict';
 
-angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http, ngProgressFactory) {
+angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http, ngTableParams, $filter, ngProgressFactory) {
 
-    $scope.request = {
-        shipTo: {
-            label: "shipTo",
-            location: null,
-            locationType: 0,
-            extraServices: []
-        },
-        shipFrom: {
-            label: "shipFrom",
-            location: null,
-            locationType: 0,
-            extraServices: []
-        },
-        lines: [{
-            weight: 1000,
-            quantity: 20,
-            packaging: "carton",
-            length: 10,
-            width: 20,
-            height: 10,
-            description: "furnitures"
-        }],
+  var selectedCompanies = [];
 
-        trailer: {
-            type: ""
-        }
-    };
-    $scope.type = 'LTL';
-    $scope.isQuerying = false;
+  var loads = [];
 
-    $scope.packagings = [
-        {id: 0, name: "Full container"},
-        {id: 1, name: "Pallets (48x40)"},
-        {id: 2, name: "Pallets (48x48)"},
-        {id: 3, name: "Pallets (60x48)"},
-        {id: 4, name: "Bags"},
-        {id: 5, name: "Bales"},
-        {id: 6, name: "Cartons"},
-        {id: 7, name: "Crates"},
-        {id: 8, name: "Boxes"},
-        {id: 9, name: "Rolls"},
-        {id: 10, name: "Others"}
-    ];
+  var queryLoads = function(type) {
+    $scope.progressbar = ngProgressFactory.createInstance();
+    $scope.progressbar.start();
+    $http.get('/api/load/ftl-loads').then(
+      function(response) {
+        console.log(JSON.stringify(response.data));
+        $scope.updateLoadsTable(response.data);
+        $scope.progressbar.complete();
 
-    $scope.addLine = function () {
-        $scope.request.lines.push({
-            weight: 0,
-            quantity: 1,
-            packaging: {id:0, name: "Full container"},
-            length: 0,
-            width: 0,
-            height: 0,
-            description: ""
-        })
-    };
+      },
+      function(response) {
+        console.log('ran into error ' + response);
+        $scope.progressbar.stop();
+      });
+  };
 
-    $scope.sources = [];
+  $scope.select = function(load) {
+    if($scope.selectedLoad!=load) {
+      $scope.sources =[];
+    }
+    $scope.selectedLoad = load;
+    
+  }
+  $scope.getOpenLoads = function() {queryLoads('Open'); };
 
-    var selectedCompanies = [];
+  $scope.updateLoadsTable = function(data) {
+    loads = data;
+    $scope.tableParamsLoads.reload();
+  };
 
-    $scope.removeLine = function (index) {
-        $scope.request.lines.splice(index, 1);
+  $scope.sourcing = function() {
 
-    };
+    $scope.progressbar = ngProgressFactory.createInstance();
+    $scope.progressbar.start();
+    $http.post("/api/sourcing", $scope.selectedLoad).then(
+      function(response) {
+        console.log(JSON.stringify(response.data));
+        $scope.sources = response.data;
+        //after get the companies' data, we can calculate the prices on the client side.
+        $scope.progressbar.complete();
+      },
+      function(response) {
+        //show a alert and empty the table
+        console.log("called /api/sourcing but returned res = " + JSON.stringify(response));
+        $scope.progressbar.stop();
+      })
+  };
 
-    $scope.query = function () {
-        //console.log("send request = " + JSON.stringify($scope.request));
+  $scope.tableParamsLoads = new ngTableParams({
+    page: 1,            // show first page
+    count: 20,          // count per page
+    filter: {
+      who: ''       // initial filter
+    }
+  }, {
+    total: loads.length, // length of data
+    counts: [], // hide page counts control
+    getData: function($defer, params) {
+      // use build-in angular filter
+      var orderedData = params.filter() ? $filter('filter')(loads, params.filter()) : loads;
 
-        $scope.progressbar = ngProgressFactory.createInstance();
-        $scope.progressbar.start();
-        $http.post("/api/sourcing", $scope.request).then(
-            function(response) {
-                console.log(response);
-                $scope.sources = response.data;
-                //after get the companies' data, we can calculate the prices on the client side.
-                $scope.progressbar.complete();
-            },
-            function(response) {
-                //show a alert and empty the table
-                console.log("called /api/sourcing but returned res = " + JSON.stringify(response));
-                $scope.progressbar.stop();
-            })
-    };
+      loads = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+
+      params.total(orderedData.length); // set total for recalc pagination
+      $defer.resolve(loads);
+    }
+  });
 
 
 });

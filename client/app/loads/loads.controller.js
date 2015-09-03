@@ -16,7 +16,8 @@ angular.module('servicesApp')
         who: ''       // initial filter
       }
     }, {
-      total: loads.length, // length of data
+      total: loads.length, // length of data,
+      counts: [],
       getData: function($defer, params) {
         // use build-in angular filter
         var orderedData = params.filter() ? $filter('filter')(loads, params.filter()) : loads;

@@ -141,6 +141,7 @@ angular.module('servicesApp')
         }
       }, {
         total: allCompanies.length, // length of data
+        counts: [], // hide page counts control
         getData: function($defer, params) {
           // use build-in angular filter
           var orderedData = params.filter() ? $filter('filter')(allCompanies, params.filter()) : allCompanies;

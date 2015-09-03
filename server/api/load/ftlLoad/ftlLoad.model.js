@@ -11,8 +11,9 @@ var FtlLoadSchema = new Schema({
     notes: String,
     shipTo: {
         location: {
-            street:     String,
+            full_address:     String,
             state:      {type: String, required: true},
+            county:     {type: String, required: true},
             city:       {type: String, required: true},
             zipCode:    {type: String, required: true}
         },
@@ -29,8 +30,9 @@ var FtlLoadSchema = new Schema({
     },
     shipFrom: {
         location: {
-            street:     String,
+            full_address:     String,
             state:      {type: String, required: true},
+            county:     {type: String, required: true},
             city:       {type: String, required: true},
             zipCode:    {type: String, required: true}
         },
@@ -79,8 +81,12 @@ var FtlLoadSchema = new Schema({
                 'Flatbed',
                 'Other'
             ],
-            default: 'Other'},
-        size: String
+            default: 'Dry Van'},
+        size: {
+          type: String, required: true,
+          enum: ["20", "40", "40HQ", "48"],
+          default: "40"
+        }
     },
 
     source: { type: Schema.Types.ObjectId, ref: 'TruckingCompany' }

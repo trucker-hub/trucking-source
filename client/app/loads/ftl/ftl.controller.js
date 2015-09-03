@@ -12,8 +12,8 @@ angular.module('servicesApp')
       console.log("initialize controller for load = " + JSON.stringify(load));
       vm.load = load;
       if(vm.load._id!=-2 ) {
-        vm.load.shipTo.location.raw = vm.load.shipTo.location.street;
-        vm.load.shipFrom.location.raw = vm.load.shipFrom.location.street;
+        vm.load.shipTo.location.raw = vm.load.shipTo.location.full_address;
+        vm.load.shipFrom.location.raw = vm.load.shipFrom.location.full_address;
       }
       vm.setInitialExpectedDate();
       vm.loadConstants();

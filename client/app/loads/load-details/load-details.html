@@ -1,0 +1,42 @@
+<table class="table table-responsive table-striped table-condensed">
+
+  <tr>
+    <th>Consignee</th>
+    <td>{{load.who}}</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Note</td>
+    <td>{{load.notes}}</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Expected by</th>
+    <td> {{load.expectedBy | date: 'short'}}</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>To</th>
+    <td>{{load.shipTo.location | location}}</td>
+    <td>{{load.shipTo.locationType}}</td>
+  </tr>
+  <tr>
+    <th>From</th>
+    <td>{{load.shipFrom.location | location}}</td>
+    <td>{{load.shipFrom.locationType}}</td>
+  </tr>
+  <tr>
+    <td>Trailer</td>
+    <td>{{load.trailer.type}}</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td colspan="3">Item Description</td>
+  </tr>
+  <tr ng-repeat="line in load.lines track by $index">
+    <td>#{{$index+1}}</td>
+    <td>{{line | lineDetails}}</td>
+    <td>{{line.description}}</td>
+  </tr>
+</table>
+

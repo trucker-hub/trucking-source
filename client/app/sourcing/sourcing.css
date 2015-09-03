@@ -1,1 +1,7 @@
 #map { height: 180px; }
+
+#sourcing-container {
+  border-left: thin solid #dbdbdb;
+  padding-left: 30px;
+}
+

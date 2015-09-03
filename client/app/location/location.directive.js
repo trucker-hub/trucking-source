@@ -50,7 +50,7 @@ angular.module('servicesApp')
             else if(comp.types.length==1 && comp.types[0]=='postal_code')
               result.zipCode = comp.short_name;
           }
-          result.street = raw.formatted_address;
+          result.full_address = raw.formatted_address;
           result.raw = raw;
           scope.info.location = result;
           //scope.editing = false;
