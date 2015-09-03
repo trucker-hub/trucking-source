@@ -25,9 +25,8 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http
   $scope.select = function(load) {
     if($scope.selectedLoad!=load) {
       $scope.sources =[];
+      $scope.selectedLoad = load;
     }
-    $scope.selectedLoad = load;
-    
   }
   $scope.getOpenLoads = function() {queryLoads('Open'); };
 
@@ -35,6 +34,34 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http
     loads = data;
     $scope.tableParamsLoads.reload();
   };
+  var sum =  function (input) {
+    var index;
+    var result = 0;
+    for(index=0; index < input.length; index++) {
+      result += input[index].charge;
+    }
+    return result;
+  };
+  $scope.selectSource = function(aSource) {
+    if($scope.selectedLoad && aSource) {
+
+      $scope.selectedLoad.fulfilledBy =
+      {
+        name: aSource.name,
+        source: aSource._id,
+        charge: sum(aSource.cost)
+      }
+    }else {
+      $scope.selectedLoad.fulfilledBy =
+      {
+        name: "",
+        source: null,
+        charge: null
+      }
+    }
+
+  };
+
 
   $scope.sourcing = function() {
 
@@ -44,6 +71,9 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http
       function(response) {
         console.log(JSON.stringify(response.data));
         $scope.sources = response.data;
+        if($scope.sources.length > 0) {
+          $scope.selectSource($scope.sources[0]);
+        }
         //after get the companies' data, we can calculate the prices on the client side.
         $scope.progressbar.complete();
       },

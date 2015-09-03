@@ -89,7 +89,12 @@ var FtlLoadSchema = new Schema({
         }
     },
 
-    source: { type: Schema.Types.ObjectId, ref: 'TruckingCompany' }
+    fulfilledBy: {
+      source: { type: Schema.Types.ObjectId, ref: 'TruckingCompany' },
+      charge: Number,
+      name: String
+    }
+
 
 });
 module.exports = mongoose.model('FtlLoad', FtlLoadSchema);

@@ -38,5 +38,10 @@
     <td>{{line | lineDetails}}</td>
     <td>{{line.description}}</td>
   </tr>
+  <tr>
+    <th>Trucking Company</th>
+    <td>{{load.fulfilledBy.name}}</td>
+    <td>{{load.fulfilledBy.charge |  currency:"$":2}}</td>
+  </tr>
 </table>
 

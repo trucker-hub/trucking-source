@@ -53,7 +53,7 @@
               <th>Location</th>
               <th></th>
             </tr>
-            <tr ng-repeat-start="source in sources" class="warning">
+            <tr ng-repeat-start="source in sources" class="success" ng-click="selectSource(source)">
               <th >{{source.name}}</th>
               <td ><b>{{source.cost | costSummary | currency:"$":2}}</b></td>
               <td >{{source.time}}</td>
