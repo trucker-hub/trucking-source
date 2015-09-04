@@ -8,22 +8,25 @@ angular.module('servicesApp')
       'alwaysShow': true
     },
       {
+        'title': 'Trucking Companies',
+        'link': '/trucking-company',
+        'alwaysShow': true
+      },
+      {
         'title': 'Loads',
         'link': '/loads',
         'alwaysShow': true
       },
-
       {
         'title': 'Sourcing',
         'link': '/sourcing',
         'alwaysShow': true
       },
       {
-        'title': 'Trucking Companies',
-        'link': '/trucking-company',
+        'title': 'DO',
+        'link': '/delivery-order',
         'alwaysShow': true
       }
-
     ];
 
     $scope.isCollapsed = true;

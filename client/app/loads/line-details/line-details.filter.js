@@ -14,11 +14,8 @@ angular.module('servicesApp')
   })
   .filter('costSummary', function () {
     return function (input) {
-      var index;
-      var result = 0;
-      for(index=0; index < input.length; index++) {
-        result += input[index].charge;
-      }
-      return result;
-    };
+      return input.reduce(function(total, item) {
+          return total + item.charge;
+        }, 0);
+      };
   });

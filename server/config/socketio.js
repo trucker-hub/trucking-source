@@ -18,6 +18,7 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/deliveryOrder/deliveryOrder.socket').register(socket);
   require('../api/load/ftlLoad/ftlLoad.socket').register(socket);
   require('../api/trucking-company/trucking-company.socket').register(socket);
   require('../api/sourcing/sourcing.socket').register(socket);

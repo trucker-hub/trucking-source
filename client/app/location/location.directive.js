@@ -26,11 +26,11 @@ angular.module('servicesApp')
         scope.editing = true;
         scope.isEditing = function() {
           return editing;
-        }
+        };
 
         scope.edit = function() {
           editing = true;
-        }
+        };
         scope.changed = function() {
 
           var raw = scope.info.location.raw;

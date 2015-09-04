@@ -39,7 +39,8 @@
         <div class="row">
           <load-details load="selectedLoad"></load-details>
           <div>
-            <button style="float:right" type="button" class="btn btn-primary" ng-disabled="!selectedLoad" ng-click="sourcing()">Sourcing</button>
+            <button style="float:left" type="button" class="btn btn-primary" ng-disabled="!selectedLoad" ng-click="sourcing()">Sourcing</button>
+            <button style="float:right" type="button" class="btn btn-primary" ng-disabled="!selectedLoad.fulfilledBy.source" ng-click="createDO()">Create DO</button>
           </div>
         </div>
         <hr>
@@ -55,7 +56,7 @@
             </tr>
             <tr ng-repeat-start="source in sources" class="success" ng-click="selectSource(source)">
               <th >{{source.name}}</th>
-              <td ><b>{{source.cost | costSummary | currency:"$":2}}</b></td>
+              <td ><b>{{source.totalCost | currency:"$":2}}</b></td>
               <td >{{source.time}}</td>
               <td >{{source.contact}}</td>
               <td >{{source.location}}</td>
@@ -64,7 +65,7 @@
             <tr ng-repeat-end>
               <td></td>
               <td colspan="5">
-                <p ng-repeat="entry in source.cost"><b>{{entry.charge | currency:"$":2}}</b> for {{entry.description}}</p>
+                <p ng-repeat="entry in source.costItems"><b>{{entry.charge | currency:"$":2}}</b> for {{entry.description}}</p>
               </td>
             </tr>
           </table>
