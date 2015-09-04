@@ -5,11 +5,10 @@
 
   <br>
   <div class="row container">
-    <button type="button" class="btn btn-default btn-link" ng-click="getOpenLoads()">Open Loads</button>
-    <button type="button" class="btn btn-warning btn-link">Open for 7 days </button>
-    <button type="button" class="btn btn-danger btn-link">Open for 2 weeks</button>
-    <button type="button" class="btn btn-primary btn-link">Filled Loads</button>
-    <button type="button" class="btn btn-primary btn-link">Closed Loads</button>
+    <button type="button" class="btn btn-default btn-link" ng-click="queryLoads('OPEN',1)">Today Loads</button>
+    <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads('OPEN',3)">Open for 3 days </button>
+    <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads('OPEN',7)">Open for 1 week</button>
+    <button type="button" class="btn btn-danger btn-link" ng-click="queryLoads('OPEN',14)">All Open Loads</button>
   </div>
   <hr>
   <div class="row">

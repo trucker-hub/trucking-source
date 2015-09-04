@@ -19,17 +19,6 @@
             </div>
             <br>
             <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover">
-                <tr>
-                    <th>Type</th>
-                    <th>Customer</th>
-                    <th>To</th>
-                    <th>From</th>
-                    <th>Requested on</th>
-                    <th>Expected By</th>
-                    <th>Status</th>
-                    <th>Load Description</th>
-                    <th></th>
-                </tr>
 
                 <tr ng-repeat="load in $data">
                     <td>FTL</td>
@@ -49,7 +38,7 @@
                         {{load.expectedBy | date:'short'}}
                     </td>
                     <td data-title="'Status'">
-                        {{load.source }}
+                        {{load.status }}
                     </td>
                     <td data-title="'Description'">
                         <span>{{load.description}}</span>

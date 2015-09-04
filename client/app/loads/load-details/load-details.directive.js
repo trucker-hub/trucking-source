@@ -5,7 +5,8 @@ angular.module('servicesApp')
     return {
       templateUrl: 'app/loads/load-details/load-details.html',
       scope: {
-        load: '=load'
+        load: '=load',
+        source: '=?source'
       },
       restrict: 'E',
       link: function (scope, element, attrs) {

@@ -1,12 +1,12 @@
 <table class="table table-responsive table-striped table-condensed">
 
-  <tr>
+  <tr class="info">
     <th>Consignee</th>
     <td>{{load.who}}</td>
     <td></td>
   </tr>
   <tr>
-    <td>Note</td>
+    <th>Note</th>
     <td>{{load.notes}}</td>
     <td></td>
   </tr>
@@ -26,22 +26,39 @@
     <td>{{load.shipFrom.locationType}}</td>
   </tr>
   <tr>
-    <td>Trailer</td>
+    <th>Trailer</th>
     <td>{{load.trailer.type}}</td>
     <td></td>
   </tr>
-  <tr>
-    <td colspan="3">Item Description</td>
+  <tr ng-show="load.lines">
+    <th colspan="3">Item Description</th>
   </tr>
   <tr ng-repeat="line in load.lines track by $index">
-    <td>#{{$index+1}}</td>
+    <td>Item {{$index+1}}</td>
     <td>{{line | lineDetails}}</td>
     <td>{{line.description}}</td>
   </tr>
-  <tr>
+  <tr class="info" ng-show="load.fulfilledBy">
     <th>Trucking Company</th>
     <td>{{load.fulfilledBy.name}}</td>
-    <td>{{load.fulfilledBy.charge |  currency:"$":2}}</td>
+    <td></td>
   </tr>
+
+  <tr ng-show="source">
+    <td></td>
+    <th colspan="2">Charges Description</th>
+  </tr>
+  <tr ng-repeat="entry in source.costItems track by $index">
+    <td></td>
+    <td>{{entry.charge | currency:"$":2}} {{entry.description}}</td>
+    <td></td>
+  </tr>
+  <tr class="warning" ng-show="load.fulfilledBy">
+    <th>Total Charge</th>
+    <th>{{load.fulfilledBy.charge | currency:"$":2}}</th>
+    <td></td>
+  </tr>
+
+
 </table>
 

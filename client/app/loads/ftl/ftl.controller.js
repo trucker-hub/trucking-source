@@ -112,7 +112,7 @@ angular.module('servicesApp')
           }
         );
       }else {
-        $http.put('/api/load/ftl-loads/'+vm.load._id, {load: vm.load}).then(
+        $http.put('/api/load/ftl-loads/'+vm.load._id, vm.load).then(
 
           function(response) {
             console.log("request saved succesfully " + JSON.stringify(response));

@@ -1,11 +1,28 @@
+
 <div class="modal-header">
     <span class="modal-title"><b>Delivery Order </b></span>
     <div style="float:right"> <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancel()"></span></div>
 </div>
 <div class="modal-body">
+  <div class="row">
+    <load-details load="load" source="source"></load-details>
+  </div>
 
+  <hr>
+  <div class="row contactPadding">
+    <form name="contactForm">
+      <div class="form-group" ng-class="{'has-error':contactForm.email.$invalid} ">
+        <label for="exampleInputEmail1">Email to send DO and Notifications</label>
+        <input type="email" name="email" ng-model="contact.email" class="form-control" id="exampleInputEmail1" placeholder="Email" required>
+      </div>
+      <div class="form-group" ng-class="{'has-error':contactForm.phone.$invalid}">
+        <label for="phone">Phone to Contact</label>
+        <input type="text" name="phone" ng-model="contact.phone" class="form-control" id="phone" placeholder="(999)999-2010" required>
+      </div>
+    </form>
+  </div>
 </div>
 <div class="modal-footer">
     <button style="float:left" class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-    <button style="float:right" class="btn btn-primary" type="button" ng-click="create()">Create</button>
+    <button style="float:right" class="btn btn-primary" type="button" ng-click="create()" ng-disabled="contactForm.$invalid">Create</button>
 </div>

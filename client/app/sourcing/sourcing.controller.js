@@ -6,15 +6,15 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http
 
     var loads = [];
 
-    var queryLoads = function(type) {
+    $scope.queryLoads = function(type, days) {
+
         $scope.progressbar = ngProgressFactory.createInstance();
         $scope.progressbar.start();
-        $http.get('/api/load/ftl-loads').then(
+        $http.get('/api/load/ftl-loads?status=' + type + "&days=" + days).then(
             function(response) {
                 console.log(JSON.stringify(response.data));
                 $scope.updateLoadsTable(response.data);
                 $scope.progressbar.complete();
-
             },
             function(response) {
                 console.log('ran into error ' + response);
@@ -28,14 +28,15 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http
             $scope.selectedLoad = load;
         }
     }
-    $scope.getOpenLoads = function() {queryLoads('Open'); };
 
     $scope.updateLoadsTable = function(data) {
         loads = data;
         $scope.tableParamsLoads.reload();
     };
 
+
     $scope.selectSource = function(aSource) {
+        $scope.selectedSource = aSource;
         if($scope.selectedLoad && aSource) {
             $scope.selectedLoad.fulfilledBy =
             {
@@ -81,16 +82,32 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http
             animation: true,
             templateUrl: 'app/delivery-order/do-details/do-details.html',
             controller: 'DoDetailsCtrl',
+          size: 'lg',
             resolve: {
                 load: function () {
                     return $scope.selectedLoad;
+                },
+                source: function() {
+                  return $scope.selectedSource;
                 }
             }
         });
 
         modalInstance.result.then(
-            function () {
-                console.log('DO created at: ' + new Date());
+            function (contact) {
+              $scope.selectedLoad.deliveryOrderContact = contact;
+              $scope.selectedLoad.status = "FILLED";
+              $http.put('/api/load/ftl-loads/'+$scope.selectedLoad._id, $scope.selectedLoad).then(
+
+                function(response) {
+                  console.log("request saved succesfully " + JSON.stringify(response));
+                },
+                function(err) {
+                  console.log("request saving failed " + err);
+                }
+              );
+
+
             },
             function () {
                 console.log('Modal dismissed at: ' + new Date());
