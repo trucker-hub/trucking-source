@@ -14,6 +14,17 @@ var calculateRate = function(load, company) {
 
   var rates = company.ftl.rates;
   var matchEntry =_.find(rates, {zipCode:zipCode});
+
+  if(matchEntry) {
+    console.log("found a matching entry for zipCode " + zipCode + "=" + matchEntry.rate);
+  }else {
+    return {
+      totalCost: -1,
+      costItems: []
+    };
+  }
+
+
   var index;
 
   result.push({charge: matchEntry.rate, description: "Basis rate"});
@@ -79,13 +90,14 @@ exports.index = function(req, res) {
   var countyTo = shipTo.location.county;
 
 
+  console.log("request companies serving region=" + countyTo);
   TruckingCompany.find({"ftl.regions.county": { $in: [countyTo]}}, function(err, companies) {
 
     if(err) {
       console.log("run into error " + err);
       return handleError(res, err);;
     }
-    console.log(JSON.stringify(companies));
+    console.log("found " + companies.length + " companies serving this region");
     var x;
     var sources = companies.map(function(company) {
       var cost = calculateRate(load, company);

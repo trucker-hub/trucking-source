@@ -38,7 +38,7 @@ exports.update = function(req, res) {
 
     var updated = _.merge(truckingCompany, req.body.company);
 
-    console.log("merged version "+ JSON.stringify(updated));
+    //console.log("merged version "+ JSON.stringify(updated));
     truckingCompany.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.status(200).json(truckingCompany);
