@@ -49,6 +49,7 @@ angular.module('servicesApp')
     };
 
     $scope.emptyFtlLoad  = {
+      type: "FTL",
       who: 'NEW one',
       expectedBy: null,
       notes: "",
@@ -86,11 +87,11 @@ angular.module('servicesApp')
       load._id = NEW_FTL_ID;
       $rootScope.loadsOpened[NEW_FTL_ID] = {data:load, active:true};
       editLoadFunc(NEW_FTL_ID);
-    }
+    };
 
     $scope.editLoad = function(id) {
       editLoadFunc(id);
-    }
+    };
 
     $scope.loadLoads = function() {
 

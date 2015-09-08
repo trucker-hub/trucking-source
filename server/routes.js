@@ -10,9 +10,11 @@ var path = require('path');
 module.exports = function(app) {
 
   // Insert routes below
+
   app.use('/api/emails', require('./api/email'));
   app.use('/api/deliveryOrders', require('./api/deliveryOrder'));
-  app.use('/api/load/ftl-loads', require('./api/load/ftlLoad'));
+  app.use('/api/load/ftl-loads', require('./api/load/ftl'));
+  app.use('/api/load/ltl-loads', require('./api/load/ltl'));
   app.use('/api/geoservice', require('./api/geoservice'));
   app.use('/api/trucking-companies', require('./api/trucking-company'));
   app.use('/api/sourcing', require('./api/sourcing'));

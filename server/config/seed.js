@@ -8,7 +8,8 @@
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 var TruckingCompany = require('../api/trucking-company/trucking-company.model');
-var FtlLoad = require('../api/load/ftlLoad/ftlLoad.model.js');
+var FtlLoad = require('../api/load/ftl/ftlLoad.model.js');
+var LtlLoad = require('../api/load/ltl/ltl.model.js');
 
 
 Thing.find({}).remove(function () {
