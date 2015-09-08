@@ -13,7 +13,7 @@ var calculateRate = function(load, company) {
   var city = load.shipTo.location.city;
 
   var rates = company.ftl.rates;
-  var matchEntry =_.find(rates, {city: city, zipCode:zipCode});
+  var matchEntry =_.find(rates, {zipCode:zipCode});
   var index;
 
   result.push({charge: matchEntry.rate, description: "Basis rate"});
@@ -72,7 +72,7 @@ var calculateRate = function(load, company) {
 // Get list of sourcings
 exports.index = function(req, res) {
 
-  //console.log("calling index api with req = " + req);
+  console.log("calling index api with req = " + req);
 
   var load = req.body;
   var shipTo = load.shipTo;

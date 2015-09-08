@@ -23,7 +23,7 @@ angular.module('servicesApp')
         'alwaysShow': true
       },
       {
-        'title': 'DO',
+        'title': 'Delivery Orders',
         'link': '/delivery-order',
         'alwaysShow': true
       }
