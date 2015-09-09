@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var LtlLoadSchema = new Schema({
+
     status: {
         type: String, required: true,
         enum: ['OPEN', 'FILLED', 'CONFIRMED', 'CLOSED'],
@@ -78,24 +79,19 @@ var LtlLoadSchema = new Schema({
         length: Number,
         width: Number,
         height: Number,
+        freightClass: {
+          type: Number,
+          enum: [
+            50, 55, 60, 65.70,77.5, 85, 92.5, 100, 110, 125, 150, 175, 200, 250, 300, 400, 500
+          ]
+        },
         description: String
     }],
-    trailer: {
-        type: {
-            type: String, required: true,
-            enum: [
-                'Dry Van',
-                'Refrigerated',
-                'Flatbed',
-                'Other'
-            ],
-            default: 'Dry Van'},
-        size: {
-            type: String, required: true,
-            enum: ["20", "40", "40HQ", "48", "50"],
-            default: "40"
-        }
-    },
+
+    extraServices: [{
+       service: String,
+       charge: Number
+    }],
 
     fulfilledBy: {
         source: { type: Schema.Types.ObjectId, ref: 'TruckingCompany' },
