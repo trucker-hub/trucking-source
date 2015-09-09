@@ -17,9 +17,9 @@ exports.index = function(req, res) {
     options.createdAt = {$gt: time};
   }
 
-  Ltl.find(function (err, ltls) {
+  LtlLoad.find(options).sort({expectedBy:1}).exec( function (err, ltlLoads) {
     if(err) { return handleError(res, err); }
-    return res.status(200).json(ltls);
+    return res.status(200).json(ltlLoads);
   });
 };
 
