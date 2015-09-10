@@ -30,7 +30,7 @@
             <td>
                 <div ng-class="{'has-error': companyInfo.phone.$invalid}">
                     <input name="phone" type="text" class="form-control" size="13" ng-model="dCtrl.company.phone"
-                           placeholder="(xxx)xxx-xxxx" required ng-change="dCtrl.change()"></div>
+                           placeholder="(xxx)xxx-xxxx" required ui-mask="(999)999-9999" ng-change="dCtrl.change()"></div>
             </td>
             <td></td>
         </tr>
@@ -38,11 +38,9 @@
         <tr>
             <th>FAX</th>
             <td>
-                <div ng-class="{'has-error': companyInfo.fax.$invalid}"><input name="fax" type="text"
-                                                                               class="form-control" size="13"
-                                                                               ng-model="dCtrl.company.fax"
-                                                                               placeholder="(xxx)xxx-xxxx" required
-                                                                               ng-change="dCtrl.change()"></div>
+                <div ng-class="{'has-error': companyInfo.fax.$invalid}">
+                    <input name="fax" type="text" class="form-control" size="13" ng-model="dCtrl.company.fax"
+                           ui-mask="(999)999-9999" placeholder="(xxx)xxx-xxxx" required ng-change="dCtrl.change()"></div>
             </td>
             <td></td>
         </tr>
@@ -51,12 +49,10 @@
         <tr>
             <th>Email</th>
             <td>
-                <div ng-class="{'has-error': companyInfo.email.$invalid}"><input name="email" type="email"
-                                                                                 class="form-control" ng-class=""
-                                                                                 size="20"
-                                                                                 ng-model="dCtrl.company.email"
-                                                                                 placeholder="email" required
-                                                                                 ng-change="dCtrl.change()"></div>
+                <div ng-class="{'has-error': companyInfo.email.$invalid}">
+                    <input name="email" type="email" class="form-control" ng-class="" size="20" ng-model="dCtrl.company.email"
+                           placeholder="email" required
+                           ng-change="dCtrl.change()"></div>
             </td>
             <td></td>
         </tr>
@@ -65,12 +61,15 @@
             <th>Rate basis</th>
             <td>
                 <div class="btn-group">
-                    <label class="btn btn-primary" ng-model="dCtrl.company.rateBasis" btn-radio="'city'"
-                           ng-change="dCtrl.change()">City</label>
-                    <label class="btn btn-primary" ng-model="dCtrl.company.rateBasis" btn-radio="'zipcode'"
-                           ng-change="dCtrl.change()">ZIP Code</label>
-                    <label class="btn btn-primary" ng-model="dCtrl.company.rateBasis" btn-radio="'distance'"
-                           ng-change="dCtrl.change()">Distance</label>
+                    <label class="radio-inline">
+                        <input type="radio" ng-model="dCtrl.company.rateBasis" name="rateBasisOptions"  ng-value="'city'" ng-change="dCtrl.change()"> City
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" ng-model="dCtrl.company.rateBasis" name="rateBasisOptions"  ng-value="'zipCode'" ng-change="dCtrl.change()"> Zip Code
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" ng-model="dCtrl.company.rateBasis" name="rateBasisOptions"  ng-value="'distance'" ng-change="dCtrl.change()"> Distance
+                    </label>
                 </div>
             </td>
             <td></td>
@@ -81,103 +80,10 @@
             <td colspan="3">
                 <tabset type="tabs">
                     <tab heading="FTL rates">
-                      <br>
-                        <table class="table table-condensed table-responsive table-striped">
-                            <tr>
-                                <th class="col-xs-3">Fuel Surcharge(%)</th>
-                                <td class="col-xs-8">
-                                    <div ng-class="{'has-error': companyInfo.ftlSurcharge.$invalid}">
-                                        <input name="ftlSurcharge" type="text" class="form-control" size="10"
-                                               ng-model="dCtrl.company.ftl.fuelSurcharge"
-                                               placeholder="20" required ng-change="dCtrl.change()"></div>
-                                </td>
-                                <td class="col-xs-1"></td>
-                            </tr>
-                            <tr>
-                                <th>Residential Delivery</th>
-                                <td>
-                                    <div ng-class="{'has-error': companyInfo.residentialCharge.$invalid}">
-                                        <input name="residentialCharge" type="text" class="form-control" size="13"
-                                               ng-model="dCtrl.company.ftl.residentialCharge"
-                                               placeholder="00.00" required ng-change="dCtrl.change()"></div>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th>Regions</th>
-                                <td>
-                                    <ui-select multiple ng-model="dCtrl.company.ftl.regions" ng-change="dCtrl.change()">
-                                        <ui-select-match placeholder="Select regions">{{$item.county}},
-                                            {{$item.state}}
-                                        </ui-select-match>
-                                        <ui-select-choices group-by="dCtrl.getState"
-                                                           repeat="region in dCtrl.regions | propsFilter: {county: $select.search}"
-                                                           refresh="dCtrl.refreshRegions()"
-                                                           refresh-delay="0">
-                                            <div ng-bind-html="region.county | highlight: $select.search"></div>
-                                        </ui-select-choices>
-                                    </ui-select>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th>Rates</th>
-                                <td> <div class="row form-inline">
-                                    <div class="col-md-4 form-inline">
-                                        <span>{{dCtrl.getFTLRateSummary()}}</span>
-                                        <button class="form-control glyphicon glyphicon-pencil" ng-click="dCtrl.openRateModal()"></button>
-                                    </div>
-                                    <div class="col-md-8 form-inline">
-                                        <ng-csv-import id="ftlRateFile"
-                                                    class="import-btn form-control"
-                                                    content="dCtrl.ftlcsv.content"
-                                                    header="dCtrl.ftlcsv.header" header-visible="dCtrl.ftlcsv.headerVisible" separator-visible="dCtrl.ftlcsv.separatorVisible"
-                                                    separator="dCtrl.ftlcsv.separator"
-                                                    result="dCtrl.ftlcsv.result">
-                                        </ng-csv-import>
-                                        <button class="form-control glyphicon glyphicon-import" ng-click="dCtrl.importFTLRates()" ng-show="dCtrl.ftlcsv.result">Import</button>
-                                    </div>
-                                    </div>
-                                </div>
-                                </td>
-                                <td><div style="float: left">
-                                    <button class="form-control glyphicon glyphicon-download-alt" ng-csv="dCtrl.getFtlRates()" filename="ftl-rates.csv"></button>
-                                </div></td>
-                            </tr>
-
-                            <tr>
-                                <th>Weight Charges</th>
-                                <td>
-                                  <div class="row" ng-repeat="weightCharge in dCtrl.company.ftl.OverWeightCharges">
-                                    <div class="col-xs-2">Size <b>{{weightCharge.containerSize}}</b></div>
-                                    <div class="col-xs-10">
-                                      <div class="row form-inline-padding" ng-repeat="range in weightCharge.ranges">
-                                        <div class="col-xs-4">
-                                          <div class="input-group">
-                                            <div class="input-group-addon"> + $</div>
-                                            <input type="text" class="form-control"
-                                                         ng-model="range.charge" placeholder="Amount" >
-                                          </div>
-                                        </div>
-                                        <div class="col-xs-5">
-                                          <div class="input-group">
-                                            <div class="input-group-addon">Over</div>
-                                            <input type="text" class="form-control"
-                                                         ng-model="range.limit" placeholder="weight">
-                                            <div class="input-group-addon">LBS</div>
-                                          </div>
-                                        </div>
-                                        <br>
-                                      </div>
-                                    </div>
-                                    </div>
-                                    <br>
-                                </td><td></td>
-                            </tr>
-                        </table>
+                      <br><div ng-controller="CompanyFtlCtrl as ftlCtrl" ng-init="ftlCtrl.setCompany(dCtrl.company)" ng-include="'app/trucking-company/company-ftl/company-ftl.html'"></div>
                     </tab>
                     <tab heading="LTL Freight rates">
-
+                        <br><div ng-controller="CompanyLtlCtrl as ltlCtrl" ng-init="ltlCtrl.setCompany(dCtrl.company)" ng-include="'app/trucking-company/company-ltl/company-ltl.html'"></div>
                     </tab>
 
                     <tab heading="Air Freight rates">
@@ -198,7 +104,7 @@
                 </div>
                 <div style="float:right">
                     <button type="button" class="btn btn-primary" ng-click="dCtrl.save()"
-                            ng-class="{'disabled': !companyInfo.$valid || !dCtrl.changed }">Save Company Info
+                            ng-class="{'disabled': !companyInfo.$valid || !dCtrl.company.changed }">Save Company Info
                     </button>
                 </div>
             </td>
