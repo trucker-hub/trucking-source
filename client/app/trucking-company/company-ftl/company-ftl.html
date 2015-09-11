@@ -26,7 +26,7 @@
                 <ui-select-match placeholder="Select regions">{{$item.county}},
                     {{$item.state}}
                 </ui-select-match>
-                <ui-select-choices group-by="dCtrl.getState"
+                <ui-select-choices group-by="ftlCtrl.getState"
                                    repeat="region in dCtrl.regions | propsFilter: {county: $select.search}"
                                    refresh="dCtrl.refreshRegions()"
                                    refresh-delay="0">

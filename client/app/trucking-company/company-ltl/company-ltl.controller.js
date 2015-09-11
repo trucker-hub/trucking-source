@@ -15,7 +15,6 @@ angular.module('servicesApp')
       };
 
       vm.setCompany = function(company) {
-        console.log("company is set to " + company);
         vm.company = company;
       };
 
@@ -33,6 +32,10 @@ angular.module('servicesApp')
         } else {
           return "Not rates yet";
         }
+      };
+
+      vm.getState = function(item) {
+        return item.state;
       };
 
       vm.importLTLRates = function() {

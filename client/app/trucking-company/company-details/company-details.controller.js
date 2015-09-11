@@ -7,10 +7,8 @@ angular.module('servicesApp')
 
     var vm = this;
 
-    vm.changed = false;
-
     vm.setCompany = function(company) {
-      console.log("company is set to " + company);
+      console.log("company is set to " + JSON.stringify(company));
       vm.company = company;
       vm.lastCopy = angular.copy(company);
 
@@ -19,7 +17,7 @@ angular.module('servicesApp')
       }
     };
 
-    vm.selectedRegions = [];
+
     vm.regions = $rootScope.regions || [];
     vm.refreshRegions = function() {
       if(vm.regions.length > 0) {
@@ -39,10 +37,6 @@ angular.module('servicesApp')
 
     };
 
-    vm.getState = function(item) {
-      return item.state;
-    };
-
     vm.change = function() {
       vm.company.changed = true;
     };
@@ -58,7 +52,8 @@ angular.module('servicesApp')
         function(response) {
           vm.company.changed = false;
           vm.lastCopy = angular.copy(vm.company);
-          console.log(JSON.stringify(response.data));
+          vm.company = response.data;
+          console.log("saved company as " + JSON.stringify(response.data));
         },
         function(response) {
           vm.company.changed = true;

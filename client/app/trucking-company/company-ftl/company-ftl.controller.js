@@ -31,6 +31,12 @@ angular.module('servicesApp')
         }
       ];
 
+      vm.selectedRegions = [];
+
+      vm.getState = function(item) {
+        return item.state;
+      };
+
       vm.ftlcsv = {
         content: null,
         header: true,
@@ -41,7 +47,6 @@ angular.module('servicesApp')
       };
 
       vm.setCompany = function(company) {
-        console.log("company is set to " + company);
         vm.company = company;
         if(vm.company.ftl.OverWeightCharges.length ==0 ) {
           vm.company.ftl.OverWeightCharges = vm.ltlWeightChargesTemplate;

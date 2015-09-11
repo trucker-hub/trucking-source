@@ -19,7 +19,7 @@
             <th>Location</th>
             <td>
                 <div ng-class="{'has-error': companyInfo.location.$invalid}">
-                    <input name="location" type="text" class="form-control" size="20" ng-model="dCtrl.company.location"
+                    <input name="location" type="tel" class="form-control" size="20" ng-model="dCtrl.company.location"
                            placeholder="street, city, zip code" required ng-change="dCtrl.change()"></div>
             </td>
             <td></td>
@@ -29,8 +29,8 @@
             <th>Phone</th>
             <td>
                 <div ng-class="{'has-error': companyInfo.phone.$invalid}">
-                    <input name="phone" type="text" class="form-control" size="13" ng-model="dCtrl.company.phone"
-                           placeholder="(xxx)xxx-xxxx" required ui-mask="(999)999-9999" ng-change="dCtrl.change()"></div>
+                    <input name="phone" type="tel" class="form-control" size="13" ng-model="dCtrl.company.phone"
+                           ui-mask="(999) 999-9999" placeholder="(xxx) xxx-xxxx" required  ng-change="dCtrl.change()"></div>
             </td>
             <td></td>
         </tr>
@@ -40,7 +40,7 @@
             <td>
                 <div ng-class="{'has-error': companyInfo.fax.$invalid}">
                     <input name="fax" type="text" class="form-control" size="13" ng-model="dCtrl.company.fax"
-                           ui-mask="(999)999-9999" placeholder="(xxx)xxx-xxxx" required ng-change="dCtrl.change()"></div>
+                           ui-mask="(999) 999-9999" placeholder="(xxx) xxx-xxxx" required ng-change="dCtrl.change()"></div>
             </td>
             <td></td>
         </tr>

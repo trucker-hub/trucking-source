@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+  Schema = mongoose.Schema;
 
 var TruckingCompanySchema = new Schema({
   name: String,
@@ -15,32 +15,27 @@ var TruckingCompanySchema = new Schema({
   ftl: {
     fuelSurcharge: Number,
     residentialCharge: Number,
-    regions: [
-      {
-        state: String,
-        county: String
-      }
-    ],
-    OverWeightCharges: [
-      {
-        containerSize: String,
-        ranges: [
-          {
-            limit: Number,
-            charge: Number
-          }
-        ]
-      }
-    ],
-    rates: [
-      {
-        state: String,
-        city: String,
-        zipCode: String,
-        rate: Number,
-        dropOffCharge: Number
-      }
-    ]
+    regions: [{
+      state: String,
+      county: String
+    }],
+    OverWeightCharges: [{
+      containerSize: String,
+      ranges: [{
+        limit: Number,
+        charge: Number
+      }]
+    }],
+    rates: [{
+      state: String,
+      city: String,
+      zipCode: String,
+      rate: Number,
+      dropOffCharge: Number,
+      dropOffChargeOffhour: Number,
+      dropOffChargeWeekend: Number,
+      dropOffChargeHoliday: Number
+    }]
   },
   ltl: {
     fuelSurcharge: Number,
@@ -50,36 +45,33 @@ var TruckingCompanySchema = new Schema({
       name: String,
       charge: Number
     }],
-    regions: [
-      {
-        state: String,
-        county: String,
-        rateByCity: Boolean
-      }
-    ],
+    regions: [{
+      state: String,
+      county: String,
+      rateByCity: Boolean
+    }],
     zones: [
       {
         zone: String,
-        tiers: [
-          {
-            rate: Number,
-            weightFrom: Number,
-            weightTo: Number,
-            flat: Boolean,
-            weightIncrement: Number
-          }
-        ]
+        dropOffCharge: Number,
+        dropOffChargeOffhour: Number,
+        dropOffChargeWeekend: Number,
+        dropOffChargeHoliday: Number,
+        tiers: [{
+          weightFrom: Number,
+          weightTo: Number,
+          flat: Boolean,
+          weightIncrement: Number,
+          rate: Number
+        }]
       }
     ],
-    rates: [
-      {
-        state: String,
-        city: String,
-        zipCode: String,
-        rateZone: String,
-        dropOffCharge: Number
-      }
-    ]
+    rates: [{
+      state: String,
+      city: String,
+      zipCode: String,
+      rateZone: String
+    }]
   }
 });
 

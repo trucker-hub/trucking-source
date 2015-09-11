@@ -8,11 +8,14 @@ angular.module('servicesApp')
         $scope.gridOptions.enableCellEditOnFocus = true;
         $scope.gridOptions.enableFiltering = true;
         $scope.gridOptions.columnDefs = [
-            { name: 'zipCode',       displayName: 'ZIP Code'},
-            { name: 'city',          displayName: 'City'},
-            { name: 'state',         enableCellEditOnFocus: false, displayName: 'State'},
-            { name: 'rate',          displayName: 'Rate', type: 'number'},
-            { name: 'dropOffCharge', displayName: 'Dropoff Fee', type: 'number'}
+            { name: 'zipCode',        displayName: 'ZIP Code'},
+            { name: 'city',           displayName: 'City'},
+            { name: 'state',          enableCellEditOnFocus: false, displayName: 'State'},
+            { name: 'rate',           displayName: 'Rate', type: 'number'},
+            { name: 'dropOffCharge',  displayName: 'Dropoff Fee', type: 'number'},
+            { name: 'dropOffChargeOffhour', displayName: 'Offhour Dropoff Fee', type: 'number'},
+            { name: 'dropOffChargeWeekend', displayName: 'Weekend Dropoff Fee', type: 'number'},
+            { name: 'dropOffChargeHoliday', displayName: 'Holiday Dropoff Fee', type: 'number'}
         ];
 
 
@@ -22,7 +25,7 @@ angular.module('servicesApp')
                 "city": "  ",
                 "state": "  ",
                 "rate": 0.0,
-                "dropOffCharge": 0.0
+                "dropOffCharges": [{timePeriod: "normal", charge:100}]
             });
         }
       $scope.ok = function () {

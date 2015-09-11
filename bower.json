@@ -16,7 +16,7 @@
     "angular-socket-io": "~0.6.0",
     "ngprogress": "~1.1.2",
     "ng-table": "~0.8.2",
-    "angular-ui-mask": "~1.4.1",
+    "angular-ui-mask": "~1.4.5",
     "angular-ui-select": "~0.12.1",
     "angular-ui-grid": "~3.0.4",
     "ng-csv": "~0.3.4",
