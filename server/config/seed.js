@@ -160,6 +160,7 @@ TruckingCompany.find({}).remove(function () {
         fuelSurcharge: 0.25,
         residentialCharge: 60.0,
         liftGateCharge: 20.0,
+        weightIncrementForZoneRate: 100,
         regions: [
           {
             state: "CA",
@@ -311,6 +312,7 @@ TruckingCompany.find({}).remove(function () {
         fuelSurcharge: 0.25,
         residentialCharge: 60.0,
         liftGateCharge: 20.0,
+        weightIncrementForZoneRate: 100,
         regions: [
           {
             state: "CA",
@@ -335,15 +337,13 @@ TruckingCompany.find({}).remove(function () {
                 rate: 5,
                 weightFrom: 1000,
                 weightTo: 2000,
-                flat: false,
-                weightIncrement: 100
+                flat: false
               },
               {
                 rate: 4.5,
                 weightFrom: 2000,
                 weightTo: 3000,
-                flat: false,
-                weightIncrement: 100
+                flat: false
               }
             ]
           },
@@ -357,22 +357,19 @@ TruckingCompany.find({}).remove(function () {
               rate: 60,
               weightFrom: 0,
               weightTo: 1000,
-              flat: true,
-              weightIncrement: -1
+              flat: true
             },
               {
                 rate: 5.25,
                 weightFrom: 1000,
                 weightTo: 2000,
-                flat: false,
-                weightIncrement: 100
+                flat: false
               },
               {
                 rate: 4.75,
                 weightFrom: 2000,
                 weightTo: 3000,
-                flat: false,
-                weightIncrement: 100
+                flat: false
               }
             ]
           }

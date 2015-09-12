@@ -36,13 +36,26 @@
                 <ui-select-match placeholder="Select regions">{{$item.county}},
                     {{$item.state}}
                 </ui-select-match>
-                <ui-select-choices
+                <ui-select-choices group-by="ltlCtrl.getState"
                                    repeat="region in dCtrl.regions | propsFilter: {county: $select.search}"
                                    refresh="dCtrl.refreshRegions()"
                                    refresh-delay="0">
                     <div ng-bind-html="region.county | highlight: $select.search"></div>
                 </ui-select-choices>
             </ui-select>
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Weight Increment in Zone Rate Table</th>
+        <td>
+            <div class="input-group" ng-class="{'has-error': companyInfo.weightIncrementForZoneRate.$invalid}">
+                <div class="input-group-addon">Per</div>
+                <input name="weightIncrementForZoneRate" type="text" class="form-control"
+                       ng-model="ltlCtrl.company.ltl.weightIncrementForZoneRate"
+                       placeholder="x.xx" required ng-change="ltlCtrl.change()">
+                <div class="input-group-addon">LBS</div>
+            </div>
         </td>
         <td></td>
     </tr>
@@ -64,7 +77,6 @@
                 <button class="form-control glyphicon glyphicon-import" ng-click="ltlCtrl.importLTLRates()" ng-show="ltlCtrl.ltlcsv.result">Import</button>
             </div>
         </div>
-            </div>
         </td>
         <td><div style="float: left">
             <button class="form-control glyphicon glyphicon-download-alt" ng-csv="ltlCtrl.getLTLRates()" filename="ltl-rates.csv"></button>
