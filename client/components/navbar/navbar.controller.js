@@ -26,6 +26,12 @@ angular.module('servicesApp')
         'title': 'Delivery Orders',
         'link': '/delivery-order',
         'alwaysShow': true
+      },
+
+      {
+        'title': 'Playground',
+        'link': '/playground',
+        'alwaysShow': true
       }
     ];
 

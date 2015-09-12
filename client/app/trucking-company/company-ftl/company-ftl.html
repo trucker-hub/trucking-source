@@ -67,14 +67,14 @@
         <div class="col-xs-2">Size <b>{{weightCharge.containerSize}}</b></div>
         <div class="col-xs-10">
           <div class="row form-inline-padding" ng-repeat="range in weightCharge.ranges">
-            <div class="col-xs-4">
+            <div class="col-xs-3">
               <div class="input-group">
                 <div class="input-group-addon"> + $</div>
                 <input type="text" class="form-control"
                        ng-model="range.charge" placeholder="Amount" >
               </div>
             </div>
-            <div class="col-xs-5">
+            <div class="col-xs-4">
               <div class="input-group">
                 <div class="input-group-addon">Over</div>
                 <input type="text" class="form-control"
@@ -87,6 +87,7 @@
         </div>
       </div>
       <br>
-    </td><td></td>
+    </td>
+    <td></td>
   </tr>
 </table>

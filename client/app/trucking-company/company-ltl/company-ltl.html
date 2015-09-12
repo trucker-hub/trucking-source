@@ -29,54 +29,58 @@
     </td>
     <td></td>
   </tr>
-  <tr>
-    <th>Regions</th>
-    <td>
-      <ui-select multiple ng-model="ltlCtrl.company.ltl.regions" ng-change="ltlCtrl.change()">
-        <ui-select-match placeholder="Select regions">{{$item.county}},
-          {{$item.state}}
-        </ui-select-match>
-        <ui-select-choices
-          repeat="region in dCtrl.regions | propsFilter: {county: $select.search}"
-          refresh="dCtrl.refreshRegions()"
-          refresh-delay="0">
-          <div ng-bind-html="region.county | highlight: $select.search"></div>
-        </ui-select-choices>
-      </ui-select>
-    </td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <th>Rate Zones</th>
-    <td>
-
-    </td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <th>Rates</th>
-    <td> <div class="row form-inline">
-      <div class="col-md-4 form-inline">
-        <span>{{ltlCtrl.getRateSummary()}}</span>
-        <button class="form-control glyphicon glyphicon-pencil" ng-click="ltlCtrl.openRateModal()"></button>
-      </div>
-      <div class="col-md-8 form-inline">
-        <ng-csv-import id="ltlRateFile"
-                       class="import-btn form-control"
-                       content="ltlCtrl.ltlcsv.content"
-                       header="ltlCtrl.ltlcsv.header" header-visible="ltlCtrl.ltlcsv.headerVisible" separator-visible="ltlCtrl.ltlcsv.separatorVisible"
-                       separator="ltlCtrl.ltlcsv.separator"
-                       result="ltlCtrl.ltlcsv.result">
-        </ng-csv-import>
-        <button class="form-control glyphicon glyphicon-import" ng-click="ltlCtrl.importLTLRates()" ng-show="ltlCtrl.ltlcsv.result">Import</button>
-      </div>
-    </div>
-    </td>
-    <td><div style="float: left">
-      <button class="form-control glyphicon glyphicon-download-alt" ng-csv="ltlCtrl.getLTLRates()" filename="ltl-rates.csv"></button>
-    </div></td>
-  </tr>
+    <tr>
+        <th>Regions</th>
+        <td>
+            <ui-select multiple ng-model="ltlCtrl.company.ltl.regions" ng-change="ltlCtrl.change()">
+                <ui-select-match placeholder="Select regions">{{$item.county}},
+                    {{$item.state}}
+                </ui-select-match>
+                <ui-select-choices group-by="ltlCtrl.getState"
+                                   repeat="region in dCtrl.regions | propsFilter: {county: $select.search}"
+                                   refresh="dCtrl.refreshRegions()"
+                                   refresh-delay="0">
+                    <div ng-bind-html="region.county | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Weight Increment in Zone Rate Table</th>
+        <td>
+            <div class="input-group col-md-3" ng-class="{'has-error': companyInfo.weightIncrementForZoneRate.$invalid}">
+                <div class="input-group-addon">Per</div>
+                <input name="weightIncrementForZoneRate" type="text" class="form-control"
+                       ng-model="ltlCtrl.company.ltl.weightIncrementForZoneRate"
+                       placeholder="x.xx" required ng-change="ltlCtrl.change()">
+                <div class="input-group-addon">LBS</div>
+            </div>
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Rates</th>
+        <td> <div class="row form-inline">
+            <div class="col-md-4 form-inline">
+                <span>{{ltlCtrl.getRateSummary()}}</span>
+                <button class="form-control glyphicon glyphicon-pencil" ng-click="ltlCtrl.openRateModal()"></button>
+            </div>
+            <div class="col-md-8 form-inline">
+                <ng-csv-import id="ltlRateFile"
+                               class="import-btn form-control"
+                               content="ltlCtrl.ltlcsv.content"
+                               header="ltlCtrl.ltlcsv.header" header-visible="ltlCtrl.ltlcsv.headerVisible" separator-visible="ltlCtrl.ltlcsv.separatorVisible"
+                               separator="ltlCtrl.ltlcsv.separator"
+                               result="ltlCtrl.ltlcsv.result">
+                </ng-csv-import>
+                <button class="form-control glyphicon glyphicon-import" ng-click="ltlCtrl.importLTLRates()" ng-show="ltlCtrl.ltlcsv.result">Import</button>
+            </div>
+        </div>
+        </td>
+        <td><div style="float: left">
+            <button class="form-control glyphicon glyphicon-download-alt" ng-csv="ltlCtrl.getLTLRates()" filename="ltl-rates.csv"></button>
+        </div></td>
+    </tr>
 
 </table>
