@@ -1,93 +1,92 @@
 <table class="table table-condensed table-responsive table-striped">
-    <tr>
-        <th class="col-xs-3">Fuel Surcharge(%)</th>
-        <td class="col-xs-8">
-            <div ng-class="{'has-error': companyInfo.ftlSurcharge.$invalid}">
-                <input name="ftlSurcharge" type="text" class="form-control" size="10"
-                       ng-model="ftlCtrl.company.ftl.fuelSurcharge"
-                       placeholder="20" required ng-change="ftlCtrl.change()"></div>
-        </td>
-        <td class="col-xs-1"></td>
-    </tr>
-    <tr>
-        <th>Residential Delivery</th>
-        <td>
-            <div ng-class="{'has-error': companyInfo.residentialCharge.$invalid}">
-                <input name="residentialCharge" type="text" class="form-control" size="13"
-                       ng-model="ftlCtrl.company.ftl.residentialCharge"
-                       placeholder="00.00" required ng-change="ftlCtrl.change()"></div>
-        </td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>Regions</th>
-        <td>
-            <ui-select multiple ng-model="ftlCtrl.company.ftl.regions" ng-change="ftlCtrl.change()">
-                <ui-select-match placeholder="Select regions">{{$item.county}},
-                    {{$item.state}}
-                </ui-select-match>
-                <ui-select-choices group-by="ftlCtrl.getState"
-                                   repeat="region in dCtrl.regions | propsFilter: {county: $select.search}"
-                                   refresh="dCtrl.refreshRegions()"
-                                   refresh-delay="0">
-                    <div ng-bind-html="region.county | highlight: $select.search"></div>
-                </ui-select-choices>
-            </ui-select>
-        </td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>Rates</th>
-        <td> <div class="row form-inline">
-            <div class="col-md-4 form-inline">
-                <span>{{ftlCtrl.getFTLRateSummary()}}</span>
-                <button class="form-control glyphicon glyphicon-pencil" ng-click="ftlCtrl.openRateModal()"></button>
-            </div>
-            <div class="col-md-8 form-inline">
-                <ng-csv-import id="ftlRateFile"
-                               class="import-btn form-control"
-                               content="ftlCtrl.ftlcsv.content"
-                               header="ftlCtrl.ftlcsv.header" header-visible="ftlCtrl.ftlcsv.headerVisible" separator-visible="ftlCtrl.ftlcsv.separatorVisible"
-                               separator="ftlCtrl.ftlcsv.separator"
-                               result="ftlCtrl.ftlcsv.result">
-                </ng-csv-import>
-                <button class="form-control glyphicon glyphicon-import" ng-click="ftlCtrl.importFTLRates()" ng-show="ftlCtrl.ftlcsv.result">Import</button>
-            </div>
-        </div>
-            </div>
-        </td>
-        <td><div style="float: left">
-            <button class="form-control glyphicon glyphicon-download-alt" ng-csv="ftlCtrl.getFtlRates()" filename="ftl-rates.csv"></button>
-        </div></td>
-    </tr>
+  <tr>
+    <th class="col-xs-3">Fuel Surcharge(%)</th>
+    <td class="col-xs-8">
+      <div ng-class="{'has-error': companyInfo.ftlSurcharge.$invalid}">
+        <input name="ftlSurcharge" type="text" class="form-control" size="10"
+               ng-model="ftlCtrl.company.ftl.fuelSurcharge"
+               placeholder="20" required ng-change="ftlCtrl.change()"></div>
+    </td>
+    <td class="col-xs-1"></td>
+  </tr>
+  <tr>
+    <th>Residential Delivery</th>
+    <td>
+      <div ng-class="{'has-error': companyInfo.residentialCharge.$invalid}">
+        <input name="residentialCharge" type="text" class="form-control" size="13"
+               ng-model="ftlCtrl.company.ftl.residentialCharge"
+               placeholder="00.00" required ng-change="ftlCtrl.change()"></div>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Regions</th>
+    <td>
+      <ui-select multiple ng-model="ftlCtrl.company.ftl.regions" ng-change="ftlCtrl.change()">
+        <ui-select-match placeholder="Select regions">{{$item.county}},
+          {{$item.state}}
+        </ui-select-match>
+        <ui-select-choices group-by="ftlCtrl.getState"
+                           repeat="region in dCtrl.regions | propsFilter: {county: $select.search}"
+                           refresh="dCtrl.refreshRegions()"
+                           refresh-delay="0">
+          <div ng-bind-html="region.county | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Rates</th>
+    <td> <div class="row form-inline">
+      <div class="col-md-4 form-inline">
+        <span>{{ftlCtrl.getFTLRateSummary()}}</span>
+        <button class="form-control glyphicon glyphicon-pencil" ng-click="ftlCtrl.openRateModal()"></button>
+      </div>
+      <div class="col-md-8 form-inline">
+        <ng-csv-import id="ftlRateFile"
+                       class="import-btn form-control"
+                       content="ftlCtrl.ftlcsv.content"
+                       header="ftlCtrl.ftlcsv.header" header-visible="ftlCtrl.ftlcsv.headerVisible" separator-visible="ftlCtrl.ftlcsv.separatorVisible"
+                       separator="ftlCtrl.ftlcsv.separator"
+                       result="ftlCtrl.ftlcsv.result">
+        </ng-csv-import>
+        <button class="form-control glyphicon glyphicon-import" ng-click="ftlCtrl.importFTLRates()" ng-show="ftlCtrl.ftlcsv.result">Import</button>
+      </div>
+    </div>
+    </td>
+    <td><div style="float: left">
+      <button class="form-control glyphicon glyphicon-download-alt" ng-csv="ftlCtrl.getFtlRates()" filename="ftl-rates.csv"></button>
+    </div></td>
+  </tr>
 
-    <tr>
-        <th>Weight Charges</th>
-        <td>
-            <div class="row" ng-repeat="weightCharge in ftlCtrl.company.ftl.OverWeightCharges">
-                <div class="col-xs-2">Size <b>{{weightCharge.containerSize}}</b></div>
-                <div class="col-xs-10">
-                    <div class="row form-inline-padding" ng-repeat="range in weightCharge.ranges">
-                        <div class="col-xs-4">
-                            <div class="input-group">
-                                <div class="input-group-addon"> + $</div>
-                                <input type="text" class="form-control"
-                                       ng-model="range.charge" placeholder="Amount" >
-                            </div>
-                        </div>
-                        <div class="col-xs-5">
-                            <div class="input-group">
-                                <div class="input-group-addon">Over</div>
-                                <input type="text" class="form-control"
-                                       ng-model="range.limit" placeholder="weight">
-                                <div class="input-group-addon">LBS</div>
-                            </div>
-                        </div>
-                        <br>
-                    </div>
-                </div>
+  <tr>
+    <th>Weight Charges</th>
+    <td>
+      <div class="row" ng-repeat="weightCharge in ftlCtrl.company.ftl.OverWeightCharges">
+        <div class="col-xs-2">Size <b>{{weightCharge.containerSize}}</b></div>
+        <div class="col-xs-10">
+          <div class="row form-inline-padding" ng-repeat="range in weightCharge.ranges">
+            <div class="col-xs-4">
+              <div class="input-group">
+                <div class="input-group-addon"> + $</div>
+                <input type="text" class="form-control"
+                       ng-model="range.charge" placeholder="Amount" >
+              </div>
+            </div>
+            <div class="col-xs-5">
+              <div class="input-group">
+                <div class="input-group-addon">Over</div>
+                <input type="text" class="form-control"
+                       ng-model="range.limit" placeholder="weight">
+                <div class="input-group-addon">LBS</div>
+              </div>
             </div>
             <br>
-        </td><td></td>
-    </tr>
+          </div>
+        </div>
+      </div>
+      <br>
+    </td><td></td>
+  </tr>
 </table>
