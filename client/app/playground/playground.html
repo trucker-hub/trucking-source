@@ -3,7 +3,10 @@
   <table class="table table-responsive table-bordered">
     <tr>
       <th rowspan="2" class="col-md-2"></th>
-      <th ng-attr-colspan="{{ltl.zoneRateVariables.zones.length}}" align="middle" class="info center-text"><span>Rate Zones</span> <i class="fa fa-pencil"></i></th>
+      <th ng-attr-colspan="{{ltl.zoneRateVariables.zones.length}}" align="middle" class="info center-text">
+        <div ng-show="!editingZones"><span>Rate Zones</span> <a ng-click="editZones()"><i class="fa fa-pencil"></i></a></div>
+        <div ng-show="editingZones"><input ng-model="zoneStrings" placeholder="Z,Z,Z"> <a ng-click="saveZones()"><i class="fa fa-floppy-o"></i></a> </div>
+      </th>
     </tr>
     <tr>
       <th ng-repeat="entry in ltl.zoneRateVariables.zones" class="center-text">
@@ -15,14 +18,44 @@
     </tr>
     <tr ng-repeat="entry in ltl.flatRates">
       <th class="col-md-2">{{entry.ranges[0]}} - {{entry.ranges[1]}} lbs</th>
-      <td ng-repeat="rate in entry.rates"><input type="text" size="3" ng-model="rate.rate"></td>
+      <td ng-repeat="rate in entry.rates"><input type="number" size="3" required ng-model="rate.rate"></td>
     </tr>
     <tr>
       <th class="info" class="col-md-1">Weight Tiers <i class="fa fa-pencil"></i></th>
       <th ng-attr-colspan="{{ltl.zoneRateVariables.zones.length}}" class="info center-text"> <i class="fa fa-usd"></i> Per {{ltl.zoneRateVariables.weightIncrement}} lbs</th></tr>
     <tr ng-repeat="entry in ltl.weightRates">
       <th class="col-md-2">{{entry.ranges[0]}} - {{entry.ranges[1]}} lbs</th>
-      <td ng-repeat="rate in entry.rates"><input type="text" size="3" ng-model="rate.rate"></td>
+      <td ng-repeat="rate in entry.rates"><input type="number" size="3" required ng-model="rate.rate"></td>
     </tr>
+    <tr>
+      <th class="info">Drop off Charges</th>
+      <th class="info center-text" ng-attr-colspan="{{ltl.zoneRateVariables.zones.length}}"><i class="fa fa-usd"></i> By Operation Hours</th>
+    </tr>
+    <tr>
+      <th>Normal Hours</th>
+      <td ng-repeat="zone in ltl.zoneRateVariables.zones">
+            <input type="number"  id="normalHours" placeholder="xx.00" required ng-model="zone.dropOffCharge">
+        </td>
+    </tr>
+    <tr>
+      <th>Off Hours</th>
+      <td ng-repeat="zone in ltl.zoneRateVariables.zones">
+          <input type="number"  placeholder="xx.00" required ng-model="zone.dropOffChargeOffhour">
+      </td>
+    </tr>
+    <tr>
+      <th>Weekend Hours</th>
+      <td ng-repeat="zone in ltl.zoneRateVariables.zones">
+          <input type="number" size="3" placeholder="xx.00" required ng-model="zone.dropOffChargeWeekend">
+      </td>
+    </tr>
+
+    <tr>
+      <th>Holidays</th>
+      <td ng-repeat="zone in ltl.zoneRateVariables.zones">
+          <input type="number"  placeholder="xx.00" required ng-model="zone.dropOffChargeHoliday">
+      </td>
+    </tr>
+
   </table>
 </div>
