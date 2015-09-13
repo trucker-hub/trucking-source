@@ -41,7 +41,6 @@ var TruckingCompanySchema = new Schema({
     fuelSurcharge: Number,
     residentialCharge: Number,
     liftGateCharge: Number,
-    weightIncrementForZoneRate: Number,
     additionalCharges: [{
       name: String,
       charge: Number
@@ -51,6 +50,8 @@ var TruckingCompanySchema = new Schema({
       county: String,
       rateByCity: Boolean
     }],
+
+    weightIncrementForZoneRate: Number,
     zones: [
       {
         zone: String,

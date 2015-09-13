@@ -1,4 +1,28 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<div class="col-md-12">
-This is the playground view.
+<div class="container">
+  <table class="table table-responsive table-bordered">
+    <tr>
+      <th rowspan="2" class="col-md-2"></th>
+      <th ng-attr-colspan="{{ltl.zoneRateVariables.zones.length}}" align="middle" class="info center-text"><span>Rate Zones</span> <i class="fa fa-pencil"></i></th>
+    </tr>
+    <tr>
+      <th ng-repeat="entry in ltl.zoneRateVariables.zones" class="center-text">
+        <h4><span class="label label-primary">{{entry.label}}</span></h4>
+      </th>
+    </tr>
+    <tr><th class="info " class="col-md-1">Flat Rate Tiers <i class="fa fa-pencil"></i></th>
+      <th ng-attr-colspan="{{ltl.zoneRateVariables.zones.length}}" class="info center-text"><i class="fa fa-usd"></i></th>
+    </tr>
+    <tr ng-repeat="entry in ltl.flatRates">
+      <th class="col-md-2">{{entry.ranges[0]}} - {{entry.ranges[1]}} lbs</th>
+      <td ng-repeat="rate in entry.rates"><input type="text" size="3" ng-model="rate.rate"></td>
+    </tr>
+    <tr>
+      <th class="info" class="col-md-1">Weight Tiers <i class="fa fa-pencil"></i></th>
+      <th ng-attr-colspan="{{ltl.zoneRateVariables.zones.length}}" class="info center-text"> <i class="fa fa-usd"></i> Per {{ltl.zoneRateVariables.weightIncrement}} lbs</th></tr>
+    <tr ng-repeat="entry in ltl.weightRates">
+      <th class="col-md-2">{{entry.ranges[0]}} - {{entry.ranges[1]}} lbs</th>
+      <td ng-repeat="rate in entry.rates"><input type="text" size="3" ng-model="rate.rate"></td>
+    </tr>
+  </table>
 </div>
