@@ -1,42 +1,5 @@
 <table class="table table-condensed table-responsive table-striped">
   <tr>
-    <th class="col-xs-3">Fuel Surcharge(%)</th>
-    <td class="col-xs-8">
-      <div ng-class="{'has-error': companyInfo.ftlSurcharge.$invalid}">
-        <input name="ftlSurcharge" type="text" class="form-control" size="10"
-               ng-model="ftlCtrl.company.ftl.fuelSurcharge"
-               placeholder="20" required ng-change="ftlCtrl.change()"></div>
-    </td>
-    <td class="col-xs-1"></td>
-  </tr>
-  <tr>
-    <th>Residential Delivery</th>
-    <td>
-      <div ng-class="{'has-error': companyInfo.residentialCharge.$invalid}">
-        <input name="residentialCharge" type="text" class="form-control" size="13"
-               ng-model="ftlCtrl.company.ftl.residentialCharge"
-               placeholder="00.00" required ng-change="ftlCtrl.change()"></div>
-    </td>
-    <td></td>
-  </tr>
-  <tr>
-    <th>Regions</th>
-    <td>
-      <ui-select multiple ng-model="ftlCtrl.company.ftl.regions" ng-change="ftlCtrl.change()">
-        <ui-select-match placeholder="Select regions">{{$item.county}},
-          {{$item.state}}
-        </ui-select-match>
-        <ui-select-choices group-by="ftlCtrl.getState"
-                           repeat="region in dCtrl.regions | propsFilter: {county: $select.search}"
-                           refresh="dCtrl.refreshRegions()"
-                           refresh-delay="0">
-          <div ng-bind-html="region.county | highlight: $select.search"></div>
-        </ui-select-choices>
-      </ui-select>
-    </td>
-    <td></td>
-  </tr>
-  <tr>
     <th>Rates</th>
     <td> <div class="row form-inline">
       <div class="col-md-4 form-inline">
@@ -90,4 +53,43 @@
     </td>
     <td></td>
   </tr>
+
+  <tr>
+    <th class="col-xs-3">Fuel Surcharge(%)</th>
+    <td class="col-xs-8">
+      <div ng-class="{'has-error': companyInfo.ftlSurcharge.$invalid}">
+        <input name="ftlSurcharge" type="text" class="form-control" size="10"
+               ng-model="ftlCtrl.company.ftl.fuelSurcharge"
+               placeholder="20" required ng-change="ftlCtrl.change()"></div>
+    </td>
+    <td class="col-xs-1"></td>
+  </tr>
+  <tr>
+    <th>Residential Delivery</th>
+    <td>
+      <div ng-class="{'has-error': companyInfo.residentialCharge.$invalid}">
+        <input name="residentialCharge" type="text" class="form-control" size="13"
+               ng-model="ftlCtrl.company.ftl.residentialCharge"
+               placeholder="00.00" required ng-change="ftlCtrl.change()"></div>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Regions</th>
+    <td>
+      <ui-select multiple ng-model="ftlCtrl.company.ftl.regions" ng-change="ftlCtrl.change()">
+        <ui-select-match placeholder="Select regions">{{$item.county}},
+          {{$item.state}}
+        </ui-select-match>
+        <ui-select-choices group-by="ftlCtrl.getState"
+                           repeat="region in dCtrl.regions | propsFilter: {county: $select.search}"
+                           refresh="dCtrl.refreshRegions()"
+                           refresh-delay="0">
+          <div ng-bind-html="region.county | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
+    </td>
+    <td></td>
+  </tr>
+
 </table>

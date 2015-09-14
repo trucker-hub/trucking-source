@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
+    Schema = mongoose.Schema;
 
 var TruckingCompanySchema = new Schema({
   name: String,
@@ -50,28 +50,27 @@ var TruckingCompanySchema = new Schema({
       county: String,
       rateByCity: Boolean
     }],
-
-    weightIncrementForZoneRate: Number,
-    zones: [
-      {
-        zone: String,
+    zoneRateVariables: {
+      weightIncrement: Number,
+      zones: [{
+        label: String,
         dropOffCharge: Number,
         dropOffChargeOffhour: Number,
         dropOffChargeWeekend: Number,
-        dropOffChargeHoliday: Number,
-        tiers: [{
-          weightFrom: Number,
-          weightTo: Number,
-          flat: Boolean,
-          rate: Number
-        }]
-      }
-    ],
-    rates: [{
-      state: String,
-      city: String,
-      zipCode: String,
-      rateZone: String
+        dropOffChargeHoliday: Number
+      }]
+    },
+    flatRates: [{
+      tier: String,
+      ranges: [Number],
+      rates:[
+        {zone: String, rate:Number}
+      ]
+    }],
+    weightRates: [{
+      tier: String,
+      ranges: [Number],
+      rates: [{zone: String, rate: Number}]
     }]
   }
 });
