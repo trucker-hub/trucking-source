@@ -1,0 +1,85 @@
+
+  <table class="table table-responsive table-bordered">
+    <tr>
+      <th rowspan="2" class="col-md-2"></th>
+      <th ng-attr-colspan="{{rateCtrl.ltl.zoneRateVariables.zones.length}}" align="middle" class="active center-text">
+        <div ng-show="!rateCtrl.editingZones"><span>Rate Zones</span> <a ng-click="rateCtrl.editZones()"><i class="fa fa-pencil"></i></a></div>
+        <div ng-show="rateCtrl.editingZones"><input ng-model="rateCtrl.zoneStrings" placeholder="Z,Z,Z"> <a ng-click="rateCtrl.saveZones()"><i class="fa fa-floppy-o"></i></a> </div>
+      </th>
+    </tr>
+    <tr>
+      <th ng-repeat="entry in rateCtrl.ltl.zoneRateVariables.zones" class="center-text">
+        <h4><span class="label label-primary">{{entry.label}}</span></h4>
+      </th>
+    </tr>
+    <tr><th class="active " class="col-md-1">Flat Rate Tiers <i class="fa fa-pencil"></i></th>
+      <th ng-attr-colspan="{{rateCtrl.ltl.zoneRateVariables.zones.length}}" class="active center-text"><i class="fa fa-usd"></i></th>
+    </tr>
+    <tr ng-repeat="entry in rateCtrl.ltl.flatRates">
+      <th class="col-md-2">{{entry.ranges[0]}} - {{entry.ranges[1]}} lbs</th>
+      <td ng-repeat="rate in entry.rates"><input type="number" size="3" required ng-model="rate.rate"></td>
+    </tr>
+    <tr>
+      <th class="active" class="col-md-1">Weight Tiers <i class="fa fa-pencil"></i></th>
+      <th ng-attr-colspan="{{rateCtrl.ltl.zoneRateVariables.zones.length}}" class="active center-text"> <i class="fa fa-usd"></i> Per {{rateCtrl.ltl.zoneRateVariables.weightIncrement}} lbs</th></tr>
+    <tr ng-repeat="entry in rateCtrl.ltl.weightRates">
+      <th class="col-md-2">{{entry.ranges[0]}} - {{entry.ranges[1]}} lbs</th>
+      <td ng-repeat="rate in entry.rates"><input type="number" size="3" required ng-model="rate.rate"></td>
+    </tr>
+    <tr>
+      <th class="active">Drop off Charges</th>
+      <th class="active center-text" ng-attr-colspan="{{rateCtrl.ltl.zoneRateVariables.zones.length}}"><i class="fa fa-usd"></i> By Operation Hours</th>
+    </tr>
+    <tr>
+      <th>Normal Hours</th>
+      <td ng-repeat="zone in rateCtrl.ltl.zoneRateVariables.zones">
+        <input type="number"  id="normalHours" placeholder="xx.00" required ng-model="zone.dropOffCharge">
+      </td>
+    </tr>
+    <tr>
+      <th>Off Hours</th>
+      <td ng-repeat="zone in rateCtrl.ltl.zoneRateVariables.zones">
+        <input type="number"  placeholder="xx.00" required ng-model="zone.dropOffChargeOffhour">
+      </td>
+    </tr>
+    <tr>
+      <th>Weekend Hours</th>
+      <td ng-repeat="zone in rateCtrl.ltl.zoneRateVariables.zones">
+        <input type="number" size="3" placeholder="xx.00" required ng-model="zone.dropOffChargeWeekend">
+      </td>
+    </tr>
+
+    <tr>
+      <th>Holidays</th>
+      <td ng-repeat="zone in rateCtrl.ltl.zoneRateVariables.zones">
+        <input type="number"  placeholder="xx.00" required ng-model="zone.dropOffChargeHoliday">
+      </td>
+    </tr>
+
+    <tr>
+      <th class="active" ng-attr-colspan="{{rateCtrl.ltl.zoneRateVariables.zones.length+1}}">Rates by City and ZIP Code</th>
+    </tr>
+    <tr>
+      <th>Rates</th>
+      <td ng-attr-colspan="{{rateCtrl.ltl.zoneRateVariables.zones.length}}"> <div class="row form-inline">
+        <div class="col-md-4 form-inline">
+          <span>{{rateCtrl.getRateSummary()}}</span>
+          <button class="form-control glyphicon glyphicon-pencil" ng-click="rateCtrl.openRateModal()"></button>
+        </div>
+        <div class="col-md-8 form-inline">
+          <ng-csv-import id="ltlRateFile"
+                         class="import-btn form-control"
+                         content="rateCtrl.ltlcsv.content"
+                         header="rateCtrl.ltlcsv.header" header-visible="rateCtrl.ltlcsv.headerVisible" separator-visible="rateCtrl.ltlcsv.separatorVisible"
+                         separator="rateCtrl.ltlcsv.separator"
+                         result="rateCtrl.ltlcsv.result">
+          </ng-csv-import>
+          <button class="form-control glyphicon glyphicon-import" ng-click="rateCtrl.importLTLRates()" ng-show="rateCtrl.ltlcsv.result">Import</button>
+          <div style="float: left">
+            <button class="form-control glyphicon glyphicon-download-alt" ng-csv="ltlCtrl.getLTLRates()" filename="ltl-rates.csv"></button>
+          </div>
+        </div>
+      </div>
+      </td>
+    </tr>
+  </table>

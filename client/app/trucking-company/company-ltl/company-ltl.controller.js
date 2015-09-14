@@ -20,10 +20,13 @@ angular.module('servicesApp')
 
       vm.change = function() {
         vm.company.changed = true;
-      }
+      };
 
+      vm.getLTL = function() {
+        return vm.company.ltl;
+      };
       vm.getLtlRates = function() {
-        return vm.company.ftl.rates;
+        return vm.company.ltl.rates;
       };
 
       vm.getRateSummary = function() {

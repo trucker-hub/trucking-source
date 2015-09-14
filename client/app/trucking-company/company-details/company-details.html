@@ -83,7 +83,9 @@
                       <br><div ng-controller="CompanyFtlCtrl as ftlCtrl" ng-init="ftlCtrl.setCompany(dCtrl.company)" ng-include="'app/trucking-company/company-ftl/company-ftl.html'"></div>
                     </tab>
                     <tab heading="LTL Freight rates">
-                        <br><div ng-controller="CompanyLtlCtrl as ltlCtrl" ng-init="ltlCtrl.setCompany(dCtrl.company)" ng-include="'app/trucking-company/company-ltl/company-ltl.html'"></div>
+                        <br>
+                      <div ng-controller="CompanyLtlCtrl as ltlCtrl" ng-init="ltlCtrl.setCompany(dCtrl.company)" ng-include="'app/trucking-company/company-ltl/company-ltl.html'"></div>
+
                     </tab>
 
                     <tab heading="Air Freight rates">
