@@ -12,7 +12,7 @@
       <h4><span class="label label-primary">{{entry.label}}</span></h4>
     </th>
   </tr>
-  <tr><th class="active " class="col-md-1">Flat Rate Tiers <i class="fa fa-pencil"></i></th>
+  <tr><th class="active " class="col-md-1">Flat Rate Tiers <a ng-click="ltlCtrl.openTierDialog()"><i class="fa fa-pencil"></i></a></i></th>
     <th ng-attr-colspan="{{ltlCtrl.ltl.zoneRateVariables.zones.length}}" class="active center-text"><i class="fa fa-usd"></i></th>
   </tr>
   <tr ng-repeat="entry in ltlCtrl.ltl.flatRates">
@@ -20,7 +20,7 @@
     <td ng-repeat="rate in entry.rates"><input type="number" size="3" required ng-model="rate.rate" ng-change="ltlCtrl.change()"></td>
   </tr>
   <tr>
-    <th class="active" class="col-md-1">Weight Tiers <i class="fa fa-pencil"></i></th>
+    <th class="active" class="col-md-1">Weight Tiers <a ng-click="ltlCtrl.openTierDialog()"><i class="fa fa-pencil"></i></a></th>
     <th ng-attr-colspan="{{ltlCtrl.ltl.zoneRateVariables.zones.length}}" class="active center-text">
       <div ng-show="!ltlCtrl.editWeightIncrement"><i class="fa fa-usd"></i> Per {{ltlCtrl.ltl.zoneRateVariables.weightIncrement}} lbs <a ng-click="ltlCtrl.editIncrement()"><i class="fa fa-pencil"></i></a></div>
       <div ng-show="ltlCtrl.editWeightIncrement"><i class="fa fa-usd"></i> Per <input ng-model="ltlCtrl.ltl.zoneRateVariables.weightIncrement" placeholder="999"> lbs <a ng-click="ltlCtrl.saveIncrement()"><i class="fa fa-floppy-o"></i></a></div>

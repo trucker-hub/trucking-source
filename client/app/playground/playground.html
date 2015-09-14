@@ -1,87 +1,57 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<div class="container">
-  <table class="table table-responsive table-bordered">
+<div class="modal-header">
+  <span class="modal-title"><b>LTL Tier Editing</b></span>
+  <div style="float:right"> <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancel()"></span></div>
+
+</div>
+<div class="modal-body">
+
+  <table class="table">
     <tr>
-      <th rowspan="2" class="col-md-2"></th>
-      <th ng-attr-colspan="{{ltl.zoneRateVariables.zones.length}}" align="middle" class="info center-text">
-        <div ng-show="!editingZones"><span>Rate Zones</span> <a ng-click="editZones()"><i class="fa fa-pencil"></i></a></div>
-        <div ng-show="editingZones"><input ng-model="zoneStrings" placeholder="Z,Z,Z"> <a ng-click="saveZones()"><i class="fa fa-floppy-o"></i></a> </div>
-      </th>
-    </tr>
-    <tr>
-      <th ng-repeat="entry in ltl.zoneRateVariables.zones" class="center-text">
-        <h4><span class="label label-primary">{{entry.label}}</span></h4>
-      </th>
-    </tr>
-    <tr><th class="info " class="col-md-1">Flat Rate Tiers <i class="fa fa-pencil"></i></th>
-      <th ng-attr-colspan="{{ltl.zoneRateVariables.zones.length}}" class="info center-text"><i class="fa fa-usd"></i></th>
-    </tr>
-    <tr ng-repeat="entry in ltl.flatRates">
-      <th class="col-md-2">{{entry.ranges[0]}} - {{entry.ranges[1]}} lbs</th>
-      <td ng-repeat="rate in entry.rates"><input type="number" size="3" required ng-model="rate.rate"></td>
+      <th class="active center-text" colspan="5">Flat Rate Tiers</th>
     </tr>
     <tr>
-      <th class="info" class="col-md-1">Weight Tiers <i class="fa fa-pencil"></i></th>
-      <th ng-attr-colspan="{{ltl.zoneRateVariables.zones.length}}" class="info center-text"> <i class="fa fa-usd"></i> Per {{ltl.zoneRateVariables.weightIncrement}} lbs</th></tr>
-    <tr ng-repeat="entry in ltl.weightRates">
-      <th class="col-md-2">{{entry.ranges[0]}} - {{entry.ranges[1]}} lbs</th>
-      <td ng-repeat="rate in entry.rates"><input type="number" size="3" required ng-model="rate.rate"></td>
+      <th>Original</th> <th>Tier</th> <th>Min Weight</th><th>Max Weight</th><th></th>
+    </tr>
+    <tr ng-repeat="entry in flatTiers track by $index">
+      <th class="col-md-2">{{entry.tier}}: {{entry.ranges[0]}} - {{entry.ranges[1]}} lbs</th>
+      <td><input type="text" ng-model="entry.tier" class="form-control"></td>
+      <td><input type="number" ng-model="entry.ranges[0]" class="form-control"></td>
+      <td><input type="number" ng-model="entry.ranges[1]" class="form-control"></td>
+      <td><a class="btn btn-danger btn-sm" ng-click="removeFlatTier($index)"> <i class="fa fa-minus"></i></a></td>
     </tr>
     <tr>
-      <th class="info">Drop off Charges</th>
-      <th class="info center-text" ng-attr-colspan="{{ltl.zoneRateVariables.zones.length}}"><i class="fa fa-usd"></i> By Operation Hours</th>
-    </tr>
-    <tr>
-      <th>Normal Hours</th>
-      <td ng-repeat="zone in ltl.zoneRateVariables.zones">
-            <input type="number"  id="normalHours" placeholder="xx.00" required ng-model="zone.dropOffCharge">
-        </td>
-    </tr>
-    <tr>
-      <th>Off Hours</th>
-      <td ng-repeat="zone in ltl.zoneRateVariables.zones">
-          <input type="number"  placeholder="xx.00" required ng-model="zone.dropOffChargeOffhour">
+      <th class="col-md-2">New Flat Tier: {{newFlatTier.ranges[0]}} - {{newFlatTier.ranges[1]}} lbs</th>
+      <td><input type="text" ng-model="newFlatTier.tier" class="form-control"></td>
+      <td><input type="number" ng-model="newFlatTier.ranges[0]" class="form-control"></td>
+      <td><input type="number" ng-model="newFlatTier.ranges[1]" class="form-control"></td>
+      <td><a class="btn btn-primary btn-sm" ng-click="addFlatTier()"> <i class="fa fa-plus"></i></a>
       </td>
     </tr>
     <tr>
-      <th>Weekend Hours</th>
-      <td ng-repeat="zone in ltl.zoneRateVariables.zones">
-          <input type="number" size="3" placeholder="xx.00" required ng-model="zone.dropOffChargeWeekend">
-      </td>
+      <th class="active" colspan="5">Weight Tiers</th>
+    </tr>
+    <tr>
+      <th>Original</th> <th>Tier</th> <th>Min Weight</th><th>Max Weight</th><th></th>
+    </tr>
+    <tr ng-repeat="entry in weightTiers track by $index">
+      <th class="col-md-2">{{entry.tier}}: {{entry.ranges[0]}} - {{entry.ranges[1]}} lbs</th>
+      <td><input type="text" ng-model="entry.tier" class="form-control"></td>
+      <td><input type="number" ng-model="entry.ranges[0]" class="form-control"></td>
+      <td><input type="number" ng-model="entry.ranges[1]" class="form-control"></td>
+      <td><a class="btn btn-danger btn-sm" ng-click="removeWeightTier($index)"> <i class="fa fa-minus"></i></a></td>
+    </tr>
+    <tr>
+      <th class="col-md-2">New Weight Tier: {{newWeightTier.ranges[0]}} - {{newWeightTier.ranges[1]}} lbs</th>
+      <td><input type="text" ng-model="newWeightTier.tier" class="form-control"></td>
+      <td><input type="number" ng-model="newWeightTier.ranges[0]" class="form-control"></td>
+      <td><input type="number" ng-model="newWeightTier.ranges[1]" class="form-control"></td>
+      <td><a class="btn btn-primary btn-sm" ng-click="addWeightTier()"> <i class="fa fa-plus"></i></a></td>
     </tr>
 
-    <tr>
-      <th>Holidays</th>
-      <td ng-repeat="zone in ltl.zoneRateVariables.zones">
-          <input type="number"  placeholder="xx.00" required ng-model="zone.dropOffChargeHoliday">
-      </td>
-    </tr>
-
-    <tr>
-      <th class="info" ng-attr-colspan="{{ltl.zoneRateVariables.zones.length+1}}">Rates by City and ZIP Code</th>
-      </tr>
-    <tr>
-      <th>Rates</th>
-      <td ng-attr-colspan="{{ltl.zoneRateVariables.zones.length}}"> <div class="row form-inline">
-        <div class="col-md-4 form-inline">
-          <span>{{ltlCtrl.getRateSummary()}}</span>
-          <button class="form-control glyphicon glyphicon-pencil" ng-click="ltlCtrl.openRateModal()"></button>
-        </div>
-        <div class="col-md-8 form-inline">
-          <ng-csv-import id="ltlRateFile"
-                         class="import-btn form-control"
-                         content="ltlCtrl.ltlcsv.content"
-                         header="ltlCtrl.ltlcsv.header" header-visible="ltlCtrl.ltlcsv.headerVisible" separator-visible="ltlCtrl.ltlcsv.separatorVisible"
-                         separator="ltlCtrl.ltlcsv.separator"
-                         result="ltlCtrl.ltlcsv.result">
-          </ng-csv-import>
-          <button class="form-control glyphicon glyphicon-import" ng-click="ltlCtrl.importLTLRates()" ng-show="ltlCtrl.ltlcsv.result">Import</button>
-          <div style="float: left">
-            <button class="form-control glyphicon glyphicon-download-alt" ng-csv="ltlCtrl.getLTLRates()" filename="ltl-rates.csv"></button>
-          </div>
-        </div>
-      </div>
-      </td>
-    </tr>
   </table>
+</div>
+<div class="modal-footer">
+  <button style="float:left" class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+  <button style="float:right" class="btn btn-primary" type="button" ng-click="ok()">Save</button>
 </div>

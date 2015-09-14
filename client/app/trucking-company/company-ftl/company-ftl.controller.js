@@ -82,6 +82,7 @@ angular.module('servicesApp')
           animation: true,
           templateUrl: 'app/trucking-company/ftl-rates/ftl-rates.html',
           controller: 'FtlRatesCtrl',
+            scope: $scope,
           windowClass: 'full-screen-modal',
           resolve: {
             rates: function () {

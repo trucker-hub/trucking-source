@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope, $scope, $http, $modal) {
-    var vm = this;
 
+    var vm = this;
 
     vm.ltlcsv = {
         content: null,
@@ -26,7 +26,6 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
         vm.editWeightIncrement = false;
     }
     vm.editZones = function() {
-
         vm.zoneStrings = vm.ltl.zoneRateVariables.zones.map(function(item) {
             return item.label;
         }).join(",");
@@ -119,23 +118,67 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
         vm.openRateModal();
 
     };
-    vm.openRateModal = function () {
+
+    vm.updateTierRates = function(newTiers, tierRates) {
+        var i, newTierRates = [];
+        for(i=0; i < newTiers.length; ++i) {
+            var tier = newTiers[i];
+            var existing = tierRates.filter(function(item) {
+                if(tier.previous== item.tier ) {
+                    return item;
+                }
+            });
+            if(existing.length==1) {
+                existing[0].ranges = tier.ranges;
+                existing[0].tier = tier.tier;
+                newTierRates.push(existing[0]);
+            }else {
+                newTierRates.push({
+                    tier: tier.tier,
+                    ranges: tier.ranges,
+                    rates: []
+                });
+            }
+        }
+        return newTierRates;
+    };
+
+    vm.openTierDialog = function () {
 
         var modalInstance = $modal.open({
             animation: true,
-            templateUrl: 'app/trucking-company/ftl-rates/ftl-rates.html',
-            controller: 'FtlRatesCtrl',
-            windowClass: 'full-screen-modal',
+            templateUrl: 'app/trucking-company/company-ltl/tier-editing/tier-editing.html',
+            controller: 'TierEditingCtrl',
+            size: 'lg',
             resolve: {
                 rates: function () {
-                    return vm.company.ltl.rates;
+                    return vm.company.ltl;
+                },
+                flatTiers: function() {
+                    return vm.company.ltl.flatRates.map(function(item) {
+                        return {
+                            tier: item.tier,
+                            previous: item.tier,
+                            ranges: item.ranges
+                        };
+                    });
+                },
+                weightTiers: function() {
+                    return vm.company.ltl.weightRates.map(function(item) {
+                        return {
+                            tier: item.tier,
+                            previous: item.tier,
+                            ranges: item.ranges
+                        };
+                    });
                 }
             }
         });
 
         modalInstance.result.then(
-            function (rates) {
-                vm.company.ltl.rates = rates;
+            function (result) {
+                vm.company.ltl.weightRates = vm.updateTierRates(result.weight, vm.company.ltl.weightRates);
+                vm.company.ltl.flatRates =   vm.updateTierRates(result.flat,     vm.company.ltl.flatRates);
                 vm.change();
             },
             function () {
