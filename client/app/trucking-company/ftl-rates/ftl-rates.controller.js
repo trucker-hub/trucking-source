@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('FtlRatesCtrl', function ($scope, $modalInstance, rates) {
+    .controller('FtlRatesCtrl', function ($scope, $modalInstance, rates) {
 
         $scope.gridOptions = {};
         $scope.gridOptions.data = rates;
@@ -28,11 +28,11 @@ angular.module('servicesApp')
                 "dropOffCharges": [{timePeriod: "normal", charge:100}]
             });
         }
-      $scope.ok = function () {
-        $modalInstance.close($scope.gridOptions.data);
-      };
+        $scope.ok = function () {
+            $modalInstance.close($scope.gridOptions.data);
+        };
 
-      $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
-      };
-  });
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    });

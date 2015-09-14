@@ -151,7 +151,7 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
             controller: 'TierEditingCtrl',
             size: 'lg',
             resolve: {
-                rates: function () {
+                ltl: function () {
                     return vm.company.ltl;
                 },
                 flatTiers: function() {
