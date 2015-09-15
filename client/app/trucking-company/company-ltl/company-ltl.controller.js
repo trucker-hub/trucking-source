@@ -4,18 +4,19 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
 
   var vm = this;
 
-  vm.ltlcsv = {
-    content: null,
-    header: true,
-    headerVisible: false,
-    separator: ",",
-    separatorVisible: false,
-    result: null
-  };
-
-  vm.setCompany = function(company) {
+  vm.setCompany = function(company, freight, type) {
     vm.company = company;
-    vm.ltl = vm.company.ltl;
+    vm.freight = freight;
+    vm.type = type;
+
+    vm.freight.csv = {
+      content: null,
+      header: true,
+      headerVisible: false,
+      separator: ",",
+      separatorVisible: false,
+      result: null
+    };
   };
 
   vm.editIncrement = function() {
@@ -26,7 +27,7 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
     vm.editWeightIncrement = false;
   }
   vm.editZones = function() {
-    vm.zoneStrings = vm.ltl.zoneRateVariables.zones.map(function(item) {
+    vm.zoneStrings = vm.freight.zoneRateVariables.zones.map(function(item) {
       return item.label;
     }).join(",");
     vm.editingZones = true;
@@ -67,7 +68,7 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
     var i;
     for(i=0; i < zones.length; ++i) {
       var zone = zones[i];
-      var existing = vm.ltl.zoneRateVariables.zones.filter(function(item) {
+      var existing = vm.freight.zoneRateVariables.zones.filter(function(item) {
         if(item.label==zone) {
           return item;
         }
@@ -82,10 +83,10 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
           dropOffChargeHoliday: 40 });
       }
     }
-    vm.ltl.zoneRateVariables.zones = newZones;
+    vm.freight.zoneRateVariables.zones = newZones;
 
-    updateZoneRates(vm.ltl.flatRates, zones);
-    updateZoneRates(vm.ltl.weightRates, zones);
+    updateZoneRates(vm.freight.flatRates, zones);
+    updateZoneRates(vm.freight.weightRates, zones);
 
   };
 
@@ -93,18 +94,19 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
     vm.company.changed = true;
   };
 
-  vm.getLTL = function() {
-    return vm.company.ltl;
+  vm.getFreight = function() {
+    return vm.freight;
   };
-  vm.getLtlRates = function() {
-    return vm.company.ltl.rates;
+  vm.getRates = function() {
+    return vm.freight.rates;
   };
 
   vm.getRateSummary = function() {
-    if(vm.ltl.flatRates.length + vm.ltl.weightRates.length> 1) {
-      return (vm.ltl.flatRates.length + vm.ltl.weightRates.length) + " rates available"
-    } else {
+
+    if(!vm.freight.rates) {
       return "Not rates yet";
+    } else {
+      return (vm.freight.rates.length) + " rates available"
     }
   };
 
@@ -112,11 +114,10 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
     return item.state;
   };
 
-  vm.importLTLRates = function() {
-    vm.company.ltl.rates = vm.ftlcsv.result;
-    console.log(JSON.stringify(vm.ltlcsv.result))
+  vm.importRates = function() {
+    vm.freight.rates = vm.freight.csv.result;
+    console.log(JSON.stringify(vm.freight.csv.result))
     vm.openRateModal();
-
   };
 
   vm.updateTierRates = function(newTiers, tierRates) {
@@ -133,7 +134,7 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
         existing[0].tier = tier.tier;
         newTierRates.push(existing[0]);
       }else {
-        var rates = vm.ltl.zoneRateVariables.zones.map(function(item) {
+        var rates = vm.freight.zoneRateVariables.zones.map(function(item) {
           return {
             zone: item.label,
             rate:0
@@ -150,6 +151,34 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
     return newTierRates;
   };
 
+  vm.openRateModal = function (type){
+
+    var modalInstance = $modal.open({
+      animation: true,
+      templateUrl: 'app/trucking-company/ltl-rates/ltl-rates.html',
+      controller: 'LtlRatesCtrl',
+      windowClass: 'full-screen-modal',
+      resolve: {
+        type: function() {
+          return vm.type;
+        },
+        rates: function () {
+          return vm.freight.rates;
+        }
+      }
+    });
+
+    modalInstance.result.then(
+        function (rates) {
+          vm.freight.rates = rates;
+          vm.change();
+        },
+        function () {
+          console.log('Modal dismissed at: ' + new Date());
+        }
+    );
+  };
+
   vm.openTierDialog = function () {
 
     var modalInstance = $modal.open({
@@ -158,11 +187,8 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
       controller: 'TierEditingCtrl',
       size: 'lg',
       resolve: {
-        ltl: function () {
-          return vm.company.ltl;
-        },
         flatTiers: function() {
-          return vm.company.ltl.flatRates.map(function(item) {
+          return vm.freight.flatRates.map(function(item) {
             return {
               tier: item.tier,
               previous: item.tier,
@@ -171,7 +197,7 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
           });
         },
         weightTiers: function() {
-          return vm.company.ltl.weightRates.map(function(item) {
+          return vm.freight.weightRates.map(function(item) {
             return {
               tier: item.tier,
               previous: item.tier,
@@ -184,8 +210,8 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
 
     modalInstance.result.then(
       function (result) {
-        vm.company.ltl.weightRates = vm.updateTierRates(result.weight, vm.company.ltl.weightRates);
-        vm.company.ltl.flatRates =   vm.updateTierRates(result.flat,     vm.company.ltl.flatRates);
+        vm.freight.weightRates = vm.updateTierRates(result.weight, vm.freight.weightRates);
+        vm.freight.flatRates =   vm.updateTierRates(result.flat,     vm.freight.flatRates);
         vm.change();
       },
       function () {

@@ -2,70 +2,70 @@
 <table class="table table-responsive table-bordered">
   <tr>
     <th rowspan="2" class="col-md-2"></th>
-    <th ng-attr-colspan="{{ltlCtrl.ltl.zoneRateVariables.zones.length}}" align="middle" class="active center-text">
+    <th ng-attr-colspan="{{ltlCtrl.freight.zoneRateVariables.zones.length}}" align="middle" class="active center-text">
       <div ng-show="!ltlCtrl.editingZones"><span>Rate Zones</span> <a ng-click="ltlCtrl.editZones()"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></div>
       <div ng-show="ltlCtrl.editingZones"><input ng-model="ltlCtrl.zoneStrings" placeholder="Z,Z,Z"> <a ng-click="ltlCtrl.saveZones()"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> </a> </div>
     </th>
   </tr>
   <tr>
-    <th ng-repeat="entry in ltlCtrl.ltl.zoneRateVariables.zones" class="center-text">
+    <th ng-repeat="entry in ltlCtrl.freight.zoneRateVariables.zones" class="center-text">
       <h4><span class="label label-primary">{{entry.label}}</span></h4>
     </th>
   </tr>
   <tr><th class="active " class="col-md-1">Flat Rate Tiers <a ng-click="ltlCtrl.openTierDialog()"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></i></th>
-    <th ng-attr-colspan="{{ltlCtrl.ltl.zoneRateVariables.zones.length}}" class="active center-text"><b>$</b></th>
+    <th ng-attr-colspan="{{ltlCtrl.freight.zoneRateVariables.zones.length}}" class="active center-text"><b>$</b></th>
   </tr>
-  <tr ng-repeat="entry in ltlCtrl.ltl.flatRates">
+  <tr ng-repeat="entry in ltlCtrl.freight.flatRates">
     <th class="col-md-2">{{entry.ranges[0]}} - {{entry.ranges[1]}} lbs</th>
     <td ng-repeat="rate in entry.rates"><input type="number" size="3" required ng-model="rate.rate" ng-change="ltlCtrl.change()"></td>
   </tr>
   <tr>
     <th class="active" class="col-md-1">Weight Tiers <a ng-click="ltlCtrl.openTierDialog()"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></i></a></th>
-    <th ng-attr-colspan="{{ltlCtrl.ltl.zoneRateVariables.zones.length}}" class="active center-text">
-      <div ng-show="!ltlCtrl.editWeightIncrement"><i class="fa fa-usd"></i> Per {{ltlCtrl.ltl.zoneRateVariables.weightIncrement}} lbs <a ng-click="ltlCtrl.editIncrement()"><i class="fa fa-pencil"></i></a></div>
-      <div ng-show="ltlCtrl.editWeightIncrement"><i class="fa fa-usd"></i> Per <input ng-model="ltlCtrl.ltl.zoneRateVariables.weightIncrement" placeholder="999"> lbs <a ng-click="ltlCtrl.saveIncrement()"><i class="fa fa-floppy-o"></i></a></div>
+    <th ng-attr-colspan="{{ltlCtrl.freight.zoneRateVariables.zones.length}}" class="active center-text">
+      <div ng-show="!ltlCtrl.editWeightIncrement"><i class="fa fa-usd"></i> Per {{ltlCtrl.freight.zoneRateVariables.weightIncrement}} lbs <a ng-click="ltlCtrl.editIncrement()"><i class="fa fa-pencil"></i></a></div>
+      <div ng-show="ltlCtrl.editWeightIncrement"><i class="fa fa-usd"></i> Per <input ng-model="ltlCtrl.freight.zoneRateVariables.weightIncrement" placeholder="999"> lbs <a ng-click="ltlCtrl.saveIncrement()"><i class="fa fa-floppy-o"></i></a></div>
 
     </th></tr>
-  <tr ng-repeat="entry in ltlCtrl.ltl.weightRates">
+  <tr ng-repeat="entry in ltlCtrl.freight.weightRates">
     <th class="col-md-2">{{entry.ranges[0]}} - {{entry.ranges[1]}} lbs</th>
     <td ng-repeat="rate in entry.rates"><input type="number" size="3" required ng-model="rate.rate" ng-change="ltlCtrl.change()"></td>
   </tr>
   <tr>
     <th class="active">Drop off Charges</th>
-    <th class="active center-text" ng-attr-colspan="{{ltlCtrl.ltl.zoneRateVariables.zones.length}}">$ By Operation Hours</th>
+    <th class="active center-text" ng-attr-colspan="{{ltlCtrl.freight.zoneRateVariables.zones.length}}">$ By Operation Hours</th>
   </tr>
   <tr>
     <th>Normal Hours</th>
-    <td ng-repeat="zone in ltlCtrl.ltl.zoneRateVariables.zones">
+    <td ng-repeat="zone in ltlCtrl.freight.zoneRateVariables.zones">
       <input type="number"  id="normalHours" placeholder="xx.00" required ng-model="zone.dropOffCharge" ng-change="ltlCtrl.change()">
     </td>
   </tr>
   <tr>
     <th>Off Hours</th>
-    <td ng-repeat="zone in ltlCtrl.ltl.zoneRateVariables.zones">
+    <td ng-repeat="zone in ltlCtrl.freight.zoneRateVariables.zones">
       <input type="number"  placeholder="xx.00" required ng-model="zone.dropOffChargeOffhour" ng-change="ltlCtrl.change()">
     </td>
   </tr>
   <tr>
     <th>Weekend Hours</th>
-    <td ng-repeat="zone in ltlCtrl.ltl.zoneRateVariables.zones">
+    <td ng-repeat="zone in ltlCtrl.freight.zoneRateVariables.zones">
       <input type="number" size="3" placeholder="xx.00" required ng-model="zone.dropOffChargeWeekend" ng-change="ltlCtrl.change()">
     </td>
   </tr>
 
   <tr>
     <th>Holidays</th>
-    <td ng-repeat="zone in ltlCtrl.ltl.zoneRateVariables.zones">
+    <td ng-repeat="zone in ltlCtrl.freight.zoneRateVariables.zones">
       <input type="number"  placeholder="xx.00" required ng-model="zone.dropOffChargeHoliday" ng-change="ltlCtrl.change()">
     </td>
   </tr>
 
   <tr>
-    <th class="active" ng-attr-colspan="{{ltlCtrl.ltl.zoneRateVariables.zones.length+1}}">Rates by City and ZIP Code</th>
+    <th class="active" ng-attr-colspan="{{ltlCtrl.freight.zoneRateVariables.zones.length+1}}">Rates by City and ZIP Code</th>
   </tr>
   <tr>
     <th>Rates</th>
-    <td ng-attr-colspan="{{ltlCtrl.ltl.zoneRateVariables.zones.length}}"> <div class="row form-inline">
+    <td ng-attr-colspan="{{ltlCtrl.freight.zoneRateVariables.zones.length}}"> <div class="row form-inline">
       <div class="col-md-4 form-inline">
         <span>{{ltlCtrl.getRateSummary()}}</span>
         <button class="form-control glyphicon glyphicon-pencil" ng-click="ltlCtrl.openRateModal()"></button>
@@ -73,14 +73,14 @@
       <div class="col-md-8 form-inline">
         <ng-csv-import id="ltlRateFile"
                        class="import-btn form-control"
-                       content="ltlCtrl.ltlcsv.content"
-                       header="ltlCtrl.ltlcsv.header" header-visible="ltlCtrl.ltlcsv.headerVisible" separator-visible="ltlCtrl.ltlcsv.separatorVisible"
-                       separator="ltlCtrl.ltlcsv.separator"
-                       result="ltlCtrl.ltlcsv.result">
+                       content="ltlCtrl.freight.csv.content"
+                       header="ltlCtrl.freight.csv.header" header-visible="ltlCtrl.freight.csv.headerVisible" separator-visible="ltlCtrl.freight.csv.separatorVisible"
+                       separator="ltlCtrl.freight.csv.separator"
+                       result="ltlCtrl.freight.csv.result">
         </ng-csv-import>
-        <button class="form-control glyphicon glyphicon-import" ng-click="ltlCtrl.importLTLRates()" ng-show="ltlCtrl.ltlcsv.result">Import</button>
+        <button class="form-control glyphicon glyphicon-import" ng-click="ltlCtrl.importRates()" ng-show="ltlCtrl.freight.csv.result">Import</button>
         <div style="float: left">
-          <button class="form-control glyphicon glyphicon-download-alt" ng-csv="ltlCtrl.getLTLRates()" filename="ltl-rates.csv"></button>
+          <button class="form-control glyphicon glyphicon-download-alt" ng-csv="ltlCtrl.getRates()" filename="rates.csv"></button>
         </div>
       </div>
     </div>
@@ -91,37 +91,7 @@
 
 <table class="table table-condensed table-responsive table-striped">
   <tr>
-    <th class="col-xs-3">Fuel Surcharge(%)</th>
-    <td class="col-xs-8">
-      <div ng-class="{'has-error': companyInfo.ltlSurcharge.$invalid}">
-        <input name="ltlSurcharge" type="text" class="form-control" size="10"
-               ng-model="ltlCtrl.company.ltl.fuelSurcharge"
-               placeholder="20" required ng-change="ltlCtrl.change()"></div>
-    </td>
-    <td class="col-xs-1"></td>
-  </tr>
-  <tr>
-    <th>Residential Delivery</th>
-    <td>
-      <div ng-class="{'has-error': companyInfo.residentialChargeLTL.$invalid}">
-        <input name="residentialChargeLTL" type="text" class="form-control" size="13"
-               ng-model="ltlCtrl.company.ltl.residentialCharge"
-               placeholder="00.00" required ng-change="ltlCtrl.change()"></div>
-    </td>
-    <td></td>
-  </tr>
-  <tr>
-    <th>LiftGate Charge</th>
-    <td>
-      <div ng-class="{'has-error': companyInfo.liftGateCharge.$invalid}">
-        <input name="liftGateCharge" type="text" class="form-control" size="13"
-               ng-model="ltlCtrl.company.ltl.liftGateCharge"
-               placeholder="00.00" required ng-change="ltlCtrl.change()"></div>
-    </td>
-    <td></td>
-  </tr>
-  <tr>
-    <th>Regions</th>
+    <th>Serving Regions</th>
     <td>
       <ui-select multiple ng-model="ltlCtrl.company.ltl.regions" ng-change="ltlCtrl.change()">
         <ui-select-match placeholder="Select regions">{{$item.county}},
@@ -137,6 +107,67 @@
     </td>
     <td></td>
   </tr>
+
+  <tr>
+    <th class="col-xs-3">Fuel Surcharge(%)</th>
+    <td class="col-xs-8">
+      <div ng-class="{'has-error': companyInfo.ltlSurcharge.$invalid}" class="input-group">
+        <input name="ltlSurcharge" type="text" class="form-control" size="10"
+               ng-model="ltlCtrl.freight.fuelSurcharge"
+               placeholder="20" required ng-change="ltlCtrl.change()">
+        <div class="input-group-addon">%</div>
+      </div>
+    </td>
+    <td class="col-xs-1"></td>
+  </tr>
+  <tr>
+    <th>Residential Delivery</th>
+    <td>
+      <div ng-class="{'has-error': companyInfo.residentialChargeLTL.$invalid}" class="input-group">
+        <div class="input-group-addon">$</div>
+        <input name="residentialChargeLTL" type="text" class="form-control" size="13"
+               ng-model="ltlCtrl.freight.residentialCharge"
+               placeholder="00.00" required ng-change="ltlCtrl.change()">
+      </div>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>LiftGate Charge</th>
+    <td>
+      <div ng-class="{'has-error': companyInfo.liftGateCharge.$invalid}" class="input-group">
+        <div class="input-group-addon">$</div>
+        <input name="liftGateCharge" type="text" class="form-control" size="13"
+               ng-model="ltlCtrl.freight.liftGateCharge"
+               placeholder="00.00" required ng-change="ltlCtrl.change()"></div>
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <th>Inside Pickup/Delivery Charge</th>
+    <td>
+      <div ng-class="{'has-error': companyInfo.insideCharge.$invalid}" class="input-group">
+        <div class="input-group-addon">$</div>
+        <input name="insideCharge" type="text" class="form-control" size="13"
+               ng-model="ltlCtrl.freight.insideCharge"
+               placeholder="00.00" required ng-change="ltlCtrl.change()"></div>
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <th>TradeShow Pickup/Delivery Charge</th>
+    <td>
+      <div ng-class="{'has-error': companyInfo.tradeShowCharge.$invalid}" class="input-group">
+        <div class="input-group-addon">$</div>
+        <input name="tradeShowCharge" type="text" class="form-control" size="13"
+               ng-model="ltlCtrl.freight.tradeShowCharge"
+               placeholder="00.00" required ng-change="ltlCtrl.change()"></div>
+    </td>
+    <td></td>
+  </tr>
+
 </table>
 <hr>
 

@@ -1,10 +1,9 @@
 'use strict';
 
 angular.module('servicesApp')
-    .controller('TierEditingCtrl', function ($scope, $modalInstance, ltl, flatTiers, weightTiers) {
+    .controller('TierEditingCtrl', function ($scope, $modalInstance, flatTiers, weightTiers) {
 
       console.log("Initialized TierEditingCtrl");
-      $scope.ltl = ltl;
       $scope.newFlatTier = {
         tier: "",
         previous: "",

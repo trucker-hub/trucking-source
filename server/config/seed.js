@@ -158,6 +158,8 @@ TruckingCompany.find({}).remove(function () {
           fuelSurcharge: 0.2,
           residentialCharge: 60,
           liftGateCharge: 30,
+          insideCharge: 15,
+          tradeShowCharge: 20,
           additionalCharges: [{ name: "Call before delivery",  charge: 10 }],
           regions: [ { state: "CA", county: "Los Angeles County" }],
           zoneRateVariables: {
@@ -248,8 +250,14 @@ TruckingCompany.find({}).remove(function () {
                 {zone: "D", rate:89},
                 {zone: "E", rate:20}
               ]}
-          ]
-        }},
+          ],
+          rates: []
+        },
+        air: {
+
+          rates: []
+        }
+      },
       {
         name: "Dspeed",
         location: "9111 S La Cienega Blvd, Inglewood, CA 90301",
@@ -268,28 +276,24 @@ TruckingCompany.find({}).remove(function () {
             }
           ],
           OverWeightCharges: [
-            {
-              containerSize: "28",
+            { containerSize: "28",
               ranges: [
                 {limit: 13000, charge: 150},
                 {limit: 16000, charge: 200}
               ]
-            },
-            {
+            }, {
               containerSize: "40",
               ranges: [
                 {limit: 13000, charge: 150},
                 {limit: 16000, charge: 200}
               ]
-            },
-            {
+            }, {
               containerSize: "40HQ",
               ranges: [
                 {limit: 13000, charge: 150},
                 {limit: 16000, charge: 200}
               ]
-            },
-            {
+            }, {
               containerSize: "48",
               ranges: [
                 {limit: 13000, charge: 150},
@@ -334,6 +338,8 @@ TruckingCompany.find({}).remove(function () {
           fuelSurcharge: 0.2,
           residentialCharge: 60,
           liftGateCharge: 30,
+          insideCharge: 15,
+          tradeShowCharge: 20,
           additionalCharges: [{
             name: "Call before delivery",
             charge: 10
@@ -436,7 +442,13 @@ TruckingCompany.find({}).remove(function () {
                 {zone: "D", rate:89},
                 {zone: "E", rate:20}
               ]}
-          ]}
+          ],
+          rates: []
+        },
+        air: {
+
+          rates: []
+        }
       }
   );
 });

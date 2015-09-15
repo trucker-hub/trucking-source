@@ -75,16 +75,22 @@
             <td colspan="3">
                 <tabset type="tabs">
                     <tab heading="FTL rates">
-                      <br><div ng-controller="CompanyFtlCtrl as ftlCtrl" ng-init="ftlCtrl.setCompany(dCtrl.company)" ng-include="'app/trucking-company/company-ftl/company-ftl.html'"></div>
+                      <br><div ng-controller="CompanyFtlCtrl as ftlCtrl"
+                               ng-init="ftlCtrl.setCompany(dCtrl.company)"
+                               ng-include="'app/trucking-company/company-ftl/company-ftl.html'"></div>
                     </tab>
                     <tab heading="LTL Freight rates">
                         <br>
-                      <div ng-controller="CompanyLtlCtrl as ltlCtrl" ng-init="ltlCtrl.setCompany(dCtrl.company)" ng-include="'app/trucking-company/company-ltl/company-ltl.html'"></div>
+                      <div ng-controller="CompanyLtlCtrl as ltlCtrl"
+                           ng-init="ltlCtrl.setCompany(dCtrl.company, dCtrl.company.ltl, 'LTL')"
+                           ng-include="'app/trucking-company/company-ltl/company-ltl.html'"></div>
 
                     </tab>
 
                     <tab heading="Air Freight rates">
-
+                        <div ng-controller="CompanyLtlCtrl as airCtrl"
+                             ng-init="airCtrl.setCompany(dCtrl.company, dCtrl.company.air, 'Air')"
+                             ng-include="'app/trucking-company/company-air/company-air.html'"></div>
                     </tab>
                 </tabset>
             </td>
@@ -96,11 +102,11 @@
             </td>
             <td>
                 <div style="float: left">
-                    <button type="button" class="btn btn-warning" ng-click="dCtrl.cancel()">Close without Saving
+                    <button type="button" class="btn btn-default" ng-click="dCtrl.cancel()">Close without Saving
                     </button>
                 </div>
                 <div style="float:right">
-                    <button type="button" class="btn btn-primary" ng-click="dCtrl.save()"
+                    <button type="button" class="btn btn-default" ng-click="dCtrl.save()"
                             ng-class="{'disabled': !companyInfo.$valid || !dCtrl.company.changed }">Save Company Info
                     </button>
                 </div>
