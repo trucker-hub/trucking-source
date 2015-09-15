@@ -27,16 +27,17 @@ var LtlLoadSchema = new Schema({
             city:       {type: String, required: true},
             zipCode:    {type: String, required: true}
         },
-        locationType: {
+        services: [{
             type: String, required: true,
             enum: [
-                'Business with Dock/Fork',
-                'Business without Dock/Fork',
-                'Convention center or Tradeshow',
+                'Inside',
+                'LifeGate',
+                'TradeShow',
                 'Residential',
-                'Freight Carrier Terminal'
-            ],
-            default: 'Business with Dock/Fork'}
+                'OffHours',
+                'Weekends',
+                'Holidays'
+            ]}]
     },
     shipFrom: {
         location: {
@@ -46,16 +47,17 @@ var LtlLoadSchema = new Schema({
             city:       {type: String, required: true},
             zipCode:    {type: String, required: true}
         },
-        locationType: {
+        services: [{
             type: String, required: true,
             enum: [
-                'Business with Dock/Fork',
-                'Business without Dock/Fork',
-                'Convention center or Tradeshow',
+                'Inside',
+                'LifeGate',
+                'TradeShow',
                 'Residential',
-                'Freight Carrier Terminal'
-            ],
-            default: 'Business with Dock/Fork'}
+                'OffHours',
+                'Weekends',
+                'Holidays'
+            ]}]
     },
     lines: [{
         weight: Number,
@@ -80,17 +82,19 @@ var LtlLoadSchema = new Schema({
         width: Number,
         height: Number,
         freightClass: {
-          type: Number,
-          enum: [
-            50, 55, 60, 65.70,77.5, 85, 92.5, 100, 110, 125, 150, 175, 200, 250, 300, 400, 500
-          ]
+            type: Number,
+            enum: [
+                50, 55, 60, 65.70,77.5, 85, 92.5,
+                100, 110, 125, 150, 175, 200,
+                250, 300, 400, 500
+            ]
         },
         description: String
     }],
 
     extraServices: [{
-       service: String,
-       charge: Number
+        service: String,
+        charge: Number
     }],
 
     fulfilledBy: {

@@ -70,7 +70,6 @@
         </tr>
 
       <tr><td colspan="3"></td></tr>
-
         <tr>
             <td colspan="3">
                 <tabset type="tabs">
@@ -84,9 +83,7 @@
                       <div ng-controller="CompanyLtlCtrl as ltlCtrl"
                            ng-init="ltlCtrl.setCompany(dCtrl.company, dCtrl.company.ltl, 'LTL')"
                            ng-include="'app/trucking-company/company-ltl/company-ltl.html'"></div>
-
                     </tab>
-
                     <tab heading="Air Freight rates">
                         <div ng-controller="CompanyLtlCtrl as airCtrl"
                              ng-init="airCtrl.setCompany(dCtrl.company, dCtrl.company.air, 'Air')"
@@ -95,16 +92,10 @@
                 </tabset>
             </td>
         </tr>
-
         <tr>
+            <td><button type="button" class="btn btn-danger" ng-click="dCtrl.delete()">DELETE</button></td>
             <td>
-                <button type="button" class="btn btn-danger" ng-click="dCtrl.delete()">DELETE</button>
-            </td>
-            <td>
-                <div style="float: left">
-                    <button type="button" class="btn btn-default" ng-click="dCtrl.cancel()">Close without Saving
-                    </button>
-                </div>
+                <div style="float: left"><button type="button" class="btn btn-default" ng-click="dCtrl.cancel()">Close without Saving</button></div>
                 <div style="float:right">
                     <button type="button" class="btn btn-default" ng-click="dCtrl.save()"
                             ng-class="{'disabled': !companyInfo.$valid || !dCtrl.company.changed }">Save Company Info
@@ -113,6 +104,5 @@
             </td>
             <td></td>
         </tr>
-
     </table>
 </form>
