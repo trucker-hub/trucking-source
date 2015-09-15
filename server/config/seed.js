@@ -269,7 +269,28 @@ TruckingCompany.find({}).remove(function () {
           ],
           OverWeightCharges: [
             {
+              containerSize: "28",
+              ranges: [
+                {limit: 13000, charge: 150},
+                {limit: 16000, charge: 200}
+              ]
+            },
+            {
               containerSize: "40",
+              ranges: [
+                {limit: 13000, charge: 150},
+                {limit: 16000, charge: 200}
+              ]
+            },
+            {
+              containerSize: "40HQ",
+              ranges: [
+                {limit: 13000, charge: 150},
+                {limit: 16000, charge: 200}
+              ]
+            },
+            {
+              containerSize: "48",
               ranges: [
                 {limit: 13000, charge: 150},
                 {limit: 16000, charge: 200}

@@ -1,4 +1,4 @@
-<table class="table table-condensed table-responsive table-striped">
+<table class="table table-condensed table-responsive">
   <tr>
     <th>Rates</th>
     <td> <div class="row form-inline">
@@ -24,19 +24,12 @@
   </tr>
 
   <tr>
-    <th>Weight Charges</th>
+    <th colspan="3" class="active">Weight Charges</th>
+  </tr>
+  <tr ng-repeat="weightCharge in ftlCtrl.company.ftl.OverWeightCharges">
+    <th>Size <b>{{weightCharge.containerSize}}</b></th>
     <td>
-      <div class="row" ng-repeat="weightCharge in ftlCtrl.company.ftl.OverWeightCharges">
-        <div class="col-xs-2">Size <b>{{weightCharge.containerSize}}</b></div>
-        <div class="col-xs-10">
           <div class="row form-inline-padding" ng-repeat="range in weightCharge.ranges">
-            <div class="col-xs-3">
-              <div class="input-group">
-                <div class="input-group-addon"> + $</div>
-                <input type="text" class="form-control"
-                       ng-model="range.charge" placeholder="Amount" >
-              </div>
-            </div>
             <div class="col-xs-4">
               <div class="input-group">
                 <div class="input-group-addon">Over</div>
@@ -45,11 +38,14 @@
                 <div class="input-group-addon">LBS</div>
               </div>
             </div>
-            <br>
+            <div class="col-xs-3">
+              <div class="input-group">
+                <div class="input-group-addon"> + $</div>
+                <input type="text" class="form-control"
+                       ng-model="range.charge" placeholder="Amount" >
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <br>
     </td>
     <td></td>
   </tr>
