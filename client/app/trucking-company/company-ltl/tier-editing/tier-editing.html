@@ -17,14 +17,14 @@
             <td><input type="text" ng-model="entry.tier" class="form-control"></td>
             <td><input type="number" ng-model="entry.ranges[0]" class="form-control"></td>
             <td><input type="number" ng-model="entry.ranges[1]" class="form-control"></td>
-            <td><a class="btn btn-danger btn-sm" ng-click="removeFlatTier($index)"> <i class="fa fa-minus"></i></a></td>
+            <td><a class="btn btn-danger btn-sm" ng-click="removeFlatTier($index)"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
         </tr>
         <tr>
             <th class="col-md-2">New Flat Tier: {{newFlatTier.ranges[0]}} - {{newFlatTier.ranges[1]}} lbs</th>
             <td><input type="text" ng-model="newFlatTier.tier" class="form-control"></td>
             <td><input type="number" ng-model="newFlatTier.ranges[0]" class="form-control"></td>
             <td><input type="number" ng-model="newFlatTier.ranges[1]" class="form-control"></td>
-            <td><a class="btn btn-primary btn-sm" ng-click="addFlatTier()"> <i class="fa fa-plus"></i></a>
+            <td><a class="btn btn-primary btn-sm" ng-click="addFlatTier()"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
             </td>
         </tr>
         <tr>
@@ -38,14 +38,14 @@
             <td><input type="text" ng-model="entry.tier" class="form-control"></td>
             <td><input type="number" ng-model="entry.ranges[0]" class="form-control"></td>
             <td><input type="number" ng-model="entry.ranges[1]" class="form-control"></td>
-            <td><a class="btn btn-danger btn-sm" ng-click="removeWeightTier($index)"> <i class="fa fa-minus"></i></a></td>
+            <td><a class="btn btn-danger btn-sm" ng-click="removeWeightTier($index)"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
         </tr>
         <tr>
             <th class="col-md-2">New Weight Tier: {{newWeightTier.ranges[0]}} - {{newWeightTier.ranges[1]}} lbs</th>
             <td><input type="text" ng-model="newWeightTier.tier" class="form-control"></td>
             <td><input type="number" ng-model="newWeightTier.ranges[0]" class="form-control"></td>
             <td><input type="number" ng-model="newWeightTier.ranges[1]" class="form-control"></td>
-            <td><a class="btn btn-primary btn-sm" ng-click="addWeightTier()"> <i class="fa fa-plus"></i></a></td>
+            <td><a class="btn btn-primary btn-sm" ng-click="addWeightTier()"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></td>
         </tr>
 
     </table>
