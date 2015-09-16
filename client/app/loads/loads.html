@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-md-9">
                     <button class="btn btn-sm btn-default" type="button" ng-click="newFTLLoad()">Create FTL load</button>
-                    <button class="btn btn-sm btn-default" type="button" ng-click="createLTLLoad()">Create LTL load</button>
+                    <button class="btn btn-sm btn-default" type="button" ng-click="newFreightLoad()">Create LTL load</button>
                 </div>
                 <div class="col-md-3">
                     <button class="btn btn-sm btn-primary" type="button" ng-click="loadLoads()">Query</button>
@@ -50,10 +50,13 @@
             </table>
         </tab>
 
-        <tab ng-repeat="(id, item) in loadsOpened" active="item.active">
-            <tab-heading><span>{{item.data.who }}</span>&nbsp<a><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="closeTab(id)"></span></a></tab-heading>
-            <div ng-include src="'app/loads/ftl/ftl.html'" ng-controller="FtlCtrl as ftlCtrl" ng-init="ftlCtrl.init(item.data)"></div>
+        <tab ng-repeat="(id, item) in loadsFTLOpened" active="item.active">
+            <tab-heading><span>{{item.data.who }}</span>&nbsp<a><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="closeTab(id, 'FTL')"></span></a></tab-heading>
+            <div ng-include="'app/loads/ftl/ftl.html'" ng-controller="FtlCtrl as ftlCtrl" ng-init="ftlCtrl.init(item.data)"></div>
         </tab>
-
+      <tab ng-repeat="(id, item) in loadsFreightOpened" active="item.active">
+        <tab-heading><span>{{item.data.who }}</span>&nbsp<a><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="closeTab(id, 'LTL')"></span></a></tab-heading>
+        <div ng-include="'app/loads/freight/freight.html'" ng-controller="FreightCtrl as freightCtrl" ng-init="freightCtrl.init(item.data)"></div>
+      </tab>
 
 </div>

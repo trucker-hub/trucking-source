@@ -7,7 +7,8 @@ angular.module('servicesApp')
     var NEW_LTL_ID = -1;
     var loads = $rootScope.loads || [];
 
-    $rootScope.loadsOpened = $rootScope.loadsOpened || {};
+    $rootScope.loadsFTLOpened = $rootScope.loadsFTLOpened || {};
+    $rootScope.loadsFreightOpened = $rootScope.loadsFreightOpened || {};
 
     $scope.tableParams = new ngTableParams({
       page: 1,            // show first page
@@ -29,10 +30,10 @@ angular.module('servicesApp')
       }
     });
 
-    var editLoadFunc = function(id) {
+    var editLoadFTLFunc = function(id) {
       console.log("edit a load whose id is " + id);
 
-      var detail = $rootScope.loadsOpened[id];
+      var detail = $rootScope.loadsFTLOpened[id];
       if(detail) {
         detail.active = true;
         return;
@@ -42,11 +43,31 @@ angular.module('servicesApp')
       for (index =0; index < loads.length; ++index) {
         var load = loads[index];
         if(load._id == id) {
-          $rootScope.loadsOpened[id] = {data:load, active:true};
+          $rootScope.loadsFTLOpened[id] = {data:load, active:true};
           return;
         }
       }
     };
+
+    var editFreightFunc = function(id) {
+      console.log("edit a load whose id is " + id);
+
+      var detail = $rootScope.loadsFreightOpened[id];
+      if(detail) {
+        detail.active = true;
+        return;
+      }
+
+      var index;
+      for (index =0; index < loads.length; ++index) {
+        var load = loads[index];
+        if(load._id == id) {
+          $rootScope.loadsFreightOpened[id] = {data:load, active:true};
+          return;
+        }
+      }
+    };
+
 
     $scope.emptyFtlLoad  = {
       type: "FTL",
@@ -55,13 +76,13 @@ angular.module('servicesApp')
       notes: "",
       shipTo: {
         label: "shipTo",
-        location: null,
+        location: {},
         locationType: "Business with Dock/Fork",
         extraServices: []
       },
       shipFrom: {
         label: "shipFrom",
-        location: null,
+        location: {},
         locationType: "Business with Dock/Fork",
         extraServices: []
       },
@@ -71,6 +92,27 @@ angular.module('servicesApp')
         type: "Dry Van"
       }
     };
+
+    $scope.emptyFreightLoad  = {
+      type: "LTL",
+      who: 'NEW one',
+      expectedBy: null,
+      notes: "",
+      shipTo: {
+        label: "shipTo",
+        location: {},
+        services: [],
+        extraServices: []
+      },
+      shipFrom: {
+        label: "shipFrom",
+        location: {},
+        services: [],
+        extraServices: []
+      },
+      lines: []
+    };
+
     $scope.closeTab = function(id, update) {
       console.log("cancel load info " + id);
       delete $rootScope.loadsOpened[id];
@@ -85,9 +127,19 @@ angular.module('servicesApp')
       console.log("calling createFTLLoad");
       var load = angular.copy($scope.emptyFtlLoad);
       load._id = NEW_FTL_ID;
-      $rootScope.loadsOpened[NEW_FTL_ID] = {data:load, active:true};
+      $rootScope.loadsFTLOpened[NEW_FTL_ID] = {data:load, active:true};
       editLoadFunc(NEW_FTL_ID);
     };
+
+
+    $scope.newFreightLoad = function() {
+      console.log("calling createFTLLoad");
+      var load = angular.copy($scope.emptyFreightLoad);
+      load._id = NEW_LTL_ID;
+      $rootScope.loadsFreightOpened[NEW_LTL_ID] = {data:load, active:true};
+      editLoadFunc(NEW_LTL_ID);
+    };
+
 
     $scope.editLoad = function(id) {
       editLoadFunc(id);
