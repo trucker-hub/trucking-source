@@ -72,7 +72,7 @@ angular.module('servicesApp')
 
           function(response) {
             console.log("request saved succesfully " + response);
-            $scope.$parent.closeTab(vm.freight._id, true);
+            $scope.$parent.closeTab(vm.freight._id, 'LTL', true);
           },
           function(err) {
             console.log("request saving failed " + err);

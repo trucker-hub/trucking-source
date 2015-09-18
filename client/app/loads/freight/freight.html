@@ -7,12 +7,12 @@
       <td class="col-md-4">
         <div>
           <ui-select class="form-control col-md-10" id="deliveryServices" multiple ng-model="freightCtrl.freight.shipTo.services" ng-change="freightCtrl.change()">
-            <ui-select-match placeholder="Select services">{{$item}}
+            <ui-select-match placeholder="Select services">{{$item.service}}
             </ui-select-match>
-            <ui-select-choices repeat="service in freightCtrl.toServices | filter: $select.search"
+            <ui-select-choices repeat="entry in freightCtrl.toServices | filter: $select.search"
                                refresh="freightCtrl.refreshServices()"
                                refresh-delay="0">
-              <div ng-bind-html="service | highlight: $select.search"></div>
+              <div ng-bind-html="entry.service | highlight: $select.search"></div>
             </ui-select-choices>
           </ui-select>
         </div>
@@ -25,12 +25,12 @@
       <td class="col-md-4">
         <div>
           <ui-select class="form-control col-md-10" id="pickUpServices" multiple ng-model="freightCtrl.freight.shipFrom.services" ng-change="freightCtrl.change()">
-            <ui-select-match placeholder="Select services">{{$item}}
+            <ui-select-match placeholder="Select services">{{$item.service}}
             </ui-select-match>
-            <ui-select-choices repeat="service in freightCtrl.fromServices | filter: $select.search "
+            <ui-select-choices repeat="entry in freightCtrl.fromServices | filter: $select.search "
                                refresh="freightCtrl.refreshServices()"
                                refresh-delay="0">
-              <div ng-bind-html="service | highlight: $select.search"></div>
+              <div ng-bind-html="entry.service | highlight: $select.search"></div>
             </ui-select-choices>
           </ui-select>
         </div>

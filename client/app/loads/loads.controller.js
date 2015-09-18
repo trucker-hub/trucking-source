@@ -181,8 +181,12 @@ angular.module('servicesApp')
                     trailerTypes: data.trailerTypes
                   },
                   ltl: {
-                    toServices: data.toServices,
-                    fromServices: data.fromServices,
+                    toServices: data.toServices.map(function(item) {
+                      return {service:item};
+                    }),
+                    fromServices: data.fromServices.map(function(item) {
+                      return {service:item};
+                    }),
                     packagings: data.ltlPackagings
                   }
                 };
