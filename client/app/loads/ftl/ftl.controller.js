@@ -28,31 +28,17 @@ angular.module('servicesApp')
 
 
     var extractConstantsFromRootScope = function () {
-      vm.packagings = $rootScope.constants.ftl.packagings;
-      vm.toLocationTypes = $rootScope.constants.ftl.toLocationTypes;
-      vm.fromLocationTypes = $rootScope.constants.ftl.fromLocationTypes;
-      vm.trailerTypes = $rootScope.constants.ftl.trailerTypes;
+      vm.packagings = $rootScope.loadConstants.ftl.packagings;
+      vm.toLocationTypes = $rootScope.loadConstants.ftl.toLocationTypes;
+      vm.fromLocationTypes = $rootScope.loadConstants.ftl.fromLocationTypes;
+      vm.trailerTypes = $rootScope.loadConstants.ftl.trailerTypes;
     }
 
     vm.loadConstants = function() {
-      if($rootScope.constants) {
+      if($rootScope.loadConstants) {
         extractConstantsFromRootScope();
       }else {
-        $http.get('/api/load/ftl-loads/util/constants').then(
-          function(response) {
-            var data = response.data;
-            $rootScope.constants = {
-              ftl: {
-                packagings: data.packagings,
-                toLocationTypes: data.toLocationTypes,
-                fromLocationTypes: data.fromLocationTypes,
-                trailerTypes: data.trailerTypes
-              }
-            };
-            extractConstantsFromRootScope();
-          }, function(err) {
-            console.log(err);}
-        );
+        $scope.$parent.loadConstants(extractConstantsFromRootScope);
       }
     };
     vm.addLine = function () {
@@ -77,7 +63,7 @@ angular.module('servicesApp')
     }
 
     vm.close = function() {
-      $scope.$parent.closeTab(vm.load._id, false);
+      $scope.$parent.closeTab(vm.load._id, 'FTL', false);
     }
 
     vm.delete = function() {
@@ -85,7 +71,7 @@ angular.module('servicesApp')
 
         function(response) {
           console.log("request saved succesfully " + response);
-          $scope.$parent.closeTab(vm.load._id, true);
+          $scope.$parent.closeTab(vm.load._id, 'FTL', true);
         },
         function(err) {
           console.log("request saving failed " + err);
@@ -105,7 +91,7 @@ angular.module('servicesApp')
 
           function(response) {
             console.log("request saved succesfully " + response);
-            $scope.$parent.closeTab(id, true);
+            $scope.$parent.closeTab(id, 'FTL', true);
           },
           function(err) {
             console.log("request saving failed " + err);
@@ -116,7 +102,7 @@ angular.module('servicesApp')
 
           function(response) {
             console.log("request saved succesfully " + JSON.stringify(response));
-            $scope.$parent.closeTab(id, true);
+            $scope.$parent.closeTab(id, 'FTL', true);
           },
           function(err) {
             console.log("request saving failed " + err);

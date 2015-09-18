@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var FtlLoad = require('./ftlLoad.model.js');
+var LtlLoad = require('../ltl/ltl.model.js');
 
 // Get list of ftlLoads
 exports.index = function(req, res) {
@@ -29,7 +30,10 @@ exports.constants = function(req, res) {
     toLocationTypes: FtlLoad.schema.path('shipTo.locationType').enumValues,
     fromLocationTypes: FtlLoad.schema.path('shipFrom.locationType').enumValues,
     packagings: FtlLoad.schema.path('lines').schema.path('packaging').enumValues,
-    trailerTypes: FtlLoad.schema.path('trailer.type').enumValues
+    trailerTypes: FtlLoad.schema.path('trailer.type').enumValues,
+    toServices: LtlLoad.schema.path('shipTo.services').schema.path("service").enumValues,
+    fromServices: LtlLoad.schema.path('shipFrom.services').schema.path("service").enumValues,
+    ltlPackagings: LtlLoad.schema.path('lines').schema.path('packaging').enumValues,
   }
   return res.status(200).json(constants);
 

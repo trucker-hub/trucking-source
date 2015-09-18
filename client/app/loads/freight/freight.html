@@ -1,80 +1,60 @@
 <form name="freightForm">
   <table class="table">
     <tr>
-      <th>To</th>
-      <td> <div ng-class="{'has-error':freightForm.shipToAddress.$invalid}">
-        <input type="text"
-               class="form-control" id="inputLocation" size="20"
-               options="autocompleteOptions"
-               ng-model="freight.shipTo.location.raw"
-               name="shipToAddress"
-               ng-minlength="5"
-               g-places-autocomplete
-               force-selection="true"
-               placeholder="Address or ZIP Code" required ng-show="editing" ng-change="changed()">
-      </div>
-      </td>
-      <td>
-        <ui-select multiple ng-model="freightCtrl.shipTo.services" ng-change="freightCtrl.change()">
-          <ui-select-match placeholder="Select services">{{$item.type}}
-          </ui-select-match>
-          <ui-select-choices repeat="service in freightCtrl.shipTo.services | propsFilter: {county: $select.search}"
-                             refresh="freightCtrl.refreshServices()"
-                             refresh-delay="0">
-            <div ng-bind-html="service.type | highlight: $select.search"></div>
-          </ui-select-choices>
-        </ui-select>
+      <th class="col-md-2">To</th>
+      <td class="col-md-4"><location info="freightCtrl.freight.shipTo"></location></td>
+      <td class="col-md-2">Delivery Services</td>
+      <td class="col-md-4">
+        <div>
+          <ui-select class="form-control col-md-10" id="deliveryServices" multiple ng-model="freightCtrl.freight.shipTo.services" ng-change="freightCtrl.change()">
+            <ui-select-match placeholder="Select services">{{$item}}
+            </ui-select-match>
+            <ui-select-choices repeat="service in freightCtrl.toServices | filter: $select.search"
+                               refresh="freightCtrl.refreshServices()"
+                               refresh-delay="0">
+              <div ng-bind-html="service | highlight: $select.search"></div>
+            </ui-select-choices>
+          </ui-select>
+        </div>
       </td>
     </tr>
     <tr>
-      <th>From</th>
-      <td> <div ng-class="{'has-error':freightForm.shipFromAddress.$invalid}">
-        <input type="text"
-               class="form-control" size="20"
-               options="autocompleteOptions"
-               ng-model="freight.shipFrom.location.raw"
-               name="shipFromAddress"
-               ng-minlength="5"
-               g-places-autocomplete
-               force-selection="true"
-               placeholder="Address or ZIP Code" required ng-show="editing" ng-change="freightCtrl.changed()">
-      </div>
-      </td>
-      <td>
-        <ui-select multiple ng-model="freightCtrl.shipTo.services" ng-change="freightCtrl.change()">
-          <ui-select-match placeholder="Select services">{{$item.type}}
-          </ui-select-match>
-          <ui-select-choices repeat="service in freightCtrl.shipTo.services | propsFilter: {county: $select.search}"
-                             refresh="freightCtrl.refreshServices()"
-                             refresh-delay="0">
-            <div ng-bind-html="service.type | highlight: $select.search"></div>
-          </ui-select-choices>
-        </ui-select>
+      <th class="col-md-2">From</th>
+      <td class="col-md-4"><location info="freightCtrl.freight.shipFrom"></location></td>
+      <td class="col-md-2">PickUp Services</td>
+      <td class="col-md-4">
+        <div>
+          <ui-select class="form-control col-md-10" id="pickUpServices" multiple ng-model="freightCtrl.freight.shipFrom.services" ng-change="freightCtrl.change()">
+            <ui-select-match placeholder="Select services">{{$item}}
+            </ui-select-match>
+            <ui-select-choices repeat="service in freightCtrl.fromServices | filter: $select.search "
+                               refresh="freightCtrl.refreshServices()"
+                               refresh-delay="0">
+              <div ng-bind-html="service | highlight: $select.search"></div>
+            </ui-select-choices>
+          </ui-select>
+        </div>
       </td>
     </tr>
 
     <tr>
-      <th>Consignee</th>
-      <td><div class="row ftlPadding" ng-class="{'has-error':freightForm.customerName.$invalid}">
-        <div class="col-md-10">
-          <input type="text"
-                 class="form-control" id="customerName" size="20" name="customerName"
-                 ng-model="frightCtrl.who"
-                 ng-minlength="5"
-                 placeholder="Consignee name" required="">
-        </div>
-      </div>
-      </td>
-      <td>
-        <div class="row ftlPadding">
-          <label for="customerNote" class="col-md-2 control-label">Notes</label>
-          <div class="col-md-10">
-          <textarea
-            class="form-control" id="customerNote" size="20"
-            ng-model="ftlCtrl.load.notes"
-            rows="4"
-            placeholder="Note name"></textarea>
+      <th class="col-md-2">Consignee</th>
+      <td class="col-md-4">
+        <div class="row" ng-class="{'has-error':freightForm.customerName.$invalid}">
+          <div class="col-md-9">
+            <input type="text"
+                   class="form-control" id="customerName" size="20" name="customerName"
+                   ng-model="freightCtrl.freight.who"
+                   ng-minlength="5"
+                   placeholder="Consignee name" required="">
           </div>
+        </div>
+      </td>
+      <td class="col-md-2">Notes</td>
+      <td class="col-md-4">
+        <div class="input-group">
+          <textarea class="form-control" id="customerNote" size="20" ng-model="ftlCtrl.freight.notes" rows="4"
+                  placeholder="Note name"></textarea>
         </div>
       </td>
     </tr>
@@ -82,24 +62,15 @@
     <tr>
       <th>Expected By</th>
       <td><div style="display:inline-block; min-height:290px;">
-        <datepicker ng-model="ftlCtrl.load.expectedBy" min-date="minDate" show-weeks="true" class="well well-sm"
+        <datepicker ng-model="ftlCtrl.freight.expectedBy" min-date="minDate" show-weeks="true" class="well well-sm"
                     custom-class="getDayClass(date, mode)">
 
         </datepicker>
       </div>
       </td>
       <td>
-        <div class="row ftlPadding">
-          <label for="customerNote" class="col-md-2 control-label">Notes</label>
-          <div class="col-md-10">
-          <textarea
-            class="form-control" id="customerNote" size="20"
-            ng-model="ftlCtrl.load.notes"
-            rows="4"
-            placeholder="Note name"></textarea>
-          </div>
-        </div>
       </td>
+      <td></td>
     </tr>
 
 
@@ -115,9 +86,9 @@
           <th class="col-md-3">L/W/H(in)</th>
           <th class="col-md-3">Description</th>
           <th class="col-md-1"><span class="glyphicon glyphicon-plus" aria-hidden="true"
-                                     ng-click="ftlCtrl.addLine()"></span></th>
+                                     ng-click="freightCtrl.addLine()"></span></th>
         </tr>
-        <tr ng-repeat="line in ftlCtrl.load.lines track by $index">
+        <tr ng-repeat="line in freightCtrl.freight.lines track by $index">
           <form name="innerForm" novalidate>
             <td><div class="form-group" ng-class="{'has-error':innerForm.weight.$invalid}">
               <input type="number" class="form-control" size="6" ng-model="line.weight" name="weight"
@@ -129,7 +100,7 @@
             <td>
               <select class="form-control" ng-model="line.packaging" id="">
                 <option value="">-- Packaging --</option>
-                <option ng-repeat="packaging in ftlCtrl.packagings">{{packaging}}</option>
+                <option ng-repeat="packaging in freightCtrl.packagings">{{packaging}}</option>
               </select>
             </td>
             <td>
@@ -138,7 +109,7 @@
               <input class="form-control" type="text" ng-model="line.height" size="2" min="1">
             </td>
             <td><input class="form-control" type="text" ng-model="line.description" placeholder="description"></td>
-            <td><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="ftlCtrl.removeLine($index)"></span>
+            <td><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="freightCtrl.removeLine($index)"></span>
             </td>
           </form>
         </tr>
@@ -147,11 +118,11 @@
   </div>
   <div class="row">
     <div class="col-md-3">
-      <button style="float:left" ng-hide="ftlCtrl.isNew()" class="btn btn-sm btn-danger" type="button" ng-click="ftlCtrl.delete()">DELETE</button>
+      <button style="float:left" ng-hide="freightCtrl.isNew()" class="btn btn-sm btn-danger" type="button" ng-click="freightCtrl.delete()">DELETE</button>
     </div>
     <div class="col-md-9">
-      <button style="float:left" class="btn btn-sm btn-warning" type="button" ng-click="ftlCtrl.close()">Close</button>
-      <button style="float:right" class="btn btn-sm btn-primary" type="button" ng-disabled="locationForm.$invalid" ng-click="ftlCtrl.submit()">Submit</button>
+      <button style="float:left" class="btn btn-sm btn-warning" type="button" ng-click="freightCtrl.close()">Close</button>
+      <button style="float:right" class="btn btn-sm btn-primary" type="button" ng-disabled="locationForm.$invalid" ng-click="freightCtrl.submit()">Submit</button>
     </div>
   </div>
   <div>

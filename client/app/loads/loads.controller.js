@@ -1,172 +1,207 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('LoadsCtrl', function ($rootScope, $scope, $http, $filter, ngTableParams) {
+    .controller('LoadsCtrl', function ($rootScope, $scope, $http, $filter, ngTableParams) {
 
-    var NEW_FTL_ID = -2;
-    var NEW_LTL_ID = -1;
-    var loads = $rootScope.loads || [];
+      var NEW_FTL_ID = -2;
+      var NEW_LTL_ID = -1;
 
-    $rootScope.loadsFTLOpened = $rootScope.loadsFTLOpened || {};
-    $rootScope.loadsFreightOpened = $rootScope.loadsFreightOpened || {};
+      // a list contains LTL, FTL and Air
+      var loads = [];
 
-    $scope.tableParams = new ngTableParams({
-      page: 1,            // show first page
-      count: 20,          // count per page
-      filter: {
-        who: ''       // initial filter
-      }
-    }, {
-      total: loads.length, // length of data,
-      counts: [],
-      getData: function($defer, params) {
-        // use build-in angular filter
-        var orderedData = params.filter() ? $filter('filter')(loads, params.filter()) : loads;
+      $rootScope.loadsOpened  = $rootScope.loadsOpened || { ftl:  {},  ltl:  {},  air:  {} };
 
-        loads = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+      $rootScope.loads = $rootScope.loads || {ftl: [], ltl:[], air: []};
 
-        params.total(orderedData.length); // set total for recalc pagination
-        $defer.resolve(loads);
+      $scope.tableParams = new ngTableParams({
+        page: 1,            // show first page
+        count: 20,          // count per page
+        filter: { who: '' }
+      }, {
+        total: loads.length, // length of data,
+        counts: [],
+        getData: function($defer, params) {
+          // use build-in angular filter
+          var orderedData = params.filter() ? $filter('filter')(loads, params.filter()) : loads;
+
+          loads = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+
+          params.total(orderedData.length); // set total for recalc pagination
+          $defer.resolve(loads);
+        }
+      });
+
+
+      $scope.editLoad = function(id, type) {
+
+        var xx = {};
+        if(type =='FTL') {
+          xx = $rootScope.loadsOpened.ftl;
+        }else if (type=='LTL') {
+          xx = $rootScope.loadsOpened.ltl;
+        }else if (type=='Air') {
+          xx = $rootScope.loadsOpened.air;
+        }
+
+        console.log("edit a load whose id is " + id);
+
+        var detail = xx[id];
+        if(detail) {
+          detail.active = true;
+          return;
+        }
+
+        var index;
+        for (index =0; index < loads.length; ++index) {
+          var load = loads[index];
+          if(load._id == id) {
+            xx[id] = {data:load, active:true};
+            return;
+          }
+        }
+      };
+
+
+      $scope.emptyFtlLoad  = {
+        who: 'NEW one',
+        loadType:'FTL',
+        expectedBy: null,
+        notes: "",
+        shipTo: {
+          label: "shipTo",
+          location: {},
+          locationType: "Business with Dock/Fork",
+          extraServices: []
+        },
+        shipFrom: {
+          label: "shipFrom",
+          location: {},
+          locationType: "Business with Dock/Fork",
+          extraServices: []
+        },
+        lines: [],
+
+        trailer: {
+          type: "Dry Van"
+        }
+      };
+
+      $scope.emptyFreightLoad  = {
+        who: 'NEW one',
+        loadType:'LTL',
+        expectedBy: null,
+        notes: "",
+        shipTo: {
+          label: "shipTo",
+          location: {},
+          services: [],
+          extraServices: []
+        },
+        shipFrom: {
+          label: "shipFrom",
+          location: {},
+          services: [],
+          extraServices: []
+        },
+        lines: []
+      };
+
+      $scope.closeTab = function(id, type, update) {
+
+        if(type =='FTL') {
+          delete $rootScope.loadsOpened.ftl[id];
+        }else if (type=='LTL') {
+          delete $rootScope.loadsOpened.ltl[id];
+        }else if (type=='Air') {
+          delete $rootScope.loadsOpened.air[id];
+        }
+
+        if(update) {
+          $scope.loadLoads(type);
+        }
+      };
+
+
+      $scope.newFTLLoad = function() {
+        console.log("calling createFTLLoad");
+        var load = angular.copy($scope.emptyFtlLoad);
+        load._id = NEW_FTL_ID;
+        $rootScope.loadsOpened.ftl[NEW_FTL_ID] = {data:load, active:true};
+        $scope.editLoad(load._id);
+      };
+
+
+      $scope.newFreightLoad = function() {
+        console.log("calling createFTLLoad");
+        var load = angular.copy($scope.emptyFreightLoad);
+        load._id = NEW_LTL_ID;
+        $rootScope.loadsOpened.ltl[NEW_LTL_ID] = {data:load, active:true};
+        $scope.editLoad(load._id);
+      };
+
+
+      $scope.loadLoads = function(type) {
+
+        console.log('fetch loads from the db');
+        if(!type || type=='FTL') {
+          $http.get('/api/load/ftl-loads').then(
+              function(response) {
+                console.log(JSON.stringify(response.data));
+                $rootScope.loads.ftl = response.data;
+                $scope.updateTable();
+              },
+              function(response) {
+                console.log('ran into error ' + response);
+
+              });
+        }
+        if(!type || type=='LTL') {
+          $http.get('/api/load/ltl-loads').then(
+              function(response) {
+                console.log(JSON.stringify(response.data));
+                $rootScope.loads.ltl = response.data;
+                $scope.updateTable();
+              },
+              function(response) {
+                console.log('ran into error ' + response);
+              });
+        }
+      };
+      $scope.loadConstants = function(callback) {
+        if(!$rootScope.loadConstants) {
+          $http.get('/api/load/ftl-loads/util/constants').then(
+              function(response) {
+                var data = response.data;
+                console.log("constants are " + JSON.stringify((data)));
+                $rootScope.loadConstants = {
+                  ftl: {
+                    packagings: data.packagings,
+                    toLocationTypes: data.toLocationTypes,
+                    fromLocationTypes: data.fromLocationTypes,
+                    trailerTypes: data.trailerTypes
+                  },
+                  ltl: {
+                    toServices: data.toServices,
+                    fromServices: data.fromServices,
+                    packagings: data.ltlPackagings
+                  }
+                };
+                callback();
+              }, function(err) {
+                console.log(err);}
+          );
+        }
+      };
+
+      $scope.updateTable = function() {
+        loads = null;
+        loads = $rootScope.loads.ftl.concat($rootScope.loads.ltl);
+
+        //console.log("loads = " + JSON.stringify(loads));
+        $scope.tableParams.reload();
+      };
+
+      $scope.createFTLLoad = function() {
+
       }
     });
-
-    var editLoadFTLFunc = function(id) {
-      console.log("edit a load whose id is " + id);
-
-      var detail = $rootScope.loadsFTLOpened[id];
-      if(detail) {
-        detail.active = true;
-        return;
-      }
-
-      var index;
-      for (index =0; index < loads.length; ++index) {
-        var load = loads[index];
-        if(load._id == id) {
-          $rootScope.loadsFTLOpened[id] = {data:load, active:true};
-          return;
-        }
-      }
-    };
-
-    var editFreightFunc = function(id) {
-      console.log("edit a load whose id is " + id);
-
-      var detail = $rootScope.loadsFreightOpened[id];
-      if(detail) {
-        detail.active = true;
-        return;
-      }
-
-      var index;
-      for (index =0; index < loads.length; ++index) {
-        var load = loads[index];
-        if(load._id == id) {
-          $rootScope.loadsFreightOpened[id] = {data:load, active:true};
-          return;
-        }
-      }
-    };
-
-
-    $scope.emptyFtlLoad  = {
-      type: "FTL",
-      who: 'NEW one',
-      expectedBy: null,
-      notes: "",
-      shipTo: {
-        label: "shipTo",
-        location: {},
-        locationType: "Business with Dock/Fork",
-        extraServices: []
-      },
-      shipFrom: {
-        label: "shipFrom",
-        location: {},
-        locationType: "Business with Dock/Fork",
-        extraServices: []
-      },
-      lines: [],
-
-      trailer: {
-        type: "Dry Van"
-      }
-    };
-
-    $scope.emptyFreightLoad  = {
-      type: "LTL",
-      who: 'NEW one',
-      expectedBy: null,
-      notes: "",
-      shipTo: {
-        label: "shipTo",
-        location: {},
-        services: [],
-        extraServices: []
-      },
-      shipFrom: {
-        label: "shipFrom",
-        location: {},
-        services: [],
-        extraServices: []
-      },
-      lines: []
-    };
-
-    $scope.closeTab = function(id, update) {
-      console.log("cancel load info " + id);
-      delete $rootScope.loadsOpened[id];
-
-      if(update) {
-        $scope.loadLoads();
-      }
-    };
-
-
-    $scope.newFTLLoad = function() {
-      console.log("calling createFTLLoad");
-      var load = angular.copy($scope.emptyFtlLoad);
-      load._id = NEW_FTL_ID;
-      $rootScope.loadsFTLOpened[NEW_FTL_ID] = {data:load, active:true};
-      editLoadFunc(NEW_FTL_ID);
-    };
-
-
-    $scope.newFreightLoad = function() {
-      console.log("calling createFTLLoad");
-      var load = angular.copy($scope.emptyFreightLoad);
-      load._id = NEW_LTL_ID;
-      $rootScope.loadsFreightOpened[NEW_LTL_ID] = {data:load, active:true};
-      editLoadFunc(NEW_LTL_ID);
-    };
-
-
-    $scope.editLoad = function(id) {
-      editLoadFunc(id);
-    };
-
-    $scope.loadLoads = function() {
-
-      console.log('fetch loads from the db');
-      $http.get('/api/load/ftl-loads').then(
-        function(response) {
-          console.log(JSON.stringify(response.data));
-          $rootScope.loads = response.data;
-          $scope.updateTable(response.data);
-
-        },
-        function(response) {
-          console.log('ran into error ' + response);
-
-        });
-    };
-
-    $scope.updateTable = function(data) {
-      loads = data;
-      $scope.tableParams.reload();
-    };
-
-    $scope.createFTLLoad = function() {
-
-    }
-  });

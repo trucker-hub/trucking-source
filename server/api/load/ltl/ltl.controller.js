@@ -17,7 +17,7 @@ exports.index = function(req, res) {
     options.createdAt = {$gt: time};
   }
 
-  LtlLoad.find(options).sort({expectedBy:1}).exec( function (err, ltlLoads) {
+  Ltl.find(options).sort({expectedBy:1}).exec( function (err, ltlLoads) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(ltlLoads);
   });
@@ -34,8 +34,11 @@ exports.show = function(req, res) {
 
 // Creates a new ltl in the DB.
 exports.create = function(req, res) {
+  console.log("req + " + JSON.stringify(req.body));
   Ltl.create(req.body, function(err, ltl) {
-    if(err) { return handleError(res, err); }
+    if(err) {
+      return handleError(res, err);
+    }
     return res.status(201).json(ltl);
   });
 };

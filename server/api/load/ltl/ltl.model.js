@@ -16,6 +16,7 @@ var LtlLoadSchema = new Schema({
         default: 'OPEN'},
 
     who: String,
+    loadType:  { type: String, default: 'LTL'},
     createdAt: { type: Date, required: true, default: Date.now },
     expectedBy: Date,
     notes: String,
@@ -27,8 +28,8 @@ var LtlLoadSchema = new Schema({
             city:       {type: String, required: true},
             zipCode:    {type: String, required: true}
         },
-        services: [{
-            type: String, required: true,
+        services: [{service: {
+            type: String,
             enum: [
                 'Inside',
                 'LifeGate',
@@ -37,7 +38,7 @@ var LtlLoadSchema = new Schema({
                 'OffHours',
                 'Weekends',
                 'Holidays'
-            ]}]
+            ]}}]
     },
     shipFrom: {
         location: {
@@ -47,8 +48,8 @@ var LtlLoadSchema = new Schema({
             city:       {type: String, required: true},
             zipCode:    {type: String, required: true}
         },
-        services: [{
-            type: String, required: true,
+        services: [{service: {
+            type: String,
             enum: [
                 'Inside',
                 'LifeGate',
@@ -57,7 +58,7 @@ var LtlLoadSchema = new Schema({
                 'OffHours',
                 'Weekends',
                 'Holidays'
-            ]}]
+            ]}}]
     },
     lines: [{
         weight: Number,

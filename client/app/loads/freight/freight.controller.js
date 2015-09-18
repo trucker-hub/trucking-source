@@ -11,9 +11,9 @@ angular.module('servicesApp')
     vm.init = function(load) {
       console.log("initialize controller for load = " + JSON.stringify(load));
       vm.freight = load;
-      if(vm.freight._id!=-2 ) {
-        vm.freight.shipTo.location.raw = vm.load.shipTo.location.full_address;
-        vm.freight.shipFrom.location.raw = vm.load.shipFrom.location.full_address;
+      if(vm.freight._id!=-1 ) {
+        vm.freight.shipTo.location.raw = load.shipTo.location.full_address;
+        vm.freight.shipFrom.location.raw = load.shipFrom.location.full_address;
       }
       vm.setInitialExpectedDate();
       vm.loadConstants();
@@ -28,29 +28,18 @@ angular.module('servicesApp')
 
 
     var extractConstantsFromRootScope = function () {
-      vm.packagings = $rootScope.constants.freight.packagings;
-      vm.toServiceTypes = $rootScope.constants.freight.toLocationTypes;
-      vm.fromServiceTypes = $rootScope.constants.freight.fromLocationTypes;
+      vm.packagings = $rootScope.loadConstants.ltl.packagings;
+      vm.toServices = $rootScope.loadConstants.ltl.toServices;
+      vm.fromServices = $rootScope.loadConstants.ltl.fromServices;
+
+      console.log("toServices =" + JSON.stringify(vm.toServices));
     }
 
     vm.loadConstants = function() {
-      if($rootScope.constants) {
+      if($rootScope.loadConstants) {
         extractConstantsFromRootScope();
       }else {
-        $http.get('/api/load/ftl-loads/util/constants').then(
-          function(response) {
-            var data = response.data;
-            $rootScope.constants = {
-              freight: {
-                packagings: data.packagings,
-                toLocationTypes: data.toServiceTypes,
-                fromLocationTypes: data.fromServiceTypes
-              }
-            };
-            extractConstantsFromRootScope();
-          }, function(err) {
-            console.log(err);}
-        );
+        $scope.$parent.loadConstants(extractConstantsFromRootScope);
       }
     };
     vm.addLine = function () {
@@ -71,19 +60,56 @@ angular.module('servicesApp')
     };
 
     vm.isNew = function() {
-      return vm.load._id == -2;
-    }
+      return vm.freight._id == -1;
+    };
 
     vm.close = function() {
-      $scope.$parent.closeTab(vm.load._id, false);
-    }
+      $scope.$parent.closeTab(vm.freight._id, 'LTL', false);
+    };
 
     vm.delete = function() {
+      $http.delete('/api/load/ltl-loads/'+vm.freight._id).then(
 
-    }
+          function(response) {
+            console.log("request saved succesfully " + response);
+            $scope.$parent.closeTab(vm.freight._id, true);
+          },
+          function(err) {
+            console.log("request saving failed " + err);
+          }
+      );
+    };
+
+
 
     vm.submit = function() {
-      console.log("updating load = " + JSON.stringify(vm.load));
+      console.log("updating ltl load = " + JSON.stringify(vm.freight));
+      //populate location with raw data.
 
+      var id = vm.freight._id;
+      if(vm.freight._id == -1) {
+        delete vm.freight._id;
+        $http.post('/api/load/ltl-loads', vm.freight).then(
+
+            function(response) {
+              console.log("request saved succesfully " + response);
+              $scope.$parent.closeTab(id, 'LTL', true);
+            },
+            function(err) {
+              console.log("request saving failed " + JSON.stringify(err));
+            }
+        );
+      }else {
+        $http.put('/api/load/ltl-loads/'+vm.freight._id, vm.freight).then(
+
+            function(response) {
+              console.log("request saved succesfully " + JSON.stringify(response));
+              $scope.$parent.closeTab(id, 'LTL', true);
+            },
+            function(err) {
+              console.log("request saving failed " + err);
+            }
+        );
+      }
     }
   });

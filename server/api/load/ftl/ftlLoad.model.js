@@ -16,6 +16,7 @@ var FtlLoadSchema = new Schema({
     default: 'OPEN'},
 
   who: String,
+  loadType:  { type: String, default: 'FTL'},
   createdAt: { type: Date, required: true, default: Date.now },
   expectedBy: Date,
   notes: String,
