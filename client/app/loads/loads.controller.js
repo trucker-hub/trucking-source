@@ -37,10 +37,8 @@ angular.module('servicesApp')
         var xx = {};
         if(type =='FTL') {
           xx = $rootScope.loadsOpened.ftl;
-        }else if (type=='LTL') {
+        }else if (type=='LTL' || type=='AIR') {
           xx = $rootScope.loadsOpened.ltl;
-        }else if (type=='Air') {
-          xx = $rootScope.loadsOpened.air;
         }
 
         console.log("edit a load whose id is " + id);
@@ -110,10 +108,8 @@ angular.module('servicesApp')
 
         if(type =='FTL') {
           delete $rootScope.loadsOpened.ftl[id];
-        }else if (type=='LTL') {
+        }else if (type=='LTL' || type=='AIR') {
           delete $rootScope.loadsOpened.ltl[id];
-        }else if (type=='Air') {
-          delete $rootScope.loadsOpened.air[id];
         }
 
         if(update) {
@@ -139,8 +135,17 @@ angular.module('servicesApp')
         $scope.editLoad(load._id);
       };
 
+    $scope.newAirLoad = function() {
+      console.log("calling createFTLLoad");
+      var load = angular.copy($scope.emptyFreightLoad);
+      load._id = NEW_LTL_ID;
+      load.loadType="AIR";
+      $rootScope.loadsOpened.ltl[NEW_LTL_ID] = {data:load, active:true};
+      $scope.editLoad(load._id);
+    };
 
-      $scope.loadLoads = function(type) {
+
+    $scope.loadLoads = function(type) {
 
         console.log('fetch loads from the db');
         if(!type || type=='FTL') {

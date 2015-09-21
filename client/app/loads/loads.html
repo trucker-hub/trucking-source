@@ -11,6 +11,7 @@
                 <div class="col-md-9">
                     <button class="btn btn-sm btn-default" type="button" ng-click="newFTLLoad()">Create FTL load</button>
                     <button class="btn btn-sm btn-default" type="button" ng-click="newFreightLoad()">Create LTL load</button>
+                    <button class="btn btn-sm btn-default" type="button" ng-click="newAirLoad()">Create Air load</button>
                 </div>
                 <div class="col-md-3">
                     <button class="btn btn-sm btn-primary" type="button" ng-click="loadLoads()">Query</button>
@@ -21,7 +22,7 @@
             <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover">
 
                 <tr ng-repeat="load in $data">
-                    <td>{{load.loadType}}</td>
+                    <td><load-type type="load.loadType"></load-type></td>
                     <td data-title="'Who'" filter="{ 'name': 'text' }">
                         {{load.who}}
                     </td>
@@ -51,11 +52,14 @@
         </tab>
 
         <tab ng-repeat="(id, item) in loadsOpened.ftl" active="item.active">
-            <tab-heading><span>{{item.data.who }}</span>&nbsp<a><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="closeTab(id, 'FTL')"></span></a></tab-heading>
+            <tab-heading><load-type type="item.data.loadType"></load-type>
+              <span>{{item.data.who }}</span>&nbsp<a><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="closeTab(id, 'FTL')"></span></a>
+            </tab-heading>
             <div ng-include="'app/loads/ftl/ftl.html'" ng-controller="FtlCtrl as ftlCtrl" ng-init="ftlCtrl.init(item.data)"></div>
         </tab>
       <tab ng-repeat="(id, item) in loadsOpened.ltl" active="item.active">
-        <tab-heading><span>{{item.data.who }}</span>&nbsp<a><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="closeTab(id, 'LTL')"></span></a></tab-heading>
+        <tab-heading><load-type type="item.data.loadType"></load-type>
+          <span>{{item.data.who }}</span>&nbsp<a><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="closeTab(id, 'LTL')"></span></a></tab-heading>
         <div ng-include="'app/loads/freight/freight.html'" ng-controller="FreightCtrl as freightCtrl" ng-init="freightCtrl.init(item.data)"></div>
       </tab>
 

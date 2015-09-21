@@ -84,9 +84,11 @@
       </tr>
       <tr ng-repeat="line in ftlCtrl.load.lines track by $index">
         <form name="innerForm" novalidate>
-        <td><div class="form-group" ng-class="{'has-error':innerForm.weight.$invalid}">
+        <td>
+          <div class="form-group" ng-class="{'has-error':innerForm.weight.$invalid}">
           <input type="number" class="form-control" size="6" ng-model="line.weight" name="weight"
-                   placeholder="weight" required min="100"></div></td>
+                   placeholder="weight" required min="100"></div>
+        </td>
         <td><div ng-class="{'has-error':innerForm.quantity.$invalid}">
           <input class="form-control" type="number" size="3" ng-model="line.quantity" min="1" name="quantity" required>
           </div>
@@ -98,9 +100,11 @@
           </select>
         </td>
         <td>
+          <div class="form-inline">
           <input class="form-control" type="text" ng-model="line.length" size="2" min="1">
           <input class="form-control" type="text" ng-model="line.width"  size="2" min="1">
           <input class="form-control" type="text" ng-model="line.height" size="2" min="1">
+          </div>
         </td>
         <td><input class="form-control" type="text" ng-model="line.description" placeholder="description"></td>
         <td><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="ftlCtrl.removeLine($index)"></span>
