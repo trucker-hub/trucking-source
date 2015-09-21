@@ -45,7 +45,7 @@ angular.module('servicesApp')
       vm.load.lines.push({
         weight: 0,
         quantity: 1,
-        packaging: vm.packagings[0],
+        packaging: "",
         length: 0,
         width: 0,
         height: 0,

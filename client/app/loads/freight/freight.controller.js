@@ -46,7 +46,7 @@ angular.module('servicesApp')
       vm.freight.lines.push({
         weight: 0,
         quantity: 1,
-        packaging: vm.packagings[0],
+        packaging: "",
         length: 0,
         width: 0,
         height: 0,
@@ -80,6 +80,25 @@ angular.module('servicesApp')
       );
     };
 
+    vm.prefillWL = function (line) {
+      console.log("line=" + JSON.stringify(line));
+      if(line.packaging=="Pallets (48x40)") {
+        line.width=48;
+        line.length=40;
+      }else if (line.packaging=="Pallets (48x48)") {
+        line.width = 48;
+        line.length = 48;
+      }else if (line.packaging=="Pallets (60x48)") {
+        line.width = 60;
+        line.length = 48;
+      }else {
+        line.width=0;
+        line.length=0;
+      }
+    }
+    vm.computeClass = function() {
+
+    }
 
 
     vm.submit = function() {

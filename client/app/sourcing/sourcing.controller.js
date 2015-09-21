@@ -12,7 +12,6 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http
         $scope.progressbar.start();
         $http.get('/api/load/ftl-loads?status=' + type + "&days=" + days).then(
             function(response) {
-                console.log(JSON.stringify(response.data));
                 $scope.updateLoadsTable(response.data);
                 $scope.progressbar.complete();
             },
