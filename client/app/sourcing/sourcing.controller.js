@@ -1,19 +1,33 @@
 'use strict';
 
-angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http, $modal, ngTableParams, $filter, ngProgressFactory) {
+angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $scope, $http, $modal, ngTableParams, $filter, ngProgressFactory) {
 
     var selectedCompanies = [];
 
     var loads = [];
 
+    $rootScope.sourcing = $rootScope.sourcing || { ftlLoads: [], ltlLoads: []};
+
     $scope.queryLoads = function(type, days) {
 
         $scope.progressbar = ngProgressFactory.createInstance();
         $scope.progressbar.start();
+
+        $rootScope.sourcing = { ftlLoads: null, ltlLoads: null };
+
         $http.get('/api/load/ftl-loads?status=' + type + "&days=" + days).then(
             function(response) {
-                $scope.updateLoadsTable(response.data);
-                $scope.progressbar.complete();
+                $rootScope.sourcing.ftlLoads = response.data;
+                $scope.updateLoadsTable();
+            },
+            function(response) {
+                console.log('ran into error ' + response);
+                $scope.progressbar.stop();
+            });
+        $http.get('/api/load/ltl-loads?status=' + type + "&days=" + days).then(
+            function(response) {
+                $rootScope.sourcing.ltlLoads = response.data;
+                $scope.updateLoadsTable();
             },
             function(response) {
                 console.log('ran into error ' + response);
@@ -29,8 +43,11 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http
     }
 
     $scope.updateLoadsTable = function(data) {
-        loads = data;
-        $scope.tableParamsLoads.reload();
+        if ($rootScope.sourcing.ftlLoads && $rootScope.sourcing.ltlLoads) {
+            $scope.progressbar.complete();
+            loads = $rootScope.sourcing.ftlLoads.concat($rootScope.sourcing.ltlLoads);
+            $scope.tableParamsLoads.reload();
+        }
     };
 
 

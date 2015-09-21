@@ -17,6 +17,7 @@
       <table ng-table="tableParamsLoads" show-filter="true" class="table table-responsive table-hover table-condensed">
 
         <tr ng-repeat="load in $data" ng-click="select(load)">
+          <td><load-type type="load.loadType"></load-type></td>
           <td data-title="''">
             {{load.source }}
           </td>

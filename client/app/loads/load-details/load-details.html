@@ -18,14 +18,36 @@
   <tr>
     <th>To</th>
     <td>{{load.shipTo.location | location}}</td>
-    <td>{{load.shipTo.locationType}}</td>
+    <td></td>
   </tr>
+  <tr ng-show="load.loadType=='FTL'">
+    <td></td>
+    <td>{{load.shipTo.locationType}}</td>
+    <td></td>
+  </tr>
+  <tr ng-show="load.loadType!='FTL'">
+    <td></td>
+    <td>{{load.shipTo.services | serviceList:'Delivery'}}</td>
+    <td></td>
+  </tr>
+
   <tr>
     <th>From</th>
     <td>{{load.shipFrom.location | location}}</td>
-    <td>{{load.shipFrom.locationType}}</td>
+    <td></td>
   </tr>
-  <tr>
+  <tr ng-show="load.loadType=='FTL'">
+    <td></td>
+    <td>{{load.shipFrom.locationType}}</td>
+    <td></td>
+  </tr>
+  <tr ng-show="load.loadType!='FTL'">
+    <td></td>
+    <td>{{load.shipFrom.services | serviceList:'Pickup'}}</td>
+    <td></td>
+  </tr>
+
+  <tr ng-show="load.loadType=='FTL'">
     <th>Trailer</th>
     <td>{{load.trailer.type}}</td>
     <td></td>

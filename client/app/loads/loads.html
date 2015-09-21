@@ -20,7 +20,6 @@
             </div>
             <br>
             <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover">
-
                 <tr ng-repeat="load in $data">
                     <td><load-type type="load.loadType"></load-type></td>
                     <td data-title="'Who'" filter="{ 'name': 'text' }">
@@ -35,7 +34,7 @@
                     <td data-title="'Created'">
                         {{load.createdAt | date:'short'}}
                     </td>
-                    <td data-title="'Expected By'">
+                    <td data-title="'Delivery By'">
                         {{load.expectedBy | date:'short'}}
                     </td>
                     <td data-title="'Status'">

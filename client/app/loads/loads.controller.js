@@ -151,7 +151,7 @@ angular.module('servicesApp')
         if(!type || type=='FTL') {
           $http.get('/api/load/ftl-loads').then(
               function(response) {
-                console.log(JSON.stringify(response.data));
+                //console.log(JSON.stringify(response.data));
                 $rootScope.loads.ftl = response.data;
                 $scope.updateTable();
               },
@@ -163,7 +163,7 @@ angular.module('servicesApp')
         if(!type || type=='LTL') {
           $http.get('/api/load/ltl-loads').then(
               function(response) {
-                console.log(JSON.stringify(response.data));
+                //console.log(JSON.stringify(response.data));
                 $rootScope.loads.ltl = response.data;
                 $scope.updateTable();
               },
@@ -177,7 +177,7 @@ angular.module('servicesApp')
           $http.get('/api/load/ftl-loads/util/constants').then(
               function(response) {
                 var data = response.data;
-                console.log("constants are " + JSON.stringify((data)));
+                //console.log("constants are " + JSON.stringify((data)));
                 $rootScope.loadConstants = {
                   ftl: {
                     packagings: data.packagings,

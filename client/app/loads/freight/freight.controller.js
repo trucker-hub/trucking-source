@@ -14,6 +14,9 @@ angular.module('servicesApp')
       if(vm.freight._id!=-1 ) {
         vm.freight.shipTo.location.raw = load.shipTo.location.full_address;
         vm.freight.shipFrom.location.raw = load.shipFrom.location.full_address;
+        vm.freight.changed = false;
+      }else {
+        vm.freight.changed = true;
       }
       vm.setInitialExpectedDate();
       vm.loadConstants();
@@ -51,12 +54,17 @@ angular.module('servicesApp')
         width: 0,
         height: 0,
         description: ""
-      })
+      });
+      vm.change();
+    };
+
+    vm.change = function() {
+      vm.freight.changed = true;
     };
 
     vm.removeLine = function (index) {
       vm.freight.lines.splice(index, 1);
-
+      vm.change();
     };
 
     vm.isNew = function() {
@@ -95,10 +103,43 @@ angular.module('servicesApp')
         line.width=0;
         line.length=0;
       }
-    }
-    vm.computeClass = function() {
+    };
 
-    }
+    vm.computeClass = function(line) {
+      if(line.width && line.length && line.height && line.weight) {
+        var density = line.weight * 1728.0 / (line.width * line.length * line.height);
+        console.log("density = " + density);
+        if(density < 1) {
+          line.freightClass= 400;
+        }else if (density < 2) {
+          line.freightClass= 300;
+        } else if (density < 4) {
+          line.freightClass= 250;
+        } else if (density < 6) {
+          line.freightClass =250;
+        } else if (density < 8) {
+          line.freightClass = 125;
+        } else if (density < 10) {
+          line.freightClass = 100;
+        } else if (density < 12) {
+          line.freightClass = 92.5;
+        } else if (density < 15 ) {
+          line.freightClass = 85;
+        } else if (density < 15 ) {
+          line.freightClass = 85;
+        } else if (density < 22.5) {
+          line.freightClass = 70;
+        } else if (density < 30) {
+          line.freightClass = 65;
+        } else if (density >= 30) {
+          line.freightClass = 60;
+        }
+      } else {
+        line.freightClass = -1;
+      };
+
+      vm.change();
+    };
 
 
     vm.submit = function() {

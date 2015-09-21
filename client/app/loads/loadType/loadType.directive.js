@@ -3,7 +3,7 @@
 angular.module('servicesApp')
   .directive('loadType', function () {
     return {
-      template: '<i class="fa {{iconType}}"></i>',
+      template: '<i class="fa fa-lg {{iconType}}"></i>',
       restrict: 'E',
       scope: {
         type: '=type'
@@ -17,7 +17,7 @@ angular.module('servicesApp')
          }else if(scope.type=="AIR") {
            scope.iconType="fa-plane";
          }
-         console.log("scope icon Type is " + scope.iconType);
+         //console.log("scope icon Type is " + scope.iconType);
       }
     };
   });

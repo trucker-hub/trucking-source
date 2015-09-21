@@ -5,7 +5,6 @@ angular.module('servicesApp')
 
 
     var vm = this;
-
     vm.packagings = [];
 
     vm.init = function(load) {
@@ -14,6 +13,9 @@ angular.module('servicesApp')
       if(vm.load._id!=-2 ) {
         vm.load.shipTo.location.raw = vm.load.shipTo.location.full_address;
         vm.load.shipFrom.location.raw = vm.load.shipFrom.location.full_address;
+        vm.load.changed = false;
+      }else {
+        vm.load.changed = true;
       }
       vm.setInitialExpectedDate();
       vm.loadConstants();
@@ -32,7 +34,7 @@ angular.module('servicesApp')
       vm.toLocationTypes = $rootScope.loadConstants.ftl.toLocationTypes;
       vm.fromLocationTypes = $rootScope.loadConstants.ftl.fromLocationTypes;
       vm.trailerTypes = $rootScope.loadConstants.ftl.trailerTypes;
-    }
+    };
 
     vm.loadConstants = function() {
       if($rootScope.loadConstants) {
@@ -50,17 +52,22 @@ angular.module('servicesApp')
         width: 0,
         height: 0,
         description: ""
-      })
+      });
+      vm.change();
     };
 
     vm.removeLine = function (index) {
       vm.load.lines.splice(index, 1);
-
+      vm.change();
     };
 
     vm.isNew = function() {
       return vm.load._id == -2;
-    }
+    };
+      vm.change = function() {
+        vm.load.changed = true;
+      };
+
 
     vm.close = function() {
       $scope.$parent.closeTab(vm.load._id, 'FTL', false);

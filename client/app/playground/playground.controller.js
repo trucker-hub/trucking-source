@@ -3,6 +3,9 @@
 angular.module('servicesApp')
     .controller('PlaygroundCtrl', function ($scope) {
 
+      $scope.services = [
+        {service:"TradeShow"} , {service: "Inside"}
+      ];
       $scope.newFlatTier = {
         tier: "",
         previous: "",

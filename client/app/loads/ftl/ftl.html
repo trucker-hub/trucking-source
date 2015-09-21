@@ -22,7 +22,7 @@
         <div class="col-md-11" id="inputTrailerType" >
           <div class="radio-inline" ng-repeat="trailerType in ftlCtrl.trailerTypes">
             <label>
-              <input type="radio" name="{{trailerType}}" ng-value="trailerType" ng-model="ftlCtrl.load.trailer.type">
+              <input type="radio" name="{{trailerType}}" ng-value="trailerType" ng-model="ftlCtrl.load.trailer.type" ng-change="ftlCtrl.change()">
               {{trailerType}}
             </label>
           </div>
@@ -41,7 +41,7 @@
                  class="form-control" id="customerName" size="20" name="customerName"
                  ng-model="ftlCtrl.load.who"
                  ng-minlength="5"
-                 placeholder="Consignee name" required="">
+                 placeholder="Consignee name" required="" ng-change="ftlCtrl.change()">
         </div>
       </div>
       <div class="row ftlPadding">
@@ -51,7 +51,7 @@
             class="form-control" id="customerNote" size="20"
             ng-model="ftlCtrl.load.notes"
             rows="4"
-            placeholder="Note name"></textarea>
+            placeholder="Note name" ng-change="ftlCtrl.change()"></textarea>
         </div>
       </div>
     </div>
@@ -60,7 +60,7 @@
       <div class="col-md-10">
         <div style="display:inline-block; min-height:290px;" id="loadDate">
           <datepicker ng-model="ftlCtrl.load.expectedBy" min-date="minDate" show-weeks="true" class="well well-sm"
-                      custom-class="getDayClass(date, mode)">
+                      custom-class="getDayClass(date, mode)" ng-change="ftlCtrl.change()">
 
           </datepicker>
         </div>
@@ -87,26 +87,26 @@
         <td>
           <div class="form-group" ng-class="{'has-error':innerForm.weight.$invalid}">
           <input type="number" class="form-control" size="6" ng-model="line.weight" name="weight"
-                   placeholder="weight" required min="100"></div>
+                   placeholder="weight" required min="100" ng-change="ftlCtrl.change()"></div>
         </td>
         <td><div ng-class="{'has-error':innerForm.quantity.$invalid}">
-          <input class="form-control" type="number" size="3" ng-model="line.quantity" min="1" name="quantity" required>
+          <input class="form-control" type="number" size="3" ng-model="line.quantity" min="1" name="quantity" required ng-change="ftlCtrl.change()">
           </div>
         </td>
         <td>
-          <select class="form-control" ng-model="line.packaging" id="">
+          <select class="form-control" ng-model="line.packaging" id="" ng-change="ftlCtrl.change()">
             <option value="">-- Packaging --</option>
             <option ng-repeat="packaging in ftlCtrl.packagings">{{packaging}}</option>
           </select>
         </td>
         <td>
           <div class="form-inline">
-            <input class="form-control" type="text" ng-model="line.width"  size="2" min="1">
-            <input class="form-control" type="text" ng-model="line.length" size="2" min="1">
-            <input class="form-control" type="text" ng-model="line.height" size="2" min="1">
+            <input class="form-control" type="text" ng-model="line.width"  size="2" min="1" ng-change="ftlCtrl.change()">
+            <input class="form-control" type="text" ng-model="line.length" size="2" min="1" ng-change="ftlCtrl.change()">
+            <input class="form-control" type="text" ng-model="line.height" size="2" min="1" ng-change="ftlCtrl.change()">
           </div>
         </td>
-        <td><input class="form-control" type="text" ng-model="line.description" placeholder="description"></td>
+        <td><input class="form-control" type="text" ng-model="line.description" placeholder="description" ng-change="ftlCtrl.change()"></td>
         <td><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="ftlCtrl.removeLine($index)"></span>
         </td>
         </form>
@@ -119,8 +119,8 @@
     <button style="float:left" ng-hide="ftlCtrl.isNew()" class="btn btn-sm btn-danger" type="button" ng-click="ftlCtrl.delete()">DELETE</button>
   </div>
   <div class="col-md-9">
-    <button style="float:left" class="btn btn-sm btn-warning" type="button" ng-click="ftlCtrl.close()">Close</button>
-    <button style="float:right" class="btn btn-sm btn-primary" type="button" ng-disabled="locationForm.$invalid" ng-click="ftlCtrl.submit()">Submit</button>
+    <button style="float:left" class="btn btn-default" type="button" ng-click="ftlCtrl.close()">Close</button>
+    <button style="float:right" class="btn btn-default" type="button" ng-disabled="locationForm.$invalid || !ftlCtrl.load.changed" ng-click="ftlCtrl.submit()">Submit</button>
   </div>
 </div>
 <div>

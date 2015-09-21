@@ -26,4 +26,18 @@ angular.module('servicesApp')
       }
       return result;
     };
-  });
+  })
+    .filter('serviceList', function () {
+      return function (services, type) {
+        if(!services) {
+          return "";
+        }
+        var i, x = "";
+        for(i=0; i<services.length; ++i) {
+          x += services[i].service +"; "
+        }
+        return type + (i==1?" service: ":" services: ") + x;
+
+      };
+    })
+;
