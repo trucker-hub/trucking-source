@@ -12,7 +12,7 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-5" ng-hide="fullsizeView">
 
       <table ng-table="tableParamsLoads" show-filter="true" class="table table-responsive table-hover table-condensed">
 
@@ -34,8 +34,10 @@
       </table>
     </div>
 
-    <div class="col-md-7 container" id="sourcing-container">
+    <div class="container" ng-class="{'col-md-7': !fullsizeView, 'col-md-12':fullsizeView}" id="sourcing-container">
       <div>
+
+        <div class="row"><a ng-click="resize()"><i class="fa fa-2x" ng-class="{'fa-angle-double-right': fullsizeView, 'fa-angle-double-left': !fullsizeView}"></i></a></div>
         <div class="row">
           <load-details load="selectedLoad"></load-details>
           <div>

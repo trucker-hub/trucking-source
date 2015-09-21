@@ -35,6 +35,12 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
             });
     };
 
+    $scope.fullsizeView = false;
+
+    $scope.resize = function() {
+        $scope.fullsizeView = !$scope.fullsizeView;
+    }
+
     $scope.select = function(load) {
         if($scope.selectedLoad!=load) {
             $scope.sources =[];
