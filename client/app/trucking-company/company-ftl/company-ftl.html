@@ -89,5 +89,38 @@
     </td>
     <td></td>
   </tr>
+  <tr>
+    <th>Pier Pass</th>
+    <td>
+      <div ng-class="{'has-error': companyInfo.pierPassCharge.$invalid}" class="input-group">
+        <div class="input-group-addon">$</div>
+        <input name="pierPassCharge" type="text" class="form-control" size="13"
+               ng-model="ftlCtrl.company.ftl.pierPassFee"
+               placeholder="00.00" required ng-change="ftlCtrl.change()"></div>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Cleaning Trucking Fee</th>
+    <td>
+      <div ng-class="{'has-error': companyInfo.cleaningTruckFee.$invalid}" class="input-group">
+        <div class="input-group-addon">$</div>
+        <input name="cleaningTruckFee" type="text" class="form-control" size="13"
+               ng-model="ftlCtrl.company.ftl.cleaningTruckFee"
+               placeholder="00.00" required ng-change="ftlCtrl.change()"></div>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Congestion Fee</th>
+    <td>
+      <div ng-class="{'has-error': companyInfo.congestionFee.$invalid}" class="input-group">
+        <div class="input-group-addon">$</div>
+        <input name="congestionFee" type="text" class="form-control" size="13"
+               ng-model="ftlCtrl.company.ftl.congestionFee"
+               placeholder="00.00" required ng-change="ftlCtrl.change()"></div>
+    </td>
+    <td></td>
+  </tr>
 
 </table>

@@ -104,8 +104,11 @@ TruckingCompany.find({}).remove(function () {
         favorite: true,
         rateBasis: "city",
         ftl: {
-          fuelSurcharge: 2.0,
+          fuelSurcharge: 20,
           residentialCharge: 60.0,
+          pierPassFee: 66.50,
+          cleaningTruckFee: 35,
+          congestionFee: 150,
           regions: [
             {
               state: "CA",
@@ -127,7 +130,7 @@ TruckingCompany.find({}).remove(function () {
               city: "Inglewood",
               zipCode: "90301",
               rate: 100,
-              dropOffCharge:0,
+              dropOffCharge:15,
               dropOffChargeOffhour:25,
               dropOffChargeWeekend:50,
               dropOffChargeHoliday:70
@@ -155,7 +158,7 @@ TruckingCompany.find({}).remove(function () {
           ]
         },
         ltl: {
-          fuelSurcharge: 0.2,
+          fuelSurcharge: 20,
           residentialCharge: 60,
           liftGateCharge: 30,
           insideCharge: 15,
@@ -267,8 +270,11 @@ TruckingCompany.find({}).remove(function () {
         favorite: false,
         rateBasis: "city",
         ftl: {
-          fuelSurcharge: 0.20,
+          fuelSurcharge: 20,
           residentialCharge: 60.0,
+          pierPassFee: 66.50,
+          cleaningTruckFee: 35,
+          congestionFee: 150,
           regions: [
             {
               state: "CA",

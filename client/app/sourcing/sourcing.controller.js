@@ -138,7 +138,7 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
     };
     $scope.tableParamsLoads = new ngTableParams({
         page: 1,            // show first page
-        count: 20,          // count per page
+        count: 10,          // count per page
         filter: {
             who: ''       // initial filter
         }

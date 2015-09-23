@@ -43,8 +43,12 @@ var calculateRate = function(load, company) {
   }
 
   if(load.shipTo.locationType == 'Residential' || load.shipFrom.locationType == 'Residential') {
-    result.push({charge:matchEntry.residentialCharge , description: "Residential Charge"});
+    result.push({charge:company.ftl.residentialCharge , description: "Residential Charge"});
   }
+
+  result.push({charge:company.ftl.pierPassFee , description: "Pier Pass Fee"});
+  result.push({charge:company.ftl.cleaningTruckFee , description: "Cleaning Truck Fee"});
+  result.push({charge:company.ftl.congestionFee , description: "Congestion Fee"});
 
   //overweight charge
   var totalWeight = load.lines.reduce( function(total, line) {
