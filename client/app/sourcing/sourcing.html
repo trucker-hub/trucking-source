@@ -1,22 +1,20 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-
+<br>
 <div class="container">
+  <div class="panel panel-default">
 
-  <br>
-  <div class="row container">
-    <button type="button" class="btn btn-default btn-link" ng-click="queryLoads('OPEN',1)">Today Loads</button>
-    <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads('OPEN',3)">Open for 3 days </button>
-    <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads('OPEN',7)">Open for 1 week</button>
-    <button type="button" class="btn btn-danger btn-link" ng-click="queryLoads('OPEN',14)">All Open Loads</button>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-5" ng-hide="fullsizeView">
+    <div class="panel-heading">
+      <button type="button" class="btn btn-default btn-link" ng-click="queryLoads('OPEN',1)">Today Loads</button>
+      <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads('OPEN',3)">Open for 3 days </button>
+      <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads('OPEN',7)">Open for 1 week</button>
+      <button type="button" class="btn btn-danger btn-link" ng-click="queryLoads('OPEN',14)">All Open Loads</button>
 
+    </div>
+    <div class="panel-body">
       <table ng-table="tableParamsLoads" show-filter="true" class="table table-responsive table-hover table-condensed">
 
-        <tr ng-repeat="load in $data" ng-click="select(load)">
+        <tr ng-repeat="load in $data" ng-click="select(load)" ng-class="{'success':load==selectedLoad}">
           <td><load-type type="load.loadType"></load-type></td>
           <td data-title="''">
             {{load.source }}
@@ -25,60 +23,53 @@
             {{load.who}}
           </td>
           <td data-title="'Delivery'">
-              {{load.shipFrom.location | location: true}} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> {{load.shipTo.location | location: true}}
+            {{load.shipFrom.location | location: true}} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> {{load.shipTo.location | location: true}}
           </td>
-          <td data-title="'Expected By'">
+          <td data-title="'Delivery By'">
             {{load.expectedBy | date:'shortDate'}}
           </td>
         </tr>
       </table>
     </div>
-
-    <div class="container" ng-class="{'col-md-7': !fullsizeView, 'col-md-12':fullsizeView}" id="sourcing-container">
-      <div>
-
-        <div class="row"><a ng-click="resize()"><i class="fa fa-2x" ng-class="{'fa-angle-double-right': fullsizeView, 'fa-angle-double-left': !fullsizeView}"></i></a></div>
-        <div class="row">
-          <load-details load="selectedLoad"></load-details>
-          <div>
-            <button style="float:left" type="button" class="btn btn-primary" ng-disabled="!selectedLoad" ng-click="sourcing()">Sourcing</button>
-            <button style="float:right" type="button" class="btn btn-primary" ng-disabled="!selectedLoad.fulfilledBy.source" ng-click="createDO()">Select</button>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <table class="table table-striped">
-            <tr>
-              <th>Company</th>
-              <th>Cost</th>
-              <th>Time</th>
-              <th>Contact</th>
-              <th>Location</th>
-              <th></th>
-            </tr>
-            <tr ng-repeat-start="source in sources" class="success" ng-click="selectSource(source)">
-              <th >{{source.name}}</th>
-              <td ><b>{{source.totalCost | currency:"$":2}}</b></td>
-              <td >{{source.time}}</td>
-              <td >{{source.contact}}</td>
-              <td >{{source.location}}</td>
-              <td><span class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
-            </tr>
-            <tr ng-repeat-end>
-              <td></td>
-              <td colspan="5">
-                <p ng-repeat="entry in source.costItems"><b>{{entry.charge | currency:"$":2}}</b> for {{entry.description}}</p>
-              </td>
-            </tr>
-          </table>
-        </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading form-group"><b>Load:</b> {{selectedLoad.who}} <div style="float:right" ng-show="selectedLoad">Sourcing <a ng-click="sourcing()"><i  class="fa fa-search"></i></a> </div></div>
+    <div class="panel-body">
+      <load-details load="selectedLoad"></load-details>
+    </div>
+  </div>
+    <div class="panel panel-info">
+      <div class="panel-heading">Trucking Companies</div>
+      <div class="panel-body">
+        <table class="table table-striped">
+          <tr>
+            <th>Company</th>
+            <th>Cost</th>
+            <th>Time</th>
+            <th>Contact</th>
+            <th>Location</th>
+            <th></th>
+          </tr>
+          <tr ng-repeat-start="source in sources" class="success" ng-click="selectSource(source)">
+            <th >{{source.name}}</th>
+            <td ><b>{{source.totalCost | currency:"$":2}}</b></td>
+            <td >{{source.time}}</td>
+            <td >{{source.contact}}</td>
+            <td >{{source.location}}</td>
+            <td><span class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
+          </tr>
+          <tr ng-repeat-end>
+            <td></td>
+            <td colspan="5">
+              <p ng-repeat="entry in source.costItems"><b>{{entry.charge | currency:"$":2}}</b> for {{entry.description}}</p>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
 
-  </div>
-
-
 </div>
+
 
 
 

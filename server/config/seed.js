@@ -112,7 +112,7 @@ TruckingCompany.find({}).remove(function () {
               county: "Los Angeles County"
             }
           ],
-          OverWeightCharges: [
+          overWeightCharges: [
             {
               containerSize: "40",
               ranges: [
@@ -275,7 +275,7 @@ TruckingCompany.find({}).remove(function () {
               county: "Los Angeles County"
             }
           ],
-          OverWeightCharges: [
+          overWeightCharges: [
             { containerSize: "28",
               ranges: [
                 {limit: 13000, charge: 150},

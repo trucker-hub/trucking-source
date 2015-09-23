@@ -110,7 +110,24 @@ angular.module('servicesApp')
         name: "company name",
         location: "Street, City, State",
         phone: "(999)999-9999",
-        favorite: false
+        favorite: false,
+        ftl: {
+          overWeightCharges: [
+            { "containerSize": "20",
+              ranges: [ {limit:36000, charge: 100}, {limit:39000,charge:150}]
+            },
+            { "containerSize": "40",
+              ranges: [ {limit:44000, charge: 100}, {limit:48000,charge:150}]
+            },
+            { "containerSize": "40HQ",
+              ranges: [ {limit:44000, charge: 100}, {limit:48000,charge:150}]
+            },
+            { "containerSize": "48",
+              ranges: [ {limit:44000, charge: 100}, {limit:48000,charge:150}]
+            }]
+          },
+        ltl: {},
+        air: {}
       };
 
       $scope.addCompany = function() {
@@ -146,10 +163,10 @@ angular.module('servicesApp')
           // use build-in angular filter
           var orderedData = params.filter() ? $filter('filter')(allCompanies, params.filter()) : allCompanies;
 
-          allCompanies = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+          var xxx = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
 
           params.total(orderedData.length); // set total for recalc pagination
-          $defer.resolve(allCompanies);
+          $defer.resolve(xxx);
         }
       });
 

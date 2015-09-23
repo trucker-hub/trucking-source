@@ -19,7 +19,7 @@ var TruckingCompanySchema = new Schema({
       state: String,
       county: String
     }],
-    OverWeightCharges: [{
+    overWeightCharges: [{
       containerSize: String,
       ranges: [{
         limit: Number,

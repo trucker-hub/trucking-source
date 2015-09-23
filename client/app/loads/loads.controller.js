@@ -24,10 +24,10 @@ angular.module('servicesApp')
           // use build-in angular filter
           var orderedData = params.filter() ? $filter('filter')(loads, params.filter()) : loads;
 
-          loads = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+          var xxx = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
 
           params.total(orderedData.length); // set total for recalc pagination
-          $defer.resolve(loads);
+          $defer.resolve(xxx);
         }
       });
 

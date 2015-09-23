@@ -29,8 +29,8 @@ var calculateRate = function(load, company) {
 
   result.push({charge: matchEntry.rate, description: "Basis rate"});
 
-  var fuelSurcharge = (matchEntry.rate * company.ftl.fuelSurcharge);
-  var fuelSurchargePercentage = company.ftl.fuelSurcharge *100;
+  var fuelSurcharge = (matchEntry.rate * company.ftl.fuelSurcharge *0.01);
+  var fuelSurchargePercentage = company.ftl.fuelSurcharge;
   result.push({charge: fuelSurcharge, description: "Fuel Surcharge " + fuelSurchargePercentage + "%"});
 
   if(matchEntry.dropOffCharge >0.001) {
@@ -54,8 +54,8 @@ var calculateRate = function(load, company) {
   console.log("total weight=" + totalWeight);
   var totalWeightCharge =0;
 
-  for(index=0; index < company.ftl.OverWeightCharges.length; ++index) {
-    var OverWeightCharge = company.ftl.OverWeightCharges[index];
+  for(index=0; index < company.ftl.overWeightCharges.length; ++index) {
+    var OverWeightCharge = company.ftl.overWeightCharges[index];
     if(OverWeightCharge.containerSize == load.trailer.size) {
       var j;
       for(j=0; j < OverWeightCharge.ranges.length; ++j) {
