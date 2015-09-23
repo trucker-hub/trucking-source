@@ -99,7 +99,7 @@ exports.index = function(req, res) {
 
     if(err) {
       console.log("run into error " + err);
-      return handleError(res, err);;
+      return handleError(res, err);
     }
     console.log("found " + companies.length + " companies serving this region");
     var x;

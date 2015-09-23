@@ -35,19 +35,19 @@ angular.module('servicesApp')
 
     $scope.tableParamsLoads = new ngTableParams({
       page: 1,            // show first page
-      count: 20,          // count per page
+      count: 10,          // count per page
       filter: {
         who: ''       // initial filter
       }
     }, {
       total: loads.length, // length of data
-      counts: [], // hide page counts control
+      //counts: [], // hide page counts control
       getData: function($defer, params) {
         // use build-in angular filter
         var orderedData = params.filter() ? $filter('filter')(loads, params.filter()) : loads;
-        loads = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+        var xxx  = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
         params.total(orderedData.length); // set total for recalc pagination
-        $defer.resolve(loads);
+        $defer.resolve(xxx);
       }
     });
 

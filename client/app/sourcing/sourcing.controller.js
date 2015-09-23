@@ -8,6 +8,11 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
 
     $rootScope.sourcing = $rootScope.sourcing || { ftlLoads: [], ltlLoads: []};
 
+    var brokerFees = [
+        {name: "ABI-Customs Fee", charge: 15},
+        {name: "Chassy Fee", charge: 15},
+        {name: "Service Fee", charge:50}
+    ];
     $scope.queryLoads = function(type, days) {
 
         $scope.progressbar = ngProgressFactory.createInstance();
@@ -45,6 +50,9 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
         if($scope.selectedLoad!=load) {
             $scope.sources =[];
             $scope.selectedLoad = load;
+            if(!$scope.selectedLoad.brokerFees || $scope.selectedLoad.brokerFees.length==0) {
+                $scope.selectedLoad.brokerFees = brokerFees;
+            }
         }
     };
 
@@ -66,7 +74,8 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
                 source: aSource.id,
                 charge: aSource.totalCost,
                 costItems: aSource.costItems
-            }
+            };
+            $scope.recalcAdjustments();
         }else {
             $scope.selectedLoad.fulfilledBy =
             {
@@ -78,6 +87,23 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
         }
     };
 
+    $scope.recalcAdjustments = function() {
+        var i, sum=0;
+        for(i=0; i < $scope.selectedLoad.fulfilledBy.costItems.length; ++i) {
+            var item = $scope.selectedLoad.fulfilledBy.costItems[i];
+            if(item.adjustment) {
+                sum += item.adjustment;
+            }
+        }
+
+        for(i=0; i < $scope.selectedLoad.brokerFees.length; ++i) {
+            var brokerFee = $scope.selectedLoad.brokerFees[i];
+            if(brokerFee.charge) {
+                sum += brokerFee.charge;
+            }
+        }
+        $scope.selectedLoad.adjustmentAmount = sum;
+    }
 
     $scope.sourcing = function() {
 
@@ -86,9 +112,11 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
         $http.post("/api/sourcing", $scope.selectedLoad).then(
             function(response) {
                 console.log(JSON.stringify(response.data));
-                $scope.sources = response.data;
-                if($scope.sources.length > 0) {
-                    $scope.selectSource($scope.sources[0]);
+                $scope.selectedLoad.sources = response.data;
+                if($scope.selectedLoad.sources.length > 0) {
+                    $scope.selectSource($scope.selectedLoad.sources[0]);
+                }else {
+                    $scope.selectSource(null);
                 }
                 //after get the companies' data, we can calculate the prices on the client side.
                 $scope.progressbar.complete();
@@ -99,6 +127,20 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
                 $scope.progressbar.stop();
             })
     };
+
+    $scope.finalizeSource = function() {
+        $scope.selectedLoad.status = "FILLED";
+        $http.put('/api/load/ftl-loads/'+$scope.selectedLoad._id, $scope.selectedLoad).then(
+
+            function(response) {
+                console.log("request saved succesfully " + JSON.stringify(response));
+            },
+            function(err) {
+                console.log("request saving failed " + err);
+            }
+        );
+    };
+
     $scope.createDO = function() {
         var modalInstance = $modal.open({
             animation: true,
@@ -128,8 +170,6 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
                   console.log("request saving failed " + err);
                 }
               );
-
-
             },
             function () {
                 console.log('Modal dismissed at: ' + new Date());

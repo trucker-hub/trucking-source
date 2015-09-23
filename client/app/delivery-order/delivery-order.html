@@ -3,16 +3,15 @@
 <div class="container">
 
   <br>
-  <div class="row container">
-    <button type="button" class="btn btn-default btn-link" ng-click="queryLoads('FILLED',1)">Today's DO</button>
-    <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads('FILLED',3)">DO in last 3 days </button>
-    <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads('FILLED',7)">DO in last 3 days</button>
-    <button type="button" class="btn btn-danger btn-link" ng-click="queryLoads('FILLED',14)">All Open DO</button>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-5">
+  <div class="panel panel-default">
 
+    <div class="panel-heading">
+      <button type="button" class="btn btn-default btn-link" ng-click="queryLoads('FILLED',1)">Today's DO</button>
+      <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads('FILLED',3)">DO in last 3 days </button>
+      <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads('FILLED',7)">DO in last 3 days</button>
+      <button type="button" class="btn btn-danger btn-link" ng-click="queryLoads('FILLED',14)">All Open DO</button>
+    </div>
+    <div class="panel-body">
       <table ng-table="tableParamsLoads" show-filter="true" class="table table-responsive table-hover table-condensed">
 
         <tr ng-repeat="load in $data" ng-click="select(load)">
@@ -31,36 +30,32 @@
         </tr>
       </table>
     </div>
-
-    <div class="col-md-7 container" id="sourcing-container" ng-show="selectedLoad">
-      <div>
-        <div class="row">
-          <load-details load="selectedLoad"></load-details>
-        </div>
-        <hr>
-        <div class="row">
-          <form name="contactForm">
-            <div class="form-group" ng-class="{'has-error':contactForm.email.$invalid} ">
-              <label for="exampleInputEmail1">Email to send DO and Notifications</label>
-              <input type="email" name="email" ng-model="selectedLoad.deliveryOrderContact.email" class="form-control" id="exampleInputEmail1" placeholder="Email" required>
-            </div>
-            <div class="form-group" ng-class="{'has-error':contactForm.phone.$invalid}">
-              <label for="phone">Phone to Contact</label>
-              <input type="text" name="phone" ng-model="selectedLoad.deliveryOrderContact.phone" class="form-control" id="phone" ui-mask="(999)999-9999" placeholder="(999)123-4567" required>
-            </div>
-            <div class="form-group" ng-class="{'has-error':contactForm.phone.$invalid}">
-              <label for="phone">Special notes on delivery time and instructions</label>
-              <textarea class="form-control" ng-model="selectedLoad.notes" rows="3"></textarea>
-            </div>
-          </form>
-        </div>
-        <div>
-          <button style="float:right" type="button" class="btn btn-primary" ng-disabled="!selectedLoad" ng-click="updateDO()">Update</button>
-        </div>
-      </div>
-    </div>
-
   </div>
 
+  <div class="panel panel-default" ng-show="selectedLoad">
+    <div class="panel-heading">Delivery Order Detail</div>
+    <div class="panel-body">
+        <load-details load="selectedLoad"></load-details>
+      <hr>
+        <form name="contactForm">
+          <div class="form-group" ng-class="{'has-error':contactForm.email.$invalid} ">
+            <label for="exampleInputEmail1">Email to send DO and Notifications</label>
+            <input type="email" name="email" ng-model="selectedLoad.deliveryOrderContact.email" class="form-control" id="exampleInputEmail1" placeholder="Email" required>
+          </div>
+          <div class="form-group" ng-class="{'has-error':contactForm.phone.$invalid}">
+            <label for="phone">Phone to Contact</label>
+            <input type="text" name="phone" ng-model="selectedLoad.deliveryOrderContact.phone" class="form-control" id="phone" ui-mask="(999)999-9999" placeholder="(999)123-4567" required>
+          </div>
+          <div class="form-group" ng-class="{'has-error':contactForm.phone.$invalid}">
+            <label for="phone">Special notes on delivery time and instructions</label>
+            <textarea class="form-control" ng-model="selectedLoad.notes" rows="3"></textarea>
+          </div>
+        </form>
+      <div>
+        <button style="float:right" type="button" class="btn btn-primary" ng-disabled="!selectedLoad" ng-click="updateDO()">Update</button>
+      </div>
+    </div>
+  </div>
 
 </div>
+

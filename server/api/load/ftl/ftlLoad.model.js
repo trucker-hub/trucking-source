@@ -106,9 +106,14 @@ var FtlLoadSchema = new Schema({
     name: String,
     costItem: [{
       charge: Number,
-      description: String
+      description: String,
+      adjustment: Number
     }]
   },
+
+  brokerFees: [
+    {name: String, charge: Number}
+  ],
 
   deliveryOrderContact: {
     email: String,
