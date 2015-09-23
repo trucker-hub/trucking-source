@@ -28,45 +28,57 @@
           <td data-title="'Delivery By'">
             {{load.expectedBy | date:'shortDate'}}
           </td>
+          <td data-title="'Selected Trucker'">
+            {{load.fulfilledBy.name}}
+          </td>
+          <td data-title="'Base Charge'">
+            {{load.fulfilledBy.charge | currency:"$":2}}
+          </td>
+          <td data-title="'Sourcing'">
+            <div style="float:right" ng-show="selectedLoad==load"><a ng-click="sourcing()"><i  class="fa fa-search fa-lg"></i></a> </div>
+          </td>
         </tr>
       </table>
     </div>
   </div>
+
+  <div class="panel panel-info">
+    <div class="panel-heading">Trucking Company Choices</div>
+    <div class="panel-body">
+      <table class="table table-striped table-hover">
+        <tr>
+          <th>Company</th>
+          <th>Cost</th>
+          <th>Time</th>
+          <th>Contact</th>
+          <th>Location</th>
+          <th></th>
+        </tr>
+        <tr ng-repeat-start="source in sources" class="success" ng-click="selectSource(source)">
+          <th >{{source.name}}</th>
+          <td ><b>{{source.totalCost | currency:"$":2}}</b></td>
+          <td >{{source.time}}</td>
+          <td >{{source.contact | tel }}</td>
+          <td >{{source.location}}</td>
+          <td><span class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
+        </tr>
+        <tr ng-repeat-end>
+          <td></td>
+          <td colspan="5">
+            <p ng-repeat="entry in source.costItems"><b>{{entry.charge | currency:"$":2}}</b> for {{entry.description}}</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
   <div class="panel panel-default">
-    <div class="panel-heading form-group"><b>Load:</b> {{selectedLoad.who}} <div style="float:right" ng-show="selectedLoad">Sourcing <a ng-click="sourcing()"><i  class="fa fa-search"></i></a> </div></div>
+    <div class="panel-heading form-group"><b>Detail Load Information:</b> {{selectedLoad.who}} <div style="float:right" ng-show="selectedLoad">Sourcing <a ng-click="sourcing()"><i  class="fa fa-search"></i></a> </div></div>
     <div class="panel-body">
       <load-details load="selectedLoad"></load-details>
     </div>
   </div>
-    <div class="panel panel-info">
-      <div class="panel-heading">Trucking Companies</div>
-      <div class="panel-body">
-        <table class="table table-striped">
-          <tr>
-            <th>Company</th>
-            <th>Cost</th>
-            <th>Time</th>
-            <th>Contact</th>
-            <th>Location</th>
-            <th></th>
-          </tr>
-          <tr ng-repeat-start="source in sources" class="success" ng-click="selectSource(source)">
-            <th >{{source.name}}</th>
-            <td ><b>{{source.totalCost | currency:"$":2}}</b></td>
-            <td >{{source.time}}</td>
-            <td >{{source.contact | tel }}</td>
-            <td >{{source.location}}</td>
-            <td><span class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
-          </tr>
-          <tr ng-repeat-end>
-            <td></td>
-            <td colspan="5">
-              <p ng-repeat="entry in source.costItems"><b>{{entry.charge | currency:"$":2}}</b> for {{entry.description}}</p>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
+
 
 </div>
 
