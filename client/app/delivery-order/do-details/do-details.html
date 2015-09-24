@@ -1,11 +1,11 @@
 
 <div class="modal-header">
-    <span class="modal-title"><b>Delivery Order </b></span>
+    <span class="modal-title">Delivery Order: <b>{{load.who}} </b></span>
     <div style="float:right"> <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancel()"></span></div>
 </div>
 <div class="modal-body">
   <div class="row">
-    <load-details load="load" source="source"></load-details>
+    <load-details load="load"></load-details>
   </div>
 
   <hr>
@@ -19,10 +19,14 @@
         <label for="phone">Phone to Contact</label>
         <input type="text" name="phone" ng-model="contact.phone" class="form-control" id="phone" ui-mask="(999)999-9999" placeholder="(999)123-4567" required>
       </div>
+      <div class="form-group" ng-class="{'has-error':contactForm.phone.$invalid}">
+        <label for="phone">Special notes on delivery time and instructions</label>
+        <textarea class="form-control" ng-model="load.notes" rows="3"></textarea>
+      </div>
     </form>
   </div>
 </div>
 <div class="modal-footer">
     <button style="float:left" class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-    <button style="float:right" class="btn btn-primary" type="button" ng-click="create()" ng-disabled="contactForm.$invalid">Create</button>
+    <button style="float:right" class="btn btn-primary" type="button" ng-click="send()" ng-disabled="contactForm.$invalid">Send</button>
 </div>

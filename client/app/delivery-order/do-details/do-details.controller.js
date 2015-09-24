@@ -1,16 +1,15 @@
 'use strict';
 
 angular.module('servicesApp')
-    .controller('DoDetailsCtrl', function ($scope, $modalInstance, load, source) {
+    .controller('DoDetailsCtrl', function ($scope, $modalInstance, load) {
 
     $scope.load = load;
-    $scope.source = source;
     $scope.contact = {
       email: null,
       phone:null
     };
 
-    $scope.create = function () {
+    $scope.send = function () {
       $modalInstance.close($scope.contact);
     };
 

@@ -99,10 +99,16 @@
                 </td>
               </tr>
               <tr>
-                <td><button type="button" class="btn btn-default" ng-click="finalizeSource()">
-                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Finalize and Invoice</button>
+                <td align="right"><button type="button" ng-disabled="selectedLoad.status=='FILLED'" class="btn btn-default" ng-click="finalizeSource()">
+                  <span class="glyphicon glyphicon-ok" aria-hidden="true" ></span> Finalize</button>
                 </td>
-                <td></td>
+                <td>
+                  <div ng-show="selectedLoad.status=='FILLED'">
+                    <button type="button" class="btn btn-default" ng-click="createInvoice()"><i class="fa fa-list-alt"></i> Invoice</button>
+                    <button type="button" class="btn btn-default" ng-click="createDO()"><i class="fa fa-paper-plane-o"></i> DO</button>
+                  </div>
+
+                </td>
               </tr>
             </table>
           </td>

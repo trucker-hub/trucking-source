@@ -59,11 +59,11 @@ FtlLoad.find({}).remove(function() {
         who: "Beverly Furniture",
         shipTo: {
           location: {
-            full_address:     "3476 Del Amo Blvd, Torrance, CA 90503",
-            state:      "CA",
-            county:     "Los Angeles County",
-            city:       "Torrance",
-            zipCode:    "90503"
+            full_address: "3476 Del Amo Blvd, Torrance, CA 90503",
+            state:        "CA",
+            county:       "Los Angeles County",
+            city:          "Torrance",
+            zipCode:       "90503"
           }
         },
         shipFrom: {
@@ -110,17 +110,14 @@ TruckingCompany.find({}).remove(function () {
           cleaningTruckFee: 35,
           congestionFee: 150,
           regions: [
-            {
-              state: "CA",
-              county: "Los Angeles County"
-            }
+            { state: "CA", county: "Los Angeles County"}
           ],
           overWeightCharges: [
             {
               containerSize: "40",
               ranges: [
-                {limit:13000, charge:100},
-                {limit:16000, charge:150}
+                { limit:13000, charge:100},
+                { limit:16000, charge:150}
               ]
             }
           ],
@@ -254,11 +251,136 @@ TruckingCompany.find({}).remove(function () {
                 {zone: "E", rate:20}
               ]}
           ],
-          rates: []
+          rates: [ {
+            state: "CA",
+            city: "Torrance",
+            zipCode: "90501",
+            zone: "A"
+          }, {
+            state: "CA",
+            city: "Torrance",
+            zipCode: "90503",
+            zone: "B"
+          }, {
+            state: "CA",
+            city: "Rancho Palos Verdes",
+            zipCode: "90275",
+            zone: "C"
+          }]
         },
         air: {
-
-          rates: []
+          fuelSurcharge: 20,
+          residentialCharge: 60,
+          liftGateCharge: 30,
+          insideCharge: 15,
+          tradeShowCharge: 20,
+          additionalCharges: [{ name: "Call before delivery",  charge: 10 }],
+          regions: [ { state: "CA", county: "Los Angeles County" }],
+          zoneRateVariables: {
+            weightIncrement: 100,
+            zones: [
+              {
+                label:"A",
+                dropOffCharge: 10,
+                dropOffChargeOffhour: 20,
+                dropOffChargeWeekend: 30,
+                dropOffChargeHoliday: 40
+              }, {
+                label:"B",
+                dropOffCharge: 10,
+                dropOffChargeOffhour: 20,
+                dropOffChargeWeekend: 30,
+                dropOffChargeHoliday: 40
+              }, {
+                label:"C",
+                dropOffCharge: 10,
+                dropOffChargeOffhour: 20,
+                dropOffChargeWeekend: 30,
+                dropOffChargeHoliday: 40
+              }, {
+                label:"D",
+                dropOffCharge: 10,
+                dropOffChargeOffhour: 20,
+                dropOffChargeWeekend: 30,
+                dropOffChargeHoliday: 40
+              }, {
+                label:"E",
+                dropOffCharge: 10,
+                dropOffChargeOffhour: 20,
+                dropOffChargeWeekend: 30,
+                dropOffChargeHoliday: 40
+              }]
+          },
+          flatRates: [
+            {
+              tier:"1",
+              ranges: [0,1000],
+              rates:[
+                {zone: "A", rate:55},
+                {zone: "B", rate:33},
+                {zone: "C", rate:23},
+                {zone: "D", rate:89},
+                {zone: "E", rate:20}
+              ]},
+            {
+              tier: "2",
+              ranges: [1000, 2000],
+              rates:[
+                {zone: "A", rate:55},
+                {zone: "B", rate:33},
+                {zone: "C", rate:23},
+                {zone: "D", rate:89},
+                {zone: "E", rate:20}
+              ]}
+          ],
+          weightRates: [
+            {
+              tier:"3",
+              ranges: [3000,4000],
+              rates:[
+                {zone: "A", rate:5.5},
+                {zone: "B", rate:3.3},
+                {zone: "C", rate:2.3},
+                {zone: "D", rate:8.9},
+                {zone: "E", rate:2.0}
+              ]},
+            {
+              tier: "4",
+              ranges: [4000, 5000],
+              rates:[
+                {zone: "A", rate:55},
+                {zone: "B", rate:33},
+                {zone: "C", rate:23},
+                {zone: "D", rate:89},
+                {zone: "E", rate:20}
+              ]},
+            {
+              tier: "5",
+              ranges: [5000, 6000],
+              rates:[
+                {zone: "A", rate:55},
+                {zone: "B", rate:33},
+                {zone: "C", rate:23},
+                {zone: "D", rate:89},
+                {zone: "E", rate:20}
+              ]}
+          ],
+          rates: [ {
+            state: "CA",
+            city: "Torrance",
+            zipCode: "90501",
+            zone: "A"
+          }, {
+            state: "CA",
+            city: "Torrance",
+            zipCode: "90503",
+            zone: "B"
+          }, {
+            state: "CA",
+            city: "Rancho Palos Verdes",
+            zipCode: "90275",
+            zone: "C"
+          }]
         }
       },
       {

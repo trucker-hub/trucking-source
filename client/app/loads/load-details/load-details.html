@@ -60,21 +60,5 @@
     <td></td>
   </tr>
 
-  <tr ng-show="source">
-    <td></td>
-    <th colspan="2">Charges Description</th>
-  </tr>
-  <tr ng-repeat="entry in source.costItems track by $index">
-    <td></td>
-    <td>{{entry.charge | currency:"$":2}} {{entry.description}}</td>
-    <td></td>
-  </tr>
-  <tr class="warning" ng-show="load.fulfilledBy">
-    <th>Base Trucking Charge</th>
-    <th>{{load.fulfilledBy.charge | currency:"$":2}}</th>
-    <td></td>
-  </tr>
-
-
 </table>
 

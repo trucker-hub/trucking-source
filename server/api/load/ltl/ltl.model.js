@@ -98,13 +98,18 @@ var LtlLoadSchema = new Schema({
         charge: Number
     }],
 
+    brokerFees: [
+      {name: String, charge: Number}
+    ],
+
     fulfilledBy: {
         source: { type: Schema.Types.ObjectId, ref: 'TruckingCompany' },
         charge: Number,
         name: String,
         costItem: [{
             charge: Number,
-            description: String
+            description: String,
+            adjustment: Number
         }]
     },
 
