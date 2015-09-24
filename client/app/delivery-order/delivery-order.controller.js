@@ -26,6 +26,10 @@ angular.module('servicesApp')
       if($scope.selectedLoad!=load) {
         $scope.selectedLoad = load;
       }
+    };
+
+    $scope.updateDO = function() {
+
     }
 
     $scope.updateLoadsTable = function(data) {

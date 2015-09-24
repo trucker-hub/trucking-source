@@ -117,7 +117,8 @@ var FtlLoadSchema = new Schema({
 
   deliveryOrderContact: {
     email: String,
-    phone: String
+    phone: String,
+    instructions: String
   }
 
 

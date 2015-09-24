@@ -6,7 +6,8 @@ angular.module('servicesApp')
     $scope.load = load;
     $scope.contact = {
       email: null,
-      phone:null
+      phone:null,
+      instructions:null
     };
 
     $scope.send = function () {
