@@ -82,7 +82,9 @@ var calculateRate = function(load, company) {
     totalCost: totalCost,
     costItems: result
   };
-}
+};
+
+
 
 // Get list of sourcings
 exports.index = function(req, res) {
@@ -93,9 +95,17 @@ exports.index = function(req, res) {
   var shipTo = load.shipTo;
   var countyTo = shipTo.location.county;
 
+  var options = {};
+    if(load.loadType=="FTL") {
+        options = { "ftl.regions.county": { $in: [countyTo]}};
+    }else if (load.loadType=="FTL") {
+        options = { "ltl.regions.county": { $in: [countyTo]}};
+    }else if (load.loadType=="AIR") {
+        options = { "air.regions.county": { $in: [countyTo]}};
+    }
 
-  console.log("request companies serving region=" + countyTo);
-  TruckingCompany.find({"ftl.regions.county": { $in: [countyTo]}}, function(err, companies) {
+  console.log("request companies serving region=" + countyTo + " loadType=" + load.loadType);
+  TruckingCompany.find(options, function(err, companies) {
 
     if(err) {
       console.log("run into error " + err);

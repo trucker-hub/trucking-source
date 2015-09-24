@@ -19,6 +19,83 @@ Thing.find({}).remove(function () {
   });
 });
 
+LtlLoad.find({}).remove(function() {
+    LtlLoad.create({
+
+            who: "Home and Body",
+            loadType:  'LTL',
+            notes: "A note",
+            shipTo: {
+                location: {
+                    full_address:     "30944 Rue de la Pierre, Rancho Palos Verdes, CA 90275",
+                    state:      "CA",
+                    county:     "Los Angeles County",
+                    city:       "Rancho Palos Verdes",
+                    zipCode:    "90275"
+                },
+                services: [{service: 'Inside'}, {service: 'LifeGate'}]
+            },
+            shipFrom: {
+                location: {
+                    full_address:     "4489 Spencer St, Torrance, CA 90503",
+                    state:      "CA",
+                    county:     "Los Angeles County",
+                    city:       "Torrance",
+                    zipCode:    "90503"
+                },
+                services: [{service: 'Inside'}, {service: 'LifeGate'}]
+            },
+            lines: [{
+                weight: 200,
+                quantity: 10,
+                packaging:"Cartons",
+                length: 10,
+                width: 10,
+                height: 10,
+                description: "Dumper"
+            }],
+            fulfilledBy: {},
+            deliveryOrderContact: {}
+        }, {
+
+            who: "Home and Body",
+            loadType:  'AIR',
+            notes: "A note",
+            shipTo: {
+                location: {
+                    full_address:     "9111 S La Cienega Blvd, Inglewood, CA 90301",
+                    state:      "CA",
+                    county:     "Los Angeles County",
+                    city:       "Inglewood",
+                    zipCode:    "90301"
+                },
+                services: [{service: 'Inside'}, {service: 'LifeGate'}]
+            },
+            shipFrom: {
+                location: {
+                    full_address:     "4489 Spencer St, Torrance, CA 90503",
+                    state:      "CA",
+                    county:     "Los Angeles County",
+                    city:       "Torrance",
+                    zipCode:    "90503"
+                },
+                services: [{service: 'Inside'}, {service: 'LifeGate'}]
+            },
+            lines: [{
+                weight: 200,
+                quantity: 10,
+                packaging:"Cartons",
+                length: 10,
+                width: 10,
+                height: 10,
+                description: "Dumper"
+            }],
+            fulfilledBy: {},
+            deliveryOrderContact: {}
+        }
+    )
+});
+
 FtlLoad.find({}).remove(function() {
   FtlLoad.create({
         who: "Elite Toner",
