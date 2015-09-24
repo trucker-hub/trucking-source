@@ -66,48 +66,55 @@
           </td>
         </tr>
         <tr ng-repeat-end>
-          <td></td>
-          <td colspan="6">
+          <td colspan="7">
             <table class="table table-bordered" ng-show="source.id==selectedLoad.fulfilledBy.source">
               <tr>
-                <th>Vendor Cost Items</th>
+                <th>Cost Items</th>
+                <th>Vendor Cost Description</th>
                 <th>Broker Adjustments</th>
+                <th>Adjusted Costs</th>
               </tr>
-              <tr ng-repeat="entry in source.costItems">
+              <tr ng-repeat="entry in source.costItems track by $index">
+                <td align="right">#{{$index+1}}</td>
                 <td><b>{{entry.charge | currency:"$":2}}</b> for {{entry.description}}</td>
                 <td> <div class="input-group">
                   <div class="input-group-addon">$</div>
-                  <input type="number" class="form-control" size="5" ng-model="entry.adjustment" placeholder="00.00" ng-change="recalcAdjustments()"></div></td>
+                  <input type="number" class="form-control" size="5" ng-model="entry.adjustment" placeholder="00.00" ng-change="recalcAdjustments()"></div>
+                </td>
+                <td>{{entry.charge + entry.adjustment | currency:"$":2}}</td>
+              </tr>
+              <tr>
+                <td colspan="3" align="right"><b>Total Vendor Charge</b></td><td>{{selectedLoad.vendorChargeAmount}}</td>
               </tr>
               <tr>
                 <th></th>
-                <th>Broker Fees</th>
+                <th colspan="2">Broker Fees</th>
+                <td></td>
               </tr>
               <tr ng-repeat="entry in selectedLoad.brokerFees">
                 <td align="right">{{entry.name}}</td>
-                <td>
+                <td colspan="2">
                   <div class="input-group">
                     <div class="input-group-addon">$</div>
                     <input type="number" class="form-control" size="5" ng-model="entry.charge" placeholder="00.00" ng-change="recalcAdjustments()">
                 </div>
                 </td>
+                <td></td>
               </tr>
               <tr>
-                <td align="right"><b>Total Adjustment</b></td>
-                <td>{{selectedLoad.adjustmentAmount | currency:"$":2}}
-
+                <td colspan="3" align="right"><b>Total Amount</b></td>
+                <td colspan="1">{{selectedLoad.totalAmount | currency:"$":2}}
                 </td>
               </tr>
               <tr>
-                <td align="right"><button type="button" ng-disabled="selectedLoad.status=='FILLED'" class="btn btn-default" ng-click="finalizeSource()">
+                <td align="right"><button type="button" ng-disabled="selectedLoad.status=='FILLED'" class="btn btn-primary" ng-click="finalizeSource()">
                   <span class="glyphicon glyphicon-ok" aria-hidden="true" ></span> Finalize</button>
                 </td>
-                <td>
+                <td colspan="3">
                   <div ng-show="selectedLoad.status=='FILLED'">
-                    <button type="button" class="btn btn-default" ng-click="createInvoice()"><i class="fa fa-list-alt"></i> Invoice</button>
-                    <button type="button" class="btn btn-default" ng-click="createDO()"><i class="fa fa-paper-plane-o"></i> DO</button>
+                    <button type="button" class="btn btn-default" ng-click="createInvoice()"><i class="fa fa-list-alt"></i> Review Invoice</button>
+                    <button type="button" class="btn btn-default" ng-click="createDO()"><i class="fa fa-paper-plane-o"></i> Review DO</button>
                   </div>
-
                 </td>
               </tr>
             </table>

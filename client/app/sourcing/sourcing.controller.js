@@ -91,10 +91,10 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
     var i, sum=0;
     for(i=0; i < $scope.selectedLoad.fulfilledBy.costItems.length; ++i) {
       var item = $scope.selectedLoad.fulfilledBy.costItems[i];
-      if(item.adjustment) {
-        sum += item.adjustment;
-      }
+        if(item.charge) sum += item.charge;
+        if(item.adjustment) sum += item.adjustment;
     }
+      $scope.selectedLoad.vendorChargeAmount = sum;
 
     for(i=0; i < $scope.selectedLoad.brokerFees.length; ++i) {
       var brokerFee = $scope.selectedLoad.brokerFees[i];
@@ -102,8 +102,8 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
         sum += brokerFee.charge;
       }
     }
-    $scope.selectedLoad.adjustmentAmount = sum;
-  }
+    $scope.selectedLoad.totalAmount = sum;
+  };
 
   $scope.sourcing = function() {
 
@@ -141,6 +141,27 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
     );
   };
 
+    $scope.createInvoice = function() {
+        var modalInstance = $modal.open({
+            animation: true,
+            templateUrl: 'app/sourcing/invoice/invoice.html',
+            controller: 'InvoiceCtrl',
+            size: 'lg',
+            resolve: {
+                load: function () {
+                    return $scope.selectedLoad;
+                }
+            }
+        });
+        modalInstance.result.then(
+            function () {
+            },
+            function () {
+                console.log('Modal dismissed at: ' + new Date());
+            }
+        );
+    };
+
   $scope.createDO = function() {
     var modalInstance = $modal.open({
       animation: true,
@@ -156,7 +177,6 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
 
     modalInstance.result.then(
       function (contact) {
-        $scope.selectedLoad.deliveryOrderContact = contact;
         $http.put('/api/load/ftl-loads/'+$scope.selectedLoad._id, $scope.selectedLoad).then(
 
           function(response) {

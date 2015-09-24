@@ -27,33 +27,12 @@
           <td data-title="'Expected By'">
             {{load.expectedBy | date:'shortDate'}}
           </td>
+            <td>
+                <button type="button" class="btn btn-default" ng-click="createInvoice(load)"><i class="fa fa-list-alt"></i> Review Invoice</button>
+                <button type="button" class="btn btn-default" ng-click="createDO(load)"><i class="fa fa-paper-plane-o"></i> Review DO</button>
+            </td>
         </tr>
       </table>
-    </div>
-  </div>
-
-  <div class="panel panel-default" ng-show="selectedLoad">
-    <div class="panel-heading">Delivery Order Detail: <b>{{selectedLoad.who}}<b></b></div>
-    <div class="panel-body">
-        <load-details load="selectedLoad"></load-details>
-      <hr>
-        <form name="contactForm">
-          <div class="form-group" ng-class="{'has-error':contactForm.email.$invalid} ">
-            <label for="exampleInputEmail1">Email to send DO and Notifications</label>
-            <input type="email" name="email" ng-model="selectedLoad.deliveryOrderContact.email" class="form-control" id="exampleInputEmail1" placeholder="Email" required>
-          </div>
-          <div class="form-group" ng-class="{'has-error':contactForm.phone.$invalid}">
-            <label for="phone">Phone to Contact</label>
-            <input type="text" name="phone" ng-model="selectedLoad.deliveryOrderContact.phone" class="form-control" id="phone" ui-mask="(999)999-9999" placeholder="(999)123-4567" required>
-          </div>
-          <div class="form-group" ng-class="{'has-error':contactForm.phone.$invalid}">
-            <label for="phone">Special notes on delivery time and instructions</label>
-            <textarea class="form-control" ng-model="selectedLoad.notes" rows="3"></textarea>
-          </div>
-        </form>
-      <div>
-        <button style="float:right" type="button" class="btn btn-primary" ng-disabled="!selectedLoad" ng-click="updateDO()">Update</button>
-      </div>
     </div>
   </div>
 

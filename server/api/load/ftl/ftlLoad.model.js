@@ -104,7 +104,7 @@ var FtlLoadSchema = new Schema({
     source: { type: Schema.Types.ObjectId, ref: 'TruckingCompany' },
     charge: Number,
     name: String,
-    costItem: [{
+    costItems: [{
       charge: Number,
       description: String,
       adjustment: Number

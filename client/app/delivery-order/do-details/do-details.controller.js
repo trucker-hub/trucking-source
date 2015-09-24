@@ -4,14 +4,9 @@ angular.module('servicesApp')
     .controller('DoDetailsCtrl', function ($scope, $modalInstance, load) {
 
     $scope.load = load;
-    $scope.contact = {
-      email: null,
-      phone:null,
-      instructions:null
-    };
 
     $scope.send = function () {
-      $modalInstance.close($scope.contact);
+      $modalInstance.close();
     };
 
     $scope.cancel = function () {

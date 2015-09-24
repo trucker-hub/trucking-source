@@ -13,15 +13,15 @@
     <form name="contactForm">
       <div class="form-group" ng-class="{'has-error':contactForm.email.$invalid} ">
         <label for="exampleInputEmail1">Email to send DO and Notifications</label>
-        <input type="email" name="email" ng-model="contact.email" class="form-control" id="exampleInputEmail1" placeholder="Email" required>
+        <input type="email" name="email" ng-model="load.deliveryOrderContact.email" class="form-control" id="exampleInputEmail1" placeholder="Email" required>
       </div>
       <div class="form-group" ng-class="{'has-error':contactForm.phone.$invalid}">
         <label for="phone">Phone to Contact</label>
-        <input type="text" name="phone" ng-model="contact.phone" class="form-control" id="phone" ui-mask="(999)999-9999" placeholder="(999)123-4567" required>
+        <input type="text" name="phone" ng-model="load.deliveryOrderContact.phone" class="form-control" id="phone" ui-mask="(999)999-9999" placeholder="(xxx)xxx-xxxx" required>
       </div>
       <div class="form-group" ng-class="{'has-error':contactForm.phone.$invalid}">
         <label for="phone">Special notes on delivery time and instructions</label>
-        <textarea class="form-control" ng-model="contact.instructions" rows="3"></textarea>
+        <textarea class="form-control" ng-model="load.deliveryOrderContact.instructions" rows="3"></textarea>
       </div>
     </form>
   </div>
