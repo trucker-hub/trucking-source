@@ -11,10 +11,6 @@ angular.module('servicesApp')
       console.log("company is set to " + JSON.stringify(company));
       vm.company = company;
       vm.lastCopy = angular.copy(company);
-
-      if(vm.company.ftl.OverWeightCharges.length ==0 ) {
-        vm.company.ftl.OverWeightCharges = vm.ltlWeightChargesTemplate;
-      }
     };
 
 

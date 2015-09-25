@@ -53,7 +53,9 @@
           <th></th>
         </tr>
         <tr ng-repeat-start="source in selectedLoad.sources" ng-class="{'success':source.id==selectedLoad.fulfilledBy.source}" >
-          <th><span ng-show="source.id==selectedLoad.fulfilledBy.source" class="glyphicon glyphicon-ok" aria-hidden="true"></span></th>
+          <th>
+            <i class="fa" ng-class="{'fa-check':source.id==selectedLoad.fulfilledBy.source, 'fa-lock':selectedLoad.status=='FILLED'}"></i>
+          </th>
           <th >{{source.name}}</th>
           <td ><b>{{source.totalCost | currency:"$":2}}</b></td>
           <td >{{source.time}}</td>
@@ -84,7 +86,7 @@
                 <td>{{entry.charge + entry.adjustment | currency:"$":2}}</td>
               </tr>
               <tr>
-                <td colspan="3" align="right"><b>Total Vendor Charge</b></td><td>{{selectedLoad.vendorChargeAmount}}</td>
+                <td colspan="3" align="right"><b>Total Vendor Charge</b></td><td>{{selectedLoad.vendorChargeAmount | currency:"$":2}}</td>
               </tr>
               <tr>
                 <th></th>
