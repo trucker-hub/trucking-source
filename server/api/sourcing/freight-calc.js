@@ -87,12 +87,12 @@ exports.calc = function(load, company) {
   var rateRow = findZoneRate (freight.flatRates, weight, matchEntry.zone);
   if(rateRow) {
     baseRate = rateRow.rate
-    result.push({charge: baseRate, description: "Basis rate"});
+    result.push({charge: baseRate, description: "Basis rate for Zone " + matchEntry.zone});
   }else {
     rateRow = findZoneRate (freight.weightRates, weight, matchEntry.zone);
     if(rateRow) {
       baseRate = (rateRow.rate * weight)/(freight.zoneRateVariables.weightIncrement);
-      result.push({charge: baseRate, description: "Basis rate"});
+      result.push({charge: baseRate, description: "Basis rate for Zone " + matchEntry.zone});
     }else {
       result.push({charge: 0, description: "Basis rate Not Found!"});
     }

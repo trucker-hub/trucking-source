@@ -1,97 +1,121 @@
 'use strict';
 
 angular.module('servicesApp')
-    .controller('DeliveryOrderCtrl', function ($scope, $http,ngTableParams, $filter, $modal, ngProgressFactory) {
+  .controller('DeliveryOrderCtrl', function ($rootScope, $scope, $http,ngTableParams, $filter, $modal, ngProgressFactory) {
 
-        var loads = [];
-        $scope.queryLoads = function(type, days) {
+    var loads = [];
 
-            $scope.progressbar = ngProgressFactory.createInstance();
-            $scope.progressbar.start();
-            $http.get('/api/load/ftl-loads?status=' + type + "&days=" + days).then(
-                function(response) {
-                    console.log(JSON.stringify(response.data));
-                    $scope.updateLoadsTable(response.data);
-                    $scope.progressbar.complete();
-                },
-                function(response) {
-                    console.log('ran into error ' + response);
-                    $scope.progressbar.stop();
-                });
-        };
+    $rootScope.dos = $rootScope.dos || { ftlLoads: [], ltlLoads: []};
+    $scope.progressbar = ngProgressFactory.createInstance();
 
-        $scope.createInvoice = function(selectedLoad) {
-            var modalInstance = $modal.open({
-                animation: true,
-                templateUrl: 'app/sourcing/invoice/invoice.html',
-                controller: 'InvoiceCtrl',
-                size: 'lg',
-                resolve: {
-                    load: function () {
-                        return selectedLoad;
-                    }
-                }
-            });
-            modalInstance.result.then(
-                function () {
-                },
-                function () {
-                    console.log('Modal dismissed at: ' + new Date());
-                }
-            );
-        };
+    $scope.queryLoads = function(type, days) {
 
-        $scope.createDO = function(selectedLoad) {
-            var modalInstance = $modal.open({
-                animation: true,
-                templateUrl: 'app/delivery-order/do-details/do-details.html',
-                controller: 'DoDetailsCtrl',
-                size: 'lg',
-                resolve: {
-                    load: function () {
-                        return selectedLoad;
-                    }
-                }
-            });
 
-            modalInstance.result.then(
-                function () {
-                    $http.put('/api/load/ftl-loads/'+selectedLoad._id, selectedLoad).then(
-                        function(response) {
-                            console.log("request saved succesfully " + JSON.stringify(response));
-                        },
-                        function(err) {
-                            console.log("request saving failed " + err);
-                        }
-                    );
-                },
-                function () {
-                    console.log('Modal dismissed at: ' + new Date());
-                }
-            );
-        };
+      $scope.progressbar.start();
 
-        $scope.updateLoadsTable = function(data) {
-            loads = data;
-            $scope.tableParamsLoads.reload();
-        };
+      $rootScope.dos = { ftlLoads: null, ltlLoads: null };
 
-        $scope.tableParamsLoads = new ngTableParams({
-            page: 1,            // show first page
-            count: 10,          // count per page
-            filter: {
-                who: ''       // initial filter
-            }
-        }, {
-            total: loads.length, // length of data
-            //counts: [], // hide page counts control
-            getData: function($defer, params) {
-                // use build-in angular filter
-                var orderedData = params.filter() ? $filter('filter')(loads, params.filter()) : loads;
-                var xxx  = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
-                params.total(orderedData.length); // set total for recalc pagination
-                $defer.resolve(xxx);
-            }
+      $http.get('/api/load/ftl-loads?status=' + type + "&days=" + days).then(
+        function(response) {
+          $rootScope.dos.ftlLoads = response.data;
+          $scope.updateTable();
+        },
+        function(response) {
+          console.log('ran into error ' + response);
+          $scope.progressbar.stop();
         });
+      $http.get('/api/load/ltl-loads?status=' + type + "&days=" + days).then(
+        function(response) {
+          $rootScope.dos.ltlLoads = response.data;
+          $scope.updateTable();
+        },
+        function(response) {
+          console.log('ran into error ' + response);
+          $scope.progressbar.stop();
+        });
+    };
 
+    $scope.updateTable = function() {
+      if ($rootScope.dos.ftlLoads && $rootScope.dos.ltlLoads) {
+        $scope.progressbar.complete();
+        loads = $rootScope.dos.ftlLoads.concat($rootScope.dos.ltlLoads);
+        $scope.tableParamsLoads.reload();
+      }
+    };
+
+
+
+    $scope.createInvoice = function(selectedLoad) {
+      var modalInstance = $modal.open({
+        animation: true,
+        templateUrl: 'app/sourcing/invoice/invoice.html',
+        controller: 'InvoiceCtrl',
+        size: 'lg',
+        resolve: {
+          load: function () {
+            return selectedLoad;
+          }
+        }
+      });
+      modalInstance.result.then(
+        function () {
+        },
+        function () {
+          console.log('Modal dismissed at: ' + new Date());
+        }
+      );
+    };
+
+
+    $scope.createDO = function(selectedLoad) {
+      var modalInstance = $modal.open({
+        animation: true,
+        templateUrl: 'app/delivery-order/do-details/do-details.html',
+        controller: 'DoDetailsCtrl',
+        size: 'lg',
+        resolve: {
+          load: function () {
+            return selectedLoad;
+          }
+        }
+      });
+      modalInstance.result.then(
+        function () {
+          var path = selectedLoad.loadType=='FTL'?'/api/load/ftl-loads/':'/api/load/ltl-loads/';
+          $http.put(path +selectedLoad._id, selectedLoad).then(
+            function(response) {
+              console.log("request saved succesfully " + JSON.stringify(response));
+            },
+            function(err) {
+              console.log("request saving failed " + err);
+            }
+          );
+        },
+        function () {
+          console.log('Modal dismissed at: ' + new Date());
+        }
+      );
+    };
+
+
+    $scope.tableParamsLoads = new ngTableParams({
+      page: 1,            // show first page
+      count: 10,          // count per page
+      filter: {
+        who: ''       // initial filter
+      }
+    }, {
+      total: loads.length, // length of data
+      //counts: [], // hide page counts control
+      getData: function($defer, params) {
+        // use build-in angular filter
+        var orderedData = params.filter() ? $filter('filter')(loads, params.filter()) : loads;
+        var xxx  = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+        params.total(orderedData.length); // set total for recalc pagination
+        $defer.resolve(xxx);
+      }
     });
+
+    $scope.updateTable();
+
+  });

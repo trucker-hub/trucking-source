@@ -2,17 +2,19 @@
 
 angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $scope, $http, $modal, ngTableParams, $filter, ngProgressFactory) {
 
-  var selectedCompanies = [];
 
-  var loads = [];
-
-  $rootScope.sourcing = $rootScope.sourcing || { ftlLoads: [], ltlLoads: []};
 
   var brokerFees = [
     {name: "ABI-Customs Fee", charge: 15},
     {name: "Chassy Fee", charge: 15},
     {name: "Service Fee", charge:50}
   ];
+
+  var loads = [];
+
+  $rootScope.sourcing = $rootScope.sourcing || { ftlLoads: [], ltlLoads: []};
+
+
   $scope.queryLoads = function(type, days) {
 
     $scope.progressbar = ngProgressFactory.createInstance();
@@ -40,12 +42,6 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
       });
   };
 
-  $scope.fullsizeView = false;
-
-  $scope.resize = function() {
-    $scope.fullsizeView = !$scope.fullsizeView;
-  };
-
   $scope.select = function(load) {
     if($scope.selectedLoad!=load) {
       $scope.sources =[];
@@ -56,7 +52,7 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
     }
   };
 
-  $scope.updateLoadsTable = function(data) {
+  $scope.updateLoadsTable = function() {
     if ($rootScope.sourcing.ftlLoads && $rootScope.sourcing.ltlLoads) {
       $scope.progressbar.complete();
       loads = $rootScope.sourcing.ftlLoads.concat($rootScope.sourcing.ltlLoads);
@@ -91,10 +87,10 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
     var i, sum=0;
     for(i=0; i < $scope.selectedLoad.fulfilledBy.costItems.length; ++i) {
       var item = $scope.selectedLoad.fulfilledBy.costItems[i];
-        if(item.charge) sum += item.charge;
-        if(item.adjustment) sum += item.adjustment;
+      if(item.charge) sum += item.charge;
+      if(item.adjustment) sum += item.adjustment;
     }
-      $scope.selectedLoad.vendorChargeAmount = sum;
+    $scope.selectedLoad.vendorChargeAmount = sum;
 
     for(i=0; i < $scope.selectedLoad.brokerFees.length; ++i) {
       var brokerFee = $scope.selectedLoad.brokerFees[i];
@@ -130,37 +126,41 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
 
   $scope.finalizeSource = function() {
     $scope.selectedLoad.status = "FILLED";
-    $http.put('/api/load/ftl-loads/'+$scope.selectedLoad._id, $scope.selectedLoad).then(
+    var path = $scope.selectedLoad.loadType=='FTL'?'/api/load/ftl-loads/':'/api/load/ltl-loads/';
+
+    $http.put(path+$scope.selectedLoad._id, $scope.selectedLoad).then(
 
       function(response) {
         console.log("request saved succesfully " + JSON.stringify(response));
       },
       function(err) {
         console.log("request saving failed " + err);
+        $scope.selectedLoad.status = "OPEN";
+      }
+    );
+
+  };
+
+  $scope.createInvoice = function() {
+    var modalInstance = $modal.open({
+      animation: true,
+      templateUrl: 'app/sourcing/invoice/invoice.html',
+      controller: 'InvoiceCtrl',
+      size: 'lg',
+      resolve: {
+        load: function () {
+          return $scope.selectedLoad;
+        }
+      }
+    });
+    modalInstance.result.then(
+      function () {
+      },
+      function () {
+        console.log('Modal dismissed at: ' + new Date());
       }
     );
   };
-
-    $scope.createInvoice = function() {
-        var modalInstance = $modal.open({
-            animation: true,
-            templateUrl: 'app/sourcing/invoice/invoice.html',
-            controller: 'InvoiceCtrl',
-            size: 'lg',
-            resolve: {
-                load: function () {
-                    return $scope.selectedLoad;
-                }
-            }
-        });
-        modalInstance.result.then(
-            function () {
-            },
-            function () {
-                console.log('Modal dismissed at: ' + new Date());
-            }
-        );
-    };
 
   $scope.createDO = function() {
     var modalInstance = $modal.open({
@@ -176,28 +176,20 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
     });
 
     modalInstance.result.then(
-      function (contact) {
-        $http.put('/api/load/ftl-loads/'+$scope.selectedLoad._id, $scope.selectedLoad).then(
-
-          function(response) {
-            console.log("request saved succesfully " + JSON.stringify(response));
-          },
-          function(err) {
-            console.log("request saving failed " + err);
-          }
+      function () {
+        var path = $scope.selectedLoad.loadType=='FTL'?'/api/load/ftl-loads/':'/api/load/ltl-loads/';
+        $http.put(path+$scope.selectedLoad._id, $scope.selectedLoad).then(
+          function(response) { console.log("request saved succesfully " + JSON.stringify(response));},
+          function(err) { console.log("request saving failed " + err);}
         );
       },
-      function () {
-        console.log('Modal dismissed at: ' + new Date());
-      }
+      function () { console.log('Modal dismissed at: ' + new Date());}
     );
   };
   $scope.tableParamsLoads = new ngTableParams({
     page: 1,            // show first page
     count: 10,          // count per page
-    filter: {
-      who: ''       // initial filter
-    }
+    filter: { who: ''}
   }, {
     total: loads.length, // length of data
     //counts: [], // hide page counts control

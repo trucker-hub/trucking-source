@@ -11,7 +11,11 @@ var TruckingCompanySchema = new Schema({
   fax: String,
   email:String,
   active: Boolean,
-  rateBasis: String,
+  rateBasis: {
+    type: String, required: true,
+    enum: ['city', 'zipCode', 'distance'],
+    default: 'zipCode'
+  },
   ftl: {
     fuelSurcharge: Number,
     residentialCharge: Number,

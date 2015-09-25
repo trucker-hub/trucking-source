@@ -20,658 +20,660 @@ Thing.find({}).remove(function () {
 });
 
 LtlLoad.find({}).remove(function() {
-    LtlLoad.create({
+  LtlLoad.create({
 
-            who: "Home and Body",
-            loadType:  'LTL',
-            notes: "A note",
-            shipTo: {
-                location: {
-                    full_address:     "30944 Rue de la Pierre, Rancho Palos Verdes, CA 90275",
-                    state:      "CA",
-                    county:     "Los Angeles County",
-                    city:       "Rancho Palos Verdes",
-                    zipCode:    "90275"
-                },
-                services: [{service: 'Inside'}, {service: 'LifeGate'}]
-            },
-            shipFrom: {
-                location: {
-                    full_address:     "4489 Spencer St, Torrance, CA 90503",
-                    state:      "CA",
-                    county:     "Los Angeles County",
-                    city:       "Torrance",
-                    zipCode:    "90503"
-                },
-                services: [{service: 'Inside'}, {service: 'LifeGate'}]
-            },
-            lines: [{
-                weight: 200,
-                quantity: 10,
-                packaging:"Cartons",
-                length: 10,
-                width: 10,
-                height: 10,
-                description: "Dumper"
-            }],
-            fulfilledBy: {},
-            deliveryOrderContact: {}
-        }, {
+      who: "Home and Body",
+      loadType:  'LTL',
+      notes: "A note",
+      shipTo: {
+        location: {
+          full_address:     "30944 Rue de la Pierre, Rancho Palos Verdes, CA 90275",
+          state:      "CA",
+          county:     "Los Angeles County",
+          city:       "Rancho Palos Verdes",
+          zipCode:    "90275"
+        },
+        services: [{service: 'Inside'}, {service: 'LifeGate'}]
+      },
+      shipFrom: {
+        location: {
+          full_address:     "4489 Spencer St, Torrance, CA 90503",
+          state:      "CA",
+          county:     "Los Angeles County",
+          city:       "Torrance",
+          zipCode:    "90503"
+        },
+        services: [{service: 'Inside'}, {service: 'LifeGate'}]
+      },
+      lines: [{
+        weight: 200,
+        quantity: 10,
+        packaging:"Cartons",
+        length: 10,
+        width: 10,
+        height: 10,
+        description: "Dumper"
+      }],
+      fulfilledBy: {},
+      deliveryOrderContact: {}
+    }, {
 
-            who: "Home and Body",
-            loadType:  'AIR',
-            notes: "A note",
-            shipTo: {
-                location: {
-                    full_address:     "9111 S La Cienega Blvd, Inglewood, CA 90301",
-                    state:      "CA",
-                    county:     "Los Angeles County",
-                    city:       "Inglewood",
-                    zipCode:    "90301"
-                },
-                services: [{service: 'Inside'}, {service: 'LifeGate'}]
-            },
-            shipFrom: {
-                location: {
-                    full_address:     "4489 Spencer St, Torrance, CA 90503",
-                    state:      "CA",
-                    county:     "Los Angeles County",
-                    city:       "Torrance",
-                    zipCode:    "90503"
-                },
-                services: [{service: 'Inside'}, {service: 'LifeGate'}]
-            },
-            lines: [{
-                weight: 200,
-                quantity: 10,
-                packaging:"Cartons",
-                length: 10,
-                width: 10,
-                height: 10,
-                description: "Dumper"
-            }],
-            fulfilledBy: {},
-            deliveryOrderContact: {}
-        }
-    )
+      who: "Home and Body",
+      loadType:  'AIR',
+      notes: "A note",
+      shipTo: {
+        location: {
+          full_address:     "9111 S La Cienega Blvd, Inglewood, CA 90301",
+          state:      "CA",
+          county:     "Los Angeles County",
+          city:       "Inglewood",
+          zipCode:    "90301"
+        },
+        services: [{service: 'Inside'}, {service: 'LifeGate'}]
+      },
+      shipFrom: {
+        location: {
+          full_address:     "4489 Spencer St, Torrance, CA 90503",
+          state:      "CA",
+          county:     "Los Angeles County",
+          city:       "Torrance",
+          zipCode:    "90503"
+        },
+        services: [{service: 'Inside'}, {service: 'LifeGate'}]
+      },
+      lines: [{
+        weight: 200,
+        quantity: 10,
+        packaging:"Cartons",
+        length: 10,
+        width: 10,
+        height: 10,
+        description: "Dumper"
+      }],
+      fulfilledBy: {},
+      deliveryOrderContact: {}
+    }
+  )
 });
 
 FtlLoad.find({}).remove(function() {
   FtlLoad.create({
-        who: "Elite Toner",
-        shipTo: {
-          location: {
-            full_address: "9111 S La Cienega Blvd, #211, Inglewood, CA 90301",
-            state:        "CA",
-            county:       "Los Angeles County",
-            city:         "Inglewood",
-            zipCode:      "90301"
-          }
-        },
-        shipFrom: {
-          location: {
-            full_address: "3476 Del Amo Blvd, Torrance, CA 90503",
-            state:        "CA",
-            county:       "Los Angeles County",
-            city:         "Torrance",
-            zipCode:      "90503"
-          }
-        },
-
-        lines: [{
-          weight: 17000,
-          quantity: 1,
-          packaging: "Full container",
-          length: 20,
-          width: 20,
-          height: 20,
-          description: "Metals"
-        }],
-        trailer: {
-          type: 'Dry Van',
-          size: "40"
+      who: "Elite Toner",
+      shipTo: {
+        location: {
+          full_address: "9111 S La Cienega Blvd, #211, Inglewood, CA 90301",
+          state:        "CA",
+          county:       "Los Angeles County",
+          city:         "Inglewood",
+          zipCode:      "90301"
         }
       },
-      {
-        who: "Beverly Furniture",
-        shipTo: {
-          location: {
-            full_address: "3476 Del Amo Blvd, Torrance, CA 90503",
-            state:        "CA",
-            county:       "Los Angeles County",
-            city:          "Torrance",
-            zipCode:       "90503"
-          }
-        },
-        shipFrom: {
-          location: {
-            full_address:     "9111 S La Cienega Blvd, #211, Inglewood, CA 90301",
-            state:      "CA",
-            county:     "Los Angeles County",
-            city:       "Inglewood",
-            zipCode:    "90301"
-          }
-        },
-
-        lines: [{
-          weight: 10000,
-          quantity: 1,
-          packaging: "Full container",
-          length: 20,
-          width: 20,
-          height: 20,
-          description: "Metals"
-        }],
-        trailer: {
-          type: 'Dry Van',
-          size: "40"
+      shipFrom: {
+        location: {
+          full_address: "3476 Del Amo Blvd, Torrance, CA 90503",
+          state:        "CA",
+          county:       "Los Angeles County",
+          city:         "Torrance",
+          zipCode:      "90503"
         }
+      },
+
+      lines: [{
+        weight: 17000,
+        quantity: 1,
+        packaging: "Full container",
+        length: 20,
+        width: 20,
+        height: 20,
+        description: "Metals"
+      }],
+      trailer: {
+        type: 'Dry Van',
+        size: "40"
       }
+    },
+    {
+      who: "Beverly Furniture",
+      shipTo: {
+        location: {
+          full_address: "3476 Del Amo Blvd, Torrance, CA 90503",
+          state:        "CA",
+          county:       "Los Angeles County",
+          city:          "Torrance",
+          zipCode:       "90503"
+        }
+      },
+      shipFrom: {
+        location: {
+          full_address:     "9111 S La Cienega Blvd, #211, Inglewood, CA 90301",
+          state:      "CA",
+          county:     "Los Angeles County",
+          city:       "Inglewood",
+          zipCode:    "90301"
+        }
+      },
+
+      lines: [{
+        weight: 10000,
+        quantity: 1,
+        packaging: "Full container",
+        length: 20,
+        width: 20,
+        height: 20,
+        description: "Metals"
+      }],
+      trailer: {
+        type: 'Dry Van',
+        size: "40"
+      }
+    }
   )
 });
 
 TruckingCompany.find({}).remove(function () {
   TruckingCompany.create({
-        name: "Aspeed",
-        contact: "310-951-3843",
-        location: "9111 S La Cienega Blvd, Inglewood, CA 90301",
-        phone: "3109111111",
-        fax: "3109111112",
-        email: "hello@trucking-hub.com",
-        favorite: true,
-        rateBasis: "city",
-        ftl: {
-          fuelSurcharge: 20,
-          residentialCharge: 60.0,
-          pierPassFee: 66.50,
-          cleaningTruckFee: 35,
-          congestionFee: 150,
-          regions: [
-            { state: "CA", county: "Los Angeles County"}
-          ],
-          overWeightCharges: [
-            {
-              containerSize: "40",
-              ranges: [
-                { limit:13000, charge:100},
-                { limit:16000, charge:150}
-              ]
-            }
-          ],
-          rates: [
-            {
-              state: "CA",
-              city: "Inglewood",
-              zipCode: "90301",
-              rate: 100,
-              dropOffCharge:15,
-              dropOffChargeOffhour:25,
-              dropOffChargeWeekend:50,
-              dropOffChargeHoliday:70
-            },
-            {
-              state: "CA",
-              city: "Torrance",
-              zipCode: "90503",
-              rate: 150,
-              dropOffCharge:50,
-              dropOffChargeOffhour:75,
-              dropOffChargeWeekend:100,
-              dropOffChargeHoliday:125
-            },
-            {
-              state: "CA",
-              city: "Rancho Palos Verdes",
-              zipCode: "90275",
-              rate: 200,
-              dropOffCharge:50,
-              dropOffChargeOffhour:75,
-              dropOffChargeWeekend:100,
-              dropOffChargeHoliday:125
-            }
-          ]
-        },
-        ltl: {
-          fuelSurcharge: 20,
-          residentialCharge: 60,
-          liftGateCharge: 30,
-          insideCharge: 15,
-          tradeShowCharge: 20,
-          additionalCharges: [{ name: "Call before delivery",  charge: 10 }],
-          regions: [ { state: "CA", county: "Los Angeles County" }],
-          zoneRateVariables: {
-            weightIncrement: 100,
-            zones: [
-              {
-                label:"A",
-                dropOffCharge: 10,
-                dropOffChargeOffhour: 20,
-                dropOffChargeWeekend: 30,
-                dropOffChargeHoliday: 40
-              }, {
-                label:"B",
-                dropOffCharge: 10,
-                dropOffChargeOffhour: 20,
-                dropOffChargeWeekend: 30,
-                dropOffChargeHoliday: 40
-              }, {
-                label:"C",
-                dropOffCharge: 10,
-                dropOffChargeOffhour: 20,
-                dropOffChargeWeekend: 30,
-                dropOffChargeHoliday: 40
-              }, {
-                label:"D",
-                dropOffCharge: 10,
-                dropOffChargeOffhour: 20,
-                dropOffChargeWeekend: 30,
-                dropOffChargeHoliday: 40
-              }, {
-                label:"E",
-                dropOffCharge: 10,
-                dropOffChargeOffhour: 20,
-                dropOffChargeWeekend: 30,
-                dropOffChargeHoliday: 40
-              }]
-          },
-          flatRates: [
-            {
-              tier:"1",
-              ranges: [0,1000],
-              rates:[
-                {zone: "A", rate:55},
-                {zone: "B", rate:33},
-                {zone: "C", rate:23},
-                {zone: "D", rate:89},
-                {zone: "E", rate:20}
-              ]},
-            {
-              tier: "2",
-              ranges: [1000, 2000],
-              rates:[
-                {zone: "A", rate:55},
-                {zone: "B", rate:33},
-                {zone: "C", rate:23},
-                {zone: "D", rate:89},
-                {zone: "E", rate:20}
-              ]}
-          ],
-          weightRates: [
-            {
-              tier:"3",
-              ranges: [3000,4000],
-              rates:[
-                {zone: "A", rate:5.5},
-                {zone: "B", rate:3.3},
-                {zone: "C", rate:2.3},
-                {zone: "D", rate:8.9},
-                {zone: "E", rate:2.0}
-              ]},
-            {
-              tier: "4",
-              ranges: [4000, 5000],
-              rates:[
-                {zone: "A", rate:55},
-                {zone: "B", rate:33},
-                {zone: "C", rate:23},
-                {zone: "D", rate:89},
-                {zone: "E", rate:20}
-              ]},
-            {
-              tier: "5",
-              ranges: [5000, 6000],
-              rates:[
-                {zone: "A", rate:55},
-                {zone: "B", rate:33},
-                {zone: "C", rate:23},
-                {zone: "D", rate:89},
-                {zone: "E", rate:20}
-              ]}
-          ],
-          rates: [ {
+      name: "Aspeed",
+      contact: "310-951-3843",
+      location: "9111 S La Cienega Blvd, Inglewood, CA 90301",
+      phone: "3109111111",
+      fax: "3109111112",
+      email: "hello@trucking-hub.com",
+      favorite: true,
+      rateBasis: "zipCode",
+      ftl: {
+        fuelSurcharge: 20,
+        residentialCharge: 60.0,
+        pierPassFee: 66.50,
+        cleaningTruckFee: 35,
+        congestionFee: 150,
+        regions: [
+          { state: "CA", county: "Los Angeles County"}
+        ],
+        overWeightCharges: [
+          {
+            containerSize: "40",
+            ranges: [
+              { limit:13000, charge:100},
+              { limit:16000, charge:150}
+            ]
+          }
+        ],
+        rates: [
+          {
             state: "CA",
-            city: "Torrance",
-            zipCode: "90501",
-            zone: "A"
-          }, {
+            city: "Inglewood",
+            zipCode: "90301",
+            rate: 100,
+            dropOffCharge:15,
+            dropOffChargeOffhour:25,
+            dropOffChargeWeekend:50,
+            dropOffChargeHoliday:70
+          },
+          {
             state: "CA",
             city: "Torrance",
             zipCode: "90503",
-            zone: "B"
-          }, {
-            state: "CA",
-            city: "Rancho Palos Verdes",
-            zipCode: "90275",
-            zone: "C"
-          }]
-        },
-        air: {
-          fuelSurcharge: 20,
-          residentialCharge: 60,
-          liftGateCharge: 30,
-          insideCharge: 15,
-          tradeShowCharge: 20,
-          additionalCharges: [{ name: "Call before delivery",  charge: 10 }],
-          regions: [ { state: "CA", county: "Los Angeles County" }],
-          zoneRateVariables: {
-            weightIncrement: 100,
-            zones: [
-              {
-                label:"A",
-                dropOffCharge: 10,
-                dropOffChargeOffhour: 20,
-                dropOffChargeWeekend: 30,
-                dropOffChargeHoliday: 40
-              }, {
-                label:"B",
-                dropOffCharge: 10,
-                dropOffChargeOffhour: 20,
-                dropOffChargeWeekend: 30,
-                dropOffChargeHoliday: 40
-              }, {
-                label:"C",
-                dropOffCharge: 10,
-                dropOffChargeOffhour: 20,
-                dropOffChargeWeekend: 30,
-                dropOffChargeHoliday: 40
-              }, {
-                label:"D",
-                dropOffCharge: 10,
-                dropOffChargeOffhour: 20,
-                dropOffChargeWeekend: 30,
-                dropOffChargeHoliday: 40
-              }, {
-                label:"E",
-                dropOffCharge: 10,
-                dropOffChargeOffhour: 20,
-                dropOffChargeWeekend: 30,
-                dropOffChargeHoliday: 40
-              }]
+            rate: 150,
+            dropOffCharge:50,
+            dropOffChargeOffhour:75,
+            dropOffChargeWeekend:100,
+            dropOffChargeHoliday:125
           },
-          flatRates: [
-            {
-              tier:"1",
-              ranges: [0,1000],
-              rates:[
-                {zone: "A", rate:55},
-                {zone: "B", rate:33},
-                {zone: "C", rate:23},
-                {zone: "D", rate:89},
-                {zone: "E", rate:20}
-              ]},
-            {
-              tier: "2",
-              ranges: [1000, 2000],
-              rates:[
-                {zone: "A", rate:55},
-                {zone: "B", rate:33},
-                {zone: "C", rate:23},
-                {zone: "D", rate:89},
-                {zone: "E", rate:20}
-              ]}
-          ],
-          weightRates: [
-            {
-              tier:"3",
-              ranges: [3000,4000],
-              rates:[
-                {zone: "A", rate:5.5},
-                {zone: "B", rate:3.3},
-                {zone: "C", rate:2.3},
-                {zone: "D", rate:8.9},
-                {zone: "E", rate:2.0}
-              ]},
-            {
-              tier: "4",
-              ranges: [4000, 5000],
-              rates:[
-                {zone: "A", rate:55},
-                {zone: "B", rate:33},
-                {zone: "C", rate:23},
-                {zone: "D", rate:89},
-                {zone: "E", rate:20}
-              ]},
-            {
-              tier: "5",
-              ranges: [5000, 6000],
-              rates:[
-                {zone: "A", rate:55},
-                {zone: "B", rate:33},
-                {zone: "C", rate:23},
-                {zone: "D", rate:89},
-                {zone: "E", rate:20}
-              ]}
-          ],
-          rates: [ {
-            state: "CA",
-            city: "Torrance",
-            zipCode: "90501",
-            zone: "A"
-          }, {
-            state: "CA",
-            city: "Torrance",
-            zipCode: "90503",
-            zone: "B"
-          }, {
+          {
             state: "CA",
             city: "Rancho Palos Verdes",
             zipCode: "90275",
-            zone: "C"
-          }]
-        }
+            rate: 200,
+            dropOffCharge:50,
+            dropOffChargeOffhour:75,
+            dropOffChargeWeekend:100,
+            dropOffChargeHoliday:125
+          }
+        ]
       },
-      {
-        name: "Dspeed",
-        location: "9111 S La Cienega Blvd, Inglewood, CA 90301",
-        phone: "3109111111",
-        fax: "3109111112",
-        email: "hello@trucking-hub.com",
-        favorite: false,
-        rateBasis: "city",
-        ftl: {
-          fuelSurcharge: 20,
-          residentialCharge: 60.0,
-          pierPassFee: 66.50,
-          cleaningTruckFee: 35,
-          congestionFee: 150,
-          regions: [
+      ltl: {
+        fuelSurcharge: 20,
+        residentialCharge: 60,
+        liftGateCharge: 30,
+        insideCharge: 15,
+        tradeShowCharge: 20,
+        additionalCharges: [{ name: "Call before delivery",  charge: 10 }],
+        regions: [ { state: "CA", county: "Los Angeles County" }],
+        zoneRateVariables: {
+          weightIncrement: 100,
+          zones: [
             {
-              state: "CA",
-              county: "Los Angeles County"
-            }
-          ],
-          overWeightCharges: [
-            { containerSize: "28",
-              ranges: [
-                {limit: 13000, charge: 150},
-                {limit: 16000, charge: 200}
-              ]
+              label:"A",
+              dropOffCharge: 10,
+              dropOffChargeOffhour: 20,
+              dropOffChargeWeekend: 30,
+              dropOffChargeHoliday: 40
             }, {
-              containerSize: "40",
-              ranges: [
-                {limit: 13000, charge: 150},
-                {limit: 16000, charge: 200}
-              ]
+              label:"B",
+              dropOffCharge: 10,
+              dropOffChargeOffhour: 20,
+              dropOffChargeWeekend: 30,
+              dropOffChargeHoliday: 40
             }, {
-              containerSize: "40HQ",
-              ranges: [
-                {limit: 13000, charge: 150},
-                {limit: 16000, charge: 200}
-              ]
+              label:"C",
+              dropOffCharge: 10,
+              dropOffChargeOffhour: 20,
+              dropOffChargeWeekend: 30,
+              dropOffChargeHoliday: 40
             }, {
-              containerSize: "48",
-              ranges: [
-                {limit: 13000, charge: 150},
-                {limit: 16000, charge: 200}
-              ]
-            }
-          ],
-          rates: [
-            {
-              state: "CA",
-              city: "Inglewood",
-              zipCode: "90301",
-              rate: 150,
-              dropOffCharge:50,
-              dropOffChargeOffhour:75,
-              dropOffChargeWeekend:100,
-              dropOffChargeHoliday:125
-            },
-            {
-              state: "CA",
-              city: "Torrance",
-              zipCode: "90503",
-              rate: 200,
-              dropOffCharge:50,
-              dropOffChargeOffhour:75,
-              dropOffChargeWeekend:100,
-              dropOffChargeHoliday:125
-            },
-            {
-              state: "CA",
-              city: "Rancho Palos Verdes",
-              zipCode: "90275",
-              rate: 250,
-              dropOffCharge:50,
-              dropOffChargeOffhour:75,
-              dropOffChargeWeekend:100,
-              dropOffChargeHoliday:125
-            }
-          ]
+              label:"D",
+              dropOffCharge: 10,
+              dropOffChargeOffhour: 20,
+              dropOffChargeWeekend: 30,
+              dropOffChargeHoliday: 40
+            }, {
+              label:"E",
+              dropOffCharge: 10,
+              dropOffChargeOffhour: 20,
+              dropOffChargeWeekend: 30,
+              dropOffChargeHoliday: 40
+            }]
         },
-        ltl: {
-          fuelSurcharge: 0.2,
-          residentialCharge: 60,
-          liftGateCharge: 30,
-          insideCharge: 15,
-          tradeShowCharge: 20,
-          additionalCharges: [{
-            name: "Call before delivery",
-            charge: 10
-          }],
-
-          regions: [
+        flatRates: [
+          {
+            tier:"1",
+            ranges: [0,1000],
+            rates:[
+              {zone: "A", rate:35},
+              {zone: "B", rate:45},
+              {zone: "C", rate:55},
+              {zone: "D", rate:65},
+              {zone: "E", rate:75}]
+          }, {
+            tier: "2",
+            ranges: [1000, 2000],
+            rates:[
+              {zone: "A", rate:55},
+              {zone: "B", rate:65},
+              {zone: "C", rate:75},
+              {zone: "D", rate:85},
+              {zone: "E", rate:95}
+            ]
+          }
+        ],
+        weightRates: [
+          {
+            tier:"3",
+            ranges: [3000,4000],
+            rates:[
+              {zone: "A", rate:5.5},
+              {zone: "B", rate:3.3},
+              {zone: "C", rate:2.3},
+              {zone: "D", rate:8.9},
+              {zone: "E", rate:2.0}
+            ]},
+          {
+            tier: "4",
+            ranges: [4000, 5000],
+            rates:[
+              {zone: "A", rate:55},
+              {zone: "B", rate:33},
+              {zone: "C", rate:23},
+              {zone: "D", rate:89},
+              {zone: "E", rate:20}
+            ]},
+          {
+            tier: "5",
+            ranges: [5000, 6000],
+            rates:[
+              {zone: "A", rate:55},
+              {zone: "B", rate:33},
+              {zone: "C", rate:23},
+              {zone: "D", rate:89},
+              {zone: "E", rate:20}
+            ]}
+        ],
+        rates: [ {
+          state: "CA",
+          city: "Torrance",
+          zipCode: "90501",
+          zone: "A"
+        }, {
+          state: "CA",
+          city: "Torrance",
+          zipCode: "90503",
+          zone: "B"
+        }, {
+          state: "CA",
+          city: "Rancho Palos Verdes",
+          zipCode: "90275",
+          zone: "C"
+        }]
+      },
+      air: {
+        fuelSurcharge: 20,
+        residentialCharge: 60,
+        liftGateCharge: 30,
+        insideCharge: 15,
+        tradeShowCharge: 20,
+        additionalCharges: [{ name: "Call before delivery",  charge: 10 }],
+        regions: [ { state: "CA", county: "Los Angeles County" }],
+        zoneRateVariables: {
+          weightIncrement: 100,
+          zones: [
             {
-              state: "CA",
-              county: "Los Angeles County"
-            }
-          ],
-
-          zoneRateVariables: {
-            weightIncrement: 100,
-            zones: [
-              {
-                label:"A",
-                dropOffCharge: 10,
-                dropOffChargeOffhour: 20,
-                dropOffChargeWeekend: 30,
-                dropOffChargeHoliday: 40
-              }, {
-                label:"B",
-                dropOffCharge: 10,
-                dropOffChargeOffhour: 20,
-                dropOffChargeWeekend: 30,
-                dropOffChargeHoliday: 40
-              }, {
-                label:"C",
-                dropOffCharge: 10,
-                dropOffChargeOffhour: 20,
-                dropOffChargeWeekend: 30,
-                dropOffChargeHoliday: 40
-              }, {
-                label:"D",
-                dropOffCharge: 10,
-                dropOffChargeOffhour: 20,
-                dropOffChargeWeekend: 30,
-                dropOffChargeHoliday: 40
-              }, {
-                label:"E",
-                dropOffCharge: 10,
-                dropOffChargeOffhour: 20,
-                dropOffChargeWeekend: 30,
-                dropOffChargeHoliday: 40
-              }]
-          },
-
-          flatRates: [
-            {
-              tier:"1",
-              ranges: [0,1000],
-              rates:[
-                {zone: "A", rate:55},
-                {zone: "B", rate:33},
-                {zone: "C", rate:23},
-                {zone: "D", rate:89},
-                {zone: "E", rate:20}
-              ]},
-            {
-              tier: "2",
-              ranges: [1000, 2000],
-              rates:[
-                {zone: "A", rate:55},
-                {zone: "B", rate:33},
-                {zone: "C", rate:23},
-                {zone: "D", rate:89},
-                {zone: "E", rate:20}
-              ]}
-          ],
-
-          weightRates: [
-            {
-              tier:"3",
-              ranges: [3000,4000],
-              rates:[
-                {zone: "A", rate:5.5},
-                {zone: "B", rate:3.3},
-                {zone: "C", rate:2.3},
-                {zone: "D", rate:8.9},
-                {zone: "E", rate:2.0}
-              ]},
-            {
-              tier: "4",
-              ranges: [4000, 5000],
-              rates:[
-                {zone: "A", rate:55},
-                {zone: "B", rate:33},
-                {zone: "C", rate:23},
-                {zone: "D", rate:89},
-                {zone: "E", rate:20}
-              ]},
-            {
-              tier: "5",
-              ranges: [5000, 6000],
-              rates:[
-                {zone: "A", rate:55},
-                {zone: "B", rate:33},
-                {zone: "C", rate:23},
-                {zone: "D", rate:89},
-                {zone: "E", rate:20}
-              ]}
-          ],
-          rates: []
+              label:"A",
+              dropOffCharge: 10,
+              dropOffChargeOffhour: 20,
+              dropOffChargeWeekend: 30,
+              dropOffChargeHoliday: 40
+            }, {
+              label:"B",
+              dropOffCharge: 10,
+              dropOffChargeOffhour: 20,
+              dropOffChargeWeekend: 30,
+              dropOffChargeHoliday: 40
+            }, {
+              label:"C",
+              dropOffCharge: 10,
+              dropOffChargeOffhour: 20,
+              dropOffChargeWeekend: 30,
+              dropOffChargeHoliday: 40
+            }, {
+              label:"D",
+              dropOffCharge: 10,
+              dropOffChargeOffhour: 20,
+              dropOffChargeWeekend: 30,
+              dropOffChargeHoliday: 40
+            }, {
+              label:"E",
+              dropOffCharge: 10,
+              dropOffChargeOffhour: 20,
+              dropOffChargeWeekend: 30,
+              dropOffChargeHoliday: 40
+            }]
         },
-        air: {
+        flatRates: [
+          {
+            tier:"1",
+            ranges: [0,1000],
+            rates:[
+              {zone: "A", rate:55},
+              {zone: "B", rate:60},
+              {zone: "C", rate:65},
+              {zone: "D", rate:70},
+              {zone: "E", rate:80}
+            ]},
+          {
+            tier: "2",
+            ranges: [1001, 2000],
+            rates:[
+              {zone: "A", rate:60},
+              {zone: "B", rate:65},
+              {zone: "C", rate:70},
+              {zone: "D", rate:75},
+              {zone: "E", rate:80}
+            ]}
+        ],
 
-          rates: []
-        }
+        weightRates: [
+          {
+            tier:"3",
+            ranges: [2001,4000],
+            rates:[
+              {zone: "A", rate:5.5},
+              {zone: "B", rate:6.0},
+              {zone: "C", rate:6.5},
+              {zone: "D", rate:7.5},
+              {zone: "E", rate:8.0}
+            ]},
+          {
+            tier: "4",
+            ranges: [4001, 5000],
+            rates:[
+              {zone: "A", rate:5.0},
+              {zone: "B", rate:5.5},
+              {zone: "C", rate:6.0},
+              {zone: "D", rate:6.5},
+              {zone: "E", rate:7.5}
+            ]},
+          {
+            tier: "5",
+            ranges: [5001, 6000],
+            rates:[
+              {zone: "A", rate:4.5},
+              {zone: "B", rate:5.0},
+              {zone: "C", rate:5.5},
+              {zone: "D", rate:6.0},
+              {zone: "E", rate:6.5}
+            ]}
+        ],
+        rates: [ {
+          state: "CA",
+          city: "Torrance",
+          zipCode: "90501",
+          zone: "A"
+        }, {
+          state: "CA",
+          city: "Torrance",
+          zipCode: "90503",
+          zone: "B"
+        }, {
+          state: "CA",
+          city: "Inglewood",
+          zipCode: "90301",
+          zone: "E"
+        }, {
+          state: "CA",
+          city: "Rancho Palos Verdes",
+          zipCode: "90275",
+          zone: "C"
+        }]
+      },
+    },
+    {
+      name: "Dspeed",
+      location: "9111 S La Cienega Blvd, Inglewood, CA 90301",
+      phone: "3109111111",
+      fax: "3109111112",
+      email: "hello@trucking-hub.com",
+      favorite: false,
+      rateBasis: "city",
+      ftl: {
+        fuelSurcharge: 20,
+        residentialCharge: 60.0,
+        pierPassFee: 66.50,
+        cleaningTruckFee: 35,
+        congestionFee: 150,
+        regions: [
+          {
+            state: "CA",
+            county: "Los Angeles County"
+          }
+        ],
+        overWeightCharges: [
+          { containerSize: "28",
+            ranges: [ {limit: 13000, charge: 150}, {limit: 16000, charge: 200}]
+          }, {
+            containerSize: "40",
+            ranges: [ {limit: 13000, charge: 150}, {limit: 16000, charge: 200}]
+          }, {
+            containerSize: "40HQ",
+            ranges: [ {limit: 13000, charge: 150}, {limit: 16000, charge: 200}]
+          }, {
+            containerSize: "48",
+            ranges: [ {limit: 13000, charge: 150}, {limit: 16000, charge: 200}]
+          }
+        ],
+        rates: [
+          {
+            state: "CA",
+            city: "Inglewood",
+            zipCode: "90301",
+            rate: 150,
+            dropOffCharge:50,
+            dropOffChargeOffhour:75,
+            dropOffChargeWeekend:100,
+            dropOffChargeHoliday:125
+          }, {
+            state: "CA",
+            city: "Torrance",
+            zipCode: "90503",
+            rate: 200,
+            dropOffCharge:50,
+            dropOffChargeOffhour:75,
+            dropOffChargeWeekend:100,
+            dropOffChargeHoliday:125
+          }, {
+            state: "CA",
+            city: "Rancho Palos Verdes",
+            zipCode: "90275",
+            rate: 250,
+            dropOffCharge:50,
+            dropOffChargeOffhour:75,
+            dropOffChargeWeekend:100,
+            dropOffChargeHoliday:125
+          }
+        ]
+      },
+      ltl: {
+        fuelSurcharge: 20,
+        residentialCharge: 60,
+        liftGateCharge: 30,
+        insideCharge: 15,
+        tradeShowCharge: 20,
+        additionalCharges: [{ name: "Call before delivery", charge: 10 }],
+        regions: [ { state: "CA", county: "Los Angeles County" } ],
+
+        zoneRateVariables: {
+          weightIncrement: 100,
+          zones: [
+            {
+              label:"A",
+              dropOffCharge: 10,
+              dropOffChargeOffhour: 20,
+              dropOffChargeWeekend: 30,
+              dropOffChargeHoliday: 40
+            }, {
+              label:"B",
+              dropOffCharge: 10,
+              dropOffChargeOffhour: 20,
+              dropOffChargeWeekend: 30,
+              dropOffChargeHoliday: 40
+            }, {
+              label:"C",
+              dropOffCharge: 10,
+              dropOffChargeOffhour: 20,
+              dropOffChargeWeekend: 30,
+              dropOffChargeHoliday: 40
+            }, {
+              label:"D",
+              dropOffCharge: 10,
+              dropOffChargeOffhour: 20,
+              dropOffChargeWeekend: 30,
+              dropOffChargeHoliday: 40
+            }, {
+              label:"E",
+              dropOffCharge: 10,
+              dropOffChargeOffhour: 20,
+              dropOffChargeWeekend: 30,
+              dropOffChargeHoliday: 40
+            }]
+        },
+
+        flatRates: [
+          {
+            tier:"1",
+            ranges: [0,1000],
+            rates:[
+              {zone: "A", rate:55},
+              {zone: "B", rate:60},
+              {zone: "C", rate:65},
+              {zone: "D", rate:70},
+              {zone: "E", rate:80}
+            ]},
+          {
+            tier: "2",
+            ranges: [1001, 2000],
+            rates:[
+              {zone: "A", rate:60},
+              {zone: "B", rate:65},
+              {zone: "C", rate:70},
+              {zone: "D", rate:75},
+              {zone: "E", rate:80}
+            ]}
+        ],
+
+        weightRates: [
+          {
+            tier:"3",
+            ranges: [2001,4000],
+            rates:[
+              {zone: "A", rate:5.5},
+              {zone: "B", rate:6.0},
+              {zone: "C", rate:6.5},
+              {zone: "D", rate:7.5},
+              {zone: "E", rate:8.0}
+            ]},
+          {
+            tier: "4",
+            ranges: [4001, 5000],
+            rates:[
+              {zone: "A", rate:5.0},
+              {zone: "B", rate:5.5},
+              {zone: "C", rate:6.0},
+              {zone: "D", rate:6.5},
+              {zone: "E", rate:7.5}
+            ]},
+          {
+            tier: "5",
+            ranges: [5001, 6000],
+            rates:[
+              {zone: "A", rate:4.5},
+              {zone: "B", rate:5.0},
+              {zone: "C", rate:5.5},
+              {zone: "D", rate:6.0},
+              {zone: "E", rate:6.5}
+            ]}
+        ],
+        rates: [ {
+          state: "CA",
+          city: "Torrance",
+          zipCode: "90501",
+          zone: "A"
+        }, {
+          state: "CA",
+          city: "Torrance",
+          zipCode: "90503",
+          zone: "B"
+        }, {
+          state: "CA",
+          city: "Inglewood",
+          zipCode: "90301",
+          zone: "E"
+        }, {
+          state: "CA",
+          city: "Rancho Palos Verdes",
+          zipCode: "90275",
+          zone: "C"
+        }]
+      },
+      air: {
+        rates: []
       }
+    }
   );
 });
 
 User.find({}).remove(function () {
   User.create({
-        provider: 'local',
-        name: 'Test User',
-        email: 'test@test.com',
-        password: 'test'
-      }, {
-        provider: 'local',
-        role: 'admin',
-        name: 'Admin',
-        email: 'admin@admin.com',
-        password: 'admin'
-      }, function () {
-        console.log('finished populating users');
-      }
+      provider: 'local',
+      name: 'Test User',
+      email: 'test@test.com',
+      password: 'test'
+    }, {
+      provider: 'local',
+      role: 'admin',
+      name: 'Admin',
+      email: 'admin@admin.com',
+      password: 'admin'
+    }, function () {
+      console.log('finished populating users');
+    }
   );
 });

@@ -9,16 +9,16 @@
       <button type="button" class="btn btn-default btn-link" ng-click="queryLoads('FILLED',1)">Today's DO</button>
       <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads('FILLED',3)">DO in last 3 days </button>
       <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads('FILLED',7)">DO in last 3 days</button>
-      <button type="button" class="btn btn-danger btn-link" ng-click="queryLoads('FILLED',14)">All Open DO</button>
+      <button type="button" class="btn btn-danger  btn-link" ng-click="queryLoads('FILLED',14)">All Open DO</button>
     </div>
     <div class="panel-body">
-      <table ng-table="tableParamsLoads" show-filter="true" class="table table-responsive table-hover table-condensed">
+      <table ng-table="tableParamsLoads" show-filter="true" class="table table-responsive table-hover table-bordered table-striped">
 
         <tr ng-repeat="load in $data" ng-click="select(load)">
-          <td data-title="''">
-            {{load.source }}
+          <td data-title="'Type'">
+            <load-type type="load.loadType"></load-type>
           </td>
-          <td data-title="'Customer'" filter="{ 'who': 'text' }">
+          <td data-title="'Consignee'" filter="{ 'who': 'text' }">
             {{load.who}}
           </td>
           <td data-title="'Delivery'">
@@ -27,7 +27,7 @@
           <td data-title="'Expected By'">
             {{load.expectedBy | date:'shortDate'}}
           </td>
-            <td>
+            <td data-title="'Actions'">
                 <button type="button" class="btn btn-default" ng-click="createInvoice(load)"><i class="fa fa-list-alt"></i> Review Invoice</button>
                 <button type="button" class="btn btn-default" ng-click="createDO(load)"><i class="fa fa-paper-plane-o"></i> Review DO</button>
             </td>
