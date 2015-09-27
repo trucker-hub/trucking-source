@@ -51,11 +51,11 @@
           </div>
         </div>
       </td>
-      <td class="col-md-2">Notes</td>
+      <td>Email</td>
       <td class="col-md-4">
-        <div class="input-group">
-          <textarea class="form-control" id="customerNote" size="20" ng-model="freightCtrl.freight.notes" rows="4"
-                    placeholder="Note name" ng-change="freightCtrl.change()"></textarea>
+        <div class="form-group" ng-class="{'has-error': freightForm.customerEmail.$invalid}">
+          <input type="email" class="form-control" name="customerEmail" ng-model="freightCtrl.freight.email"
+                 placeholder="Email" ng-change="freightCtrl.change()" required>
         </div>
       </td>
     </tr>
@@ -68,8 +68,14 @@
         </datepicker>
       </div>
       </td>
-      <td></td>
-      <td></td>
+      <td class="col-md-2">Notes</td>
+      <td class="col-md-4">
+        <div class="input-group">
+          <textarea class="form-control" id="customerNote" size="20" ng-model="freightCtrl.freight.notes" rows="4"
+                    placeholder="Note name" ng-change="freightCtrl.change()"></textarea>
+        </div>
+      </td>
+
     </tr>
 
 
@@ -121,11 +127,11 @@
   </div>
   <div class="row">
     <div class="col-md-3">
-      <button style="float:left" ng-hide="freightCtrl.isNew()" class="btn btn-sm btn-danger" type="button" ng-click="freightCtrl.delete()">DELETE</button>
+      <button style="float:left" ng-hide="freightCtrl.isNew()" class="btn btn-danger" type="button" ng-click="freightCtrl.delete()">DELETE</button>
     </div>
     <div class="col-md-9">
-      <button style="float:left" class="btn btn-sm btn-warning" type="button" ng-click="freightCtrl.close()">Close</button>
-      <button style="float:right" class="btn btn-sm btn-primary" type="button" ng-disabled="locationForm.$invalid || !freightCtrl.freight.changed" ng-click="freightCtrl.submit()">Submit</button>
+      <button style="float:left" class="btn  btn-default" type="button" ng-click="freightCtrl.close()">Close</button>
+      <button style="float:right" class="btn  btn-default" type="button" ng-disabled="locationForm.$invalid || !freightCtrl.freight.changed" ng-click="freightCtrl.submit()">Submit</button>
     </div>
   </div>
   <div>

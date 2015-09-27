@@ -18,6 +18,7 @@ var LtlLoadSchema = new Schema({
   who: String,
   loadType:  { type: String, default: 'LTL'},
   createdAt: { type: Date, required: true, default: Date.now },
+  email:String,
   expectedBy: Date,
   notes: String,
   shipTo: {
@@ -109,14 +110,19 @@ var LtlLoadSchema = new Schema({
     costItems: [{
       charge: Number,
       description: String,
-      adjustment: Number
+      adjustment: {type: Number, default:0}
     }]
   },
 
-  deliveryOrderContact: {
+  invoice: {
+    referenceNumber: String
+  },
+
+  deliveryOrderReference: {
     email: String,
     phone: String,
-    instructions: String
+    instructions: String,
+    referenceNumber: String
   }
 });
 

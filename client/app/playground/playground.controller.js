@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-    .controller('PlaygroundCtrl', function ($scope) {
+    .controller('PlaygroundCtrl', function ($scope, $http) {
 
       $scope.services = [
         {service:"TradeShow"} , {service: "Inside"}
@@ -177,6 +177,69 @@ angular.module('servicesApp')
         }
         return newTierRates;
       };
+
+    //loadType:  { type: String, default: 'FTL'},
+//createdAt: { type: Date, required: true, default: Date.now },
+//expectedBy: Date,
+//  notes: String,
+//  shipTo: {
+//  location: {
+//    full_address:     String,
+//      state:      {type: String, required: true},
+//    county:     {type: String, required: true},
+//    city:       {type: String, required: true},
+//    zipCode:    {type: String, required: true}
+//  },
+    $scope.testEmail = function() {
+      $scope.sending = true;
+      var req = {
+        email: "jinbo.chen@gmail.com",
+        load: {
+          "who": "Dspeed", "source": "5606387fe7d3f6da4d34b2e2", "totalAmount": 184,
+          loadType:"FTL",
+          shipTo: {
+            location: {
+              state: "CA",
+              zipCode: "90301"
+            }
+          },
+          shipFrom: {
+            location: {
+              state: "CA",
+              zipCode: "90503"
+            }
+          },
+          fulfilledBy: {
+            charge: 900,
+            name: "Dspeed",
+            "costItems": [
+              {"charge": 15, "description": "Inside Delivery", "adjustment": 0},
+              {"charge": 30, "description": "LifeGate Delivery", "adjustment": 0},
+              {"charge": 15, "description": "Inside Pickup", "adjustment": 0},
+              {"charge": 30, "description": "LifeGate Pickup", "adjustment": 0},
+              {"charge": 10, "description": "DropOff Charge", "adjustment": 0},
+              {"charge": 70, "description": "Basis rate for Zone C", "adjustment": 0},
+              {"charge": 14, "description": "Fuel Surcharge 20%", "adjustment": 0}]
+          },
+          brokerFees: [
+            {name: "ABI-Customs Fee", charge: 15},
+            {name: "Chassy Fee", charge: 15},
+            {name: "Service Fee", charge: 50}
+          ]
+        }
+      };
+
+      $http.post('/api/emails/invoice', req).then(
+        function(response) {
+          console.log(JSON.stringify(response.data));
+          $scope.sending = false;
+        },
+        function(response) {
+          console.log('ran into error ' + response);
+          $scope.sending = false;
+        });
+
+    }
 
       $scope.ok = function () {
 

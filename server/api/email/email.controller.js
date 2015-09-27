@@ -4,6 +4,12 @@ var _ = require('lodash');
 var Email = require('./email.model');
 
 var nodemailer = require('nodemailer');
+var EmailTemplate = require('email-templates').EmailTemplate;
+var path = require('path');
+
+var invoiceTemplateDir = path.join(__dirname, 'templates', 'invoice');
+var invoiceTemplate = new EmailTemplate(invoiceTemplateDir);
+var async = require('async');
 
 // create reusable transporter object using SMTP transport
 var transporter = nodemailer.createTransport({
@@ -16,8 +22,56 @@ var transporter = nodemailer.createTransport({
 
 // NB! No need to recreate the transporter object. You can use
 // the same transporter object for all e-mails
+//  who: String,
+//loadType:  { type: String, default: 'FTL'},
+//createdAt: { type: Date, required: true, default: Date.now },
+//expectedBy: Date,
+//  notes: String,
+//  shipTo: {
+//  location: {
+//    full_address:     String,
+//      state:      {type: String, required: true},
+//    county:     {type: String, required: true},
+//    city:       {type: String, required: true},
+//    zipCode:    {type: String, required: true}
+//  },
 
+var loadSummary = function(load) {
+  var result =load.loadType + ",";
+  result += load.shipFrom.location.state + load.shipFrom.location.zipCode;
+  result += "->";
+  result += load.shipTo.location.state + load.shipFrom.location.zipCode;
+  return result;
+};
 
+exports.invoice = function(req, res) {
+
+  var load = req.body.load;
+  var email = req.body.email;
+
+  invoiceTemplate.render(load, function(err, results) {
+    if(err) {
+      console.error(err);
+      return res.status(404).send('send email failed');
+    }
+    console.log("cost info =" + JSON.stringify(load.fulfilledBy));
+    transporter.sendMail({
+      from:'Service Team <jinbo.chen@gmail.com>', // sender address
+      to: email,
+      subject: "Invoice for Your load:" + loadSummary(load),
+      html: results.html,
+      text: results.text
+    }, function(err, response) {
+      if(err) {
+        console.error(err);
+        return res.status(404).send('send email failed');
+      }
+      return res.status(200).send('send email succesfully')
+      console.log("sending email succesfully");
+    });
+
+  });
+};
 
 exports.send = function(req, res) {
 

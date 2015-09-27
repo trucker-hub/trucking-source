@@ -44,6 +44,17 @@
                  placeholder="Consignee name" required="" ng-change="ftlCtrl.change()">
         </div>
       </div>
+      <div class="row ftlPadding" ng-class="{'has-error':locationForm.customerEmail.$invalid}">
+        <label for="customerEmail" class="col-md-2 control-label">Email</label>
+        <div class="col-md-10">
+          <input type="email"
+                 class="form-control" id="customerEmail" size="20" name="customerEmail"
+                 ng-model="ftlCtrl.load.email"
+                 ng-minlength="5"
+                 placeholder="Email for Invoice" required="" ng-change="ftlCtrl.change()">
+        </div>
+      </div>
+
       <div class="row ftlPadding">
         <label for="customerNote" class="col-md-2 control-label">Notes</label>
         <div class="col-md-10">
@@ -116,7 +127,7 @@
 </div>
 <div class="row">
   <div class="col-md-3">
-    <button style="float:left" ng-hide="ftlCtrl.isNew()" class="btn btn-sm btn-danger" type="button" ng-click="ftlCtrl.delete()">DELETE</button>
+    <button style="float:left" ng-hide="ftlCtrl.isNew()" class="btn btn-danger" type="button" ng-click="ftlCtrl.delete()">DELETE</button>
   </div>
   <div class="col-md-9">
     <button style="float:left" class="btn btn-default" type="button" ng-click="ftlCtrl.close()">Close</button>

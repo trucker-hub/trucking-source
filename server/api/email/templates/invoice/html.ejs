@@ -1,0 +1,45 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <base href="/">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<h2>Invoice for <%= who %><i class="fa fa-spinner"></i></h2>
+<p>Load:   <%=loadType%>, <%=shipFrom.location.state %> <%=shipFrom.location.zipCode%> ->   <%=shipTo.location.state %> <%=shipTo.location.zipCode%>
+</p>
+<table class="table table-bordered" border="1">
+  <tr>
+    <th>Cost Items</th>
+    <th>Cost Description</th>
+    <th>Amount</th>
+  </tr>
+  <% for(var i=0; i < fulfilledBy.costItems.length; ++i) {%>
+  <tr>
+    <td align="right">#<%=i+1%></td>
+    <td><%= fulfilledBy.costItems[i].description%></td>
+    <td>$<%= fulfilledBy.costItems[i].charge + fulfilledBy.costItems[i].adjustment%></td>
+  </tr>
+  <% }; %>
+  <% for(var j=0; j < brokerFees.length; ++j) { %>
+  <tr>
+    <td align="right"> #<%= fulfilledBy.costItems.length + j +1 %></td>
+    <td><%= brokerFees[j].name%></td>
+    <td>$<%= brokerFees[j].charge %></td>
+  </tr>
+  <% };%>
+  <tr>
+    <td></td>
+    <td align="right"><b>Total Amount</b></td>
+    <td>$<%=totalAmount%></td>
+  </tr>
+  <tr>
+    <td colspan="3">Sent from <b>Trucking-hub.com</b></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -23,6 +23,7 @@ LtlLoad.find({}).remove(function() {
   LtlLoad.create({
 
       who: "Home and Body",
+      email: "jinbo.chen@gmail.com",
       loadType:  'LTL',
       notes: "A note",
       shipTo: {
@@ -59,6 +60,7 @@ LtlLoad.find({}).remove(function() {
     }, {
 
       who: "Home and Body",
+      email: "jinbo.chen@gmail.com",
       loadType:  'AIR',
       notes: "A note",
       shipTo: {
@@ -99,6 +101,7 @@ LtlLoad.find({}).remove(function() {
 FtlLoad.find({}).remove(function() {
   FtlLoad.create({
       who: "Elite Toner",
+      email: "jinbo.chen@gmail.com",
       shipTo: {
         location: {
           full_address: "9111 S La Cienega Blvd, #211, Inglewood, CA 90301",
@@ -134,6 +137,7 @@ FtlLoad.find({}).remove(function() {
     },
     {
       who: "Beverly Furniture",
+      email: "jinbo.chen@gmail.com",
       shipTo: {
         location: {
           full_address: "3476 Del Amo Blvd, Torrance, CA 90503",

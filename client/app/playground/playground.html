@@ -54,6 +54,6 @@
   </table>
 </div>
 <div class="modal-footer">
-  <button style="float:left" class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+  <button style="float:left" class="btn btn-warning" type="button" ng-disabled="sending" ng-click="testEmail()"><i class="fa fa-spinner" ng-class="{'fa-spin':sending}"></i> Test Email</button>
   <button style="float:right" class="btn btn-primary" type="button" ng-click="ok()">Save</button>
 </div>

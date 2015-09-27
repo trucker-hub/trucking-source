@@ -13,5 +13,6 @@ router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 
 router.post('/send', controller.send);
+router.post('/invoice', controller.invoice);
 
 module.exports = router;
