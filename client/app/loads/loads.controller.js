@@ -150,8 +150,9 @@ angular.module('servicesApp')
     $scope.loadLoads = function(type) {
 
       console.log('fetch loads from the db');
+
       if(!type || type=='FTL') {
-        $http.get('/api/load/ftl-loads').then(
+        $http.get('/api/load/ftl-loads?status=OPEN').then(
           function(response) {
             //console.log(JSON.stringify(response.data));
             $rootScope.loads.ftl = response.data;
@@ -163,7 +164,7 @@ angular.module('servicesApp')
           });
       }
       if(!type || type=='LTL') {
-        $http.get('/api/load/ltl-loads').then(
+        $http.get('/api/load/ltl-loads?status=OPEN').then(
           function(response) {
             //console.log(JSON.stringify(response.data));
             $rootScope.loads.ltl = response.data;
