@@ -1,0 +1,191 @@
+
+<form name="warehouse" novalidate>
+    <br>
+    <table class="table table-responsive table-striped">
+        <tr>
+            <th>Name</th>
+            <td>
+                <div ng-class="{'has-error': warehouse.name.$invalid}">
+                    <input name="name" type="text" class="form-control" size="20" ng-model="wCtrl.warehouse.name"
+                           placeholder="Warehouse Name" required ng-change="wCtrl.change()"></div>
+            </td>
+        </tr>
+        <tr>
+            <th>Information</th>
+            <td>
+                <div ng-class="{'has-error': warehouse.info.$invalid}">
+                    <textarea name="name" type="text" class="form-control" size="20" rows="3" ng-model="wCtrl.warehouse.info"
+                              placeholder="Warehouse Name"  ng-change="wCtrl.change()"/></div>
+            </td>
+
+        </tr>
+
+        <tr>
+            <th>Location</th>
+            <td>
+                <location info="wCtrl.warehouse" label="" types=""></location>
+            </td>
+
+        </tr>
+
+        <tr>
+            <th>Phone</th>
+            <td>
+                <div ng-class="{'has-error': warehouse.phone.$invalid}">
+                    <input name="phone" type="tel" class="form-control" size="13" ng-model="wCtrl.warehouse.contact.phone"
+                           ui-mask="(999) 999-9999" placeholder="(xxx) xxx-xxxx" required  ng-change="wCtrl.change()"></div>
+            </td>
+
+        </tr>
+
+        <tr>
+            <th>FAX</th>
+            <td>
+                <div ng-class="{'has-error': warehouse.fax.$invalid}">
+                    <input name="fax" type="text" class="form-control" size="13" ng-model="wCtrl.warehouse.contact.fax"
+                           ui-mask="(999) 999-9999" placeholder="(xxx) xxx-xxxx" required ng-change="wCtrl.change()"></div>
+            </td>
+
+        </tr>
+
+        <tr>
+            <th>Email</th>
+            <td>
+                <div ng-class="{'has-error': warehouse.email.$invalid}">
+                    <input name="email" type="email" class="form-control" size="13" ng-model="wCtrl.warehouse.contact.email"
+                           placeholder="email" required ng-change="wCtrl.change()"></div>
+            </td>
+
+        </tr>
+
+        <tr>
+            <th colspan="2">Warehouse Fees</th>
+        </tr>
+
+        <tr>
+            <th>Pickup</th>
+            <td>
+                <div class="form-inline">
+                    <div class="form-group col-md-3" ng-class="{'has-error':innerForm.cbmFee.$invalid}">
+                        <label for="cbmFee" class="control-label" >$ </label>
+
+                        <input type="text"
+                               class="form-control" id="cbmFee" size="4"
+                               ng-model="wCtrl.warehouse.fees.terminal.forklift.fee"
+                               name="cbmFee"
+                               placeholder="$ per CBM" required ng-change="wCtrl.change()"> Per CBM
+
+                    </div>
+                    <div class="form-group col-md-3" ng-class="{'has-error':innerForm.weight.$invalid}">
+                        <label for="cbmFee" class="control-label" >Or per  </label>
+
+                        <input type="text"
+                               class="form-control" id="weight" size="4"
+                               ng-model="wCtrl.warehouse.fees.terminal.forklift.weight"
+                               name="weight"
+                               placeholder="$ per this much weight" required ng-change="wCtrl.change()"> LBS
+
+                    </div>
+                    <div class="form-group col-md-3" ng-class="{'has-error':innerForm.minimum.$invalid}">
+                        <label for="minimum" class="control-label">Minimum Fee:</label>
+                        <input type="text"
+                               class="form-control" id="minimum" size="4"
+                               ng-model="wCtrl.warehouse.fees.terminal.forklift.minimum"
+                               name="minimum"
+                               placeholder="minimum fee" required ng-change="wCtrl.change()">
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <th>Receiving</th>
+            <td>
+                <div class="form-inline">
+                    <div class="form-group col-md-3" ng-class="{'has-error':innerForm.cbmFeeR.$invalid}">
+                        <label for="cbmFeeR" class="control-label" >$ </label>
+                        <input type="text"
+                               class="form-control" id="cbmFeeR" size="4"
+                               ng-model="wCtrl.warehouse.fees.terminal.receiving.fee"
+                               name="cbmFeeR"
+                               placeholder="Address or ZIP Code" required ng-change="wCtrl.change()"> Per CBM
+
+                    </div>
+                    <div class="form-group col-md-3" ng-class="{'has-error':innerForm.weightR.$invalid}">
+                        <label for="weightR" class="control-label" >Or Per  </label>
+
+                        <input type="text"
+                               class="form-control" id="weightR" size="4"
+                               ng-model="wCtrl.warehouse.fees.terminal.receiving.weight"
+                               name="weight"
+                               placeholder="Address or ZIP Code" required ng-change="wCtrl.change()"> LBS
+
+                    </div>
+                    <div class="form-group col-md-3" ng-class="{'has-error':innerForm.minimum.$invalid}">
+                        <label for="minimumR" class="control-label">Minimum Fee</label>
+                        <input type="text"
+                               class="form-control" id="minimumR" size="4"
+                               ng-model="wCtrl.warehouse.fees.terminal.receiving.minimum"
+                               name="minimumR"
+                               placeholder="minimum fee" required ng-change="wCtrl.change()">
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <th>Other Warehouse Fees</th>
+            <td>
+                <div class="form-inline">
+                    <div class="form-group col-md-3" ng-class="{'has-error':innerForm.doc.$invalid}">
+                        <label for="doc" class="control-label">Doc:</label>
+                        <input type="text"
+                               class="form-control" id="doc" size="4"
+                               ng-model="wCtrl.warehouse.fees.doc"
+                               name="doc"
+                               placeholder="minimum fee" required ng-change="wCtrl.change()">
+                    </div>
+                    <div class="form-group col-md-3" ng-class="{'has-error':innerForm.it.$invalid}">
+                        <label for="it" class="control-label">I.T.:</label>
+                        <input type="text"
+                               class="form-control" id="it" size="4"
+                               ng-model="wCtrl.warehouse.fees.it"
+                               name="it"
+                               placeholder="I.T. fee" required ng-change="wCtrl.change()">
+                    </div>
+
+                    <div class="form-group col-md-3" ng-class="{'has-error':innerForm.freeTime.$invalid}">
+                        <label for="it" class="control-label">Free Time:</label>
+                        <input type="text"
+                               class="form-control" id="freeTime" size="4"
+                               ng-model="wCtrl.warehouse.fees.freeTime"
+                               name="freeTime"
+                               placeholder="Free Time" required ng-change="wCtrl.change()">
+                    </div>
+                    <div class="form-group col-md-3" ng-class="{'has-error':innerForm.storageFee.$invalid}">
+                        <label for="it" class="control-label">Storage:</label>
+                        <input type="text"
+                               class="form-control" id="storageFee" size="4"
+                               ng-model="wCtrl.warehouse.fees.storageFee"
+                               name="storageFee"
+                               placeholder="storageFee" required ng-change="wCtrl.change()">
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td><button type="button" class="btn btn-danger" ng-click="wCtrl.delete()">DELETE</button></td>
+            <td>
+                <div style="float: left"><button type="button" class="btn btn-default" ng-click="wCtrl.cancel()">Close</button></div>
+                <div style="float:right">
+                    <button type="button" class="btn btn-default" ng-click="wCtrl.save()"
+                            ng-class="{'disabled': !warehouse.$valid || !wCtrl.warehouse.changed }">Save
+                    </button>
+                </div>
+            </td>
+
+        </tr>
+    </table>
+</form>
+

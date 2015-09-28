@@ -1,0 +1,61 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+
+    <br>
+    <tabset type="tabs">
+        <tab >
+            <tab-heading><span>Warehouses</span></tab-heading>
+            <div>
+                <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover">
+                    <tr ng-repeat="warehouse in $data">
+                        <td data-title="'Name'" filter="{ 'name': 'text' }">
+                            {{warehouse.name}}
+                        </td>
+                        <td data-title="'Location'">
+                            {{warehouse.location.full_address}}
+                        </td>
+                        <td data-title="'Contact'">
+                            {{warehouse.contact.phone | tel}}
+                        </td>
+                        <td data-title="'Edit'">
+                            <a><span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="edit(warehouse._id)"></span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input name="name" type="text" class="form-control" size="10" ng-model="newOne.name"
+                                   placeholder="Warehouse name" required>
+                        </td>
+                        <td>
+                            <input name="location" type="text" class="form-control" size="10" ng-model="newOne.location"
+                                   placeholder="Location" required>
+                        </td>
+                        <td>
+                            <input name="phone" type="text" class="form-control" size="15" ng-model="newOne.phone"
+                                   placeholder="(999)999-1910" required>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="add()">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span></button>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+
+        </tab>
+        <tab ng-repeat="(id, detail) in warehousesOpened " active="detail.active">
+            <tab-heading><span>{{detail.data.name}}</span>&nbsp<a><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="closeTab(id)"></span></a></tab-heading>
+            <div ng-controller="WarehouseDetailsCtrl as wCtrl" ng-init="wCtrl.set(detail.data)" ng-include="'app/warehouse/warehouse-details/warehouse-details.html'"></div>
+        </tab>
+
+    </tabset>
+
+    <div>
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" dismiss-on-timeout='3000' close="closeAlert()">
+            {{alert.msg}}
+        </alert>
+    </div>
+
+</div>

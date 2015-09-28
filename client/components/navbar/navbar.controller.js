@@ -27,11 +27,15 @@ angular.module('servicesApp')
         'link': '/delivery-order',
         'alwaysShow': true
       },
-
+        {
+            'title': 'Warehouse',
+            'link': '/warehouse',
+            'alwaysShow': true
+        },
       {
         'title': 'Playground',
         'link': '/playground',
-        'alwaysShow': true
+        'alwaysShow': false
       }
     ];
 
