@@ -8,11 +8,6 @@ angular.module('servicesApp')
       'alwaysShow': true
     },
       {
-        'title': 'Trucking Companies',
-        'link': '/trucking-company',
-        'alwaysShow': true
-      },
-      {
         'title': 'Loads',
         'link': '/loads',
         'alwaysShow': true
@@ -26,17 +21,25 @@ angular.module('servicesApp')
         'title': 'Delivery Orders',
         'link': '/delivery-order',
         'alwaysShow': true
-      },
+      }
+    ];
+
+    $scope.managementMenu = [
+        {
+            'title': 'Trucking Companies',
+            'link': '/trucking-company',
+            'alwaysShow': true
+        },
         {
             'title': 'Warehouse',
             'link': '/warehouse',
             'alwaysShow': true
         },
-      {
-        'title': 'Playground',
-        'link': '/playground',
-        'alwaysShow': false
-      }
+        {
+            'title': 'Playground',
+            'link': '/playground',
+            'alwaysShow': false
+        }
     ];
 
     $scope.isCollapsed = true;
