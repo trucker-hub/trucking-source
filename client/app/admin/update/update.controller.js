@@ -19,7 +19,7 @@ angular.module('servicesApp')
                         if(Auth.getCurrentUser()._id == $scope.userId) {
                             console.log('update via $apply() ' + Auth.getCurrentUser._id + ','  + $scope.userId);
                             $scope.$apply();
-                        };
+                        }
                         $location.path( '/admin' );
                     })
                     .catch(function () {

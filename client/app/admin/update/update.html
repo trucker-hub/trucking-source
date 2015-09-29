@@ -1,11 +1,10 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-
 <div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <h1>Update User: {{userName}}</h1>
+    <br>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>User: {{userName}}</h3>
         </div>
-        <div class="col-sm-12 form-horizontal">
+        <div class="panel-body form-horizontal">
             <form class="form " name="form"  novalidate>
 
                 <div class="form-group">
@@ -34,9 +33,9 @@
 
                 <p class="help-block"> {{ message }} </p>
 
+
                 <div style="float:left"><button class="btn btn-warning" ng-click="cancelWithoutSaving()">Cancel</button></div>
                 <div style="float:right"><button class="btn btn-success" type="submit" ng-click="updateUser(form)">Update</button></div>
-
             </form>
         </div>
     </div>

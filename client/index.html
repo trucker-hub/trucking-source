@@ -29,6 +29,7 @@
       <link rel="stylesheet" href="app/account/login/login.css">
       <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="app/availability/availability.css">
       <link rel="stylesheet" href="app/contact/contact.css">
       <link rel="stylesheet" href="app/delivery-order/delivery-order.css">
       <link rel="stylesheet" href="app/delivery-order/do-details/do-details.css">
@@ -60,6 +61,8 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
+    <div ng-include="'components/navbar/navbar.html'"></div>
+    <div flash-message="10000"></div>
     <div ng-view=""></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -85,6 +88,7 @@
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
       <script src="bower_components/angular-csv-import/dist/angular-csv-import.js"></script>
+      <script src="bower_components/angular-flash/dist/angular-flash.js"></script>
       <script src="bower_components/angular-google-places-autocomplete/src/autocomplete.js"></script>
       <script src="bower_components/angular-google-places-autocomplete/dist/autocomplete.min.js"></script>
       <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -98,6 +102,7 @@
       <script src="bower_components/ng-csv/build/ng-csv.min.js"></script>
       <script src="bower_components/ng-table/dist/ng-table.min.js"></script>
       <script src="bower_components/ngprogress/build/ngProgress.js"></script>
+      <script src="bower_components/angular-flash/dist/angular-flash.min.js"></script>
       <!-- endbower -->
     <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -114,6 +119,8 @@
           <script src="app/admin/admin.controller.js"></script>
           <script src="app/admin/admin.js"></script>
           <script src="app/admin/update/update.controller.js"></script>
+          <script src="app/availability/availability.controller.js"></script>
+          <script src="app/availability/availability.js"></script>
           <script src="app/contact/contact.controller.js"></script>
           <script src="app/contact/contact.js"></script>
           <script src="app/delivery-order/delivery-order.controller.js"></script>

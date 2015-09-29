@@ -36,10 +36,16 @@ angular.module('servicesApp')
             'alwaysShow': true
         },
         {
+            'title': 'Availability',
+            'link': '/availability',
+            'alwaysShow': true
+        },
+        {
             'title': 'Playground',
             'link': '/playground',
             'alwaysShow': false
-        }
+        },
+
     ];
 
     $scope.isCollapsed = true;
