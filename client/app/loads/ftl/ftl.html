@@ -4,13 +4,35 @@
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <location info="ftlCtrl.load.shipTo" label="'To'" types="ftlCtrl.toLocationTypes"></location>
-      </div>
+        <location info="ftlCtrl.load.shipTo" label="'To'" ></location>
 
+        <div class="row" ng-show="ftlCtrl.load.shipTo.locationType">
+            <label for="inputShipTypeTo" class="col-md-2 control-label">Type</label>
+            <div class="col-md-10" id="inputShipTypeTo">
+                <div class="radio" ng-repeat="type in ftlCtrl.toLocationTypes">
+                    <label>
+                        <input type="radio" id="typeTo" ng-value="type" ng-model="ftlCtrl.load.shipTo.locationType">
+                        {{type}}
+                    </label>
+                </div>
+            </div>
+        </div>
+      </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
-        <location info="ftlCtrl.load.shipFrom" label="'From'" types="ftlCtrl.fromLocationTypes"></location>
+        <location info="ftlCtrl.load.shipFrom" label="'From'" ></location>
+          <div class="row" ng-show="ftlCtrl.load.shipTo.locationType">
+              <label for="inputShipType" class="col-md-2 control-label">Type</label>
+              <div class="col-md-10" id="inputShipType">
+                  <div class="radio" ng-repeat="type in ftlCtrl.fromLocationTypes">
+                      <label>
+                          <input type="radio" id="type" ng-value="type" ng-model="ftlCtrl.load.shipFrom.locationType">
+                          {{type}}
+                      </label>
+                  </div>
+              </div>
+          </div>
       </div>
     </div>
   </div>

@@ -51,13 +51,14 @@ var FtlLoadSchema = new Schema({
     locationType: {
       type: String, required: true,
       enum: [
+        'Port',
         'Business with Dock/Fork',
         'Business without Dock/Fork',
         'Convention center or Tradeshow',
         'Residential',
         'Freight Carrier Terminal'
       ],
-      default: 'Business with Dock/Fork'}
+      default: 'Port'}
   },
   lines: [{
     weight: Number,

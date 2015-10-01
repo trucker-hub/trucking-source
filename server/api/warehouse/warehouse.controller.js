@@ -5,10 +5,19 @@ var Warehouse = require('./warehouse.model');
 
 // Get list of warehouses
 exports.index = function(req, res) {
-  Warehouse.find(function (err, warehouses) {
-    if(err) { return handleError(res, err); }
-    return res.status(200).json(warehouses);
-  });
+
+    var options = {};
+    if(req.query.location) {
+        options = {
+            "location.full_address": req.query.location
+        };
+    }
+
+    Warehouse.find(options).sort({name:1}).exec( function (err, warehouses) {
+        if(err) { return handleError(res, err); }
+        return res.status(200).json(warehouses);
+    });
+
 };
 
 // Get a single warehouse

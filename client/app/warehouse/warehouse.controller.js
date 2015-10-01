@@ -85,6 +85,18 @@ angular.module('servicesApp')
                 });
         };
 
+        $scope.save = function(warehouse, callback) {
+            $http.put("/api/warehouses", warehouse).then(
+                function(response) {
+                    console.log(JSON.stringify(response.data));
+                    callback();
+                },
+                function(response) {
+                    console.log("ran into error " + response);
+                    $scope.alerts.push({ type: 'danger', msg: 'Failed to create the new warehouse!' });
+                });
+        };
+
         $scope.tableParams = new ngTableParams({
             page: 1,            // show first page
             count: 10,          // count per page

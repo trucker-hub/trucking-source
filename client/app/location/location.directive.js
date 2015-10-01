@@ -7,11 +7,10 @@ angular.module('servicesApp')
       restrict: 'E',
       scope: {
         info: '=info',
-        types: '=types',
         label: '=label'
-
       },
       link: function (scope, element, attrs) {
+          scope.isKnownLocation = false;
         scope.isDelivery = function () {
           return scope.label == 'To';
         };
@@ -23,17 +22,10 @@ angular.module('servicesApp')
           scope.info.location.raw = null;
         };
 
-        scope.editing = true;
-        scope.isEditing = function() {
-          return editing;
-        };
-
-        scope.edit = function() {
-          editing = true;
-        };
-        scope.changed = function() {
+        scope.change = function() {
 
           var raw = scope.info.location.raw;
+          //console.log("google response " + JSON.stringify(raw));
           if(!scope.info.location.raw) {
             return;
           }
@@ -53,7 +45,8 @@ angular.module('servicesApp')
           result.full_address = raw.formatted_address;
           result.raw = raw;
           scope.info.location = result;
-          //scope.editing = false;
+          scope.info.changed = true;
+
         }
       }
     };

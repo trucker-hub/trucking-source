@@ -10,18 +10,7 @@
              ng-minlength="5"
              g-places-autocomplete
              force-selection="true"
-             placeholder="Address or ZIP Code" required ng-show="editing" ng-change="changed()">
-    </div>
-  </div>
-  <div class="row" ng-show="info.locationType">
-    <label for="inputShipType" class="col-md-2 control-label">Type</label>
-    <div class="col-md-10" id="inputShipType">
-      <div class="radio" ng-repeat="type in types">
-        <label>
-          <input type="radio" id="type" ng-value="type" ng-model="info.locationType">
-          {{type}}
-        </label>
-      </div>
+             placeholder="Address or ZIP Code" required ng-change="change()">
     </div>
   </div>
 </form>
