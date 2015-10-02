@@ -32,14 +32,14 @@
   <div class="col-md-12">
   <table class="table table-striped">
     <tr>
-      <th>DDP($)</th>
-      <th>Adjusted Base($)</th>
-      <th>FOB</th>
-      <th>Duty Rate</th>
-      <th>Duty</th>
-      <th>HMF Duty</th>
-      <th>MPF</th>
-      <th>Sub Total</th>
+      <th class="col-md-2">DDP($)</th>
+      <th class="col-md-1">Adjusted($)</th>
+      <th class="col-md-1">FOB</th>
+      <th class="col-md-2">Duty Rate</th>
+      <th class="col-md-1">Duty</th>
+      <th class="col-md-1">HMF Duty</th>
+      <th class="col-md-1">MPF</th>
+      <th class="col-md-2">Sub Total</th>
     </tr>
     <tr ng-repeat="row in rows">
       <td><input type="number" class="form-control" ng-model="row.ddp" placeholder="0.00" ng-change="calc()"></td>
@@ -53,10 +53,10 @@
     </tr>
     <tr>
       <th colspan="4" align="right"></th>
-      <td>{{totalDuty | currency:$:2}}</td>
+      <td>Duty: {{totalDuty | currency:$:2}}</td>
       <td>{{totalHMF | currency:$:2}}</td>
       <td>{{totalMPF | currency:$:2}}</td>
-      <td>Total:{{sum | currency:$:2}}</td>
+      <td>Total Duty:<b>{{sum | currency:$:2}}</b></td>
     </tr>
   </table>
   </div>

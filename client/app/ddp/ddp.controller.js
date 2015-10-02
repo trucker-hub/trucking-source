@@ -11,14 +11,20 @@ angular.module('servicesApp')
     $scope.mpf = 0.003464;
     $scope.rows = [
       {ddp:0,  dutyRate:0.0},
+      {ddp:0,  dutyRate:0.0},
+      {ddp:0,  dutyRate:0.0},
       {ddp:0,  dutyRate:0.0}
     ];
 
+    var sum = function(a, b) {
+      return a + b;
+    };
     $scope.calc = function() {
 
-      var totalDDP = $scope.rows.reduce( function(total, row) {
-        return total + row.ddp;
-      },0);
+      var totalDDP = $scope.rows.map(function(row) {
+        return row.ddp;
+      }).reduce(sum);
+
 
       $scope.totalFees = $scope.freightFee+ $scope.brokerageFee + $scope.insuranceFee;
 
@@ -34,17 +40,19 @@ angular.module('servicesApp')
         row.subTotal = row.duty + row.hmfDuty + row.mpfDuty;
       }
 
-      $scope.totalHMF = $scope.rows.reduce( function(total, row) {
-        return total + row.hmfDuty;
-      },0);
+      $scope.totalHMF = $scope.rows.map(function(row) {
+        return row.hmfDuty;
+      }).reduce(sum);
 
-      $scope.totalMPF = $scope.rows.reduce( function(total, row) {
-        return total + row.mpfDuty;
-      },0);
-      $scope.totalDuty = $scope.rows.reduce( function(total, row) {
-        return total + row.duty;
-      },0);
+      $scope.totalMPF =  $scope.rows.map(function(row) {
+        return row.mpfDuty;
+      }).reduce(sum);
 
+      $scope.totalDuty =  $scope.rows.map(function(row) {
+        return row.duty;
+      }).reduce(sum);
+
+      console.log(" reduced result " + $scope.totalHMF +"," + $scope.totalMPF + "," + $scope.totalDuty);
       $scope.sum = $scope.totalHMF + $scope.totalMPF + $scope.totalDuty;
 
     }
