@@ -41,10 +41,16 @@ angular.module('servicesApp')
             'alwaysShow': true
         },
         {
-            'title': 'Playground',
-            'link': '/playground',
-            'alwaysShow': false
+            'title': 'DDP',
+            'link': '/ddp',
+            'alwaysShow': true
         },
+      {
+        'title': 'Playground',
+        'link': '/playground',
+        'alwaysShow': false
+      }
+
 
     ];
 

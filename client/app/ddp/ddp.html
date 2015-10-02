@@ -1,3 +1,64 @@
-<div class="col-md-12">
-This is the ddp view.
+<br>
+<div class="container">
+
+  <div class="col-md-12">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="freightInput">Freight Fee</label>
+        <input type="number" class="form-control" id="freightInput" ng-model="freightFee" placeholder="0.00" ng-change="calc()">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="brokerFeeInput">Brokerage Fee</label>
+        <input type="number" class="form-control" id="brokerFeeInput" ng-model="brokerageFee" placeholder="0.00" ng-change="calc()">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="insuranceInput">Insurance</label>
+        <input type="number" class="form-control" id="insuranceInput" ng-model="insuranceFee" placeholder="0.00" ng-change="calc()">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="totalFeesInput">Total Fees</label>
+        <input type="number" class="form-control" id="totalFeesInput" disabled ng-model="totalFees" placeholder="0.00" ng-change="calc()">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-12">
+  <table class="table table-striped">
+    <tr>
+      <th>DDP($)</th>
+      <th>Adjusted Base($)</th>
+      <th>FOB</th>
+      <th>Duty Rate</th>
+      <th>Duty</th>
+      <th>HMF Duty</th>
+      <th>MPF</th>
+      <th>Sub Total</th>
+    </tr>
+    <tr ng-repeat="row in rows">
+      <td><input type="number" class="form-control" ng-model="row.ddp" placeholder="0.00" ng-change="calc()"></td>
+      <td>{{row.adjusted | currency:$:2}}</td>
+      <td>{{row.fob | currency:$:2}}</td>
+      <td><input type="number" class="form-control" ng-model="row.dutyRate" placeholder="0.00" ng-change="calc()"></td>
+      <td>{{row.duty | currency:$:2}}</td>
+      <td>{{row.hmfDuty | currency:$:2}}</td>
+      <td>{{row.mpfDuty | currency:$:2}}</td>
+      <td>{{row.subTotal | currency:$:2}}</td>
+    </tr>
+    <tr>
+      <th colspan="4" align="right"></th>
+      <td>{{totalDuty | currency:$:2}}</td>
+      <td>{{totalHMF | currency:$:2}}</td>
+      <td>{{totalMPF | currency:$:2}}</td>
+      <td>Total:{{sum | currency:$:2}}</td>
+    </tr>
+  </table>
+  </div>
+
 </div>
