@@ -1,8 +1,6 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('AvailabilityCtrl', function ($scope, $http) {
+  .controller('DdpCtrl', function ($scope) {
     $scope.message = 'Hello';
-
-
   });
