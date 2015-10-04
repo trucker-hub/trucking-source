@@ -36,7 +36,7 @@ angular.module('servicesApp')
         row.fob = row.adjusted / (1 + row.dutyRate + $scope.hmf + $scope.mpf);
         row.duty = row.fob * row.dutyRate;
         row.hmfDuty = row.fob * $scope.hmf;
-        row.mpfDuty = Math.min(485.00, row.fob * $scope.mpf);
+        row.mpfDuty = row.fob * $scope.mpf;
         row.subTotal = row.duty + row.hmfDuty + row.mpfDuty;
       }
 
@@ -51,6 +51,9 @@ angular.module('servicesApp')
       $scope.totalDuty =  $scope.rows.map(function(row) {
         return row.duty;
       }).reduce(sum);
+
+      $scope.totalMPF = Math.min(485, $scope.totalMPF);
+      $scope.totalMPF = Math.max(25, $scope.totalMPF);
 
       console.log(" reduced result " + $scope.totalHMF +"," + $scope.totalMPF + "," + $scope.totalDuty);
       $scope.sum = $scope.totalHMF + $scope.totalMPF + $scope.totalDuty;

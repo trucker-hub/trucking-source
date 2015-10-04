@@ -42,7 +42,7 @@
       <th class="col-md-2">Sub Total</th>
     </tr>
     <tr ng-repeat="row in rows">
-      <td><input type="number" class="form-control" ng-model="row.ddp" placeholder="0.00" ng-change="calc()"></td>
+      <td><input type="text" class="form-control" ng-model="row.ddp" placeholder="0.00" ng-change="calc()"></td>
       <td>{{row.adjusted | currency:$:2}}</td>
       <td>{{row.fob | currency:$:2}}</td>
       <td><input type="number" class="form-control" ng-model="row.dutyRate" placeholder="0.00" ng-change="calc()"></td>
@@ -59,6 +59,13 @@
       <td>Total Duty:<b>{{sum | currency:$:2}}</b></td>
     </tr>
   </table>
+  </div>
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item">HMF rate is {{hmf * 100}}%</li>
+      <li class="list-group-item">MPF rate is {{mpf * 100}}%</li>
+      <li class="list-group-item">Minimum/Maximum of Total MPF duty are $25.00, $485 respectively</li>
+    </ul>
   </div>
 
 </div>
