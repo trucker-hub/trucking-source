@@ -26,6 +26,7 @@
       <div ng-show="ltlCtrl.editWeightIncrement"><i class="fa fa-usd"></i> Per <input ng-model="ltlCtrl.freight.zoneRateVariables.weightIncrement" placeholder="999"> lbs <a ng-click="ltlCtrl.saveIncrement()"><i class="fa fa-floppy-o"></i></a></div>
 
     </th></tr>
+
   <tr ng-repeat="entry in ltlCtrl.freight.weightRates">
     <th class="col-md-2">{{entry.ranges[0]}} - {{entry.ranges[1]}} lbs</th>
     <td ng-repeat="rate in entry.rates"><input type="number" size="3" required ng-model="rate.rate" ng-change="ltlCtrl.change()"></td>
@@ -33,6 +34,12 @@
   <tr>
     <th class="active">Drop off Charges</th>
     <th class="active center-text" ng-attr-colspan="{{ltlCtrl.freight.zoneRateVariables.zones.length}}">$ By Operation Hours</th>
+  </tr>
+  <tr>
+    <th>Minimum Charge</th>
+    <td ng-repeat="zone in ltlCtrl.freight.zoneRateVariables.zones">
+      <input type="number"  id="minCharge" placeholder="xx.00" required ng-model="zone.minCharge" ng-change="ltlCtrl.change()">
+    </td>
   </tr>
   <tr>
     <th>Normal Hours</th>

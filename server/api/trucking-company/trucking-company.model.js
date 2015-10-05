@@ -63,6 +63,7 @@ var TruckingCompanySchema = new Schema({
       weightIncrement: Number,
       zones: [{
         label: String,
+        minCharge:Number,
         dropOffCharge: Number,
         dropOffChargeOffhour: Number,
         dropOffChargeWeekend: Number,
@@ -107,6 +108,7 @@ var TruckingCompanySchema = new Schema({
       weightIncrement: Number,
       zones: [{
         label: String,
+        minCharge:Number,
         dropOffCharge: Number,
         dropOffChargeOffhour: Number,
         dropOffChargeWeekend: Number,

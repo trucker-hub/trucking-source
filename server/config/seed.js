@@ -314,30 +314,35 @@ TruckingCompany.find({}).remove(function () {
                     zones: [
                         {
                             label:"A",
+                            minCharge:35,
                             dropOffCharge: 10,
                             dropOffChargeOffhour: 20,
                             dropOffChargeWeekend: 30,
                             dropOffChargeHoliday: 40
                         }, {
                             label:"B",
+                            minCharge:40,
                             dropOffCharge: 10,
                             dropOffChargeOffhour: 20,
                             dropOffChargeWeekend: 30,
                             dropOffChargeHoliday: 40
                         }, {
                             label:"C",
+                            minCharge:45,
                             dropOffCharge: 10,
                             dropOffChargeOffhour: 20,
                             dropOffChargeWeekend: 30,
                             dropOffChargeHoliday: 40
                         }, {
                             label:"D",
+                            minCharge:35,
                             dropOffCharge: 10,
                             dropOffChargeOffhour: 20,
                             dropOffChargeWeekend: 30,
                             dropOffChargeHoliday: 40
                         }, {
                             label:"E",
+                            minCharge:51,
                             dropOffCharge: 10,
                             dropOffChargeOffhour: 20,
                             dropOffChargeWeekend: 30,
@@ -428,30 +433,35 @@ TruckingCompany.find({}).remove(function () {
                     zones: [
                         {
                             label:"A",
+                            minCharge:35,
                             dropOffCharge: 10,
                             dropOffChargeOffhour: 20,
                             dropOffChargeWeekend: 30,
                             dropOffChargeHoliday: 40
                         }, {
                             label:"B",
+                            minCharge:35,
                             dropOffCharge: 10,
                             dropOffChargeOffhour: 20,
                             dropOffChargeWeekend: 30,
                             dropOffChargeHoliday: 40
                         }, {
                             label:"C",
+                            minCharge:35,
                             dropOffCharge: 10,
                             dropOffChargeOffhour: 20,
                             dropOffChargeWeekend: 30,
                             dropOffChargeHoliday: 40
                         }, {
                             label:"D",
+                            minCharge:35,
                             dropOffCharge: 10,
                             dropOffChargeOffhour: 20,
                             dropOffChargeWeekend: 30,
                             dropOffChargeHoliday: 40
                         }, {
                             label:"E",
+                            minCharge:35,
                             dropOffCharge: 10,
                             dropOffChargeOffhour: 20,
                             dropOffChargeWeekend: 30,
@@ -615,30 +625,35 @@ TruckingCompany.find({}).remove(function () {
                     zones: [
                         {
                             label:"A",
+                          minCharge:35,
                             dropOffCharge: 10,
                             dropOffChargeOffhour: 20,
                             dropOffChargeWeekend: 30,
                             dropOffChargeHoliday: 40
                         }, {
                             label:"B",
+                        minCharge:35,
                             dropOffCharge: 10,
                             dropOffChargeOffhour: 20,
                             dropOffChargeWeekend: 30,
                             dropOffChargeHoliday: 40
                         }, {
                             label:"C",
+                        minCharge:35,
                             dropOffCharge: 10,
                             dropOffChargeOffhour: 20,
                             dropOffChargeWeekend: 30,
                             dropOffChargeHoliday: 40
                         }, {
                             label:"D",
+                        minCharge:35,
                             dropOffCharge: 10,
                             dropOffChargeOffhour: 20,
                             dropOffChargeWeekend: 30,
                             dropOffChargeHoliday: 40
                         }, {
                             label:"E",
+                        minCharge:35,
                             dropOffCharge: 10,
                             dropOffChargeOffhour: 20,
                             dropOffChargeWeekend: 30,
@@ -682,7 +697,7 @@ TruckingCompany.find({}).remove(function () {
                         ]},
                     {
                         tier: "4",
-                        ranges: [4001, 5000],
+                      ranges: [4001, 5000],
                         rates:[
                             {zone: "A", rate:5.0},
                             {zone: "B", rate:5.5},
