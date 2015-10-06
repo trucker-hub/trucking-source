@@ -36,7 +36,7 @@ angular.module('servicesApp')
       vm.fromServices = $rootScope.loadConstants.ltl.fromServices;
 
       console.log("toServices =" + JSON.stringify(vm.toServices));
-    }
+    };
 
     vm.loadConstants = function() {
       if($rootScope.loadConstants) {
@@ -136,7 +136,7 @@ angular.module('servicesApp')
         }
       } else {
         line.freightClass = -1;
-      };
+      }
 
       vm.change();
     };

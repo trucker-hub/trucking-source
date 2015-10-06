@@ -8,6 +8,7 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
     vm.company = company;
     vm.freight = freight;
     vm.type = type;
+    vm.rateFieldName = "rateOption-" + type;
 
     vm.freight.csv = {
       content: null,
@@ -27,7 +28,7 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
     vm.editWeightIncrement = false;
   }
   vm.editZones = function() {
-    vm.zoneStrings = vm.freight.zoneRateVariables.zones.map(function(item) {
+    vm.zoneStrings = vm.freight.rateDef.byZone.zoneRateVariables.zones.map(function(item) {
       return item.label;
     }).join(",");
     vm.editingZones = true;
@@ -68,7 +69,7 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
     var i;
     for(i=0; i < zones.length; ++i) {
       var zone = zones[i];
-      var existing = vm.freight.zoneRateVariables.zones.filter(function(item) {
+      var existing = vm.freight.rateDef.byZone.zoneRateVariables.zones.filter(function(item) {
         if(item.label==zone) {
           return item;
         }
@@ -83,10 +84,10 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
           dropOffChargeHoliday: 40 });
       }
     }
-    vm.freight.zoneRateVariables.zones = newZones;
+    vm.freight.rateDef.byZone.zoneRateVariables.zones = newZones;
 
-    updateZoneRates(vm.freight.flatRates, zones);
-    updateZoneRates(vm.freight.weightRates, zones);
+    updateZoneRates(vm.freight.rateDef.byZone.flatRates, zones);
+    updateZoneRates(vm.freight.rateDef.byZone.weightRates, zones);
 
   };
 
@@ -103,10 +104,10 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
 
   vm.getRateSummary = function() {
 
-    if(!vm.freight.rates) {
+    if(!vm.freight.rateDef.byZone.rates) {
       return "Not rates yet";
     } else {
-      return (vm.freight.rates.length) + " rates available"
+      return (vm.freight.rateDef.byZone.rates.length) + " rates available"
     }
   };
 
@@ -115,7 +116,7 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
   };
 
   vm.importRates = function() {
-    vm.freight.rates = vm.freight.csv.result;
+    vm.freight.rateDef.byZone.rates = vm.freight.csv.result;
     console.log(JSON.stringify(vm.freight.csv.result))
     vm.openRateModal();
   };
@@ -134,7 +135,7 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
         existing[0].tier = tier.tier;
         newTierRates.push(existing[0]);
       }else {
-        var rates = vm.freight.zoneRateVariables.zones.map(function(item) {
+        var rates = vm.freight.rateDef.byZone.zoneRateVariables.zones.map(function(item) {
           return {
             zone: item.label,
             rate:0
@@ -163,7 +164,7 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
           return vm.type;
         },
         rates: function () {
-          return vm.freight.rates;
+          return vm.freight.rateDef.byZone.rates;
         }
       }
     });
@@ -188,7 +189,7 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
       size: 'lg',
       resolve: {
         flatTiers: function() {
-          return vm.freight.flatRates.map(function(item) {
+          return vm.freight.rateDef.byZone.flatRates.map(function(item) {
             return {
               tier: item.tier,
               previous: item.tier,
@@ -197,7 +198,7 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
           });
         },
         weightTiers: function() {
-          return vm.freight.weightRates.map(function(item) {
+          return vm.freight.rateDef.byZone.weightRates.map(function(item) {
             return {
               tier: item.tier,
               previous: item.tier,
@@ -210,8 +211,8 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
 
     modalInstance.result.then(
       function (result) {
-        vm.freight.weightRates = vm.updateTierRates(result.weight, vm.freight.weightRates);
-        vm.freight.flatRates =   vm.updateTierRates(result.flat,     vm.freight.flatRates);
+        vm.freight.rateDef.byZone.weightRates = vm.updateTierRates(result.weight, vm.freight.rateDef.byZone.weightRates);
+        vm.freight.rateDef.byZone.flatRates =   vm.updateTierRates(result.flat,     vm.freight.rateDef.byZone.flatRates);
         vm.change();
       },
       function () {

@@ -125,7 +125,6 @@ var FtlLoadSchema = new Schema({
     email: String,
     phone: String,
     instructions: String,
-    referenceNumber: String
   }
 
 

@@ -268,38 +268,43 @@ TruckingCompany.find({}).remove(function () {
                         ]
                     }
                 ],
-                rates: [
-                    {
-                        state: "CA",
-                        city: "Inglewood",
-                        zipCode: "90301",
-                        rate: 100,
-                        dropOffCharge:15,
-                        dropOffChargeOffhour:25,
-                        dropOffChargeWeekend:50,
-                        dropOffChargeHoliday:70
-                    },
-                    {
-                        state: "CA",
-                        city: "Torrance",
-                        zipCode: "90503",
-                        rate: 150,
-                        dropOffCharge:50,
-                        dropOffChargeOffhour:75,
-                        dropOffChargeWeekend:100,
-                        dropOffChargeHoliday:125
-                    },
-                    {
-                        state: "CA",
-                        city: "Rancho Palos Verdes",
-                        zipCode: "90275",
-                        rate: 200,
-                        dropOffCharge:50,
-                        dropOffChargeOffhour:75,
-                        dropOffChargeWeekend:100,
-                        dropOffChargeHoliday:125
+                rateDef: {
+                    byZipCode: {
+                        rates: [
+                            {
+                                state: "CA",
+                                city: "Inglewood",
+                                zipCode: "90301",
+                                rate: 100,
+                                dropOffCharge:15,
+                                dropOffChargeOffhour:25,
+                                dropOffChargeWeekend:50,
+                                dropOffChargeHoliday:70
+                            },
+                            {
+                                state: "CA",
+                                city: "Torrance",
+                                zipCode: "90503",
+                                rate: 150,
+                                dropOffCharge:50,
+                                dropOffChargeOffhour:75,
+                                dropOffChargeWeekend:100,
+                                dropOffChargeHoliday:125
+                            },
+                            {
+                                state: "CA",
+                                city: "Rancho Palos Verdes",
+                                zipCode: "90275",
+                                rate: 200,
+                                dropOffCharge:50,
+                                dropOffChargeOffhour:75,
+                                dropOffChargeWeekend:100,
+                                dropOffChargeHoliday:125
+                            }
+                        ]
                     }
-                ]
+                }
+
             },
             ltl: {
                 fuelSurcharge: 20,
@@ -309,116 +314,121 @@ TruckingCompany.find({}).remove(function () {
                 tradeShowCharge: 20,
                 additionalCharges: [{ name: "Call before delivery",  charge: 10 }],
                 regions: [ { state: "CA", county: "Los Angeles County" }],
-                zoneRateVariables: {
-                    weightIncrement: 100,
-                    zones: [
-                        {
-                            label:"A",
-                            minCharge:35,
-                            dropOffCharge: 10,
-                            dropOffChargeOffhour: 20,
-                            dropOffChargeWeekend: 30,
-                            dropOffChargeHoliday: 40
+                rateDef: {
+                    byZone: {
+                        zoneRateVariables: {
+                            weightIncrement: 100,
+                            zones: [
+                                {
+                                    label:"A",
+                                    minCharge:35,
+                                    dropOffCharge: 10,
+                                    dropOffChargeOffhour: 20,
+                                    dropOffChargeWeekend: 30,
+                                    dropOffChargeHoliday: 40
+                                }, {
+                                    label:"B",
+                                    minCharge:40,
+                                    dropOffCharge: 10,
+                                    dropOffChargeOffhour: 20,
+                                    dropOffChargeWeekend: 30,
+                                    dropOffChargeHoliday: 40
+                                }, {
+                                    label:"C",
+                                    minCharge:45,
+                                    dropOffCharge: 10,
+                                    dropOffChargeOffhour: 20,
+                                    dropOffChargeWeekend: 30,
+                                    dropOffChargeHoliday: 40
+                                }, {
+                                    label:"D",
+                                    minCharge:35,
+                                    dropOffCharge: 10,
+                                    dropOffChargeOffhour: 20,
+                                    dropOffChargeWeekend: 30,
+                                    dropOffChargeHoliday: 40
+                                }, {
+                                    label:"E",
+                                    minCharge:51,
+                                    dropOffCharge: 10,
+                                    dropOffChargeOffhour: 20,
+                                    dropOffChargeWeekend: 30,
+                                    dropOffChargeHoliday: 40
+                                }]
+                        },
+                        flatRates: [
+                            {
+                                tier:"1",
+                                ranges: [0,1000],
+                                rates:[
+                                    {zone: "A", rate:35},
+                                    {zone: "B", rate:45},
+                                    {zone: "C", rate:55},
+                                    {zone: "D", rate:65},
+                                    {zone: "E", rate:75}]
+                            }, {
+                                tier: "2",
+                                ranges: [1000, 2000],
+                                rates:[
+                                    {zone: "A", rate:55},
+                                    {zone: "B", rate:65},
+                                    {zone: "C", rate:75},
+                                    {zone: "D", rate:85},
+                                    {zone: "E", rate:95}
+                                ]
+                            }
+                        ],
+                        weightRates: [
+                            {
+                                tier:"3",
+                                ranges: [3000,4000],
+                                rates:[
+                                    {zone: "A", rate:5.5},
+                                    {zone: "B", rate:3.3},
+                                    {zone: "C", rate:2.3},
+                                    {zone: "D", rate:8.9},
+                                    {zone: "E", rate:2.0}
+                                ]},
+                            {
+                                tier: "4",
+                                ranges: [4000, 5000],
+                                rates:[
+                                    {zone: "A", rate:55},
+                                    {zone: "B", rate:33},
+                                    {zone: "C", rate:23},
+                                    {zone: "D", rate:89},
+                                    {zone: "E", rate:20}
+                                ]},
+                            {
+                                tier: "5",
+                                ranges: [5000, 6000],
+                                rates:[
+                                    {zone: "A", rate:55},
+                                    {zone: "B", rate:33},
+                                    {zone: "C", rate:23},
+                                    {zone: "D", rate:89},
+                                    {zone: "E", rate:20}
+                                ]}
+                        ],
+                        rates: [ {
+                            state: "CA",
+                            city: "Torrance",
+                            zipCode: "90501",
+                            zone: "A"
                         }, {
-                            label:"B",
-                            minCharge:40,
-                            dropOffCharge: 10,
-                            dropOffChargeOffhour: 20,
-                            dropOffChargeWeekend: 30,
-                            dropOffChargeHoliday: 40
+                            state: "CA",
+                            city: "Torrance",
+                            zipCode: "90503",
+                            zone: "B"
                         }, {
-                            label:"C",
-                            minCharge:45,
-                            dropOffCharge: 10,
-                            dropOffChargeOffhour: 20,
-                            dropOffChargeWeekend: 30,
-                            dropOffChargeHoliday: 40
-                        }, {
-                            label:"D",
-                            minCharge:35,
-                            dropOffCharge: 10,
-                            dropOffChargeOffhour: 20,
-                            dropOffChargeWeekend: 30,
-                            dropOffChargeHoliday: 40
-                        }, {
-                            label:"E",
-                            minCharge:51,
-                            dropOffCharge: 10,
-                            dropOffChargeOffhour: 20,
-                            dropOffChargeWeekend: 30,
-                            dropOffChargeHoliday: 40
+                            state: "CA",
+                            city: "Rancho Palos Verdes",
+                            zipCode: "90275",
+                            zone: "C"
                         }]
-                },
-                flatRates: [
-                    {
-                        tier:"1",
-                        ranges: [0,1000],
-                        rates:[
-                            {zone: "A", rate:35},
-                            {zone: "B", rate:45},
-                            {zone: "C", rate:55},
-                            {zone: "D", rate:65},
-                            {zone: "E", rate:75}]
-                    }, {
-                        tier: "2",
-                        ranges: [1000, 2000],
-                        rates:[
-                            {zone: "A", rate:55},
-                            {zone: "B", rate:65},
-                            {zone: "C", rate:75},
-                            {zone: "D", rate:85},
-                            {zone: "E", rate:95}
-                        ]
                     }
-                ],
-                weightRates: [
-                    {
-                        tier:"3",
-                        ranges: [3000,4000],
-                        rates:[
-                            {zone: "A", rate:5.5},
-                            {zone: "B", rate:3.3},
-                            {zone: "C", rate:2.3},
-                            {zone: "D", rate:8.9},
-                            {zone: "E", rate:2.0}
-                        ]},
-                    {
-                        tier: "4",
-                        ranges: [4000, 5000],
-                        rates:[
-                            {zone: "A", rate:55},
-                            {zone: "B", rate:33},
-                            {zone: "C", rate:23},
-                            {zone: "D", rate:89},
-                            {zone: "E", rate:20}
-                        ]},
-                    {
-                        tier: "5",
-                        ranges: [5000, 6000],
-                        rates:[
-                            {zone: "A", rate:55},
-                            {zone: "B", rate:33},
-                            {zone: "C", rate:23},
-                            {zone: "D", rate:89},
-                            {zone: "E", rate:20}
-                        ]}
-                ],
-                rates: [ {
-                    state: "CA",
-                    city: "Torrance",
-                    zipCode: "90501",
-                    zone: "A"
-                }, {
-                    state: "CA",
-                    city: "Torrance",
-                    zipCode: "90503",
-                    zone: "B"
-                }, {
-                    state: "CA",
-                    city: "Rancho Palos Verdes",
-                    zipCode: "90275",
-                    zone: "C"
-                }]
+                }
+
             },
             air: {
                 fuelSurcharge: 20,
@@ -428,123 +438,128 @@ TruckingCompany.find({}).remove(function () {
                 tradeShowCharge: 20,
                 additionalCharges: [{ name: "Call before delivery",  charge: 10 }],
                 regions: [ { state: "CA", county: "Los Angeles County" }],
-                zoneRateVariables: {
-                    weightIncrement: 100,
-                    zones: [
-                        {
-                            label:"A",
-                            minCharge:35,
-                            dropOffCharge: 10,
-                            dropOffChargeOffhour: 20,
-                            dropOffChargeWeekend: 30,
-                            dropOffChargeHoliday: 40
-                        }, {
-                            label:"B",
-                            minCharge:35,
-                            dropOffCharge: 10,
-                            dropOffChargeOffhour: 20,
-                            dropOffChargeWeekend: 30,
-                            dropOffChargeHoliday: 40
-                        }, {
-                            label:"C",
-                            minCharge:35,
-                            dropOffCharge: 10,
-                            dropOffChargeOffhour: 20,
-                            dropOffChargeWeekend: 30,
-                            dropOffChargeHoliday: 40
-                        }, {
-                            label:"D",
-                            minCharge:35,
-                            dropOffCharge: 10,
-                            dropOffChargeOffhour: 20,
-                            dropOffChargeWeekend: 30,
-                            dropOffChargeHoliday: 40
-                        }, {
-                            label:"E",
-                            minCharge:35,
-                            dropOffCharge: 10,
-                            dropOffChargeOffhour: 20,
-                            dropOffChargeWeekend: 30,
-                            dropOffChargeHoliday: 40
-                        }]
-                },
-                flatRates: [
-                    {
-                        tier:"1",
-                        ranges: [0,1000],
-                        rates:[
-                            {zone: "A", rate:55},
-                            {zone: "B", rate:60},
-                            {zone: "C", rate:65},
-                            {zone: "D", rate:70},
-                            {zone: "E", rate:80}
-                        ]},
-                    {
-                        tier: "2",
-                        ranges: [1001, 2000],
-                        rates:[
-                            {zone: "A", rate:60},
-                            {zone: "B", rate:65},
-                            {zone: "C", rate:70},
-                            {zone: "D", rate:75},
-                            {zone: "E", rate:80}
-                        ]}
-                ],
+                rateDef: {
+                    byZone: {
+                        zoneRateVariables: {
+                            weightIncrement: 100,
+                            zones: [
+                                {
+                                    label:"A",
+                                    minCharge:35,
+                                    dropOffCharge: 10,
+                                    dropOffChargeOffhour: 20,
+                                    dropOffChargeWeekend: 30,
+                                    dropOffChargeHoliday: 40
+                                }, {
+                                    label:"B",
+                                    minCharge:35,
+                                    dropOffCharge: 10,
+                                    dropOffChargeOffhour: 20,
+                                    dropOffChargeWeekend: 30,
+                                    dropOffChargeHoliday: 40
+                                }, {
+                                    label:"C",
+                                    minCharge:35,
+                                    dropOffCharge: 10,
+                                    dropOffChargeOffhour: 20,
+                                    dropOffChargeWeekend: 30,
+                                    dropOffChargeHoliday: 40
+                                }, {
+                                    label:"D",
+                                    minCharge:35,
+                                    dropOffCharge: 10,
+                                    dropOffChargeOffhour: 20,
+                                    dropOffChargeWeekend: 30,
+                                    dropOffChargeHoliday: 40
+                                }, {
+                                    label:"E",
+                                    minCharge:35,
+                                    dropOffCharge: 10,
+                                    dropOffChargeOffhour: 20,
+                                    dropOffChargeWeekend: 30,
+                                    dropOffChargeHoliday: 40
+                                }]
+                        },
+                        flatRates: [
+                            {
+                                tier:"1",
+                                ranges: [0,1000],
+                                rates:[
+                                    {zone: "A", rate:55},
+                                    {zone: "B", rate:60},
+                                    {zone: "C", rate:65},
+                                    {zone: "D", rate:70},
+                                    {zone: "E", rate:80}
+                                ]},
+                            {
+                                tier: "2",
+                                ranges: [1001, 2000],
+                                rates:[
+                                    {zone: "A", rate:60},
+                                    {zone: "B", rate:65},
+                                    {zone: "C", rate:70},
+                                    {zone: "D", rate:75},
+                                    {zone: "E", rate:80}
+                                ]}
+                        ],
 
-                weightRates: [
-                    {
-                        tier:"3",
-                        ranges: [2001,4000],
-                        rates:[
-                            {zone: "A", rate:5.5},
-                            {zone: "B", rate:6.0},
-                            {zone: "C", rate:6.5},
-                            {zone: "D", rate:7.5},
-                            {zone: "E", rate:8.0}
-                        ]},
-                    {
-                        tier: "4",
-                        ranges: [4001, 5000],
-                        rates:[
-                            {zone: "A", rate:5.0},
-                            {zone: "B", rate:5.5},
-                            {zone: "C", rate:6.0},
-                            {zone: "D", rate:6.5},
-                            {zone: "E", rate:7.5}
-                        ]},
-                    {
-                        tier: "5",
-                        ranges: [5001, 6000],
-                        rates:[
-                            {zone: "A", rate:4.5},
-                            {zone: "B", rate:5.0},
-                            {zone: "C", rate:5.5},
-                            {zone: "D", rate:6.0},
-                            {zone: "E", rate:6.5}
-                        ]}
-                ],
-                rates: [ {
-                    state: "CA",
-                    city: "Torrance",
-                    zipCode: "90501",
-                    zone: "A"
-                }, {
-                    state: "CA",
-                    city: "Torrance",
-                    zipCode: "90503",
-                    zone: "B"
-                }, {
-                    state: "CA",
-                    city: "Inglewood",
-                    zipCode: "90301",
-                    zone: "E"
-                }, {
-                    state: "CA",
-                    city: "Rancho Palos Verdes",
-                    zipCode: "90275",
-                    zone: "C"
-                }]
-            },
+                        weightRates: [
+                            {
+                                tier:"3",
+                                ranges: [2001,4000],
+                                rates:[
+                                    {zone: "A", rate:5.5},
+                                    {zone: "B", rate:6.0},
+                                    {zone: "C", rate:6.5},
+                                    {zone: "D", rate:7.5},
+                                    {zone: "E", rate:8.0}
+                                ]},
+                            {
+                                tier: "4",
+                                ranges: [4001, 5000],
+                                rates:[
+                                    {zone: "A", rate:5.0},
+                                    {zone: "B", rate:5.5},
+                                    {zone: "C", rate:6.0},
+                                    {zone: "D", rate:6.5},
+                                    {zone: "E", rate:7.5}
+                                ]},
+                            {
+                                tier: "5",
+                                ranges: [5001, 6000],
+                                rates:[
+                                    {zone: "A", rate:4.5},
+                                    {zone: "B", rate:5.0},
+                                    {zone: "C", rate:5.5},
+                                    {zone: "D", rate:6.0},
+                                    {zone: "E", rate:6.5}
+                                ]}
+                        ],
+                        rates: [ {
+                            state: "CA",
+                            city: "Torrance",
+                            zipCode: "90501",
+                            zone: "A"
+                        }, {
+                            state: "CA",
+                            city: "Torrance",
+                            zipCode: "90503",
+                            zone: "B"
+                        }, {
+                            state: "CA",
+                            city: "Inglewood",
+                            zipCode: "90301",
+                            zone: "E"
+                        }, {
+                            state: "CA",
+                            city: "Rancho Palos Verdes",
+                            zipCode: "90275",
+                            zone: "C"
+                        }]
+                    }
+                }
+            }
+
         },
         {
             name: "Dspeed",
@@ -580,36 +595,40 @@ TruckingCompany.find({}).remove(function () {
                         ranges: [ {limit: 13000, charge: 150}, {limit: 16000, charge: 200}]
                     }
                 ],
-                rates: [
-                    {
-                        state: "CA",
-                        city: "Inglewood",
-                        zipCode: "90301",
-                        rate: 150,
-                        dropOffCharge:50,
-                        dropOffChargeOffhour:75,
-                        dropOffChargeWeekend:100,
-                        dropOffChargeHoliday:125
-                    }, {
-                        state: "CA",
-                        city: "Torrance",
-                        zipCode: "90503",
-                        rate: 200,
-                        dropOffCharge:50,
-                        dropOffChargeOffhour:75,
-                        dropOffChargeWeekend:100,
-                        dropOffChargeHoliday:125
-                    }, {
-                        state: "CA",
-                        city: "Rancho Palos Verdes",
-                        zipCode: "90275",
-                        rate: 250,
-                        dropOffCharge:50,
-                        dropOffChargeOffhour:75,
-                        dropOffChargeWeekend:100,
-                        dropOffChargeHoliday:125
+                rateDef: {
+                    byZipCode: {
+                        rates: [
+                            {
+                                state: "CA",
+                                city: "Inglewood",
+                                zipCode: "90301",
+                                rate: 150,
+                                dropOffCharge:50,
+                                dropOffChargeOffhour:75,
+                                dropOffChargeWeekend:100,
+                                dropOffChargeHoliday:125
+                            }, {
+                                state: "CA",
+                                city: "Torrance",
+                                zipCode: "90503",
+                                rate: 200,
+                                dropOffCharge:50,
+                                dropOffChargeOffhour:75,
+                                dropOffChargeWeekend:100,
+                                dropOffChargeHoliday:125
+                            }, {
+                                state: "CA",
+                                city: "Rancho Palos Verdes",
+                                zipCode: "90275",
+                                rate: 250,
+                                dropOffCharge:50,
+                                dropOffChargeOffhour:75,
+                                dropOffChargeWeekend:100,
+                                dropOffChargeHoliday:125
+                            }
+                        ]
                     }
-                ]
+                }
             },
             ltl: {
                 fuelSurcharge: 20,
@@ -620,126 +639,131 @@ TruckingCompany.find({}).remove(function () {
                 additionalCharges: [{ name: "Call before delivery", charge: 10 }],
                 regions: [ { state: "CA", county: "Los Angeles County" } ],
 
-                zoneRateVariables: {
-                    weightIncrement: 100,
-                    zones: [
-                        {
-                            label:"A",
-                          minCharge:35,
-                            dropOffCharge: 10,
-                            dropOffChargeOffhour: 20,
-                            dropOffChargeWeekend: 30,
-                            dropOffChargeHoliday: 40
+                rateDef: {
+                    byZone: {
+                        zoneRateVariables: {
+                            weightIncrement: 100,
+                            zones: [
+                                {
+                                    label:"A",
+                                    minCharge:35,
+                                    dropOffCharge: 10,
+                                    dropOffChargeOffhour: 20,
+                                    dropOffChargeWeekend: 30,
+                                    dropOffChargeHoliday: 40
+                                }, {
+                                    label:"B",
+                                    minCharge:35,
+                                    dropOffCharge: 10,
+                                    dropOffChargeOffhour: 20,
+                                    dropOffChargeWeekend: 30,
+                                    dropOffChargeHoliday: 40
+                                }, {
+                                    label:"C",
+                                    minCharge:35,
+                                    dropOffCharge: 10,
+                                    dropOffChargeOffhour: 20,
+                                    dropOffChargeWeekend: 30,
+                                    dropOffChargeHoliday: 40
+                                }, {
+                                    label:"D",
+                                    minCharge:35,
+                                    dropOffCharge: 10,
+                                    dropOffChargeOffhour: 20,
+                                    dropOffChargeWeekend: 30,
+                                    dropOffChargeHoliday: 40
+                                }, {
+                                    label:"E",
+                                    minCharge:35,
+                                    dropOffCharge: 10,
+                                    dropOffChargeOffhour: 20,
+                                    dropOffChargeWeekend: 30,
+                                    dropOffChargeHoliday: 40
+                                }]
+                        },
+
+                        flatRates: [
+                            {
+                                tier:"1",
+                                ranges: [0,1000],
+                                rates:[
+                                    {zone: "A", rate:55},
+                                    {zone: "B", rate:60},
+                                    {zone: "C", rate:65},
+                                    {zone: "D", rate:70},
+                                    {zone: "E", rate:80}
+                                ]},
+                            {
+                                tier: "2",
+                                ranges: [1001, 2000],
+                                rates:[
+                                    {zone: "A", rate:60},
+                                    {zone: "B", rate:65},
+                                    {zone: "C", rate:70},
+                                    {zone: "D", rate:75},
+                                    {zone: "E", rate:80}
+                                ]}
+                        ],
+
+                        weightRates: [
+                            {
+                                tier:"3",
+                                ranges: [2001,4000],
+                                rates:[
+                                    {zone: "A", rate:5.5},
+                                    {zone: "B", rate:6.0},
+                                    {zone: "C", rate:6.5},
+                                    {zone: "D", rate:7.5},
+                                    {zone: "E", rate:8.0}
+                                ]},
+                            {
+                                tier: "4",
+                                ranges: [4001, 5000],
+                                rates:[
+                                    {zone: "A", rate:5.0},
+                                    {zone: "B", rate:5.5},
+                                    {zone: "C", rate:6.0},
+                                    {zone: "D", rate:6.5},
+                                    {zone: "E", rate:7.5}
+                                ]},
+                            {
+                                tier: "5",
+                                ranges: [5001, 6000],
+                                rates:[
+                                    {zone: "A", rate:4.5},
+                                    {zone: "B", rate:5.0},
+                                    {zone: "C", rate:5.5},
+                                    {zone: "D", rate:6.0},
+                                    {zone: "E", rate:6.5}
+                                ]}
+                        ],
+                        rates: [ {
+                            state: "CA",
+                            city: "Torrance",
+                            zipCode: "90501",
+                            zone: "A"
                         }, {
-                            label:"B",
-                        minCharge:35,
-                            dropOffCharge: 10,
-                            dropOffChargeOffhour: 20,
-                            dropOffChargeWeekend: 30,
-                            dropOffChargeHoliday: 40
+                            state: "CA",
+                            city: "Torrance",
+                            zipCode: "90503",
+                            zone: "B"
                         }, {
-                            label:"C",
-                        minCharge:35,
-                            dropOffCharge: 10,
-                            dropOffChargeOffhour: 20,
-                            dropOffChargeWeekend: 30,
-                            dropOffChargeHoliday: 40
+                            state: "CA",
+                            city: "Inglewood",
+                            zipCode: "90301",
+                            zone: "E"
                         }, {
-                            label:"D",
-                        minCharge:35,
-                            dropOffCharge: 10,
-                            dropOffChargeOffhour: 20,
-                            dropOffChargeWeekend: 30,
-                            dropOffChargeHoliday: 40
-                        }, {
-                            label:"E",
-                        minCharge:35,
-                            dropOffCharge: 10,
-                            dropOffChargeOffhour: 20,
-                            dropOffChargeWeekend: 30,
-                            dropOffChargeHoliday: 40
+                            state: "CA",
+                            city: "Rancho Palos Verdes",
+                            zipCode: "90275",
+                            zone: "C"
                         }]
-                },
-
-                flatRates: [
-                    {
-                        tier:"1",
-                        ranges: [0,1000],
-                        rates:[
-                            {zone: "A", rate:55},
-                            {zone: "B", rate:60},
-                            {zone: "C", rate:65},
-                            {zone: "D", rate:70},
-                            {zone: "E", rate:80}
-                        ]},
-                    {
-                        tier: "2",
-                        ranges: [1001, 2000],
-                        rates:[
-                            {zone: "A", rate:60},
-                            {zone: "B", rate:65},
-                            {zone: "C", rate:70},
-                            {zone: "D", rate:75},
-                            {zone: "E", rate:80}
-                        ]}
-                ],
-
-                weightRates: [
-                    {
-                        tier:"3",
-                        ranges: [2001,4000],
-                        rates:[
-                            {zone: "A", rate:5.5},
-                            {zone: "B", rate:6.0},
-                            {zone: "C", rate:6.5},
-                            {zone: "D", rate:7.5},
-                            {zone: "E", rate:8.0}
-                        ]},
-                    {
-                        tier: "4",
-                      ranges: [4001, 5000],
-                        rates:[
-                            {zone: "A", rate:5.0},
-                            {zone: "B", rate:5.5},
-                            {zone: "C", rate:6.0},
-                            {zone: "D", rate:6.5},
-                            {zone: "E", rate:7.5}
-                        ]},
-                    {
-                        tier: "5",
-                        ranges: [5001, 6000],
-                        rates:[
-                            {zone: "A", rate:4.5},
-                            {zone: "B", rate:5.0},
-                            {zone: "C", rate:5.5},
-                            {zone: "D", rate:6.0},
-                            {zone: "E", rate:6.5}
-                        ]}
-                ],
-                rates: [ {
-                    state: "CA",
-                    city: "Torrance",
-                    zipCode: "90501",
-                    zone: "A"
-                }, {
-                    state: "CA",
-                    city: "Torrance",
-                    zipCode: "90503",
-                    zone: "B"
-                }, {
-                    state: "CA",
-                    city: "Inglewood",
-                    zipCode: "90301",
-                    zone: "E"
-                }, {
-                    state: "CA",
-                    city: "Rancho Palos Verdes",
-                    zipCode: "90275",
-                    zone: "C"
-                }]
+                    },
+                }
             },
+
             air: {
-                rates: []
+
             }
         }
     );

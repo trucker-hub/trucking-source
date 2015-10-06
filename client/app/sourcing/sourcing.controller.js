@@ -126,7 +126,7 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
 
   $scope.finalizeSource = function() {
     $scope.selectedLoad.status = "FILLED";
-    var path = $scope.selectedLoad.loadType=='FTL'?'/api/load/ftl-loads/':'/api/load/ltl-loads/';
+    var path = $scope.selectedLoad.loadType=='FTL'?'/api/load/ftl-loads/invoice/':'/api/load/ltl-loads/invoice/';
 
     $http.put(path+$scope.selectedLoad._id, $scope.selectedLoad).then(
 

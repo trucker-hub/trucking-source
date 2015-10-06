@@ -25,15 +25,15 @@ angular.module('servicesApp')
 
       vm.change = function() {
          vm.company.changed = true;
-      }
+      };
 
       vm.getFtlRates = function() {
-        return vm.company.ftl.rates;
+        return vm.company.ftl.rateDef.byZipCode.rates;
       };
 
       vm.getFTLRateSummary = function() {
-        if(vm.company.ftl.rates.length > 1) {
-          return vm.company.ftl.rates.length + " rates available"
+        if(vm.company.ftl.rateDef.byZipCode.rates.length > 1) {
+          return vm.company.ftl.rateDef.byZipCode.rates.length + " rates available"
         } else {
           return "Not rates yet";
         }
@@ -41,7 +41,7 @@ angular.module('servicesApp')
       };
 
       vm.importFTLRates = function() {
-        vm.company.ftl.rates = vm.ftlcsv.result;
+        vm.company.ftl.rateDef.byZipCode.rates = vm.ftlcsv.result;
         console.log(JSON.stringify(vm.ftlcsv.result))
         vm.openRateModal();
 
@@ -56,14 +56,14 @@ angular.module('servicesApp')
           windowClass: 'full-screen-modal',
           resolve: {
             rates: function () {
-              return vm.company.ftl.rates;
+              return vm.company.ftl.rateDef.byZipCode.rates;
             }
           }
         });
 
         modalInstance.result.then(
             function (rates) {
-              vm.company.ftl.rates = rates;
+              vm.company.ftl.rateDef.byZipCode.rates = rates;
               vm.change();
             },
             function () {

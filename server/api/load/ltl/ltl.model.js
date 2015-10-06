@@ -123,8 +123,7 @@ var LtlLoadSchema = new Schema({
   deliveryOrderReference: {
     email: String,
     phone: String,
-    instructions: String,
-    referenceNumber: String
+    instructions: String
   }
 });
 
