@@ -86,7 +86,8 @@ var TruckingCompanySchema = new Schema({
         limit: Number,
         charge: Number
       }]
-    }], rateBasis: {
+    }],
+    rateBasis: {
       type: String, required: true,
       enum: ['city', 'zipCode', 'zone'],
       default: 'zipCode'
