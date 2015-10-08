@@ -17,7 +17,8 @@ angular.module('servicesApp', [
   'ngCookies',
   'ngCsv',
   'ngCsvImport',
-  'google.places'
+  'google.places',
+  'AngularPrint'
 ])
   .directive('onReadFile', function ($parse) {
     return {

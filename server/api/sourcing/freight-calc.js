@@ -77,8 +77,6 @@ exports.calc = function(load, company) {
 
   if(freight.rateBasis=='zone') {
     result = result.concat(zoneCostCalculator.calc(freight, load, matchEntry));
-  }else if(freight.rateBasis=='city') {
-    result = result.concat(zipCodeCityCosts(freight, matchEntry));
   }else {
     result = result.concat(zipCodeCityCosts(freight, matchEntry));
   }

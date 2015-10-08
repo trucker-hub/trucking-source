@@ -239,6 +239,10 @@ angular.module('servicesApp')
           $scope.sending = false;
         });
 
+    };
+
+    $scope.print = function() {
+
     }
 
       $scope.ok = function () {

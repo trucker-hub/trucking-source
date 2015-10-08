@@ -1,5 +1,5 @@
-<div class="modal-header"> Invoice: {{load.invoice.referenceNumber}} for {{load.who}}</div>
-<div class="modal-body">
+<div class="modal-header" print-section=""> Invoice: {{load.invoice.referenceNumber}} for {{load.who}}</div>
+<div class="modal-body" print-section="">
     <div class="panel panel-default">
         <div class="panel-heading form-group"><b>Load Information:</b> {{load.who}}</div>
         <div class="panel-body">
@@ -19,7 +19,7 @@
             <tr ng-repeat="entry in load.brokerFees track by $index">
                 <td align="right">#{{load.fulfilledBy.costItems.length+$index+1}}</td>
                 <td>{{entry.name}}</td>
-                <td>{{entry.charge}}</td>
+                <td>{{entry.charge | currency:"$":2}}</td>
             </tr>
             <tr>
                 <td colspan="2" align="right"><b>Total Amount</b></td>
@@ -28,8 +28,8 @@
         </table>
     </div>
 </div>
-<div class="modal-footer">
+<div class="modal-footer" print-hide="">
     <button style="float:left" class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
     <button style="float:left" class="btn btn-warning" type="button" ng-disabled="sending" ng-click="sendInvoice()"><i class="fa fa-spinner" ng-class="{'fa-spin':sending}"></i> Send Invoice</button>
-    <button type="button" class="btn btn-default" ng-click="printInvoice()"><i class="fa fa-list-alt"></i> Print Invoice</button>
+    <button type="button" class="btn btn-default" print-btn><i class="fa fa-list-alt"></i> Print Invoice</button>
 </div>

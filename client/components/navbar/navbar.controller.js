@@ -48,7 +48,7 @@ angular.module('servicesApp')
       {
         'title': 'Playground',
         'link': '/playground',
-        'alwaysShow': false
+        'alwaysShow': true
       }
 
 
