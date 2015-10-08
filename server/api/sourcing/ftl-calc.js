@@ -11,7 +11,7 @@ exports.calc = function(load, company) {
   var zipCode = load.shipTo.location.zipCode;
   var city = load.shipTo.location.city;
 
-  var rates = company.ftl.rates;
+  var rates = company.ftl.rateDef.byZipCode.rates;
   var matchEntry =_.find(rates, {zipCode:zipCode});
 
   if(matchEntry) {

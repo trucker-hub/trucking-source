@@ -34,6 +34,8 @@ var populateServiceCharges = function(result, services, freight, suffix) {
   }
 };
 
+
+
 var findZoneRate = function(rateTable, weight, zone) {
   var index;
   for(index=0; index < rateTable.length; ++index) {
@@ -46,6 +48,52 @@ var findZoneRate = function(rateTable, weight, zone) {
 };
 
 
+var zoneRatesCost = function(freight, load, matchEntry) {
+  var result = [];
+  var matchZone = _.find(freight.rateDef.byZone.zoneRateVariables.zones, {label:matchEntry.zone});
+  if(matchZone) {
+    console.log("found a matching zone for zip code " + JSON.stringify(matchZone));
+  }else {
+    return {
+      totalCost: -1,
+      costItems: []
+    };
+  }
+  result.push({charge:matchZone.dropOffCharge , description: "DropOff Charge"});
+
+  var weight = weightCalculator.weight(load.lines);
+  console.log("load weight is " + weight);
+
+  //base rate
+  var baseRate =0;
+  var rateRow = findZoneRate (freight.rateDef.byZone.flatRates, weight, matchEntry.zone);
+  if(rateRow) {
+    baseRate = rateRow.rate
+    result.push({charge: baseRate, description: "Basis rate for Zone " + matchEntry.zone});
+  }else {
+    rateRow = findZoneRate (freight.rateDef.byZone.weightRates, weight, matchEntry.zone);
+    if(rateRow) {
+      baseRate = (rateRow.rate * weight)/(freight.rateDef.byZone.zoneRateVariables.weightIncrement);
+      result.push({charge: baseRate, description: "Basis rate for Zone " + matchEntry.zone});
+    }else {
+      result.push({charge: 0, description: "Basis rate Not Found!"});
+    }
+  }
+  var fuelSurcharge = (baseRate * freight.fuelSurcharge *0.01);
+  var fuelSurchargePercentage = freight.fuelSurcharge;
+  result.push({charge: fuelSurcharge, description: "Fuel Surcharge " + fuelSurchargePercentage + "%"});
+
+  return result;
+};
+
+var cityRatesCost = function() {
+
+};
+
+var zipCodeRatesCost = function() {
+
+};
+
 exports.calc = function(load, company) {
   var result = [];
 
@@ -53,7 +101,16 @@ exports.calc = function(load, company) {
   var city = load.shipTo.location.city;
   var freight = load.loadType=='LTL'?company.ltl:company.air;
 
-  var rates = freight.rates;
+
+  var rates;
+  if(freight.rateBasis=='zone') {
+    rates = freight.rateDef.byZone.rates;
+  }else if(freight.rateBasis=='city') {
+    rates = freight.rateDef.byCity.rates;
+  }else {
+    rates = freight.rateDef.byZipCode.rates;
+  }
+
   var matchEntry =_.find(rates, {zipCode:zipCode});
 
   if(matchEntry) {
@@ -65,43 +122,17 @@ exports.calc = function(load, company) {
     };
   }
 
-  var matchZone = _.find(freight.zoneRateVariables.zones, {label:matchEntry.zone});
-  if(matchEntry) {
-    console.log("found a matching zone for zip code " + JSON.stringify(matchZone));
+  if(freight.rateBasis=='zone') {
+    result = result.concat(zoneRatesCost(freight, load, matchEntry));
+  }else if(freight.rateBasis=='city') {
+    result = result.concat(cityRatesCost());
   }else {
-    return {
-      totalCost: -1,
-      costItems: []
-    };
+    result = result.concat(zipCodeRatesCost());
   }
+
   //service charges and drop off charges
   populateServiceCharges(result, load.shipTo.services, freight, " Delivery");
   populateServiceCharges(result, load.shipFrom.services, freight," Pickup");
-  result.push({charge:matchZone.dropOffCharge , description: "DropOff Charge"});
-
-  var weight = weightCalculator.weight(load.lines);
-  console.log("load weight is " + weight);
-
-  //base rate
-  var baseRate =0;
-  var rateRow = findZoneRate (freight.flatRates, weight, matchEntry.zone);
-  if(rateRow) {
-    baseRate = rateRow.rate
-    result.push({charge: baseRate, description: "Basis rate for Zone " + matchEntry.zone});
-  }else {
-    rateRow = findZoneRate (freight.weightRates, weight, matchEntry.zone);
-    if(rateRow) {
-      baseRate = (rateRow.rate * weight)/(freight.zoneRateVariables.weightIncrement);
-      result.push({charge: baseRate, description: "Basis rate for Zone " + matchEntry.zone});
-    }else {
-      result.push({charge: 0, description: "Basis rate Not Found!"});
-    }
-  }
-
-
-  var fuelSurcharge = (baseRate * freight.fuelSurcharge *0.01);
-  var fuelSurchargePercentage = freight.fuelSurcharge;
-  result.push({charge: fuelSurcharge, description: "Fuel Surcharge " + fuelSurchargePercentage + "%"});
 
   var totalCost = result.reduce(function(total, item) {return total + item.charge;}, 0);
 
