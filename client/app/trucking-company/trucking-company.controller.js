@@ -182,7 +182,7 @@ angular.module('servicesApp')
         console.log("fetch companies from the db");
         $http.get("/api/trucking-companies").then(
             function(response) {
-              console.log(JSON.stringify(response.data));
+              //console.log(JSON.stringify(response.data));
               $rootScope.allCompanies = response.data;
               $scope.updateTable(response.data);
 

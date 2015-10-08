@@ -1,27 +1,6 @@
+<zone-definition company="ftlCtrl.company" type="'FTL'"></zone-definition>
+
 <table class="table table-condensed table-responsive">
-  <tr>
-    <th>Rates</th>
-    <td> <div class="row form-inline">
-      <div class="col-md-4 form-inline">
-        <span>{{ftlCtrl.getFTLRateSummary()}}</span>
-        <button class="form-control glyphicon glyphicon-pencil" ng-click="ftlCtrl.openRateModal()"></button>
-      </div>
-      <div class="col-md-8 form-inline">
-        <ng-csv-import id="ftlRateFile"
-                       class="import-btn form-control"
-                       content="ftlCtrl.ftlcsv.content"
-                       header="ftlCtrl.ftlcsv.header" header-visible="ftlCtrl.ftlcsv.headerVisible" separator-visible="ftlCtrl.ftlcsv.separatorVisible"
-                       separator="ftlCtrl.ftlcsv.separator"
-                       result="ftlCtrl.ftlcsv.result">
-        </ng-csv-import>
-        <button class="form-control glyphicon glyphicon-import" ng-click="ftlCtrl.importFTLRates()" ng-show="ftlCtrl.ftlcsv.result">Import</button>
-      </div>
-    </div>
-    </td>
-    <td><div style="float: left">
-      <button class="form-control glyphicon glyphicon-download-alt" ng-csv="ftlCtrl.getFtlRates()" filename="ftl-rates.csv"></button>
-    </div></td>
-  </tr>
 
   <tr>
     <th>Serving Regions</th>

@@ -8,7 +8,7 @@ angular.module('servicesApp')
     var vm = this;
 
     vm.setCompany = function(company) {
-      console.log("company is set to " + JSON.stringify(company));
+      //console.log("company is set to " + JSON.stringify(company));
       vm.company = company;
       vm.lastCopy = angular.copy(company);
     };

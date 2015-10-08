@@ -1,63 +1,63 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+  Schema = mongoose.Schema;
 
 
 var byCitySubSchema = {
-    rates: [{
-        state: String,
-        city: String,
-        rate: Number,
-        dropOffCharge: Number,
-        dropOffChargeOffhour: Number,
-        dropOffChargeWeekend: Number,
-        dropOffChargeHoliday: Number
-    }]
+  rates: [{
+    state: String,
+    city: String,
+    rate: Number,
+    dropOffCharge: Number,
+    dropOffChargeOffhour: Number,
+    dropOffChargeWeekend: Number,
+    dropOffChargeHoliday: Number
+  }]
 };
 
 var byZipCodeSubSchema = {
-    rates: [{
-        state: String,
-        zipCode: String,
-        rate: Number,
-        dropOffCharge: Number,
-        dropOffChargeOffhour: Number,
-        dropOffChargeWeekend: Number,
-        dropOffChargeHoliday: Number
-    }]
+  rates: [{
+    state: String,
+    zipCode: String,
+    rate: Number,
+    dropOffCharge: Number,
+    dropOffChargeOffhour: Number,
+    dropOffChargeWeekend: Number,
+    dropOffChargeHoliday: Number
+  }]
 };
 
 var byZoneSubSchema = {
-    zoneRateVariables: {
-        weightIncrement: Number,
-        zones: [{
-            label: String,
-            minCharge:Number,
-            dropOffCharge: Number,
-            dropOffChargeOffhour: Number,
-            dropOffChargeWeekend: Number,
-            dropOffChargeHoliday: Number
-        }]
-    },
-    flatRates: [{
-        tier: String,
-        ranges: [Number],
-        rates:[
-            {zone: String, rate:Number}
-        ]
-    }],
-    weightRates: [{
-        tier: String,
-        ranges: [Number],
-        rates: [{zone: String, rate: Number}]
-    }],
-    rates: [ {
-        state: String,
-        city: String,
-        zipCode: String,
-        zone: String
+  zoneRateVariables: {
+    weightIncrement: Number,
+    zones: [{
+      label: String,
+      minCharge:Number,
+      dropOffCharge: Number,
+      dropOffChargeOffhour: Number,
+      dropOffChargeWeekend: Number,
+      dropOffChargeHoliday: Number
     }]
+  },
+  flatRates: [{
+    tier: String,
+    ranges: [Number],
+    rates:[
+      {zone: String, rate:Number}
+    ]
+  }],
+  weightRates: [{
+    tier: String,
+    ranges: [Number],
+    rates: [{zone: String, rate: Number}]
+  }],
+  rates: [ {
+    state: String,
+    city: String,
+    zipCode: String,
+    zone: String
+  }]
 };
 
 
@@ -87,12 +87,12 @@ var TruckingCompanySchema = new Schema({
         charge: Number
       }]
     }], rateBasis: {
-          type: String, required: true,
-          enum: ['city', 'zipCode', 'zone'],
-          default: 'zipCode'
-      },
+      type: String, required: true,
+      enum: ['city', 'zipCode', 'zone'],
+      default: 'zipCode'
+    },
     rateDef: {
-       byCity: byCitySubSchema, byZipCode: byZipCodeSubSchema, byZone: byZoneSubSchema
+      byCity: byCitySubSchema, byZipCode: byZipCodeSubSchema, byZone: byZoneSubSchema
     }
   },
   ltl: {
@@ -110,14 +110,14 @@ var TruckingCompanySchema = new Schema({
       county: String,
       rateByCity: Boolean
     }],
-      rateBasis: {
-          type: String, required: true,
-          enum: ['city', 'zipCode', 'zone'],
-          default: 'zipCode'
-      },
-      rateDef: {
-          byCity: byCitySubSchema, byZipCode: byZipCodeSubSchema, byZone: byZoneSubSchema
-      }
+    rateBasis: {
+      type: String, required: true,
+      enum: ['city', 'zipCode', 'zone'],
+      default: 'zone'
+    },
+    rateDef: {
+      byCity: byCitySubSchema, byZipCode: byZipCodeSubSchema, byZone: byZoneSubSchema
+    }
   },
   air: {
     fuelSurcharge: Number,
@@ -134,14 +134,14 @@ var TruckingCompanySchema = new Schema({
       county: String,
       rateByCity: Boolean
     }],
-      rateBasis: {
-          type: String, required: true,
-          enum: ['city', 'zipCode', 'zone'],
-          default: 'zipCode'
-      },
-      rateDef: {
-          byCity: byCitySubSchema, byZipCode: byZipCodeSubSchema, byZone: byZoneSubSchema
-      }
+    rateBasis: {
+      type: String, required: true,
+      enum: ['city', 'zipCode', 'zone'],
+      default: 'zone'
+    },
+    rateDef: {
+      byCity: byCitySubSchema, byZipCode: byZipCodeSubSchema, byZone: byZoneSubSchema
+    }
   }
 });
 

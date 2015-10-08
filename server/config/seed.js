@@ -758,7 +758,7 @@ TruckingCompany.find({}).remove(function () {
                             zipCode: "90275",
                             zone: "C"
                         }]
-                    },
+                    }
                 }
             },
 

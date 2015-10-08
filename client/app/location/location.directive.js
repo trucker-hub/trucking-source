@@ -10,7 +10,7 @@ angular.module('servicesApp')
         label: '=label'
       },
       link: function (scope, element, attrs) {
-          scope.isKnownLocation = false;
+        scope.isKnownLocation = false;
         scope.isDelivery = function () {
           return scope.label == 'To';
         };
