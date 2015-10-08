@@ -1,59 +1,21 @@
-<div class="modal-header">
-  <span class="modal-title"><b>LTL Tier Editing</b></span>
-  <div style="float:right"> <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancel()"></span></div>
-
-  <div>{{services | serviceList:'Pickup' }}</div>
-</div>
-
 <div class="modal-body" print-section="">
-
-  <table class="table">
+    <div class="form-inline">
+        <div class="form-group">
+            <label>Counter:</label>
+            <input type="text" ng-model="counterName" class="form-control" placeholder="counter name">
+        </div>
+        <button type="button" class="btn btn-default btn-sm" ng-click="add()">Add New Counter</button>
+    </div>
+    <br>{{counterName}}
+  <table class="table table-bordered">
     <tr>
-      <th class="active center-text" colspan="5">Flat Rate Tiers</th>
+      <th>Counter Name</th> <th>#</th><th></th>
     </tr>
-    <tr>
-      <th>Original</th> <th>Tier</th> <th>Min Weight</th><th>Max Weight</th><th></th>
+    <tr ng-repeat="counter in counters">
+      <th class="col-md-2">{{counter.name}}</th>
+      <td>{{counter.counter}}</td>
+      <td><a class="btn btn-danger" ng-click="update(counter)"> Update</a><a class="btn btn-danger" ng-click="delete(counter)"> Delete</a></td>
     </tr>
-    <tr ng-repeat="entry in flatTiers track by $index">
-      <th class="col-md-2">{{entry.tier}}: {{entry.ranges[0]}} - {{entry.ranges[1]}} lbs</th>
-      <td><input type="text" ng-model="entry.tier" class="form-control"></td>
-      <td><input type="number" ng-model="entry.ranges[0]" class="form-control"></td>
-      <td><input type="number" ng-model="entry.ranges[1]" class="form-control"></td>
-      <td><a class="btn btn-danger btn-sm" ng-click="removeFlatTier($index)"> <i class="fa fa-minus"></i></a></td>
-    </tr>
-    <tr>
-      <th class="col-md-2">New Flat Tier: {{newFlatTier.ranges[0]}} - {{newFlatTier.ranges[1]}} lbs</th>
-      <td><input type="text" ng-model="newFlatTier.tier" class="form-control"></td>
-      <td><input type="number" ng-model="newFlatTier.ranges[0]" class="form-control"></td>
-      <td><input type="number" ng-model="newFlatTier.ranges[1]" class="form-control"></td>
-      <td><a class="btn btn-primary btn-sm" ng-click="addFlatTier()"> <i class="fa fa-plus"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <th class="active" colspan="5">Weight Tiers</th>
-    </tr>
-    <tr>
-      <th>Original</th> <th>Tier</th> <th>Min Weight</th><th>Max Weight</th><th></th>
-    </tr>
-    <tr ng-repeat="entry in weightTiers track by $index">
-      <th class="col-md-2">{{entry.tier}}: {{entry.ranges[0]}} - {{entry.ranges[1]}} lbs</th>
-      <td><input type="text" ng-model="entry.tier" class="form-control"></td>
-      <td><input type="number" ng-model="entry.ranges[0]" class="form-control"></td>
-      <td><input type="number" ng-model="entry.ranges[1]" class="form-control"></td>
-      <td><a class="btn btn-danger btn-sm" ng-click="removeWeightTier($index)"> <i class="fa fa-minus"></i></a></td>
-    </tr>
-    <tr>
-      <th class="col-md-2">New Weight Tier: {{newWeightTier.ranges[0]}} - {{newWeightTier.ranges[1]}} lbs</th>
-      <td><input type="text" ng-model="newWeightTier.tier" class="form-control"></td>
-      <td><input type="number" ng-model="newWeightTier.ranges[0]" class="form-control"></td>
-      <td><input type="number" ng-model="newWeightTier.ranges[1]" class="form-control"></td>
-      <td><a class="btn btn-primary btn-sm" ng-click="addWeightTier()"> <i class="fa fa-plus"></i></a></td>
-    </tr>
-
   </table>
 </div>
-<div class="modal-footer" print-remove>
-  <button style="float:left" class="btn btn-warning" type="button" ng-disabled="sending" ng-click="testEmail()"><i class="fa fa-spinner" ng-class="{'fa-spin':sending}"></i> Test Email</button>
-  <button style="float:right" class="btn btn-primary" type="button"  print-btn>Print</button>
-  <button style="float:right" class="btn btn-primary" type="button" ng-click="ok()">Save</button>
-</div>
+

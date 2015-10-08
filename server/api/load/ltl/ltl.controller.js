@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Ltl = require('./ltl.model.js');
+var CounterController = require('../../counter/counter.controller');
 
 // Get list of ltls
 exports.index = function(req, res) {
@@ -50,7 +51,7 @@ var updateLoad = function(req, res, load) {
         var updated = _.extend(ltl, load);
         updated.save(function (err) {
             if (err) { return handleError(res, err); }
-            return res.status(200).json(ltl);
+            return res.status(200).json(updated);
         });
     });
 };
@@ -62,7 +63,13 @@ exports.update = function(req, res) {
 
 exports.invoice = function(req, res) {
     if(req.body._id) { delete req.body._id; }
-    updateLoad(req, res, req.body);
+    CounterController.nextId("invoice", function(err, id) {
+       if(err) { return handleError(res, err); }
+        req.body.invoice = {
+            referenceNumber: id.counter
+        };
+        updateLoad(req, res, req.body);
+    });
 };
 
 // Deletes a ltl from the DB.

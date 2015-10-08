@@ -11,6 +11,7 @@ var TruckingCompany = require('../api/trucking-company/trucking-company.model');
 var FtlLoad = require('../api/load/ftl/ftlLoad.model');
 var LtlLoad = require('../api/load/ltl/ltl.model');
 var Warehouse = require('../api/warehouse/warehouse.model')
+var Counter = require('../api/counter/counter.model');
 
 
 Thing.find({}).remove(function () {
@@ -767,6 +768,10 @@ TruckingCompany.find({}).remove(function () {
             }
         }
     );
+});
+
+Counter.find({}).remove(function () {
+    console.log("removed all the counters");
 });
 
 User.find({}).remove(function () {

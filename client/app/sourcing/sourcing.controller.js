@@ -131,7 +131,8 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
     $http.put(path+$scope.selectedLoad._id, $scope.selectedLoad).then(
 
       function(response) {
-        console.log("request saved succesfully " + JSON.stringify(response));
+          $scope.selectedLoad.invoice = response.data.invoice;
+        console.log("request saved succesfully " + JSON.stringify(response.data));
       },
       function(err) {
         console.log("request saving failed " + err);
