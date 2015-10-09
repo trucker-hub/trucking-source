@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-    .controller('TruckingCompanyCtrl', function($rootScope, $scope, $http, $filter, ngTableParams) {
+    .controller('TruckingCompanyCtrl', function($rootScope, $scope, $http, $filter, ngTableParams, truckingCompany) {
 
       $rootScope.companiesOpened = $rootScope.companiesOpened || {};
 
@@ -40,6 +40,16 @@ angular.module('servicesApp')
       };
 
       $scope.saveCompany = function(company, successCallback, errorCallback) {
+        truckingCompany.saveCompany(company,
+            function(response) {
+                successCallback(response);
+                $scope.alerts.push({ type: 'success', msg: 'company info was just saved succesfully!' });
+            },
+            function() {
+                errorCallback(response);
+                $scope.alerts.push({ type: 'warning', msg: 'failed to save company info!' });
+            }
+        );
         $http.put('/api/trucking-companies/' + company._id, {company: company}).then(
             function(response) {
               successCallback(response);
@@ -180,6 +190,7 @@ angular.module('servicesApp')
       $scope.loadCompanies = function() {
 
         console.log("fetch companies from the db");
+          
         $http.get("/api/trucking-companies").then(
             function(response) {
               //console.log(JSON.stringify(response.data));

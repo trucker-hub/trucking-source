@@ -2,8 +2,6 @@
 
 angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $scope, $http, $modal, ngTableParams, $filter, ngProgressFactory) {
 
-
-
   var brokerFees = [
     {name: "ABI-Customs Fee", charge: 15},
     {name: "Chassy Fee", charge: 15},
