@@ -69,7 +69,6 @@ var TruckingCompanySchema = new Schema({
   fax: String,
   email:String,
   active: Boolean,
-
   ftl: {
     fuelSurcharge: Number,
     residentialCharge: Number,
