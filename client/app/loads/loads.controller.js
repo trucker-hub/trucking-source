@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('LoadsCtrl', function ($rootScope, $scope, $http, $filter, ngTableParams) {
+  .controller('LoadsCtrl', function ($rootScope, $scope, $http, $filter, ngTableParams, loadService) {
 
     var NEW_FTL_ID = -2;
     var NEW_LTL_ID = -1;
@@ -11,17 +11,15 @@ angular.module('servicesApp')
 
     $rootScope.loadsOpened  = $rootScope.loadsOpened || { ftl:  {},  ltl:  {},  air:  {} };
 
-    $rootScope.loads = $rootScope.loads || {ftl: [], ltl:[], air: []};
-
     var loads = [];
 
     $scope.tableParams = new ngTableParams({
       page: 1,            // show first page
-      count: 20,          // count per page
+      count: 25,          // count per page
       filter: { who: '' }
     }, {
       total: loads.length, // length of data,
-      counts: [],
+      //counts: [],
       getData: function($defer, params) {
         // use build-in angular filter
         var orderedData = params.filter() ? $filter('filter')(loads, params.filter()) : loads;
@@ -62,49 +60,9 @@ angular.module('servicesApp')
     };
 
 
-    $scope.emptyFtlLoad  = {
-      who: 'NEW one',
-      loadType:'FTL',
-      expectedBy: null,
-      notes: "",
-      shipTo: {
-        label: "shipTo",
-        location: {},
-        locationType: "Business with Dock/Fork",
-        extraServices: []
-      },
-      shipFrom: {
-        label: "shipFrom",
-        location: {},
-        locationType: "Business with Dock/Fork",
-        extraServices: []
-      },
-      lines: [],
+    $scope.emptyFtlLoad  = loadService.emptyFtlLoad;
 
-      trailer: {
-        type: "Dry Van"
-      }
-    };
-
-    $scope.emptyFreightLoad  = {
-      who: 'NEW one',
-      loadType:'LTL',
-      expectedBy: null,
-      notes: "",
-      shipTo: {
-        label: "shipTo",
-        location: {},
-        services: [],
-        extraServices: []
-      },
-      shipFrom: {
-        label: "shipFrom",
-        location: {},
-        services: [],
-        extraServices: []
-      },
-      lines: []
-    };
+    $scope.emptyFreightLoad  = loadService.emptyFreightLoad;
 
     $scope.closeTab = function(id, type, update) {
 
@@ -147,72 +105,24 @@ angular.module('servicesApp')
     };
 
 
-    $scope.loadLoads = function(type) {
-
+    $scope.fetch = function(type) {
       console.log('fetch loads from the db');
-
-      if(!type || type=='FTL') {
-        $http.get('/api/load/ftl-loads?status=OPEN').then(
-          function(response) {
-            //console.log(JSON.stringify(response.data));
-            $rootScope.loads.ftl = response.data;
-            $scope.updateTable();
-          },
-          function(response) {
-            console.log('ran into error ' + response);
-
-          });
-      }
-      if(!type || type=='LTL') {
-        $http.get('/api/load/ltl-loads?status=OPEN').then(
-          function(response) {
-            //console.log(JSON.stringify(response.data));
-            $rootScope.loads.ltl = response.data;
-            $scope.updateTable();
-          },
-          function(response) {
-            console.log('ran into error ' + response);
-          });
-      }
-    };
-    $scope.loadConstants = function(callback) {
-      if(!$rootScope.loadConstants) {
-        $http.get('/api/load/ftl-loads/util/constants').then(
-          function(response) {
-            var data = response.data;
-            //console.log("constants are " + JSON.stringify((data)));
-            $rootScope.loadConstants = {
-              ftl: {
-                packagings: data.packagings,
-                toLocationTypes: data.toLocationTypes,
-                fromLocationTypes: data.fromLocationTypes,
-                trailerTypes: data.trailerTypes
-              },
-              ltl: {
-                toServices: data.toServices.map(function(item) {
-                  return {service:item};
-                }),
-                fromServices: data.fromServices.map(function(item) {
-                  return {service:item};
-                }),
-                packagings: data.ltlPackagings
-              }
-            };
-            callback();
-          }, function(err) {
-            console.log(err);}
-        );
-      }
+      loadService.fetch(type, function() {
+          $scope.updateTable();
+        },
+        function() {
+          console.log('ran into error ' + response);
+        });
     };
 
     $scope.updateTable = function() {
-      loads = null;
-      loads = $rootScope.loads.ftl.concat($rootScope.loads.ltl);
+      loads = loadService.getLoads();
+      loads = loadService.getLoads().ftl.concat(loads.ltl);
 
       //console.log("loads = " + JSON.stringify(loads));
       $scope.tableParams.reload();
     };
 
 
-    $scope.updateTable();
+    $scope.fetch();
   });

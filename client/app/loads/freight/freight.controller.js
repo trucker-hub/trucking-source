@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('FreightCtrl', function ($rootScope, $scope, $http) {
+  .controller('FreightCtrl', function ($rootScope, $scope, $http, loadService) {
 
 
     var vm = this;
@@ -29,21 +29,18 @@ angular.module('servicesApp')
       }
     };
 
-
-    var extractConstantsFromRootScope = function () {
-      vm.packagings = $rootScope.loadConstants.ltl.packagings;
-      vm.toServices = $rootScope.loadConstants.ltl.toServices;
-      vm.fromServices = $rootScope.loadConstants.ltl.fromServices;
-
-      console.log("toServices =" + JSON.stringify(vm.toServices));
-    };
-
     vm.loadConstants = function() {
-      if($rootScope.loadConstants) {
-        extractConstantsFromRootScope();
-      }else {
-        $scope.$parent.loadConstants(extractConstantsFromRootScope);
-      }
+
+      loadService.fetchConstants(
+        function() {
+          vm.packagings = loadService.loadConstants.ltl.packagings;
+          vm.toServices = loadService.loadConstants.ltl.toServices;
+          vm.fromServices = loadService.loadConstants.ltl.fromServices;
+        },
+        function() {
+          console.log("loading constants failed");
+        });
+
     };
     vm.addLine = function () {
       vm.freight.lines.push({
@@ -106,38 +103,7 @@ angular.module('servicesApp')
     };
 
     vm.computeClass = function(line) {
-      if(line.width && line.length && line.height && line.weight) {
-        var density = line.weight * 1728.0 / (line.width * line.length * line.height);
-        console.log("density = " + density);
-        if(density < 1) {
-          line.freightClass= 400;
-        }else if (density < 2) {
-          line.freightClass= 300;
-        } else if (density < 4) {
-          line.freightClass= 250;
-        } else if (density < 6) {
-          line.freightClass =250;
-        } else if (density < 8) {
-          line.freightClass = 125;
-        } else if (density < 10) {
-          line.freightClass = 100;
-        } else if (density < 12) {
-          line.freightClass = 92.5;
-        } else if (density < 15 ) {
-          line.freightClass = 85;
-        } else if (density < 15 ) {
-          line.freightClass = 85;
-        } else if (density < 22.5) {
-          line.freightClass = 70;
-        } else if (density < 30) {
-          line.freightClass = 65;
-        } else if (density >= 30) {
-          line.freightClass = 60;
-        }
-      } else {
-        line.freightClass = -1;
-      }
-
+      loadService.computeClass(line);
       vm.change();
     };
 

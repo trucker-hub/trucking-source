@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('FtlCtrl', function ($rootScope, $scope, $http) {
+  .controller('FtlCtrl', function ($rootScope, $scope, $http, loadService) {
 
 
     var vm = this;
@@ -27,21 +27,17 @@ angular.module('servicesApp')
         vm.load.expectedBy.setDate(vm.load.expectedBy.getDate() + 2);
       }
     };
-
-
-    var extractConstantsFromRootScope = function () {
-      vm.packagings = $rootScope.loadConstants.ftl.packagings;
-      vm.toLocationTypes = $rootScope.loadConstants.ftl.toLocationTypes;
-      vm.fromLocationTypes = $rootScope.loadConstants.ftl.fromLocationTypes;
-      vm.trailerTypes = $rootScope.loadConstants.ftl.trailerTypes;
-    };
-
     vm.loadConstants = function() {
-      if($rootScope.loadConstants) {
-        extractConstantsFromRootScope();
-      }else {
-        $scope.$parent.loadConstants(extractConstantsFromRootScope);
-      }
+      loadService.fetchConstants(
+        function() {
+          vm.packagings =       loadService.loadConstants.ftl.packagings;
+          vm.toLocationTypes =  loadService.loadConstants.ftl.toLocationTypes;
+          vm.fromLocationTypes = loadService.loadConstants.ftl.fromLocationTypes;
+          vm.trailerTypes =      loadService.loadConstants.ftl.trailerTypes;
+        },
+        function() {
+          console.log("loading constants failed");
+        });
     };
     vm.addLine = function () {
       vm.load.lines.push({
@@ -64,14 +60,14 @@ angular.module('servicesApp')
     vm.isNew = function() {
       return vm.load._id == -2;
     };
-      vm.change = function() {
-        vm.load.changed = true;
-      };
+    vm.change = function() {
+      vm.load.changed = true;
+    };
 
 
     vm.close = function() {
       $scope.$parent.closeTab(vm.load._id, 'FTL', false);
-    }
+    };
 
     vm.delete = function() {
       $http.delete('/api/load/ftl-loads/'+vm.load._id).then(
