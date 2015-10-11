@@ -107,7 +107,6 @@ angular.module('servicesApp')
       vm.change();
     };
 
-
     vm.submit = function() {
       console.log("updating ltl load = " + JSON.stringify(vm.freight));
       //populate location with raw data.
