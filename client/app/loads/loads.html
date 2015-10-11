@@ -7,9 +7,9 @@
             <br>
             <div class="row">
                 <div class="col-md-9">
-                    <button class="btn btn-sm btn-default" type="button" ng-click="newFTLLoad()">Create FTL load</button>
-                    <button class="btn btn-sm btn-default" type="button" ng-click="newFreightLoad()">Create LTL load</button>
-                    <button class="btn btn-sm btn-default" type="button" ng-click="newAirLoad()">Create Air load</button>
+                    <button class="btn btn-sm btn-default" type="button" ng-click="newFTLLoad()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> FTL load</button>
+                    <button class="btn btn-sm btn-default" type="button" ng-click="newFreightLoad()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> LTL load</button>
+                    <button class="btn btn-sm btn-default" type="button" ng-click="newAirLoad()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Air load</button>
                 </div>
                 <div class="col-md-3" ng-hide="true">
                     <button style="float:right" class="btn btn-sm btn-primary" type="button" ng-click="loadLoads()"><span class="glyphicon glyphicon-refresh"></span></button>
@@ -42,7 +42,7 @@
                         <span>{{load.description}}</span>
                     </td>
                     <td data-title="'Edit'">
-                        <a><span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="editLoad(load._id, load.loadType)"></span></a>
+                        <a ng-click="editLoad(load._id, load.loadType)"><i class="fa fa-pencil-square-o fa-lg"></i></a>
                     </td>
                 </tr>
             </table>
