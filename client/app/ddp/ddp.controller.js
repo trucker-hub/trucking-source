@@ -16,6 +16,9 @@ angular.module('servicesApp')
       {ddp:0,  dutyRate:0.0}
     ];
 
+    $scope.maxMPF = 485;
+    $scope.minMPF = 25;
+
     var sum = function(a, b) {
       return a + b;
     };
@@ -52,8 +55,8 @@ angular.module('servicesApp')
         return row.duty;
       }).reduce(sum);
 
-      $scope.totalMPF = Math.min(485, $scope.totalMPF);
-      $scope.totalMPF = Math.max(25, $scope.totalMPF);
+      $scope.totalMPF = Math.min($scope.maxMPF, $scope.totalMPF);
+      $scope.totalMPF = Math.max($scope.minMPF, $scope.totalMPF);
 
       console.log(" reduced result " + $scope.totalHMF +"," + $scope.totalMPF + "," + $scope.totalDuty);
       $scope.sum = $scope.totalHMF + $scope.totalMPF + $scope.totalDuty;
