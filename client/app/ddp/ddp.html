@@ -39,7 +39,7 @@
       <th class="col-md-1">Duty</th>
       <th class="col-md-1">HMF Duty</th>
       <th class="col-md-1">MPF</th>
-      <th class="col-md-2">Sub Total</th>
+      <th class="col-md-2">Sub Total By Line</th>
     </tr>
     <tr ng-repeat="row in rows">
       <td><input type="text" class="form-control" ng-model="row.ddp" placeholder="0.00" ng-change="calc()"></td>
@@ -52,11 +52,15 @@
       <td>{{row.subTotal | currency:$:2}}</td>
     </tr>
     <tr>
-      <th colspan="4" align="right"></th>
-      <td>Duty: {{totalDuty | currency:$:2}}</td>
+      <td colspan="4" align="right">Sub Total By Category</td>
+      <td>{{totalDuty | currency:$:2}}</td>
       <td>{{totalHMF | currency:$:2}}</td>
       <td>{{totalMPF | currency:$:2}}</td>
-      <td>Total Duty:<b>{{sum | currency:$:2}}</b></td>
+      <td></td>
+    </tr>
+    <tr>
+        <td colspan="7" align="right">Total Duty</td>
+        <td><b>{{sum | currency:$:2}}</b></td>
     </tr>
   </table>
   </div>
