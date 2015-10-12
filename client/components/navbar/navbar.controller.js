@@ -49,7 +49,12 @@ angular.module('servicesApp')
         'title': 'Playground',
         'link': '/playground',
         'alwaysShow': true
-      }
+      },
+        {
+            'title': 'Map',
+            'link': '/map',
+            'alwaysShow': true
+        }
 
 
     ];

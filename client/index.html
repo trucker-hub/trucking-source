@@ -41,6 +41,7 @@
       <link rel="stylesheet" href="app/loads/loads.css">
       <link rel="stylesheet" href="app/location/location.css">
       <link rel="stylesheet" href="app/main/main.css">
+      <link rel="stylesheet" href="app/playground/map/map.css">
       <link rel="stylesheet" href="app/playground/playground.css">
       <link rel="stylesheet" href="app/sourcing/invoice/invoice.css">
       <link rel="stylesheet" href="app/sourcing/sourcing.css">
@@ -84,6 +85,7 @@
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+
     <!-- build:js({client,node_modules}) app/vendor.js -->
       <!-- bower:js -->
       <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -105,6 +107,8 @@
       <script src="bower_components/ng-csv/build/ng-csv.min.js"></script>
       <script src="bower_components/ng-table/dist/ng-table.min.js"></script>
       <script src="bower_components/ngprogress/build/ngProgress.js"></script>
+      <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.min.js"></script>
+      <script src="bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
       <!-- endbower -->
     <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -146,6 +150,8 @@
           <script src="app/location/shipping-weight-filter/shipping-weight-filter.filter.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
+          <script src="app/playground/map/map.controller.js"></script>
+          <script src="app/playground/map/map.js"></script>
           <script src="app/playground/playground.controller.js"></script>
           <script src="app/playground/playground.js"></script>
           <script src="app/services/load/load.service.js"></script>
