@@ -54,6 +54,12 @@ angular.module('servicesApp')
             'title': 'Map',
             'link': '/map',
             'alwaysShow': true
+        },
+
+        {
+            'title': 'Charts',
+            'link': '/charts',
+            'alwaysShow': true
         }
 
 

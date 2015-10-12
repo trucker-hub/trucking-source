@@ -18,7 +18,7 @@ angular.module('servicesApp', [
   'ngCsv',
   'ngCsvImport',
   'google.places',
-  'AngularPrint', 'uiGmapgoogle-maps'
+  'AngularPrint', 'uiGmapgoogle-maps', 'nvd3'
 ])
   .directive('onReadFile', function ($parse) {
     return {
