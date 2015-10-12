@@ -73,7 +73,7 @@ angular.module('servicesApp')
       }
 
       if(update) {
-        $scope.loadLoads(type);
+        $scope.fetch(type);
       }
     };
 
