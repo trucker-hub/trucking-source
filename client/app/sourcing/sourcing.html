@@ -12,7 +12,7 @@
     <div class="panel-body">
       <table ng-table="tableParamsLoads" show-filter="true" class="table table-responsive table-hover table-condensed">
 
-        <tr ng-repeat="load in $data" ng-click="select(load)" ng-class="{'success':load==selectedLoad}">
+        <tr ng-repeat="load in $data" ng-click="selectLoad(load)" ng-class="{'success':load==selectedLoad}">
           <td data-title="'Type'"><load-type type="load.loadType"></load-type></td>
           <td data-title="'Shipper'" filter="{ 'who': 'text' }">
             {{load.who}}
