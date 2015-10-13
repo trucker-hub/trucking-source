@@ -42,7 +42,7 @@
       <th class="col-md-2">Sub Total By Line</th>
     </tr>
     <tr ng-repeat="row in rows">
-      <td><input type="text" class="form-control" ng-model="row.ddp" placeholder="0.00" ng-change="calc()"></td>
+      <td><input type="number" class="form-control" ng-model="row.ddp" placeholder="0.00" ng-change="calc()"></td>
       <td>{{row.adjusted | currency:$:2}}</td>
       <td>{{row.fob | currency:$:2}}</td>
       <td><input type="number" class="form-control" ng-model="row.dutyRate" placeholder="0.00" ng-change="calc()"></td>

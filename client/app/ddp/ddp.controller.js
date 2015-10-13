@@ -10,32 +10,31 @@ angular.module('servicesApp')
     $scope.hmf= 0.00125;
     $scope.mpf = 0.003464;
     $scope.rows = [
-      {ddp:0,  dutyRate:0.0},
-      {ddp:0,  dutyRate:0.0},
-      {ddp:0,  dutyRate:0.0},
-      {ddp:0,  dutyRate:0.0}
+      {ddp:0.0,  dutyRate:0.0},
+      {ddp:0.0,  dutyRate:0.0},
+      {ddp:0.0,  dutyRate:0.0},
+      {ddp:0.0,  dutyRate:0.0}
     ];
 
     $scope.maxMPF = 485;
     $scope.minMPF = 25;
+
 
     var sum = function(a, b) {
       return a + b;
     };
     $scope.calc = function() {
 
-      var totalDDP = $scope.rows.map(function(row) {
+      var index;
+      $scope.totalDDP =  $scope.rows.map(function(row) {
         return row.ddp;
       }).reduce(sum);
 
-
       $scope.totalFees = $scope.freightFee+ $scope.brokerageFee + $scope.insuranceFee;
 
-      console.log("total DDP=" + totalDDP + " total Fee=" + $scope.totalFees);
-      var index;
       for(index=0; index <$scope.rows.length; ++index) {
         var row = $scope.rows[index];
-        row.adjusted = row.ddp - ($scope.totalFees*row.ddp)/totalDDP;
+        row.adjusted = row.ddp - ($scope.totalFees*row.ddp)/$scope.totalDDP;
         row.fob = row.adjusted / (1 + row.dutyRate + $scope.hmf + $scope.mpf);
         row.duty = row.fob * row.dutyRate;
         row.hmfDuty = row.fob * $scope.hmf;
