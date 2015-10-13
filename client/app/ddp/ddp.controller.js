@@ -35,8 +35,8 @@ angular.module('servicesApp')
       for(index=0; index <$scope.rows.length; ++index) {
         var row = $scope.rows[index];
         row.adjusted = row.ddp - ($scope.totalFees*row.ddp)/$scope.totalDDP;
-        row.fob = row.adjusted / (1 + row.dutyRate + $scope.hmf + $scope.mpf);
-        row.duty = row.fob * row.dutyRate;
+        row.fob = row.adjusted / (1 + row.dutyRate*0.01 + $scope.hmf + $scope.mpf);
+        row.duty = row.fob * row.dutyRate*0.01;
         row.hmfDuty = row.fob * $scope.hmf;
         row.mpfDuty = row.fob * $scope.mpf;
         row.subTotal = row.duty + row.hmfDuty + row.mpfDuty;
