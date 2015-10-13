@@ -126,13 +126,15 @@
     </form>
   </div>
   <div class="row">
-    <div class="col-md-3">
-      <button style="float:left" ng-hide="freightCtrl.isNew()" class="btn btn-danger" type="button" ng-click="freightCtrl.delete()">DELETE</button>
-    </div>
-    <div class="col-md-9">
-      <button style="float:left" class="btn  btn-default" type="button" ng-click="freightCtrl.close()">Close</button>
-      <button style="float:right" class="btn  btn-default" type="button" ng-disabled="locationForm.$invalid || !freightCtrl.freight.changed" ng-click="freightCtrl.submit()">Submit</button>
-    </div>
+      <div class="col-md-3"><a class="btn btn-danger" ng-click="freightCtrl.delete()"><i class="fa fa-trash-o fa-lg"></i> Delete</a>
+      </div>
+      <div class="col-md-9">
+          <div style="float:right">
+              <button  type="button" class="btn btn-default" ng-click="freightCtrl.close()"> <i class="fa fa-times fa-lg"></i> Close</button>
+              <button  type="button" class="btn btn-default" ng-click="freightCtrl.submit()"
+                       ng-disabled="locationForm.$invalid || !freightCtrl.load.changed"> <i class="fa fa-floppy-o fa-lg"></i> Save</button>
+          </div>
+      </div>
   </div>
   <div>
   </div>

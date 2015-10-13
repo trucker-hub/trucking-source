@@ -33,8 +33,6 @@ angular.module('servicesApp')
       $scope.closeTab(company._id);
     };
 
-
-
     $scope.closeTab = function(id) {
       delete $rootScope.companiesOpened[id];
     };
@@ -42,6 +40,7 @@ angular.module('servicesApp')
     $scope.saveCompany = function(company, successCallback, errorCallback) {
       truckingCompany.save(company,
         function(response) {
+          $scope.closeTab(company._id);
           successCallback(response);
           $scope.alerts.push({ type: 'success', msg: 'company info was just saved succesfully!' });
         },

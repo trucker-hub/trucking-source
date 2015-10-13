@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope, $scope, $http, $modal) {
+angular.module('servicesApp').controller('CompanyLtlCtrl', function ($scope, truckingCompany) {
 
   var vm = this;
 
@@ -35,4 +35,12 @@ angular.module('servicesApp').controller('CompanyLtlCtrl', function ($rootScope,
   vm.getState = function(item) {
     return item.state;
   };
+
+  vm.editCharges = function() {
+    truckingCompany.openChargesDialog(vm.freight,
+        function() {
+          vm.change();
+        },
+        function() {}
+    )};
 });

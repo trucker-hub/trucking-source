@@ -60,7 +60,6 @@ var byZoneSubSchema = {
   }]
 };
 
-
 var TruckingCompanySchema = new Schema({
   name: String,
   favorite: Boolean,
@@ -75,6 +74,10 @@ var TruckingCompanySchema = new Schema({
     pierPassFee: Number,
     cleaningTruckFee: Number,
     congestionFee: Number,
+      additionalCharges: [{
+          name: String,
+          charge: Number
+      }],
     regions: [{
       state: String,
       county: String
@@ -101,6 +104,7 @@ var TruckingCompanySchema = new Schema({
     liftGateCharge: Number,
     insideCharge: Number,
     tradeShowCharge: Number,
+    upstairsCharge: Number,
     additionalCharges: [{
       name: String,
       charge: Number
@@ -125,6 +129,7 @@ var TruckingCompanySchema = new Schema({
     liftGateCharge: Number,
     insideCharge: Number,
     tradeShowCharge: Number,
+    upstairsCharge: Number,
     additionalCharges: [{
       name: String,
       charge: Number

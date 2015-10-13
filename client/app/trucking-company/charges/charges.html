@@ -1,0 +1,43 @@
+<div class="modal-header">
+    <span class="modal-title"><b>Additional Service Charges</b></span>
+    <div style="float:right"> <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancel()"></span></div>
+</div>
+<div class="modal-body">
+
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th class="col-md-8">Description</th>
+            <th class="col-md-3">Charge</th>
+            <th class="col-md-1"></th>
+        </tr>
+        <tr ng-repeat="c in charges track by $index">
+            <td>{{$index+1}}:</td>
+            <td><input type="text" ng-model="c.name" class="form-control" required></td>
+            <td>
+                <div class="input-group">
+                    <div class="input-group-addon">$</div>
+                    <input  type="number" class="form-control" size="5"
+                           ng-model="c.charge"
+                           placeholder="00.00" required>
+                </div>
+            </td>
+            <th><a ng-click="delete($index)"><i class="fa fa-times fa-lg"></i></a></th>
+        </tr>
+        <tr>
+            <td>{{charges.length+1}}</td>
+            <td><input type="text" ng-model="name" class="form-control"></td>
+            <td>                <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input  type="number" class="form-control" size="5"
+                        ng-model="charge"
+                        placeholder="00.00" required>
+            </div></td>
+            <td><a ng-click="add()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a> </td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button style="float:left" class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+    <button style="float:right" class="btn btn-primary" type="button" ng-click="ok()">Save</button>
+</div>

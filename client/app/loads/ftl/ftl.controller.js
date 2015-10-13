@@ -8,7 +8,7 @@ angular.module('servicesApp')
     vm.packagings = [];
 
     vm.init = function(load) {
-      console.log("initialize controller for load = " + JSON.stringify(load));
+      //console.log("initialize controller for load = " + JSON.stringify(load));
       vm.load = load;
       if(vm.load._id!=-2 ) {
         vm.load.shipTo.location.raw = vm.load.shipTo.location.full_address;
@@ -84,7 +84,7 @@ angular.module('servicesApp')
 
     vm.submit = function() {
 
-      console.log("updating load = " + JSON.stringify(vm.load));
+      //console.log("updating load = " + JSON.stringify(vm.load));
       //populate location with raw data.
 
       var id = vm.load._id;

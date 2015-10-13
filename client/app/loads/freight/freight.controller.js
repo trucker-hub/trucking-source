@@ -9,7 +9,7 @@ angular.module('servicesApp')
     vm.packagings = [];
 
     vm.init = function(load) {
-      console.log("initialize controller for load = " + JSON.stringify(load));
+      //console.log("initialize controller for load = " + JSON.stringify(load));
       vm.freight = load;
       if(vm.freight._id!=-1 ) {
         vm.freight.shipTo.location.raw = load.shipTo.location.full_address;
@@ -76,7 +76,7 @@ angular.module('servicesApp')
       $http.delete('/api/load/ltl-loads/'+vm.freight._id).then(
 
           function(response) {
-            console.log("request saved succesfully " + response);
+            //console.log("request saved succesfully " + response);
             $scope.$parent.closeTab(vm.freight._id, 'LTL', true);
           },
           function(err) {
@@ -108,7 +108,7 @@ angular.module('servicesApp')
     };
 
     vm.submit = function() {
-      console.log("updating ltl load = " + JSON.stringify(vm.freight));
+      //console.log("updating ltl load = " + JSON.stringify(vm.freight));
       //populate location with raw data.
 
       var id = vm.freight._id;

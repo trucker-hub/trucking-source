@@ -3,6 +3,29 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
+var serviceSubSchema = {
+    location: {
+        full_address:     String,
+        state:      {type: String, required: true},
+        county:     {type: String, required: true},
+        city:       {type: String, required: true},
+        zipCode:    {type: String, required: true},
+        warehouse:  { type: Schema.Types.ObjectId, ref: 'Warehouse' }
+    },
+    services: [{service: {
+        type: String,
+        enum: [
+            'Inside',
+            'LifeGate',
+            'TradeShow',
+            'Residential',
+            'Upstairs',
+            'OffHours',
+            'Weekends',
+            'Holidays'
+        ]}}]
+};
+
 var LtlLoadSchema = new Schema({
 
   status: {
@@ -21,48 +44,8 @@ var LtlLoadSchema = new Schema({
   email:String,
   expectedBy: Date,
   notes: String,
-  shipTo: {
-    location: {
-      full_address:     String,
-      state:      {type: String, required: true},
-      county:     {type: String, required: true},
-      city:       {type: String, required: true},
-      zipCode:    {type: String, required: true},
-        warehouse:  { type: Schema.Types.ObjectId, ref: 'Warehouse' }
-    },
-    services: [{service: {
-      type: String,
-      enum: [
-        'Inside',
-        'LifeGate',
-        'TradeShow',
-        'Residential',
-        'OffHours',
-        'Weekends',
-        'Holidays'
-      ]}}]
-  },
-  shipFrom: {
-    location: {
-      full_address:     String,
-      state:      {type: String, required: true},
-      county:     {type: String, required: true},
-      city:       {type: String, required: true},
-      zipCode:    {type: String, required: true},
-      warehouse:  { type: Schema.Types.ObjectId, ref: 'Warehouse' }
-    },
-    services: [{service: {
-      type: String,
-      enum: [
-        'Inside',
-        'LifeGate',
-        'TradeShow',
-        'Residential',
-        'OffHours',
-        'Weekends',
-        'Holidays'
-      ]}}]
-  },
+  shipTo: serviceSubSchema,
+  shipFrom: serviceSubSchema,
   lines: [{
     weight: Number,
     quantity: Number,

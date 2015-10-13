@@ -148,12 +148,14 @@
   </form>
 </div>
 <div class="row">
-  <div class="col-md-3">
-    <button style="float:left" ng-hide="ftlCtrl.isNew()" class="btn btn-danger" type="button" ng-click="ftlCtrl.delete()">DELETE</button>
+  <div class="col-md-3"><a class="btn btn-danger" ng-click="ftlCtrl.delete()"><i class="fa fa-trash-o fa-lg"></i> Delete</a>
   </div>
   <div class="col-md-9">
-    <button style="float:left" class="btn btn-default" type="button" ng-click="ftlCtrl.close()">Close</button>
-    <button style="float:right" class="btn btn-default" type="button" ng-disabled="locationForm.$invalid || !ftlCtrl.load.changed" ng-click="ftlCtrl.submit()">Submit</button>
+      <div style="float:right">
+      <button  type="button" class="btn btn-default" ng-click="ftlCtrl.close()"> <i class="fa fa-times fa-lg"></i> Close</button>
+      <button  type="button" class="btn btn-default" ng-click="ftlCtrl.submit()"
+              ng-disabled="locationForm.$invalid || !ftlCtrl.load.changed"> <i class="fa fa-floppy-o fa-lg"></i> Save</button>
+      </div>
   </div>
 </div>
 <div>

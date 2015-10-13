@@ -3,6 +3,25 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
+var serviceSubSchema = {
+    location: {
+        full_address:     String,
+        state:      {type: String, required: true},
+        county:     {type: String, required: true},
+        city:       {type: String, required: true},
+        zipCode:    {type: String, required: true}
+    },
+    locationType: {
+        type: String, required: true,
+        enum: [
+            'Business with Dock/Fork',
+            'Business without Dock/Fork',
+            'Convention center or Tradeshow',
+            'Residential',
+            'Freight Carrier Terminal'
+        ],
+        default: 'Business with Dock/Fork'}
+};
 
 var FtlLoadSchema = new Schema({
   status: {
@@ -21,45 +40,8 @@ var FtlLoadSchema = new Schema({
   email:String,
   expectedBy: Date,
   notes: String,
-  shipTo: {
-    location: {
-      full_address:     String,
-      state:      {type: String, required: true},
-      county:     {type: String, required: true},
-      city:       {type: String, required: true},
-      zipCode:    {type: String, required: true}
-    },
-    locationType: {
-      type: String, required: true,
-      enum: [
-        'Business with Dock/Fork',
-        'Business without Dock/Fork',
-        'Convention center or Tradeshow',
-        'Residential',
-        'Freight Carrier Terminal'
-      ],
-      default: 'Business with Dock/Fork'}
-  },
-  shipFrom: {
-    location: {
-      full_address:     String,
-      state:      {type: String, required: true},
-      county:     {type: String, required: true},
-      city:       {type: String, required: true},
-      zipCode:    {type: String, required: true}
-    },
-    locationType: {
-      type: String, required: true,
-      enum: [
-        'Port',
-        'Business with Dock/Fork',
-        'Business without Dock/Fork',
-        'Convention center or Tradeshow',
-        'Residential',
-        'Freight Carrier Terminal'
-      ],
-      default: 'Port'}
-  },
+  shipTo: serviceSubSchema,
+  shipFrom: serviceSubSchema,
   lines: [{
     weight: Number,
     quantity: Number,
@@ -124,7 +106,7 @@ var FtlLoadSchema = new Schema({
   deliveryOrder: {
     email: String,
     phone: String,
-    instructions: String,
+    instructions: String
   }
 
 

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('CompanyDetailsCtrl', function ($rootScope, $scope, $http, $modal) {
+  .controller('CompanyDetailsCtrl', function ($rootScope, $scope, $http, truckingCompany) {
 
     console.log("open a edit window for company");
 
@@ -14,23 +14,16 @@ angular.module('servicesApp')
     };
 
 
-    vm.regions = $rootScope.regions || [];
+    vm.regions =  [];
     vm.refreshRegions = function() {
-      if(vm.regions.length > 0) {
-        return;
-      }
-      return $http.get('/api/geoservice/regions'
-      ).then(function(response) {
-          vm.regions = response.data;
-          $rootScope.regions = vm.regions;
-          console.log("result = " + JSON.stringify(response.data));
-        },
-
-        function(response) {
-          console.log("Error=" + response);
-        }
+      truckingCompany.fetchRegions(
+          function() {
+            vm.regions = truckingCompany.getRegions();
+          },
+          function() {
+            console.log("can't get the list of the pre-defined regions");
+          }
       );
-
     };
 
     vm.change = function() {
@@ -46,10 +39,8 @@ angular.module('servicesApp')
     vm.save = function() {
       $scope.$parent.saveCompany(vm.company,
         function(response) {
-          vm.company.changed = false;
-          vm.lastCopy = angular.copy(vm.company);
           vm.company = response.data;
-          console.log("saved company as " + JSON.stringify(response.data));
+          vm.company.changed = false;
         },
         function(response) {
           vm.company.changed = true;
@@ -61,15 +52,4 @@ angular.module('servicesApp')
       $scope.$parent.deleteCompany(vm.company);
     };
 
-    vm.loadFTL = function() {
-      $http.get("/api/trucking-companies/" + vm.company._id).then(
-        function(response) {
-          console.log(JSON.stringify(response.data));
-          vm.company.ftl = response.data.ftl;
-        },
-        function(response) {
-          console.log("ran into error " + response);
-
-        });
-    };
   });

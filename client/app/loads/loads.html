@@ -50,13 +50,13 @@
 
         <tab ng-repeat="(id, item) in loadsOpened.ftl" active="item.active">
             <tab-heading><load-type type="item.data.loadType"></load-type>
-              <span>{{item.data.who }}</span>&nbsp<a><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="closeTab(id, 'FTL')"></span></a>
+              <span>{{item.data.who }}</span>&nbsp<a ng-click="closeTab(id, 'FTL')"><i class="fa fa-times fa-lg"></i></a>
             </tab-heading>
             <div ng-include="'app/loads/ftl/ftl.html'" ng-controller="FtlCtrl as ftlCtrl" ng-init="ftlCtrl.init(item.data)"></div>
         </tab>
       <tab ng-repeat="(id, item) in loadsOpened.ltl" active="item.active">
         <tab-heading><load-type type="item.data.loadType"></load-type>
-          <span>{{item.data.who }}</span>&nbsp<a><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="closeTab(id, 'LTL')"></span></a></tab-heading>
+          <span>{{item.data.who }}</span>&nbsp<a ng-click="closeTab(id, 'LTL')"><i class="fa fa-times fa-lg"></i></a></tab-heading>
         <div ng-include="'app/loads/freight/freight.html'" ng-controller="FreightCtrl as freightCtrl" ng-init="freightCtrl.init(item.data)"></div>
       </tab>
 
