@@ -78,13 +78,17 @@
             </td>
         </tr>
         <tr>
-            <td><button type="button" class="btn btn-danger" ng-click="dCtrl.delete()">DELETE</button></td>
             <td>
-                <div style="float: left"><button type="button" class="btn btn-default" ng-click="dCtrl.cancel()">Close without Saving</button></div>
-                <div style="float:right">
-                    <button type="button" class="btn btn-default" ng-click="dCtrl.save()"
-                            ng-class="{'disabled': !companyInfo.$valid || !dCtrl.company.changed }">Save Company Info
-                    </button>
+              <a class="btn btn-danger" ng-click="dCtrl.delete()">
+                <i class="fa fa-trash-o fa-lg"></i> Delete</a>
+            </td>
+            <td>
+
+                <div style="float: right">
+                  <button type="button" class="btn btn-default" ng-click="dCtrl.cancel()"> <i class="fa fa-times fa-lg"></i> Close</button>
+                  <button type="button" class="btn btn-default" ng-click="dCtrl.save()"
+                            ng-class="{'disabled': !companyInfo.$valid || !dCtrl.company.changed }"> <i class="fa fa-floppy-o fa-lg"></i> Save
+                  </button>
                 </div>
             </td>
             <td></td>
