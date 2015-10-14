@@ -92,7 +92,8 @@ angular.module('servicesApp')
           name: source.name,
           source: source.id,
           charge: source.totalCost,
-          costItems: source.costItems
+          costItems: source.costItems,
+          additionalCharges: source.additionalCharges
         };
         vm.recalcAdjustment(load);
       }else {
@@ -101,7 +102,8 @@ angular.module('servicesApp')
           name: "",
           source: null,
           charge: null,
-          costItems: []
+          costItems: [],
+          additionalCharges: []
         }
       }
     };

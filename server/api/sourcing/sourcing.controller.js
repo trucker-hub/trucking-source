@@ -12,7 +12,19 @@ var calcCosts = function(load, company) {
   }else {
     return freightCalculator.calc(load, company);
   }
-}
+};
+
+var getAdditionalCharges = function(type, company) {
+  var result = [];
+  if(type=='FTL') {
+    result = company.ftl.additionalCharges;
+  }else if(type=='LTL'){
+    result = company.ltl.additionalCharges;
+  }else if (type=='AIR') {
+    result = company.air.additionalCharges;
+  }
+  return result;
+};
 
 // Get list of sourcings
 exports.index = function(req, res) {
@@ -43,9 +55,15 @@ exports.index = function(req, res) {
     var x;
     var sources = companies.map(function(company) {
       var cost = calcCosts(load, company);
-      return {name: company.name,
-        totalCost: cost.totalCost, costItems:cost.costItems,
-        time:2, contact: company.phone, location: company.location, id: company._id};
+      return {
+        name: company.name,
+        totalCost: cost.totalCost,
+        costItems:cost.costItems,
+        additionalCharges: getAdditionalCharges(load.loadType, company),
+        time:2,
+        contact: company.phone,
+        location: company.location,
+        id: company._id};
     }).sort(function(a, b) {
       if(a.totalCost > b.totalCost) return 1;
       if(a.totalCost < b.totalCost) return -1;

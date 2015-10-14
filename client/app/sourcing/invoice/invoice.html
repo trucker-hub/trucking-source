@@ -27,6 +27,12 @@
             </tr>
         </table>
     </div>
+
+    <p>Additional Applicable Charges</p>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="charge in load.fulfilledBy.additionalCharges">{{charge.name}}: {{charge.charge | currency:"$":2}}</li>
+    </ul>
+
 </div>
 <div class="modal-footer" print-hide="">
     <button style="float:left" class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
