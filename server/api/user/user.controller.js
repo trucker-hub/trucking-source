@@ -65,7 +65,7 @@ exports.update = function(req, res, next) {
     });
   });
 
-}
+};
 
 /**
  * Deletes a user

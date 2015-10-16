@@ -28,6 +28,7 @@ angular.module('servicesApp')
           $cookieStore.put('token', data.token);
           currentUser = User.get();
           deferred.resolve(data);
+              $rootScope.$broadcast('login', "User login");
           return cb();
         }).
         error(function(err) {
@@ -151,6 +152,14 @@ angular.module('servicesApp')
        */
       isAdmin: function() {
         return currentUser.role === 'admin';
+      },
+
+      isCarrier: function() {
+        return currentUser.role === 'carrier';
+      },
+
+      isOperator: function() {
+        return currentUser.role === 'operator';
       },
 
       /**

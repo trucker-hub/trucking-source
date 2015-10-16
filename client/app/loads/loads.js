@@ -5,6 +5,7 @@ angular.module('servicesApp')
     $routeProvider
       .when('/loads', {
         templateUrl: 'app/loads/loads.html',
-        controller: 'LoadsCtrl'
+        controller: 'LoadsCtrl',
+          authenticate: true
       });
   });

@@ -12,6 +12,11 @@ exports.index = function(req, res) {
     options.status = req.query.status;
   }
 
+    var user = req.user;
+    if(user.role!='operator' && user.role !='admin') {
+        options.createdBy = user._id;
+    }
+
   if(req.query.days) {
     var time = new Date();
     time.setDate(time.getDate() - req.query.days);
@@ -36,7 +41,9 @@ exports.show = function(req, res) {
 // Creates a new ltl in the DB.
 exports.create = function(req, res) {
   console.log("req + " + JSON.stringify(req.body));
-  Ltl.create(req.body, function(err, ltl) {
+  var load = req.body;
+  load.createdBy = req.user._id;
+  Ltl.create(load, function(err, ltl) {
     if(err) {
       return handleError(res, err);
     }

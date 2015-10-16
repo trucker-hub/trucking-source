@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location) {
+  .controller('LoginCtrl', function ($scope, $rootScope, Auth, $location) {
     $scope.user = {};
     $scope.errors = {};
 

@@ -39,6 +39,7 @@ var LtlLoadSchema = new Schema({
     default: 'OPEN'},
 
   who: String,
+    createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
   loadType:  { type: String, default: 'LTL'},
   createdAt: { type: Date, required: true, default: Date.now },
   email:String,

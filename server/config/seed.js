@@ -780,7 +780,16 @@ User.find({}).remove(function () {
             name: 'Test User',
             email: 'test@test.com',
             password: 'test'
-        }, {
+        },
+        {
+            provider: 'local',
+            name: 'Operation',
+            role: 'operator',
+            email: 'operator@test.com',
+            password: 'test'
+        },
+
+        {
             provider: 'local',
             role: 'admin',
             name: 'Admin',

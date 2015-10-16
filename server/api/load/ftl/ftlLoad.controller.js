@@ -9,9 +9,15 @@ var CounterController = require('../../counter/counter.controller');
 // Get list of ftlLoads
 exports.index = function(req, res) {
 
+    var user = req.user;
+
     var options = {}
     if(req.query.status) {
         options.status = req.query.status;
+    }
+
+    if(user.role!='operator' && user.role !='admin') {
+        options.createdBy = user._id;
     }
 
     if(req.query.days) {
@@ -52,6 +58,8 @@ exports.show = function(req, res) {
 
 // Creates a new emptyFtlLoad in the DB.
 exports.create = function(req, res) {
+    var load = req.body;
+    load.createdBy = req.user._id;
     FtlLoad.create(req.body, function(err, ftlLoad) {
         if(err) {
             console.log("error " + err);

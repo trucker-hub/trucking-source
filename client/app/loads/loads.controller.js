@@ -111,7 +111,7 @@ angular.module('servicesApp')
           $scope.updateTable();
         },
         function() {
-          console.log('ran into error ' + response);
+          console.log('ran into error ');
         });
     };
 
