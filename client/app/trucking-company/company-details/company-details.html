@@ -1,85 +1,84 @@
 <form name="companyInfo" novalidate>
-    <br>
-    <table class="table table-responsive table-striped">
-        <tr>
-            <th>Name</th>
-            <td>
-                <div ng-class="{'has-error': companyInfo.name.$invalid}">
-                    <input name="name" type="text" class="form-control" size="20" ng-model="dCtrl.company.name"
-                           placeholder="Company Name" required ng-change="dCtrl.change()"></div>
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <th>Location</th>
-            <td>
-                <div ng-class="{'has-error': companyInfo.location.$invalid}">
-                    <input name="location" type="tel" class="form-control" size="20" ng-model="dCtrl.company.location"
-                           placeholder="street, city, zip code" required ng-change="dCtrl.change()"></div>
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <th></th>
-            <td colspan="2">
-                <div class="form-inline">
-                    <div class="form-group" ng-class="{'has-error': companyInfo.phone.$invalid}">
-                        <label for="phone">Phone:</label>
-                        <input name="phone" id="phone" type="tel" class="form-control" size="13" ng-model="dCtrl.company.phone"
-                               ui-mask="(999) 999-9999" placeholder="(xxx) xxx-xxxx" required  ng-change="dCtrl.change()">
-                    </div>
-                    <div class="form-group" ng-class="{'has-error': companyInfo.fax.$invalid}">
-                        <label for="fax">FAX:</label>
-                        <input name="fax" id="fax" type="tel" class="form-control" size="13" ng-model="dCtrl.company.fax"
-                               ui-mask="(999) 999-9999" placeholder="(xxx) xxx-xxxx" required ng-change="dCtrl.change()">
-                    </div>
-                    <div class="form-group" ng-class="{'has-error': companyInfo.email.$invalid}">
-                        <label for="email">Email:</label>
-                        <input name="email" id="email" type="email" class="form-control" ng-class="" size="30" ng-model="dCtrl.company.email"
-                               placeholder="email" required ng-change="dCtrl.change()">
-                    </div>
-                </div>
+  <br>
+  <table class="table table-responsive table-striped">
+    <tr>
+      <th class="col-md-1">Name</th>
+      <td class="col-md-8">
+        <div ng-class="{'has-error': companyInfo.name.$invalid}">
+          <input name="name" type="text" class="form-control" size="20" ng-model="dCtrl.company.name"
+                 placeholder="Company Name" required ng-change="dCtrl.change()"></div>
+      </td>
+      <td class="col-md-3"></td>
+    </tr>
+    <tr>
+      <th>Location</th>
+      <td>
+        <div ng-class="{'has-error': companyInfo.location.$invalid}">
+          <input name="location" type="tel" class="form-control" size="20" ng-model="dCtrl.company.location"
+                 placeholder="street, city, zip code" required ng-change="dCtrl.change()"></div>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td colspan="2">
+        <div class="form-inline">
+          <div class="form-group" ng-class="{'has-error': companyInfo.phone.$invalid}">
+            <label for="phone">Phone:</label>
+            <input name="phone" id="phone" type="tel" class="form-control" size="13" ng-model="dCtrl.company.phone"
+                   ui-mask="(999) 999-9999" placeholder="(xxx) xxx-xxxx" required  ng-change="dCtrl.change()">
+          </div>
+          <div class="form-group" ng-class="{'has-error': companyInfo.fax.$invalid}">
+            <label for="fax">FAX:</label>
+            <input name="fax" id="fax" type="tel" class="form-control" size="13" ng-model="dCtrl.company.fax"
+                   ui-mask="(999) 999-9999" placeholder="(xxx) xxx-xxxx" required ng-change="dCtrl.change()">
+          </div>
+          <div class="form-group" ng-class="{'has-error': companyInfo.email.$invalid}">
+            <label for="email">Email:</label>
+            <input name="email" id="email" type="email" class="form-control" ng-class="" size="30" ng-model="dCtrl.company.email"
+                   placeholder="email" required ng-change="dCtrl.change()">
+          </div>
+        </div>
 
-            </td>
-        </tr>
+      </td>
+    </tr>
 
-        <tr><td colspan="3"></td></tr>
-        <tr>
-            <td colspan="3">
-                <tabset type="tabs">
-                    <tab heading="FTL rates">
-                        <br><div ng-controller="CompanyFtlCtrl as ftlCtrl"
-                                 ng-init="ftlCtrl.setCompany(dCtrl.company)"
-                                 ng-include="'app/trucking-company/company-ftl/company-ftl.html'"></div>
-                    </tab>
-                    <tab heading="LTL Freight rates">
-                        <br>
-                        <div ng-controller="CompanyLtlCtrl as ltlCtrl"
-                             ng-init="ltlCtrl.setCompany(dCtrl.company, dCtrl.company.ltl, 'LTL')"
-                             ng-include="'app/trucking-company/company-ltl/company-ltl.html'"></div>
-                    </tab>
-                    <tab heading="Air Freight rates">
-                        <br>
-                        <div ng-controller="CompanyLtlCtrl as airCtrl"
-                             ng-init="airCtrl.setCompany(dCtrl.company, dCtrl.company.air, 'Air')"
-                             ng-include="'app/trucking-company/company-air/company-air.html'"></div>
-                    </tab>
-                </tabset>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a class="btn btn-danger" ng-click="dCtrl.delete()"><i class="fa fa-trash-o fa-lg"></i> Delete</a>
-            </td>
-            <td>
-                <div style="float: right">
-                    <button type="button" class="btn btn-default" ng-click="dCtrl.cancel()"> <i class="fa fa-times fa-lg"></i> Close</button>
-                    <button type="button" class="btn btn-default" ng-click="dCtrl.save()"
-                            ng-class="{'disabled': !companyInfo.$valid || !dCtrl.company.changed }"> <i class="fa fa-floppy-o fa-lg"></i> Save
-                    </button>
-                </div>
-            </td>
-            <td></td>
-        </tr>
-    </table>
+    <tr><td colspan="3"></td></tr>
+    <tr>
+      <td colspan="3">
+        <tabset type="tabs">
+          <tab heading="FTL rates">
+            <br><div ng-controller="CompanyFtlCtrl as ftlCtrl"
+                     ng-init="ftlCtrl.setCompany(dCtrl.company)"
+                     ng-include="'app/trucking-company/company-ftl/company-ftl.html'"></div>
+          </tab>
+          <tab heading="LTL Freight rates">
+            <br>
+            <div ng-controller="CompanyLtlCtrl as ltlCtrl"
+                 ng-init="ltlCtrl.setCompany(dCtrl.company, dCtrl.company.ltl, 'LTL')"
+                 ng-include="'app/trucking-company/company-ltl/company-ltl.html'"></div>
+          </tab>
+          <tab heading="Air Freight rates">
+            <br>
+            <div ng-controller="CompanyLtlCtrl as airCtrl"
+                 ng-init="airCtrl.setCompany(dCtrl.company, dCtrl.company.air, 'Air')"
+                 ng-include="'app/trucking-company/company-air/company-air.html'"></div>
+          </tab>
+        </tabset>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a class="btn btn-danger" ng-click="dCtrl.delete()"><i class="fa fa-trash-o fa-lg"></i> Delete</a>
+      </td>
+      <td colspan="2">
+        <div style="float: right">
+          <button type="button" class="btn btn-default" ng-click="dCtrl.cancel()"> <i class="fa fa-times fa-lg"></i> Close</button>
+          <button type="button" class="btn btn-default" ng-click="dCtrl.save()"
+                  ng-class="{'disabled': !companyInfo.$valid || !dCtrl.company.changed }"> <i class="fa fa-floppy-o fa-lg"></i> Save
+          </button>
+        </div>
+      </td>
+    </tr>
+  </table>
 </form>

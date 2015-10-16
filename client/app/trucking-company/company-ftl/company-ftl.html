@@ -1,101 +1,83 @@
 <zone-definition company="ftlCtrl.company" type="'FTL'"></zone-definition>
 
 <table class="table table-condensed table-responsive">
+  <tr>
+    <th colspan="6" class="active">Weight Charges</th>
+  </tr>
+  <tr ng-repeat="weightCharge in ftlCtrl.company.ftl.overWeightCharges">
+    <th>Size <b>{{weightCharge.containerSize}}</b></th>
+    <td colspan="5">
+      <div class="row form-inline-padding" ng-repeat="range in weightCharge.ranges">
+        <div class="col-xs-4">
+          <div class="input-group">
+            <div class="input-group-addon">Over</div>
+            <input type="text" class="form-control"
+                   ng-model="range.limit" placeholder="weight">
+            <div class="input-group-addon">LBS</div>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="input-group">
+            <div class="input-group-addon"> + $</div>
+            <input type="text" class="form-control"
+                   ng-model="range.charge" placeholder="Amount" >
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
 
-    <tr>
-        <th>Serving Regions</th>
-        <td colspan="5">
-            <ui-select multiple ng-model="ftlCtrl.company.ftl.regions" ng-change="ftlCtrl.change()">
-                <ui-select-match placeholder="Select regions">{{$item.county}},
-                    {{$item.state}}
-                </ui-select-match>
-                <ui-select-choices group-by="ftlCtrl.getState"
-                                   repeat="region in dCtrl.regions | propsFilter: {county: $select.search}"
-                                   refresh="dCtrl.refreshRegions()"
-                                   refresh-delay="0">
-                    <div ng-bind-html="region.county | highlight: $select.search"></div>
-                </ui-select-choices>
-            </ui-select>
-        </td>
-    </tr>
+  <tr>
+    <th></th>
+    <th>Fuel Surcharge</th>
+    <th>Residential</th>
+    <th>Pier Pass</th>
+    <th>Cleaning Trucking Fee</th>
+    <th>Congestion Fee</th>
+  </tr>
 
-    <tr>
-        <th colspan="6" class="active">Weight Charges</th>
-    </tr>
-    <tr ng-repeat="weightCharge in ftlCtrl.company.ftl.overWeightCharges">
-        <th>Size <b>{{weightCharge.containerSize}}</b></th>
-        <td colspan="5">
-            <div class="row form-inline-padding" ng-repeat="range in weightCharge.ranges">
-                <div class="col-xs-4">
-                    <div class="input-group">
-                        <div class="input-group-addon">Over</div>
-                        <input type="text" class="form-control"
-                               ng-model="range.limit" placeholder="weight">
-                        <div class="input-group-addon">LBS</div>
-                    </div>
-                </div>
-                <div class="col-xs-3">
-                    <div class="input-group">
-                        <div class="input-group-addon"> + $</div>
-                        <input type="text" class="form-control"
-                               ng-model="range.charge" placeholder="Amount" >
-                    </div>
-                </div>
-            </div>
-        </td>
-    </tr>
-
-    <tr>
-        <th></th>
-        <th>Fuel Surcharge</th>
-        <th>Residential</th>
-        <th>Pier Pass</th>
-        <th>Cleaning Trucking Fee</th>
-        <th>Congestion Fee</th>
-    </tr>
-
-    <tr>
-        <th class="col-xs-2">Standard Charges</th>
-        <td class="col-xs-2">
-            <div ng-class="{'has-error': companyInfo.ftlSurcharge.$invalid}" class="input-group">
-                <input name="ftlSurcharge" type="text" class="form-control" size="10"
-                       ng-model="ftlCtrl.company.ftl.fuelSurcharge"
-                       placeholder="20" required ng-change="ftlCtrl.change()">
-                <div class="input-group-addon">%</div>
-            </div>
-        </td>
-        <td class="col-xs-2">
-            <div ng-class="{'has-error': companyInfo.residentialCharge.$invalid}" class="input-group">
-                <div class="input-group-addon">$</div>
-                <input name="residentialCharge" type="text" class="form-control" size="13"
-                       ng-model="ftlCtrl.company.ftl.residentialCharge"
-                       placeholder="00.00" required ng-change="ftlCtrl.change()"></div>
-        </td>
-        <td class="col-xs-2">
-            <div ng-class="{'has-error': companyInfo.pierPassCharge.$invalid}" class="input-group">
-                <div class="input-group-addon">$</div>
-                <input name="pierPassCharge" type="text" class="form-control" size="13"
-                       ng-model="ftlCtrl.company.ftl.pierPassFee"
-                       placeholder="00.00" required ng-change="ftlCtrl.change()"></div>
-        </td>
-        <td class="col-xs-2">
-            <div ng-class="{'has-error': companyInfo.cleaningTruckFee.$invalid}" class="input-group">
-                <div class="input-group-addon">$</div>
-                <input name="cleaningTruckFee" type="text" class="form-control" size="13"
-                       ng-model="ftlCtrl.company.ftl.cleaningTruckFee"
-                       placeholder="00.00" required ng-change="ftlCtrl.change()"></div>
-        </td>
-        <td class="col-xs-2">
-            <div ng-class="{'has-error': companyInfo.congestionFee.$invalid}" class="input-group">
-                <div class="input-group-addon">$</div>
-                <input name="congestionFee" type="text" class="form-control" size="13"
-                       ng-model="ftlCtrl.company.ftl.congestionFee"
-                       placeholder="00.00" required ng-change="ftlCtrl.change()"></div>
-        </td>
-    </tr>
-    <tr>
-        <th class="col-xs-2">Additional Charges</th>
-        <td colspan="5"><a ng-click="ftlCtrl.editCharges()"><i class="fa fa-cog fa-lg"></i></a> Charges applicable: {{ftlCtrl.company.ftl.additionalCharges.length}}</td>
-    </tr>
+  <tr>
+    <th class="col-xs-2">Standard Charges</th>
+    <td class="col-xs-2">
+      <div ng-class="{'has-error': companyInfo.ftlSurcharge.$invalid}" class="input-group">
+        <input name="ftlSurcharge" type="text" class="form-control" size="10"
+               ng-model="ftlCtrl.company.ftl.fuelSurcharge"
+               placeholder="20" required ng-change="ftlCtrl.change()">
+        <div class="input-group-addon">%</div>
+      </div>
+    </td>
+    <td class="col-xs-2">
+      <div ng-class="{'has-error': companyInfo.residentialCharge.$invalid}" class="input-group">
+        <div class="input-group-addon">$</div>
+        <input name="residentialCharge" type="text" class="form-control" size="13"
+               ng-model="ftlCtrl.company.ftl.residentialCharge"
+               placeholder="00.00" required ng-change="ftlCtrl.change()"></div>
+    </td>
+    <td class="col-xs-2">
+      <div ng-class="{'has-error': companyInfo.pierPassCharge.$invalid}" class="input-group">
+        <div class="input-group-addon">$</div>
+        <input name="pierPassCharge" type="text" class="form-control" size="13"
+               ng-model="ftlCtrl.company.ftl.pierPassFee"
+               placeholder="00.00" required ng-change="ftlCtrl.change()"></div>
+    </td>
+    <td class="col-xs-2">
+      <div ng-class="{'has-error': companyInfo.cleaningTruckFee.$invalid}" class="input-group">
+        <div class="input-group-addon">$</div>
+        <input name="cleaningTruckFee" type="text" class="form-control" size="13"
+               ng-model="ftlCtrl.company.ftl.cleaningTruckFee"
+               placeholder="00.00" required ng-change="ftlCtrl.change()"></div>
+    </td>
+    <td class="col-xs-2">
+      <div ng-class="{'has-error': companyInfo.congestionFee.$invalid}" class="input-group">
+        <div class="input-group-addon">$</div>
+        <input name="congestionFee" type="text" class="form-control" size="13"
+               ng-model="ftlCtrl.company.ftl.congestionFee"
+               placeholder="00.00" required ng-change="ftlCtrl.change()"></div>
+    </td>
+  </tr>
+  <tr>
+    <th class="col-xs-2">Additional Charges</th>
+    <td colspan="5">Charges applicable: {{ftlCtrl.company.ftl.additionalCharges.length}} <a ng-click="ftlCtrl.editCharges()"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> </td>
+  </tr>
 
 </table>
