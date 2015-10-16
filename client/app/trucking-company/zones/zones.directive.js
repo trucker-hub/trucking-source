@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .directive('zoneDefinition', function ($modal) {
+  .directive('zoneDefinition', function ($modal, truckingCompany) {
     return {
       templateUrl: 'app/trucking-company/zones/zones.html',
       restrict: 'E',
@@ -38,6 +38,21 @@ angular.module('servicesApp')
             scope.container = scope.company.air;
           }
           setFormBasedOnRateDefType();
+        };
+
+        scope.getState = function(item) {
+          return item.state;
+        };
+
+        scope.refreshRegions = function() {
+          truckingCompany.fetchRegions(
+            function() {
+              scope.regions = truckingCompany.getRegions();
+            },
+            function() {
+              console.log("can't get the list of the pre-defined regions");
+            }
+          );
         };
 
         scope.adaptRateForm = function(init) {

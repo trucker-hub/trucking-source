@@ -1,4 +1,21 @@
 <table class="table table-responsive table-bordered">
+
+  <tr>
+    <th>Serving Regions</th>
+    <td ng-attr-colspan="{{def.zoneRateVariables.zones.length}}">
+      <ui-select multiple ng-model="container.regions" ng-change="change()">
+        <ui-select-match placeholder="Select regions">{{$item.county}},
+          {{$item.state}}
+        </ui-select-match>
+        <ui-select-choices group-by="getState"
+                           repeat="region in regions | propsFilter: {county: $select.search}"
+                           refresh="refreshRegions()"
+                           refresh-delay="0">
+          <div ng-bind-html="region.county | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
+    </td>
+  </tr>
 <tr>
   <th>Rate based on</th>
   <td ng-attr-colspan="{{def.zoneRateVariables.zones.length}}">
