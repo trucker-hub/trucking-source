@@ -10,7 +10,6 @@ var CounterController = require('../../counter/counter.controller');
 exports.index = function(req, res) {
 
     var user = req.user;
-
     var options = {}
     if(req.query.status) {
         options.status = req.query.status;

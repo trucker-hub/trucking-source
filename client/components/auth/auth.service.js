@@ -168,5 +168,6 @@ angular.module('servicesApp')
       getToken: function() {
         return $cookieStore.get('token');
       }
+
     };
   });
