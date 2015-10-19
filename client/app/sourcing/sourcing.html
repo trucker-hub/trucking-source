@@ -52,7 +52,7 @@
         </tr>
         <tr ng-repeat-start="source in selectedLoad.sources" ng-class="{'success':source.id==selectedLoad.fulfilledBy.source}" >
           <th>
-            <i class="fa" ng-class="{'fa-check':source.id==selectedLoad.fulfilledBy.source, 'fa-lock':selectedLoad.status=='FILLED'}"></i>
+            <i class="fa" ng-class="{'fa-check':source.id==selectedLoad.fulfilledBy.source, 'fa-lock': (selectedLoad.status=='FILLED' && source.id==selectedLoad.fulfilledBy.source)}"></i>
           </th>
           <th >{{source.name}}</th>
           <td ><b>{{source.totalCost | currency:"$":2}}</b></td>
