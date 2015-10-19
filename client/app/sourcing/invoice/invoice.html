@@ -1,41 +1,42 @@
 <div class="modal-header" print-section=""> Invoice: {{load.invoice.referenceNumber}} for {{load.who}}</div>
-<div class="modal-body" print-section="">
+<div class="modal-body col-md-12" print-section="">
     <div class="panel panel-default">
         <div class="panel-heading form-group"><b>Load Information:</b> {{load.who}}</div>
         <div class="panel-body">
             <load-details load="load"></load-details>
+            <table class="table table-bordered table-condensed">
+                <tr>
+                    <th>Cost Items</th>
+                    <th>Cost Description</th>
+                    <th>Amount</th>
+                </tr>
+                <tr ng-repeat="entry in load.fulfilledBy.costItems track by $index">
+                    <td align="right">#{{$index+1}}</td>
+                    <td>{{entry.description}}</td>
+                    <td>{{entry.charge + entry.adjustment | currency:"$":2}}</td>
+                </tr>
+                <tr ng-repeat="entry in load.brokerFees track by $index">
+                    <td align="right">#{{load.fulfilledBy.costItems.length+$index+1}}</td>
+                    <td>{{entry.name}}</td>
+                    <td>{{entry.charge | currency:"$":2}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="right"><b>Total Amount</b></td>
+                    <td colspan="1">{{load.totalAmount | currency:"$":2}}</td>
+                </tr>
+            </table>
+            <br>
+            <table class="table table-condensed">
+                <tr><th colspan="2">Additional Applicable Charges</th></tr>
+                <tr ng-repeat="charge in load.fulfilledBy.additionalCharges">
+                    <td>{{charge.name}}</td><td> {{charge.charge | currency:"$":2}}</td>
+                </tr>
+            </table>
         </div>
-        <table class="table table-bordered">
-            <tr>
-                <th>Cost Items</th>
-                <th>Cost Description</th>
-                <th>Amount</th>
-            </tr>
-            <tr ng-repeat="entry in load.fulfilledBy.costItems track by $index">
-                <td align="right">#{{$index+1}}</td>
-                <td>{{entry.description}}</td>
-                <td>{{entry.charge + entry.adjustment | currency:"$":2}}</td>
-            </tr>
-            <tr ng-repeat="entry in load.brokerFees track by $index">
-                <td align="right">#{{load.fulfilledBy.costItems.length+$index+1}}</td>
-                <td>{{entry.name}}</td>
-                <td>{{entry.charge | currency:"$":2}}</td>
-            </tr>
-            <tr>
-                <td colspan="2" align="right"><b>Total Amount</b></td>
-                <td colspan="1">{{load.totalAmount | currency:"$":2}}</td>
-            </tr>
-        </table>
     </div>
-
-    <p>Additional Applicable Charges</p>
-    <ul class="list-group">
-        <li class="list-group-item" ng-repeat="charge in load.fulfilledBy.additionalCharges">{{charge.name}}: {{charge.charge | currency:"$":2}}</li>
-    </ul>
-
 </div>
 <div class="modal-footer" print-hide="">
     <button style="float:left" class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
     <button style="float:left" class="btn btn-warning" type="button" ng-disabled="sending" ng-click="sendInvoice()"><i class="fa fa-spinner" ng-class="{'fa-spin':sending}"></i> Send Invoice</button>
-    <button type="button" class="btn btn-default" print-btn><i class="fa fa-list-alt"></i> Print Invoice</button>
+    <button type="button" class="btn btn-default" print-btn=""><i class="fa fa-list-alt"></i> Print Invoice</button>
 </div>

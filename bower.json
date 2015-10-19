@@ -14,7 +14,7 @@
     "angular-ui-grid": "~3.0.4",
     "angular-ui-mask": "~1.4.5",
     "angular-ui-select": "~0.12.1",
-    "angularPrint": "angular-print#~0.3.7",
+    "angularPrint": "0.3.8",
     "bootstrap": "~3.1.1",
     "es5-shim": "~3.0.1",
     "font-awesome": "~4.4.0",
