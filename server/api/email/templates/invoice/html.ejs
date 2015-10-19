@@ -9,7 +9,7 @@
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-<h2>Invoice for <%= who %><i class="fa fa-spinner"></i></h2>
+<h2>Invoice: <%= invoice.referenceNumber%> for <%= who %><i class="fa fa-spinner"></i></h2>
 <p>Load:   <%=loadType%>, <%=shipFrom.location.state %> <%=shipFrom.location.zipCode%> ->   <%=shipTo.location.state %> <%=shipTo.location.zipCode%>
 </p>
 <table class="table table-bordered" border="1">
@@ -37,9 +37,18 @@
     <td align="right"><b>Total Amount</b></td>
     <td>$<%=totalAmount%></td>
   </tr>
+  </table>
+
+<table class="table table-condensed">
+  <tr><th colspan="2">Additional Applicable Charges</th></tr>
+  <% for(var j=0; j < fulfilledBy.additionalCharges.length; ++j) {%>
   <tr>
-    <td colspan="3">Sent from <b>Trucking-hub.com</b></td>
+    <td><%=fulfilledBy.additionalCharges[j].name %></td><td> $<%=fulfilledBy.additionalCharges[j].charge %></td>
   </tr>
+  <% };%>
 </table>
+
+<p>Sent from <b>Trucking-hub.com</b></p>
+
 </body>
 </html>
