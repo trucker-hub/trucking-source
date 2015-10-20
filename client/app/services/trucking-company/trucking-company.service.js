@@ -60,7 +60,7 @@ angular.module('servicesApp')
             }
         );
       };
-      this.save = function(company, callbackOK, callbackERR) {
+      vm.save = function(company, callbackOK, callbackERR) {
         $http.put('/api/trucking-companies/' + company._id, {company: company}).then(
             function(response) {
               callbackOK(response);
@@ -77,7 +77,7 @@ angular.module('servicesApp')
           var company = vm.list[index];
           if(company._id == id) {
             company.favorite = !company.favorite;
-            this.save(company,
+            vm.save(company,
                 function (response) {
                   console.log(JSON.stringify(response.data));
                 },
@@ -93,11 +93,11 @@ angular.module('servicesApp')
         return;
       };
 
-      this.add = function(newOne, callbackOK, callbackERR) {
+      vm.add = function(newOne, callbackOK, callbackERR) {
         $http.post("/api/trucking-companies", newOne).then(
             function(response) {
               console.log(JSON.stringify(response.data));
-              this.list.push(response.data);
+              vm.list.push(response.data);
               callbackOK(response);
             },
             function(response) {
