@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('DeliveryOrderCtrl', function ($rootScope, $scope, $http,ngTableParams, $filter, $modal, ngProgressFactory) {
+  .controller('TrackingCtrl', function ($rootScope, $scope, $http,ngTableParams, $filter, $modal, ngProgressFactory) {
 
     var loads = [];
 
@@ -70,7 +70,7 @@ angular.module('servicesApp')
     $scope.createDO = function(selectedLoad) {
       var modalInstance = $modal.open({
         animation: true,
-        templateUrl: 'app/delivery-order/do-details/do-details.html',
+        templateUrl: 'app/tracking/do-details/do-details.html',
         controller: 'DoDetailsCtrl',
         size: 'lg',
         resolve: {

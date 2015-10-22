@@ -42,8 +42,8 @@ angular.module('servicesApp')
                     'alwaysShow': menuForOperator
                 },
                 {
-                    'title': 'Delivery Orders',
-                    'link': '/delivery-order',
+                    'title': 'Tracking',
+                    'link': '/tracking',
                     'alwaysShow': menuForOperator
                 }
             ];

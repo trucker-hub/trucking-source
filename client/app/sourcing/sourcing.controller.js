@@ -99,7 +99,7 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
   $scope.createDO = function() {
     var modalInstance = $modal.open({
       animation: true,
-      templateUrl: 'app/delivery-order/do-details/do-details.html',
+      templateUrl: 'app/tracking/do-details/do-details.html',
       controller: 'DoDetailsCtrl',
       size: 'lg',
       resolve: {
