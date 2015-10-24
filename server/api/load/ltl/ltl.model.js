@@ -101,7 +101,7 @@ var LtlLoadSchema = new Schema({
       additionalCharges: [{
           name: String,
           charge: Number
-      }],
+      }]
   },
 
   invoice: {
@@ -112,7 +112,10 @@ var LtlLoadSchema = new Schema({
     email: String,
     phone: String,
     instructions: String
-  }
+  },
+    activityLog: [
+        {time: Date, activity: String}
+    ]
 });
 
 module.exports = mongoose.model('LtlLoad', LtlLoadSchema);

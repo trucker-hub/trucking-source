@@ -113,8 +113,11 @@ var FtlLoadSchema = new Schema({
     email: String,
     phone: String,
     instructions: String
-  }
+  },
 
+  activityLog: [
+    {time: Date, activity: String}
+  ]
 
 });
 module.exports = mongoose.model('FtlLoad', FtlLoadSchema);

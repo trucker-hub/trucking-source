@@ -41,9 +41,8 @@ exports.constants = function(req, res) {
         toServices: LtlLoad.schema.path('shipTo.services').schema.path("service").enumValues,
         fromServices: LtlLoad.schema.path('shipFrom.services').schema.path("service").enumValues,
         ltlPackagings: LtlLoad.schema.path('lines').schema.path('packaging').enumValues,
-    }
+    };
     return res.status(200).json(constants);
-
 };
 
 // Get a single emptyFtlLoad
@@ -78,7 +77,7 @@ var updateLoad = function(req, res, load) {
             return res.status(200).json(updated);
         });
     });
-}
+};
 // Updates an existing emptyFtlLoad in the DB.
 exports.update = function(req, res) {
     if(req.body._id) { delete req.body._id; }
