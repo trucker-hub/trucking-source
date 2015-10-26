@@ -10,7 +10,6 @@ angular.module('servicesApp')
 
     $scope.queryLoads = function(type, days) {
 
-
       $scope.progressbar.start();
 
       $rootScope.dos = { ftlLoads: null, ltlLoads: null };

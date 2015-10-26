@@ -1,1 +1,12 @@
-<img src="assets/images">
+<div class="row">
+    <div class="col-md-2"><load-type type="load.loadType"></load-type> {{load.who}}</div>
+    <div class="col-md-1">{{load.expectedBy | date:'shortDate'}}</div>
+    <div class="col-md-2">{{load.shipFrom.location | location: true}} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> {{load.shipTo.location | location: true}}</div>
+    <div class="col-md-3">
+        <div class="row"> Log: <a href=""  uib-popover-template="'app/loads/load-status/log-popover.html'" popover-title="'Activity Log'" popover-trigger="click"><span class="badge" >{{load.activityLog.length}}</span></a></div>
+    </div>
+
+    <button uib-popover-template="'app/loads/load-status/log-popover.html'" popover-title="'Test'" type="button" class="btn btn-default" popover-placement="right">Popover With Template</button>
+    <button uib-popover="'Test test'" popover-placement="right" popover-title="'Test 1'" type="button" class="btn btn-default">Dynamic Popover</button>
+
+</div>

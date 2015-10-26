@@ -9,13 +9,10 @@ angular.module('servicesApp')
         load: '=load'
       },
       link: function (scope, element, attrs) {
-        scope.iconType = '';
-        if(scope.type=="FTL") {
-          scope.iconType="fa-ship";
-        }else if(scope.type=="LTL") {
-          scope.iconType = "fa-truck";
-        }else if(scope.type=="AIR") {
-          scope.iconType="fa-plane";
+        scope.showLog = false;
+
+        scope.toggleShowLog = function() {
+          scope.showLog = !scope.showLog;
         }
       }
     };

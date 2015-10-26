@@ -97,8 +97,7 @@ var FtlLoadSchema = new Schema({
     additionalCharges: [{
       name: String,
       charge: Number
-    }],
-
+    }]
   },
 
   brokerFees: [
