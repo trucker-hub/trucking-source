@@ -1,0 +1,10 @@
+<div>
+    Hi
+<table  class="table table-striped">
+    <tr><th>Time</th><th>Activity</th></tr>
+    <tr ng-repeat="log in load.activityLog">
+        <td>{{log.time | date:'shortDate'}}</td>
+        <td>{{log.activity}}</td>
+    </tr>
+</table>
+</div>
