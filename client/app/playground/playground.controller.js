@@ -3,51 +3,6 @@
 angular.module('servicesApp')
     .controller('PlaygroundCtrl', function ($scope, $http) {
 
-
-        $scope.createInvoice = function(selectedLoad) {
-            var modalInstance = $modal.open({
-                animation: true,
-                templateUrl: 'app/sourcing/invoice/invoice.html',
-                controller: 'InvoiceCtrl',
-                size: 'lg',
-                resolve: {
-                    load: function () {
-                        return $scope.load;
-                    }
-                }
-            });
-            modalInstance.result.then(
-                function () {
-                },
-                function () {
-                    console.log('Modal dismissed at: ' + new Date());
-                }
-            );
-        };
-
-
-        $scope.createDO = function(selectedLoad) {
-            var modalInstance = $modal.open({
-                animation: true,
-                templateUrl: 'app/tracking/do-details/do-details.html',
-                controller: 'DoDetailsCtrl',
-                size: 'lg',
-                resolve: {
-                    load: function () {
-                        return $scope.load;
-                    }
-                }
-            });
-            modalInstance.result.then(
-                function () {
-                    console.log("load updated");
-                },
-                function () {
-                    console.log('Modal dismissed at: ' + new Date());
-                }
-            );
-        };
-
         $scope.load = {
             who: "Beverly Furniture",
             email: "jinbo.chen@gmail.com",
@@ -96,12 +51,12 @@ angular.module('servicesApp')
                     {
                     charge: 20,
                     description: "Service 1",
-                    adjustment: {type: 10}
+                    adjustment: 10
                     },
                     {
                         charge: 30,
                         description: "Service 2",
-                        adjustment: {type: 10}
+                        adjustment: 10
                     }
                 ],
                 additionalCharges: [{
