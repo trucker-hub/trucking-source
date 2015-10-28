@@ -66,7 +66,7 @@ angular.module('servicesApp')
                 {
                     'title': 'DDP',
                     'link': '/ddp',
-                    'alwaysShow': menuForOperator
+                    'alwaysShow': true
                 },
                 {
                     'title': 'Playground',
