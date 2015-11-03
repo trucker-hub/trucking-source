@@ -2,19 +2,6 @@
   <div class="col-md-3">
     <a href="" ng-click="viewInvoice()" uib-tooltip="After today restriction"><i class="fa fa-list-alt text-success"></i></a><span> </span>
     <a href="" ng-click="viewDO()" uib-tooltip="After today restriction"><i class="fa fa-paper-plane-o"></i></a>
-    <div class="btn-group">
-      <a class="btn btn-default btn-sm" href="#"><i class="fa fa-align-justify fa-fw"></i> Action</a>
-      <a class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" href="#">
-        <span class="fa fa-caret-down"></span></a>
-      <ul class="dropdown-menu">
-        <li><a href="#"><i class="fa fa-pencil fa-fw"></i> Edit</a></li>
-        <li><a href="#"><i class="fa fa-trash-o fa-fw"></i> Delete</a></li>
-        <li><a href="#"><i class="fa fa-ban fa-fw"></i> Ban</a></li>
-        <li class="divider"></li>
-        <li><a href="#"><i class="i"></i> Make admin</a></li>
-      </ul>
-    </div>
-
   </div>
   <div class="col-md-9">
     <div class="row"> Log: <a href=""  ng-click="toggleShowLog()"><span class="badge" >{{load.activityLog.length}}</span></a> <i ng-click="toggleShowLog()" ng-show="!showLog" class="fa fa-lg fa-plus-square-o"></i><i ng-click="toggleShowLog()" ng-show="showLog" class="fa fa-lg fa-minus-square-o"></i></div>
