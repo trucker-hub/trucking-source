@@ -56,32 +56,34 @@ angular.module('servicesApp')
     };
 
 
-    vm.fetch = function(type, callbackOK, callbackERR) {
+    vm.fetch = function(type, days, cbOK, cbErr) {
 
       console.log('fetch loads from the db');
+      var queryType = (type || 'ALL');
+      var queryDaysString = days!=-1?('&days='+days):'';
 
-      if(!type || type=='FTL') {
-        $http.get('/api/load/ftl-loads?status=OPEN').then(
+      if(queryType=='ALL' || queryType=='FTL') {
+        $http.get('/api/load/ftl-loads?status=OPEN' + queryDaysString).then(
           function(response) {
             //console.log(JSON.stringify(response.data));
             vm.loads.ftl = response.data;
-            callbackOK();
+            cbOK();
           },
           function(response) {
             console.log('ran into error ' + response);
-            callbackERR();
+            cbErr();
           });
       }
-      if(!type || type=='LTL') {
-        $http.get('/api/load/ltl-loads?status=OPEN').then(
+      if(queryType=='ALL' || queryType=='LTL') {
+        $http.get('/api/load/ltl-loads?status=OPEN' + queryDaysString).then(
           function(response) {
             //console.log(JSON.stringify(response.data));
             vm.loads.ltl = response.data;
-            callbackOK();
+            cbOK();
           },
           function(response) {
             console.log('ran into error ' + response);
-            callbackERR();
+            cbErr();
           });
       }
     };

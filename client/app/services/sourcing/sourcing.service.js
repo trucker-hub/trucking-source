@@ -4,30 +4,7 @@ angular.module('servicesApp')
   .service('sourcingService', function ($http) {
     var vm = this;
 
-    vm.sourcing = { ftlLoads: null, ltlLoads: null };
-    vm.fetchLoads = function(type, days, callbackOK, callbackERR) {
-
-      $http.get('/api/load/ftl-loads?status=' + type + "&days=" + days).then(
-        function(response) {
-          vm.sourcing.ftlLoads = response.data;
-          callbackOK();
-        },
-        function(response) {
-          console.log('ran into error ' + response);
-          callbackERR();
-        });
-      $http.get('/api/load/ltl-loads?status=' + type + "&days=" + days).then(
-        function(response) {
-          vm.sourcing.ltlLoads = response.data;
-          callbackOK();
-        },
-        function(response) {
-          console.log('ran into error ' + response);
-          callbackERR();
-        });
-    };
-
-    vm.sourcing = function(load, callbackOK, callbackERR) {
+    vm.sourcing = function(load, cbOK, cbErr) {
 
       $http.post("/api/sourcing", load).then(
         function(response) {
@@ -38,12 +15,12 @@ angular.module('servicesApp')
           }else {
             vm.selectSource(load, null);
           }
-          callbackOK();
+          cbOK();
         },
         function(response) {
           //show a alert and empty the table
           console.log("called /api/sourcing but returned res = " + JSON.stringify(response));
-          callbackERR();
+          cbErr();
         })
     };
 
@@ -106,10 +83,6 @@ angular.module('servicesApp')
           additionalCharges: []
         }
       }
-    };
-
-    vm.getLoads = function() {
-      return vm.sourcing;
     };
 
     return vm;

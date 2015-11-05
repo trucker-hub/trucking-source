@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $scope, $http, $modal, ngTableParams, $filter, ngProgressFactory, sourcingService) {
+angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http, $modal, ngTableParams, $filter, ngProgressFactory, loadService, sourcingService) {
 
   var brokerFees = [
     {name: "ABI-Customs Fee", charge: 15},
@@ -10,11 +10,11 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
 
   var loads = [];
 
-  $scope.queryLoads = function(type, days) {
+  $scope.queryLoads = function(days) {
 
     $scope.progressbar = ngProgressFactory.createInstance();
     $scope.progressbar.start();
-    sourcingService.fetchLoads(type, days,
+    loadService.fetch('ALL', days,
       function() {
         $scope.updateLoadsTable();
       },
@@ -35,12 +35,13 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($rootScope, $
   };
 
   $scope.updateLoadsTable = function() {
-    var sourcing = sourcingService.getLoads();
-    if (sourcing.ftlLoads && sourcing.ltlLoads) {
-      $scope.progressbar.complete();
-      loads = sourcing.ftlLoads.concat(sourcing.ltlLoads);
-      $scope.tableParamsLoads.reload();
-    }
+
+    var xx = loadService.getLoads();
+    loads = xx.ftl.concat(xx.ltl);
+
+    $scope.tableParamsLoads.reload();
+    $scope.progressbar.complete();
+
   };
 
 

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('LoadsCtrl', function ($rootScope, $scope, $http, $filter, ngTableParams, loadService) {
+  .controller('LoadsCtrl', function ($rootScope, $scope, $http, $filter, ngTableParams, loadService, ngProgressFactory) {
 
     var NEW_FTL_ID = -2;
     var NEW_LTL_ID = -1;
@@ -105,24 +105,28 @@ angular.module('servicesApp')
     };
 
 
-    $scope.fetch = function(type) {
+    $scope.fetch = function(type, days) {
       console.log('fetch loads from the db');
-      loadService.fetch(type, function() {
+      $scope.progressbar = ngProgressFactory.createInstance();
+      $scope.progressbar.start();
+      loadService.fetch(type, days, function() {
           $scope.updateTable();
         },
         function() {
           console.log('ran into error ');
+          $scope.progressbar.stop();
         });
     };
 
     $scope.updateTable = function() {
-      loads = loadService.getLoads();
-      loads = loadService.getLoads().ftl.concat(loads.ltl);
+      var xx = loadService.getLoads();
+      loads = xx.ftl.concat(xx.ltl);
 
       //console.log("loads = " + JSON.stringify(loads));
       $scope.tableParams.reload();
+      $scope.progressbar.complete();
     };
 
 
-    $scope.fetch();
+    //$scope.fetch('ALL');
   });

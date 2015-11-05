@@ -6,15 +6,19 @@
         <tab heading="Loads">
             <br>
             <div class="row">
-                <div class="col-md-9">
+                <div class="col-md-3">
                     <button class="btn btn-sm btn-default" type="button" ng-click="newFTLLoad()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> FTL load</button>
                     <button class="btn btn-sm btn-default" type="button" ng-click="newFreightLoad()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> LTL load</button>
                     <button class="btn btn-sm btn-default" type="button" ng-click="newAirLoad()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Air load</button>
                 </div>
-                <div class="col-md-3" ng-hide="true">
-                    <button style="float:right" class="btn btn-sm btn-primary" type="button" ng-click="loadLoads()"><span class="glyphicon glyphicon-refresh"></span></button>
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <span>Loads:</span>
+                    <button type="button" class="btn  btn-link" ng-click="fetch('ALL',1)">Today</button>
+                    <button type="button" class="btn  btn-link" ng-click="fetch('ALL',3)">Last 3 days </button>
+                    <button type="button" class="btn  btn-link" ng-click="fetch('ALL',7)">Last week</button>
+                    <button type="button" class="btn btn-link" ng-click="fetch('ALL')">All</button>
                 </div>
-
             </div>
             <br>
             <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover">
@@ -23,25 +27,19 @@
                     <td data-title="'Consignee'" filter="{ 'who': 'text' }">
                         {{load.who}}
                     </td>
-                    <td data-title="'To'">
-                        {{load.shipTo.location | location: true}}
-                    </td>
-                    <td data-title="'From'">
-                        {{load.shipFrom.location | location: true}}
-                    </td>
-                    <td data-title="'Created'">
-                        {{load.createdAt | date:'short'}}
+                    <td data-title="'Delivery'">
+                        {{load.shipFrom.location | location: true}} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> {{load.shipTo.location | location: true}}
                     </td>
                     <td data-title="'Delivery By'">
-                        {{load.expectedBy | date:'short'}}
-                    </td>
-                    <td data-title="'Status'">
-                        {{load.status }}
+                        {{load.expectedBy | date:'shortDate'}}
                     </td>
                     <td data-title="'Description'">
                         <span>{{load.description}}</span>
                     </td>
-                    <td data-title="'Edit'">
+                    <td data-title="'Created'">
+                        {{load.createdAt | date:'shortDate'}}
+                    </td>
+                    <td data-title="''">
                         <a ng-click="editLoad(load._id, load.loadType)"><i class="fa fa-pencil-square-o fa-lg"></i></a>
                     </td>
                 </tr>
