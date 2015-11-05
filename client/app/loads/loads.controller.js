@@ -109,7 +109,7 @@ angular.module('servicesApp')
       console.log('fetch loads from the db');
       $scope.progressbar = ngProgressFactory.createInstance();
       $scope.progressbar.start();
-      loadService.fetch(type, days, function() {
+      loadService.fetch('ALL', days, function() {
           $scope.updateTable();
         },
         function() {
