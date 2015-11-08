@@ -21,17 +21,17 @@
           <td data-title="'Delivery'">
             {{load.shipFrom.location | location: true}} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> {{load.shipTo.location | location: true}}
           </td>
-          <td data-title="'Delivery By'">
+          <td data-title="'By'">
             {{load.expectedBy | date:'shortDate'}}
           </td>
-          <td data-title="'Selected Trucker'">
+          <td data-title="'Trucker'">
             {{load.fulfilledBy.name}}
           </td>
-          <td data-title="'Base Charge'">
-            {{load.fulfilledBy.charge | currency:"$":2}}
+          <td data-title="'Total Billing Amount'">
+            {{load.totalAmount | currency:"$":2}}
           </td>
           <td data-title="'Sourcing'">
-            <div ng-show="selectedLoad==load"><a ng-click="sourcing()"><i  class="fa fa-search fa-lg"></i></a> </div>
+            <div ng-show="selectedLoad==load"><a ng-click="sourcing()"><i  class="fa fa-search-plus fa-lg"></i></a> </div>
           </td>
         </tr>
       </table>
@@ -39,13 +39,13 @@
   </div>
 
   <div class="panel panel-default">
-    <div class="panel-heading">Choices: {{selectedLoad.sources.length}}</div>
+    <div class="panel-heading">Choices <span class="badge">{{selectedLoad.sources.length}}</span> </div>
     <div class="panel-body">
       <table class="table table-hover">
         <tr>
           <th></th>
           <th>Company</th>
-          <th>Cost</th>
+          <th>Trucking Cost</th>
           <th>Time</th>
           <th>Contact</th>
           <th>Location</th>
@@ -56,19 +56,22 @@
             <i class="fa" ng-class="{'fa-check':source.id==selectedLoad.fulfilledBy.source, 'fa-lock': (selectedLoad.status=='FILLED' && source.id==selectedLoad.fulfilledBy.source)}"></i>
           </th>
           <th >{{source.name}}</th>
-          <td ><b>{{source.totalCost | currency:"$":2}}</b></td>
+          <td ><b>{{source.totalCost | currency:"$":2}}</b>
+              <i ng-click="toggleSourceDetails(source)" class="fa fa-lg"
+                 ng-class="{'fa-plus-square-o':!source.showDetails, 'fa-minus-square-o':source.showDetails}"></i>
+          </td>
           <td >{{source.time}}</td>
           <td >{{source.contact | tel }}</td>
           <td >{{source.location}}</td>
           <td>
-            <button type="button" class="btn btn-default" ng-click="selectSource(source)">
+            <button type="button" class="btn btn-default" ng-click="selectSource(source)" ng-disabled="source.id==selectedLoad.fulfilledBy.source">
               <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Select
             </button>
           </td>
         </tr>
         <tr ng-repeat-end>
           <td colspan="7">
-            <table class="table table-bordered" ng-show="source.id==selectedLoad.fulfilledBy.source">
+            <table class="table table-bordered" ng-show="source.showDetails">
               <tr>
                 <th>Cost Items</th>
                 <th>Vendor Cost Description</th>
@@ -85,7 +88,7 @@
                 <td>{{entry.charge + entry.adjustment | currency:"$":2}}</td>
               </tr>
               <tr>
-                <td colspan="3" align="right"><b>Total Vendor Charge</b></td><td>{{selectedLoad.vendorChargeAmount | currency:"$":2}}</td>
+                <td colspan="3" align="right"><b>Total Trucking Cost:</b></td><td>{{selectedLoad.vendorChargeAmount | currency:"$":2}}</td>
               </tr>
               <tr>
                 <th></th>
@@ -103,11 +106,11 @@
                 <td></td>
               </tr>
               <tr>
-                <td colspan="3" align="right"><b>Total Amount</b></td>
+                <td colspan="3" align="right"><b>Total Billing Amount</b></td>
                 <td colspan="1">{{selectedLoad.totalAmount | currency:"$":2}}
                 </td>
               </tr>
-              <tr>
+              <tr ng-show="source.id==selectedLoad.fulfilledBy.source">
                 <td align="right"><button type="button" ng-disabled="selectedLoad.status=='FILLED'" class="btn btn-primary" ng-click="finalizeSource()">
                   <span class="glyphicon glyphicon-ok" aria-hidden="true" ></span> Finalize</button>
                 </td>

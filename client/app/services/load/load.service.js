@@ -161,6 +161,10 @@ angular.module('servicesApp')
       return vm.loads;
     };
 
+    vm.getCombinedLoads = function() {
+        return vm.loads.ftl.concat(vm.loads.ltl);
+    };
+
     vm.getConstants = function() {
       return vm.loadConstants;
     };

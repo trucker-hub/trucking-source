@@ -11,18 +11,18 @@ angular.module('servicesApp')
 
     $rootScope.loadsOpened  = $rootScope.loadsOpened || { ftl:  {},  ltl:  {},  air:  {} };
 
-    var loads = [];
+    $scope.loads = loadService.getCombinedLoads();
 
     $scope.tableParams = new ngTableParams({
       page: 1,            // show first page
       count: 25,          // count per page
       filter: { who: '' }
     }, {
-      total: loads.length, // length of data,
+      total: $scope.loads.length, // length of data,
       //counts: [],
       getData: function($defer, params) {
         // use build-in angular filter
-        var orderedData = params.filter() ? $filter('filter')(loads, params.filter()) : loads;
+        var orderedData = params.filter() ? $filter('filter')($scope.loads, params.filter()) : $scope.loads;
 
         var xxx = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
 
@@ -50,7 +50,7 @@ angular.module('servicesApp')
       }
 
       var index;
-      for (index =0; index < loads.length; ++index) {
+      for (index =0; index < $scope.loads.length; ++index) {
         var load = loads[index];
         if(load._id == id) {
           xx[id] = {data:load, active:true};
@@ -105,7 +105,7 @@ angular.module('servicesApp')
     };
 
 
-    $scope.fetch = function(type, days) {
+    $scope.fetch = function(days) {
       console.log('fetch loads from the db');
       $scope.progressbar = ngProgressFactory.createInstance();
       $scope.progressbar.start();
@@ -119,8 +119,8 @@ angular.module('servicesApp')
     };
 
     $scope.updateTable = function() {
-      var xx = loadService.getLoads();
-      loads = xx.ftl.concat(xx.ltl);
+
+        $scope.loads = loadService.getCombinedLoads();
 
       //console.log("loads = " + JSON.stringify(loads));
       $scope.tableParams.reload();

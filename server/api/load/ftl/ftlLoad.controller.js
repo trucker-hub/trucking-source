@@ -22,6 +22,7 @@ exports.index = function(req, res) {
     if(req.query.days) {
         var time = new Date();
         time.setDate(time.getDate() - req.query.days);
+        console.log("any loads before this date " + time);
         options.createdAt = {$gt: time};
     }
 

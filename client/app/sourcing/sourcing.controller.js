@@ -36,8 +36,7 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http
 
   $scope.updateLoadsTable = function() {
 
-    var xx = loadService.getLoads();
-    loads = xx.ftl.concat(xx.ltl);
+    loads = loadService.getCombinedLoads();
 
     $scope.tableParamsLoads.reload();
     $scope.progressbar.complete();
@@ -97,6 +96,13 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http
     );
   };
 
+  $scope.toggleSourceDetails = function(source) {
+      if(source.showDetails) {
+          source.showDetails = false;
+      }else {
+          source.showDetails = true;
+      }
+  };
   $scope.createDO = function() {
     var modalInstance = $modal.open({
       animation: true,
