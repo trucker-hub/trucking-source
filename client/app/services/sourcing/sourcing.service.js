@@ -63,6 +63,11 @@ angular.module('servicesApp')
 
     vm.selectSource = function(load, source) {
 
+      //if the load is already sourced,
+      if(load.status=='FILLED') {
+         load.status = 'OPEN';
+      }
+
       if(load && source) {
         load.fulfilledBy =
         {

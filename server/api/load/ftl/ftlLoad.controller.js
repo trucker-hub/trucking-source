@@ -73,8 +73,12 @@ var updateLoad = function(req, res, load) {
         if (err) { return handleError(res, err); }
         if(!ftlLoad) { return res.status(404).send('Not Found'); }
         var updated = _.extend(ftlLoad, load);
+        console.log("updated load " + JSON.stringify(updated));
         updated.save(function (err) {
-            if (err) { return handleError(res, err); }
+            if (err) {
+                console.log("update load error " + err);
+                return handleError(res, err);
+            }
             return res.status(200).json(updated);
         });
     });
@@ -88,13 +92,17 @@ exports.update = function(req, res) {
 exports.invoice = function(req, res) {
     if(req.body._id) { delete req.body._id; }
     CounterController.nextId("invoice", function(err, id) {
-        if(err) { return handleError(res, err); }
+        if(err) {
+            console.log("update invoice error " + err);
+            return handleError(res, err);
+        }
         req.body.invoice = {
             referenceNumber: id.counter
         };
         updateLoad(req, res, req.body);
     });
 };
+
 
 // Deletes a emptyFtlLoad from the DB.
 exports.destroy = function(req, res) {

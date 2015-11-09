@@ -51,7 +51,7 @@ angular.module('servicesApp')
 
       var index;
       for (index =0; index < $scope.loads.length; ++index) {
-        var load = loads[index];
+        var load = $scope.loads[index];
         if(load._id == id) {
           xx[id] = {data:load, active:true};
           return;
@@ -119,7 +119,6 @@ angular.module('servicesApp')
     };
 
     $scope.updateTable = function() {
-
         $scope.loads = loadService.getCombinedLoads();
 
       //console.log("loads = " + JSON.stringify(loads));

@@ -118,4 +118,6 @@ var LtlLoadSchema = new Schema({
     ]
 });
 
+LtlLoadSchema.set('versionKey', false);
+
 module.exports = mongoose.model('LtlLoad', LtlLoadSchema);

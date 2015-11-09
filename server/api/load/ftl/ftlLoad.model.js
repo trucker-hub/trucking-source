@@ -119,4 +119,7 @@ var FtlLoadSchema = new Schema({
   ]
 
 });
+
+FtlLoadSchema.set('versionKey', false);
+
 module.exports = mongoose.model('FtlLoad', FtlLoadSchema);

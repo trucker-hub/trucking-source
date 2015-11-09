@@ -3,7 +3,7 @@
   <br>
   <tabset type="tabs">
     <tab >
-      <tab-heading><span>Companies</span></tab-heading>
+      <tab-heading><span>Companies <span class="badge">{{allCompanies.length}}</span></span></tab-heading>
       <div>
         <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover">
           <tr ng-repeat="company in $data">

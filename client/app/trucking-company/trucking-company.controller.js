@@ -7,7 +7,7 @@ angular.module('servicesApp')
 
     $scope.alerts = [];
 
-    var allCompanies = $rootScope.allCompanies || [];
+    $scope.allCompanies = truckingCompany.get() || [];
 
     var editCompanyFunc = function(id) {
       console.log("edit a company whose id is " + id);
@@ -19,8 +19,8 @@ angular.module('servicesApp')
       }
 
       var index;
-      for (index =0; index < allCompanies.length; ++index) {
-        var company = allCompanies[index];
+      for (index =0; index < $scope.allCompanies.length; ++index) {
+        var company = $scope.allCompanies[index];
         if(company._id == id) {
           $rootScope.companiesOpened[id] = {data:company, active:true};
           return;
@@ -58,7 +58,7 @@ angular.module('servicesApp')
     $scope.deleteCompany = function(company) {
       truckingCompany.delete(company, function(response) {
           $scope.closeTab(company._id);
-          $scope.updateTable(truckingCompany.get());
+          $scope.updateTable();
         },
         function(response) {
           $scope.alerts.push({ type: 'warning', msg: 'Failed to delete the company!' });
@@ -81,7 +81,7 @@ angular.module('servicesApp')
       truckingCompany.add($scope.newOne,
         function(response) {
           var added = response.data;
-          $scope.updateTable(truckingCompany.get());
+          $scope.updateTable();
           editCompanyFunc(added._id);
           $scope.alerts.push({ type: 'success', msg: 'A new company was just added succesfully!' });
         },
@@ -99,11 +99,11 @@ angular.module('servicesApp')
         name: ''       // initial filter
       }
     }, {
-      total: allCompanies.length, // length of data
+      total: $scope.allCompanies.length, // length of data
       //counts: [], // hide page counts control
       getData: function($defer, params) {
         // use build-in angular filter
-        var orderedData = params.filter() ? $filter('filter')(allCompanies, params.filter()) : allCompanies;
+        var orderedData = params.filter() ? $filter('filter')($scope.allCompanies, params.filter()) : $scope.allCompanies;
 
         var xxx = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
 
@@ -112,8 +112,8 @@ angular.module('servicesApp')
       }
     });
 
-    $scope.updateTable = function(data) {
-      allCompanies = data;
+    $scope.updateTable = function() {
+      $scope.allCompanies = truckingCompany.get();
       $scope.tableParams.reload();
     };
 
@@ -121,7 +121,7 @@ angular.module('servicesApp')
       console.log("fetch companies from the db");
       truckingCompany.fetch(
         function(response) {
-          $scope.updateTable(truckingCompany.get());
+          $scope.updateTable();
         },
         function(response) {
           console.log("ran into error " + response);
@@ -131,7 +131,7 @@ angular.module('servicesApp')
     if(!truckingCompany.get()) {
       $scope.loadCompanies();
     }else {
-      $scope.updateTable(truckingCompany.get());
+      $scope.updateTable();
     }
 
   });
