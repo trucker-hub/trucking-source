@@ -103,6 +103,15 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http
           source.showDetails = true;
       }
   };
+
+    $scope.toggleLoadDetails = function(load) {
+        if(load.showLoadDetails) {
+            load.showLoadDetails = false;
+        }else {
+            load.showLoadDetails = true;
+        }
+    };
+
   $scope.createDO = function() {
     var modalInstance = $modal.open({
       animation: true,

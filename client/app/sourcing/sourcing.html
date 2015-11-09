@@ -129,8 +129,11 @@
   </div>
 
   <div class="panel panel-default">
-    <div class="panel-heading form-group"><b>Detail Load Information:</b> {{selectedLoad.who}}</div>
-    <div class="panel-body">
+    <div class="panel-heading form-group"><b>Detail Load Information:</b> {{selectedLoad.who}}
+        <i ng-click="toggleLoadDetails(selectedLoad)" class="fa fa-lg"
+           ng-class="{'fa-plus-square-o':!selectedLoad.showLoadDetails, 'fa-minus-square-o':selectedLoad.showLoadDetails}"></i>
+    </div>
+    <div class="panel-body" ng-show="selectedLoad.showLoadDetails">
       <load-details load="selectedLoad"></load-details>
     </div>
   </div>
