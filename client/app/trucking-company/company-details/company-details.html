@@ -4,45 +4,12 @@
     <tr>
       <th class="col-md-1">Name</th>
       <td class="col-md-8">
-        <div ng-class="{'has-error': companyInfo.name.$invalid}">
-          <input name="name" type="text" class="form-control" size="20" ng-model="dCtrl.company.name"
-                 placeholder="Company Name" required ng-change="dCtrl.change()"></div>
+        {{dCtrl.company.name}} <a href="" ng-click="dCtrl.editContact(dCtrl.company)"><i class="fa fa-info-circle fa-lg"></i></a>
       </td>
-      <td class="col-md-3"></td>
-    </tr>
-    <tr>
-      <th>Location</th>
-      <td>
-        <div ng-class="{'has-error': companyInfo.location.$invalid}">
-          <input name="location" type="tel" class="form-control" size="20" ng-model="dCtrl.company.location"
-                 placeholder="street, city, zip code" required ng-change="dCtrl.change()"></div>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td colspan="2">
-        <div class="form-inline">
-          <div class="form-group" ng-class="{'has-error': companyInfo.phone.$invalid}">
-            <label for="phone">Phone:</label>
-            <input name="phone" id="phone" type="tel" class="form-control" size="13" ng-model="dCtrl.company.phone"
-                   ui-mask="(999) 999-9999" placeholder="(xxx) xxx-xxxx" required  ng-change="dCtrl.change()">
-          </div>
-          <div class="form-group" ng-class="{'has-error': companyInfo.fax.$invalid}">
-            <label for="fax">FAX:</label>
-            <input name="fax" id="fax" type="tel" class="form-control" size="13" ng-model="dCtrl.company.fax"
-                   ui-mask="(999) 999-9999" placeholder="(xxx) xxx-xxxx" required ng-change="dCtrl.change()">
-          </div>
-          <div class="form-group" ng-class="{'has-error': companyInfo.email.$invalid}">
-            <label for="email">Email:</label>
-            <input name="email" id="email" type="email" class="form-control" ng-class="" size="30" ng-model="dCtrl.company.email"
-                   placeholder="email" required ng-change="dCtrl.change()">
-          </div>
-        </div>
+      <td class="col-md-3">
 
       </td>
     </tr>
-
     <tr><td colspan="3"></td></tr>
     <tr>
       <td colspan="3">

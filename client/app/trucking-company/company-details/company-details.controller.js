@@ -26,6 +26,17 @@ angular.module('servicesApp')
       );
     };
 
+    vm.editContact = function(company) {
+      truckingCompany.openContactDialog(company, function() {
+
+      },
+      function() {
+
+      }
+      );
+
+    };
+
     vm.change = function() {
       vm.company.changed = true;
     };

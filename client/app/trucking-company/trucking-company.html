@@ -15,28 +15,46 @@
               {{company.location}}
             </td>
             <td data-title="'Contact'">
-              {{company.phone | tel}}
+              <b>Phone</b>: {{company.phone | tel}}, <b>FAX</b>: {{company.fax | tel}}, <b>Email</b>:{{company.email}}
             </td>
             <td data-title="'Edit'">
               <a ng-click="editCompany(company._id)"><i class="fa fa-pencil-square-o fa-lg"></i></a>
             </td>
           </tr>
           <tr>
-            <td><span ng-class="newOne.favorite? 'glyphicon glyphicon-star':'glyphicon glyphicon-star-empty' " aria-hidden="true" ng-click="toggleFavorite(company._id)"></span></td>
-            <td>
+            <td class="col-md-1"></td>
+            <td class="col-md-2">
               <input name="name" type="text" class="form-control" size="10" ng-model="newOne.name"
                      placeholder="Company name" required>
             </td>
-            <td>
+            <td class="col-md-2">
               <input name="location" type="text" class="form-control" size="10" ng-model="newOne.location"
                      placeholder="Location" required>
             </td>
-            <td>
-              <input name="phone" type="text" class="form-control" size="15" ng-model="newOne.phone"
-                     placeholder="(999)999-1910" required>
+            <td class="col-md-6">
+
+              <form name="newCompany">
+              <div class="form-inline">
+                <div class="form-group" ng-class="{'has-error': newCompany.phone.$invalid}">
+                  <label for="phone">Phone:</label>
+                  <input name="phone" id="phone" type="tel" class="form-control" size="13" ng-model="newOne.phone"
+                         ui-mask="(999) 999-9999" placeholder="(xxx) xxx-xxxx" required >
+                </div>
+                <div class="form-group" ng-class="{'has-error': newCompany.fax.$invalid}">
+                  <label for="fax">FAX:</label>
+                  <input name="fax" id="fax" type="tel" class="form-control" size="13" ng-model="newOne.fax"
+                         ui-mask="(999) 999-9999" placeholder="(xxx) xxx-xxxx" required >
+                </div>
+                <div class="form-group" ng-class="{'has-error': newCompany.email.$invalid}">
+                  <label for="email">Email:</label>
+                  <input name="email" id="email" type="email" class="form-control" ng-class="" size="30" ng-model="newOne.email"
+                         placeholder="email" required >
+                </div>
+                </div>
+              </form>
             </td>
-            <td>
-              <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="addCompany()">
+            <td class="col-md-1">
+              <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="addCompany()" ng-disabled="newCompany.$invalid">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span></button>
             </td>
           </tr>

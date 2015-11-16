@@ -160,6 +160,30 @@ angular.module('servicesApp')
         );
       };
 
+        this.openContactDialog = function (company, callbackOK, callbackCancel) {
+
+            var modalInstance = $modal.open({
+                animation: true,
+                templateUrl: 'app/trucking-company/company-contact/company-contact.html',
+                controller: 'CompanyContactCtrl',
+                resolve: {
+                    company: function() {
+                        return company;
+                    }
+                }
+            });
+
+            modalInstance.result.then(
+                function (result) {
+                    callbackOK();
+                },
+                function () {
+                    console.log('Modal dismissed at: ' + new Date());
+                    callbackCancel();
+                }
+            );
+        };
+
       return this;
 
     });

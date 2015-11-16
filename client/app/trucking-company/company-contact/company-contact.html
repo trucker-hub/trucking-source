@@ -1,0 +1,57 @@
+<div class="modal-header">
+    <span class="modal-title"><b>Edit Company Contact Info</b></span>
+    <div style="float:right"> <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancel()"></span></div>
+
+</div>
+<div class="modal-body">
+<form name="companyContact">
+<table class="table table-responsive table-striped">
+    <tr>
+        <th class="col-md-1">Name</th>
+        <td class="col-md-8">
+            <div ng-class="{'has-error': companyContact.name.$invalid}">
+                <input name="name" type="text" class="form-control" size="20" ng-model="company.name"
+                       placeholder="name" required ng-change="change()"></div>
+        </td>
+    </tr>
+    <tr>
+        <th>Location</th>
+        <td>
+            <div ng-class="{'has-error': companyContact.location.$invalid}">
+                <input name="location" type="tel" class="form-control" size="20" ng-model="company.location"
+                       placeholder="street, city, zip code" required ng-change="change()"></div>
+        </td>
+    </tr>
+    <tr>
+        <th>Phone</th>
+        <td>
+            <div class="form-group" ng-class="{'has-error': companyContact.phone.$invalid}">
+                <input name="phone" id="phone" type="tel" class="form-control" size="13" ng-model="company.phone"
+                       ui-mask="(999) 999-9999" placeholder="(xxx) xxx-xxxx" required  ng-change="change()">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <th>FAX</th>
+        <td>
+            <div class="form-group" ng-class="{'has-error': companyContact.fax.$invalid}">
+                <input name="fax" id="fax" type="tel" class="form-control" size="13" ng-model="company.fax"
+                       ui-mask="(999) 999-9999" placeholder="(xxx) xxx-xxxx" required ng-change="change()">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <th>EMAIL</th>
+        <td>
+            <div class="form-group" ng-class="{'has-error': companyContact.email.$invalid}">
+                <input name="email" id="email" type="email" class="form-control" ng-class="" size="30" ng-model="company.email"
+                       placeholder="email" required ng-change="dCtrl.change()">
+            </div>
+        </td>
+    </tr>
+</table>
+</form>
+</div>
+<div class="modal-footer">
+    <button style="float:right" class="btn btn-primary" type="button" ng-click="ok()">Close</button>
+</div>
