@@ -6,6 +6,7 @@ angular.module('servicesApp')
     $scope.freightFee=0;
     $scope.brokerageFee =0;
     $scope.insuranceFee=0;
+    $scope.ddpType = "ocean";
 
     $scope.hmf= 0.00125;
     $scope.mpf = 0.003464;
@@ -30,14 +31,16 @@ angular.module('servicesApp')
         return row.ddp;
       }).reduce(sum);
 
+      var hmf = ($scope.ddpType =='ocean')?$scope.hmf:0.0;
+
       $scope.totalFees = $scope.freightFee+ $scope.brokerageFee + $scope.insuranceFee;
 
       for(index=0; index <$scope.rows.length; ++index) {
         var row = $scope.rows[index];
         row.adjusted = row.ddp - ($scope.totalFees*row.ddp)/$scope.totalDDP;
-        row.fob = row.adjusted / (1 + row.dutyRate*0.01 + $scope.hmf + $scope.mpf);
+        row.fob = row.adjusted / (1 + row.dutyRate*0.01 + hmf + $scope.mpf);
         row.duty = row.fob * row.dutyRate*0.01;
-        row.hmfDuty = row.fob * $scope.hmf;
+        row.hmfDuty = row.fob * hmf;
         row.mpfDuty = row.fob * $scope.mpf;
         row.subTotal = row.duty + row.hmfDuty + row.mpfDuty;
       }

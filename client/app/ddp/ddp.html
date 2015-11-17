@@ -28,41 +28,58 @@
     </div>
 
   </div>
+  <div class="col-md-12">
+    <div class="col-md-2"><b>Type:</b></div>
+    <div class="form-group col-md-10" >
+      <div class="radio-inline">
+        <label>
+          <input type="radio" name="type" id="optionsRadios1" ng-model="ddpType" value="ocean" ng-change="calc()"> Ocean
+        </label>
+      </div>
+      <div class="radio-inline">
+        <label>
+          <input type="radio" name="optionsRadios" id="optionsRadios2" ng-model="ddpType" value="other" ng-change="calc()">
+          Rail/Truck/Air
+        </label>
+      </div>
+    </div>
+  </div>
+
 
   <div class="col-md-12">
-  <table class="table table-striped">
-    <tr>
-      <th class="col-md-2">DDP($)</th>
-      <th class="col-md-1">Adjusted($)</th>
-      <th class="col-md-1">FOB</th>
-      <th class="col-md-2">Duty Rate (%)</th>
-      <th class="col-md-1">Duty</th>
-      <th class="col-md-1">HMF Duty</th>
-      <th class="col-md-1">MPF</th>
-      <th class="col-md-2">Sub Total By Line</th>
-    </tr>
-    <tr ng-repeat="row in rows">
-      <td><input type="number" class="form-control" ng-model="row.ddp" placeholder="0.00" ng-change="calc()"></td>
-      <td>{{row.adjusted | currency:$:2}}</td>
-      <td>{{row.fob | currency:$:2}}</td>
-      <td><input type="number" class="form-control" ng-model="row.dutyRate" placeholder="0.00" ng-change="calc()"></td>
-      <td>{{row.duty | currency:$:2}}</td>
-      <td>{{row.hmfDuty | currency:$:2}}</td>
-      <td>{{row.mpfDuty | currency:$:2}}</td>
-      <td>{{row.subTotal | currency:$:2}}</td>
-    </tr>
-    <tr>
-      <td colspan="4" align="right">Sub Total By Category</td>
-      <td>{{totalDuty | currency:$:2}}</td>
-      <td>{{totalHMF | currency:$:2}}</td>
-      <td>{{totalMPF | currency:$:2}}</td>
-      <td></td>
-    </tr>
-    <tr>
+    <table class="table table-striped">
+      <tr>
+        <th class="col-md-2">DDP($)</th>
+        <th class="col-md-1">Adjusted($)</th>
+        <th class="col-md-1">FOB</th>
+        <th class="col-md-2">Duty Rate (%)</th>
+        <th class="col-md-1">Duty</th>
+        <th class="col-md-1">HMF Duty</th>
+        <th class="col-md-1">MPF</th>
+        <th class="col-md-2">Sub Total By Line</th>
+      </tr>
+      <tr ng-repeat="row in rows">
+        <td><input type="number" class="form-control" ng-model="row.ddp" placeholder="0.00" ng-change="calc()"></td>
+        <td>{{row.adjusted | currency:$:2}}</td>
+        <td>{{row.fob | currency:$:2}}</td>
+        <td><input type="number" class="form-control" ng-model="row.dutyRate" placeholder="0.00" ng-change="calc()"></td>
+        <td>{{row.duty | currency:$:2}}</td>
+        <td>{{row.hmfDuty | currency:$:2}}</td>
+        <td>{{row.mpfDuty | currency:$:2}}</td>
+        <td>{{row.subTotal | currency:$:2}}</td>
+      </tr>
+      <tr>
+        <td colspan="4" align="right">Sub Total By Category</td>
+        <td>{{totalDuty | currency:$:2}}</td>
+        <td>{{totalHMF | currency:$:2}}</td>
+        <td>{{totalMPF | currency:$:2}}</td>
+        <td></td>
+      </tr>
+      <tr>
         <td colspan="7" align="right"><b>Total Duty:</b></td>
         <td><b>{{sum | currency:$:2}}</b></td>
-    </tr>
-  </table>
+      </tr>
+    </table>
   </div>
   <div class="col-md-12">
     <ul class="list-group">
