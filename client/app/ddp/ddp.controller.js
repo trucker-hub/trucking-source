@@ -10,6 +10,7 @@ angular.module('servicesApp')
 
     $scope.hmf= 0.00125;
     $scope.mpf = 0.003464;
+
     $scope.rows = [
       {ddp:0.0,  dutyRate:0.0},
       {ddp:0.0,  dutyRate:0.0},
@@ -19,6 +20,15 @@ angular.module('servicesApp')
 
     $scope.maxMPF = 485;
     $scope.minMPF = 25;
+
+    $scope.addRows = function () {
+       $scope.rows.push(
+           {ddp:0.0,  dutyRate:0.0},
+           {ddp:0.0,  dutyRate:0.0},
+           {ddp:0.0,  dutyRate:0.0},
+           {ddp:0.0,  dutyRate:0.0}
+       );
+    };
 
 
     var sum = function(a, b) {

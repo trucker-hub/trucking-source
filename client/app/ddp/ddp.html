@@ -2,28 +2,34 @@
 <div class="container">
 
   <div class="col-md-12">
-    <div class="col-md-3">
+    <div class="col-md-2">
       <div class="form-group">
         <label for="freightInput">Freight Fee</label>
         <input type="number" class="form-control" id="freightInput" ng-model="freightFee" placeholder="0.00" ng-change="calc()">
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       <div class="form-group">
         <label for="brokerFeeInput">Brokerage Fee</label>
         <input type="number" class="form-control" id="brokerFeeInput" ng-model="brokerageFee" placeholder="0.00" ng-change="calc()">
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       <div class="form-group">
         <label for="insuranceInput">Insurance</label>
         <input type="number" class="form-control" id="insuranceInput" ng-model="insuranceFee" placeholder="0.00" ng-change="calc()">
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       <div class="form-group">
         <label for="totalFeesInput">Total Fees</label>
         <input type="number" class="form-control" id="totalFeesInput" disabled ng-model="totalFees" placeholder="0.00" ng-change="calc()">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="totalFeesInput">Total Duty</label>
+        <span class="form-control"><b>{{sum | currency:$:2}}</b></span>
       </div>
     </div>
 
@@ -49,6 +55,7 @@
   <div class="col-md-12">
     <table class="table table-striped">
       <tr>
+        <th></th>
         <th class="col-md-2">DDP($)</th>
         <th class="col-md-1">Adjusted($)</th>
         <th class="col-md-1">FOB</th>
@@ -58,7 +65,8 @@
         <th class="col-md-1">MPF</th>
         <th class="col-md-2">Sub Total By Line</th>
       </tr>
-      <tr ng-repeat="row in rows">
+      <tr ng-repeat="row in rows track by $index">
+        <td>#{{$index+1}}</td>
         <td><input type="number" class="form-control" ng-model="row.ddp" placeholder="0.00" ng-change="calc()"></td>
         <td>{{row.adjusted | currency:$:2}}</td>
         <td>{{row.fob | currency:$:2}}</td>
@@ -69,14 +77,19 @@
         <td>{{row.subTotal | currency:$:2}}</td>
       </tr>
       <tr>
-        <td colspan="4" align="right">Sub Total By Category</td>
+        <td colspan="9">
+          <button class="btn btn-sm btn-default" type="button" ng-click="addRows()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add more lines</button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="5" align="right">Sub Totals</td>
         <td>{{totalDuty | currency:$:2}}</td>
         <td>{{totalHMF | currency:$:2}}</td>
         <td>{{totalMPF | currency:$:2}}</td>
         <td></td>
       </tr>
       <tr>
-        <td colspan="7" align="right"><b>Total Duty:</b></td>
+        <td colspan="8" align="right"><b>Total Duty:</b></td>
         <td><b>{{sum | currency:$:2}}</b></td>
       </tr>
     </table>
