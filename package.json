@@ -26,6 +26,7 @@
     "passport": "~0.3.0",
     "passport-local": "~1.0.0",
     "serve-favicon": "~2.3.0",
+    "shipping-ups": "^0.5.1",
     "socket.io": "^1.0.6",
     "socket.io-client": "^1.0.6",
     "socketio-jwt": "^4.3.1"

@@ -138,5 +138,90 @@ angular.module('servicesApp')
                 });
         };
 
+        $scope.transitTime = function() {
+           var data = {
+                from: {
+                    city: 'Dover',
+                    state_code: 'OH',
+                    postal_code: '44622',
+                    country_code: 'US'
+                },
+                to: {
+                    city: 'Charlotte',
+                    state_code: 'NC',
+                    postal_code: '28205',
+                    country_code: 'US'
+                },
+                weight: 100, // set imperial to false for KGS
+                pickup_date: '20151130',
+                total_packages: 1, // number of packages in shipment
+                value: 999 // Invoice value, set currency in options
+            };
+            $http.post('/api/ups/services/time', data).then(
+                function(response) {
+                    console.log(JSON.stringify(response));
+                },
+                function(response) {
+                    console.log('ran into error ' + JSON.stringify(response));
+                });
+
+        };
+
+        $scope.rates = function() {
+            var data = {
+                ship_from: {
+                    name: 'Test My Company',
+                    address: {
+                        address_line_1: '1234 Test Name Rd',
+                        city: 'Charlotte',
+                        state_code: 'NC',
+                        postal_code: '28262',
+                        country_code: 'US'
+                    }
+                },
+                ship_to: {
+                    name: 'John Doe',
+                    address: {
+                        address_line_1: '4567 Another Road Ct',
+                        city: 'Dover',
+                        state_code: 'OH',
+                        postal_code: '44622',
+                        country_code: 'US'
+                    }
+                },
+                payer: {
+                    name: 'Ron Rosef',
+                    address: {
+                        address_line_1: '867 Five Three Oh Nine',
+                        city: 'Charlotte',
+                        state_code: 'NC',
+                        postal_code: '28262',
+                        country_code: 'US'
+                    },
+                    shipper_number: 'ABC123'
+                },
+                billing_option: '10',
+                service_code: '308',
+                handling_unit_one: {
+                    quantity: '20',
+                    code: 'PLT'
+                },
+                commodity: {
+                    description: 'A huge bag of something',
+                    weight: '750',
+                    number_of_pieces: '45',
+                    packaging_type: 'BAG',
+                    freight_class: '60'
+                }
+            };
+            $http.post('/api/ups/services/rates', data).then(
+                function(response) {
+                    console.log(JSON.stringify(response));
+                },
+                function(response) {
+                    console.log('ran into error ' + JSON.stringify(response));
+                });
+        };
+
         $scope.fetch();
     });
