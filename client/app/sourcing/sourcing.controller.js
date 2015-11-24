@@ -34,6 +34,7 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http
     }
   };
 
+
   $scope.updateLoadsTable = function() {
 
     loads = loadService.getCombinedLoads();
@@ -73,6 +74,19 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http
         console.log("finalizeSource  failed ");
       }
     );
+  };
+
+  $scope.upsLoad = function(load) {
+    var req = sourcingService.ltl2ups(load);
+    console.log('ups rate request=' + JSON.stringify(req));
+    
+    $http.post('/api/ups/services/rates', req).then(
+        function(response) {
+          console.log(JSON.stringify(response));
+        },
+        function(response) {
+          console.log('ran into error ' + JSON.stringify(response));
+        });
   };
 
   $scope.createInvoice = function() {

@@ -31,7 +31,9 @@
             <b>{{load.totalAmount | currency:"$":2}}</b> {{load.vendorChargeAmount | currency:"$":2}}
           </td>
           <td data-title="'Sourcing'">
-            <div ng-show="selectedLoad==load"><a ng-click="sourcing()"><i  class="fa fa-search-plus fa-lg"></i></a> </div>
+            <div ng-show="selectedLoad==load"><a ng-click="sourcing()"><i  class="fa fa-search-plus fa-lg"></i></a></div>
+            <div ng-show="selectedLoad==load && load.loadType!='FTL'"><a ng-click="upsLoad(selectedLoad)"><i class="fa fa-hand-o-down fa-lg"></i></a></div>
+
           </td>
         </tr>
       </table>

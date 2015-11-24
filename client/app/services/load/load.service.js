@@ -120,7 +120,7 @@ angular.module('servicesApp')
       } else {
         line.freightClass = -1;
       }
-      return;
+      return line.freightClass;
     };
 
     vm.fetchConstants = function(callbackOK, callbackERR) {
