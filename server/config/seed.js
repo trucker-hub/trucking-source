@@ -95,11 +95,11 @@ LtlLoad.find({}).remove(function() {
             notes: "A note",
             shipTo: {
                 location: {
-                    full_address:     "30944 Rue de la Pierre, Rancho Palos Verdes, CA 90275",
+                    full_address:     "919 Westholme Ave, Los Angeles, CA 90024",
                     state:      "CA",
                     county:     "Los Angeles County",
-                    city:       "Rancho Palos Verdes",
-                    zipCode:    "90275"
+                    city:       "Los Angeles",
+                    zipCode:    "90024"
                 },
                 services: [{service: 'Inside'}, {service: 'LifeGate'}]
             },
@@ -295,7 +295,7 @@ TruckingCompany.find({}).remove(function () {
                             {
                                 state: "CA",
                                 city: "Rancho Palos Verdes",
-                                zipCode: "90275",
+                                zipCode: "90024",
                                 rate: 200,
                                 dropOffCharge:50,
                                 dropOffChargeOffhour:75,
@@ -553,8 +553,8 @@ TruckingCompany.find({}).remove(function () {
                             zone: "E"
                         }, {
                             state: "CA",
-                            city: "Rancho Palos Verdes",
-                            zipCode: "90275",
+                            city: "Los Angeles",
+                            zipCode: "90024",
                             zone: "C"
                         }]
                     }
@@ -619,8 +619,8 @@ TruckingCompany.find({}).remove(function () {
                                 dropOffChargeHoliday:125
                             }, {
                                 state: "CA",
-                                city: "Rancho Palos Verdes",
-                                zipCode: "90275",
+                                city: "Los Angeles",
+                                zipCode: "90024",
                                 rate: 250,
                                 dropOffCharge:50,
                                 dropOffChargeOffhour:75,
@@ -761,8 +761,8 @@ TruckingCompany.find({}).remove(function () {
                             zone: "E"
                         }, {
                             state: "CA",
-                            city: "Rancho Palos Verdes",
-                            zipCode: "90275",
+                            city: "Los Angeles",
+                            zipCode: "90024",
                             zone: "C"
                         }]
                     }

@@ -28,12 +28,10 @@
             {{load.fulfilledBy.name}}
           </td>
           <td data-title="'Cost'">
-            <b>{{load.totalAmount | currency:"$":2}}</b> {{load.vendorChargeAmount | currency:"$":2}}
+            <b>{{load.fulfilledBy.charge | currency:"$":2}}</b> {{load.vendorChargeAmount | currency:"$":2}}
           </td>
           <td data-title="'Sourcing'">
             <div ng-show="selectedLoad==load"><a ng-click="sourcing()"><i  class="fa fa-search-plus fa-lg"></i></a></div>
-            <div ng-show="selectedLoad==load && load.loadType!='FTL'"><a ng-click="upsLoad(selectedLoad)"><i class="fa fa-hand-o-down fa-lg"></i></a></div>
-
           </td>
         </tr>
       </table>
@@ -85,12 +83,12 @@
                 <td><b>{{entry.charge | currency:"$":2}}</b> for {{entry.description}}</td>
                 <td> <div class="input-group">
                   <div class="input-group-addon">$</div>
-                  <input type="number" class="form-control" size="5" ng-model="entry.adjustment" placeholder="00.00" ng-change="recalcAdjustments()"></div>
+                  <input type="number" class="form-control" size="5" ng-model="entry.adjustment" placeholder="00.00" ng-change="recalcAdjustments(source)"></div>
                 </td>
                 <td>{{entry.charge + entry.adjustment | currency:"$":2}}</td>
               </tr>
               <tr>
-                <td colspan="3" align="right"><b>Total Trucking Cost:</b></td><td>{{selectedLoad.vendorChargeAmount | currency:"$":2}}</td>
+                <td colspan="3" align="right"><b>Total Trucking Cost:</b></td><td>{{source.vendorChargeAmount | currency:"$":2}}</td>
               </tr>
               <tr>
                 <th></th>
@@ -102,14 +100,14 @@
                 <td colspan="2">
                   <div class="input-group">
                     <div class="input-group-addon">$</div>
-                    <input type="number" class="form-control" size="5" ng-model="entry.charge" placeholder="00.00" ng-change="recalcAdjustments()">
+                    <input type="number" class="form-control" size="5" ng-model="entry.charge" placeholder="00.00" ng-change="recalcAdjustments(source)">
                 </div>
                 </td>
                 <td></td>
               </tr>
               <tr>
                 <td colspan="3" align="right"><b>Total Charge</b></td>
-                <td colspan="1">{{selectedLoad.totalAmount | currency:"$":2}}
+                <td colspan="1">{{source.totalAmount | currency:"$":2}}
                 </td>
               </tr>
               <tr ng-show="source.id==selectedLoad.fulfilledBy.source">

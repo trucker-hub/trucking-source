@@ -5,91 +5,81 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http
   var brokerFees = [
     {name: "ABI-Customs Fee", charge: 15},
     {name: "Chassy Fee", charge: 15},
-    {name: "Service Fee", charge:50}
+    {name: "Service Fee", charge: 50}
   ];
 
   var loads = [];
 
-  $scope.queryLoads = function(days) {
+
+  $scope.queryLoads = function (days) {
 
     $scope.progressbar = ngProgressFactory.createInstance();
     $scope.progressbar.start();
     loadService.fetch('ALL', days,
-      function() {
+      function () {
         $scope.updateLoadsTable();
       },
-      function() {
+      function () {
         $scope.progressbar.stop();
       }
     );
   };
 
-  $scope.selectLoad = function(load) {
-    if($scope.selectedLoad!=load) {
-      $scope.sources =[];
+  $scope.selectLoad = function (load) {
+    if ($scope.selectedLoad != load) {
+      $scope.sources = [];
       $scope.selectedLoad = load;
-      if(!$scope.selectedLoad.brokerFees || $scope.selectedLoad.brokerFees.length==0) {
+      if (!$scope.selectedLoad.brokerFees || $scope.selectedLoad.brokerFees.length == 0) {
         $scope.selectedLoad.brokerFees = brokerFees;
       }
     }
   };
 
+  $scope.recalcAdjustments = function(source) {
+    sourcingService.recalcAdjustment($scope.selectedLoad, source);
+  };
 
-  $scope.updateLoadsTable = function() {
-
+  $scope.updateLoadsTable = function () {
     loads = loadService.getCombinedLoads();
-
     $scope.tableParamsLoads.reload();
     $scope.progressbar.complete();
 
   };
 
 
-  $scope.selectSource = function(aSource) {
+  $scope.selectSource = function (aSource) {
     $scope.selectedSource = aSource;
     sourcingService.selectSource($scope.selectedLoad, $scope.selectedSource);
   };
 
-  $scope.sourcing = function() {
+
+  $scope.sourcing = function () {
 
     $scope.progressbar = ngProgressFactory.createInstance();
     $scope.progressbar.start();
     sourcingService.sourcing($scope.selectedLoad,
-      function() {
+      function () {
         //after get the companies' data, we can calculate the prices on the client side.
         $scope.progressbar.complete();
       },
-      function() {
+      function () {
         $scope.progressbar.stop();
       }
     );
   };
 
-  $scope.finalizeSource = function() {
+  $scope.finalizeSource = function () {
     sourcingService.finalizeSource($scope.selectedLoad,
-      function() {
+      function () {
         console.log("finalizeSource succesfully ");
       },
-      function() {
+      function () {
         console.log("finalizeSource  failed ");
       }
     );
   };
 
-  $scope.upsLoad = function(load) {
-    var req = sourcingService.ltl2ups(load);
-    console.log('ups rate request=' + JSON.stringify(req));
-    
-    $http.post('/api/ups/services/rates', req).then(
-        function(response) {
-          console.log(JSON.stringify(response));
-        },
-        function(response) {
-          console.log('ran into error ' + JSON.stringify(response));
-        });
-  };
-
-  $scope.createInvoice = function() {
+  $scope.createInvoice = function () {
     var modalInstance = $modal.open({
       animation: true,
       templateUrl: 'app/sourcing/invoice/invoice.html',
@@ -110,23 +100,24 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http
     );
   };
 
-  $scope.toggleSourceDetails = function(source) {
-      if(source.showDetails) {
-          source.showDetails = false;
-      }else {
-          source.showDetails = true;
-      }
+  $scope.toggleSourceDetails = function (source) {
+    if (source.showDetails) {
+      source.showDetails = false;
+    } else {
+      sourcingService.recalcAdjustment($scope.selectedLoad, source);
+      source.showDetails = true;
+    }
   };
 
-    $scope.toggleLoadDetails = function(load) {
-        if(load.showLoadDetails) {
-            load.showLoadDetails = false;
-        }else {
-            load.showLoadDetails = true;
-        }
-    };
+  $scope.toggleLoadDetails = function (load) {
+    if (load.showLoadDetails) {
+      load.showLoadDetails = false;
+    } else {
+      load.showLoadDetails = true;
+    }
+  };
 
-  $scope.createDO = function() {
+  $scope.createDO = function () {
     var modalInstance = $modal.open({
       animation: true,
       templateUrl: 'app/tracking/do-details/do-details.html',
@@ -141,23 +132,29 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http
 
     modalInstance.result.then(
       function () {
-        var path = $scope.selectedLoad.loadType=='FTL'?'/api/load/ftl-loads/':'/api/load/ltl-loads/';
-        $http.put(path+$scope.selectedLoad._id, $scope.selectedLoad).then(
-          function(response) { console.log("request saved succesfully " + JSON.stringify(response));},
-          function(err) { console.log("request saving failed " + err);}
+        var path = $scope.selectedLoad.loadType == 'FTL' ? '/api/load/ftl-loads/' : '/api/load/ltl-loads/';
+        $http.put(path + $scope.selectedLoad._id, $scope.selectedLoad).then(
+          function (response) {
+            console.log("request saved succesfully " + JSON.stringify(response));
+          },
+          function (err) {
+            console.log("request saving failed " + err);
+          }
         );
       },
-      function () { console.log('Modal dismissed at: ' + new Date());}
+      function () {
+        console.log('Modal dismissed at: ' + new Date());
+      }
     );
   };
   $scope.tableParamsLoads = new ngTableParams({
     page: 1,            // show first page
     count: 10,          // count per page
-    filter: { who: ''}
+    filter: {who: ''}
   }, {
     total: loads.length, // length of data
     //counts: [], // hide page counts control
-    getData: function($defer, params) {
+    getData: function ($defer, params) {
       // use build-in angular filter
       var orderedData = params.filter() ? $filter('filter')(loads, params.filter()) : loads;
       var xxx = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
@@ -165,6 +162,5 @@ angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http
       $defer.resolve(xxx);
     }
   });
-
 
 });
