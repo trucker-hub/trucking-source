@@ -5,7 +5,7 @@ var Ups = require('./ups.model');
 var upsAPI = require('shipping-ups');
 
 var ups = new upsAPI({
-  environment: 'sandbox', // or live
+  environment: 'sandbox', // sandbox or live
   currency: 'USD',
   username: 'jinbo.chen',
   password: 'Dmkr1234%',
