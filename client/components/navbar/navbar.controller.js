@@ -54,6 +54,11 @@ angular.module('servicesApp')
                     'alwaysShow': menuForOperator
                 },
                 {
+                    'title': 'Customer Settings',
+                    'link': '/customer-settings',
+                    'alwaysShow': true
+                },
+                {
                     'title': 'Warehouse',
                     'link': '/warehouse',
                     'alwaysShow': menuForOperator

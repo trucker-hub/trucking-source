@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .service('settingService', function ($http) {
+  .service('customerSettingService', function ($http, $modal) {
       var vm = this;
 
       vm.updateSetting = function(setting, userId) {
@@ -34,6 +34,32 @@ angular.module('servicesApp')
           cbError();
         });
       };
+
+      this.openCustomerSettingsDialog = function (customer, callbackOK, callbackCancel) {
+
+          var modalInstance = $modal.open({
+              animation: true,
+              templateUrl: 'app/settings/setting-update/setting-update.html',
+              controller: 'CustomerSettingUpdateCtrl',
+              size: 'lg',
+              resolve: {
+                  customer: function () {
+                      return customer;
+                  }
+              }
+          });
+
+          modalInstance.result.then(
+              function (result) {
+                  callbackOK();
+              },
+              function () {
+                  console.log('Modal dismissed at: ' + new Date());
+                  callbackCancel();
+              }
+          );
+      };
+
 
       return vm;
     });

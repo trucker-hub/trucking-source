@@ -1,0 +1,20 @@
+<div class="container">
+
+    <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover">
+        <tr ng-repeat="user in $data">
+            <td></td>
+            <td data-title="'Name'" filter="{ 'name': 'text' }">
+                {{user.name}}
+            </td>
+            <td data-title="'Role'">
+                {{user.role}}
+            </td>
+            <td data-title="'Email'">
+                {{user.email}}
+            </td>
+            <td data-title="'Settings'">
+                <a ng-click="editCustomerSettings(user)"><i class="fa fa-cog fa-lg"></i></a>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <span class="modal-title"><b>Customer Settings for {{customer.name}}</b></span>
+    <div style="float:right"> <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancel()"></span></div>
+</div>
+<div class="modal-body">
+
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th class="col-md-8">Description</th>
+            <th class="col-md-3">Charge</th>
+            <th class="col-md-1"></th>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button style="float:left" class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+    <button style="float:right" class="btn btn-primary" type="button" ng-click="ok()">Save</button>
+</div>
