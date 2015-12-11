@@ -5,11 +5,29 @@
 <div class="modal-body">
 
     <table class="table">
-        <tr>
-            <th>#</th>
-            <th class="col-md-8">Description</th>
-            <th class="col-md-3">Charge</th>
-            <th class="col-md-1"></th>
+        <tr class="info">
+            <th colspan="3">FTL Fees</th>
+        </tr>
+        <tr ng-repeat="fee in settings.ftlSettings.brokerFees">
+            <th>{{fee.name}}</th>
+            <td><input type="number" class="form-control" size="13" ng-model="fee.charge"></td>
+            <td></td>
+        </tr>
+        <tr class="info">
+            <th colspan="3">LTL Fees</th>
+        </tr>
+        <tr ng-repeat="fee in settings.ltlSettings.brokerFees">
+            <th>{{fee.name}}</th>
+            <td><input type="number" class="form-control" size="13" ng-model="fee.charge"></td>
+            <td></td>
+        </tr>
+        <tr class="info">
+            <th colspan="3">Air Fees</th>
+        </tr>
+        <tr ng-repeat="fee in settings.airSettings.brokerFees">
+            <th>{{fee.name}}</th>
+            <td><input type="number" class="form-control" size="13" ng-model="fee.charge"></td>
+            <td></td>
         </tr>
     </table>
 </div>

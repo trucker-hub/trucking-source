@@ -7,9 +7,28 @@ angular.module('servicesApp')
       $scope.customer = customer;
 
 
+      customerSettingService.getSettings(customer._id,
+       function(settings) {
+           $scope.settings = settings;
+       },
+       function(defaultSettings) {
+           $scope.settings = defaultSettings;
+       }
+      );
+
       $scope.ok = function () {
 
-          $modalInstance.close();
+          customerSettingService.updateSettings($scope.settings, $scope.customer._id,
+
+          function() {
+              console.log("saved successfully "+ $scope.customer._id);
+              $modalInstance.close();
+          },
+              function() {
+                  console.log("saved not successfully "+ $scope.customer._id);
+              }
+          );
+
       };
 
       $scope.cancel = function () {
