@@ -3,7 +3,7 @@
   <div class="panel panel-default">
 
     <div class="panel-heading">
-      <span>Loads:</span>
+      <span>Loads <span class="badge">{{loads.length}}</span>:</span>
       <button type="button" class="btn btn-default btn-link" ng-click="queryLoads(1)">Today's</button>
       <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads(3)">Last 3 days </button>
       <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads(7)">Last week</button>
@@ -13,7 +13,7 @@
     <div class="panel-body">
       <table ng-table="tableParamsLoads" show-filter="true" class="table table-responsive table-hover table-condensed">
 
-        <tr ng-repeat="load in $data" ng-click="selectLoad(load)" ng-class="{'success':load==selectedLoad}">
+        <tr ng-repeat="load in $data" ng-click="selectLoad(load)" ng-class="{'active':load==selectedLoad}">
           <td data-title="'Type'"><load-type type="load.loadType"></load-type></td>
           <td data-title="'Shipper'" filter="{ 'who': 'text' }">
             {{load.who}}
@@ -34,12 +34,16 @@
             <div ng-show="selectedLoad==load"><a ng-click="sourcing()"><i  class="fa fa-search-plus fa-lg"></i></a></div>
           </td>
         </tr>
+        <tr ng-show="$data.length ==0">
+          <td></td>
+          <td colspan="6"><i class="fa fa-angle-double-right"></i> <b>No Loads found for {{searchCriteria}}</b>. Maybe expand the search time window.</td>
+        </tr>
       </table>
     </div>
   </div>
 
   <div class="panel panel-default">
-    <div class="panel-heading">Choices <span class="badge">{{selectedLoad.sources.length}}</span> </div>
+    <div class="panel-heading">Possible Trucking Companies <span class="badge">{{selectedLoad.sources.length}}</span> </div>
     <div class="panel-body">
       <table class="table table-hover">
         <tr>
@@ -51,15 +55,13 @@
           <th>Location</th>
           <th></th>
         </tr>
-        <tr ng-repeat-start="source in selectedLoad.sources" ng-class="{'success':source.id==selectedLoad.fulfilledBy.source}" >
+        <tr ng-repeat-start="source in selectedLoad.sources" ng-class="{'active':source.id==selectedLoad.fulfilledBy.source}" >
           <th>
             <i class="fa" ng-class="{'fa-check':source.id==selectedLoad.fulfilledBy.source, 'fa-lock': (selectedLoad.status=='FILLED' && source.id==selectedLoad.fulfilledBy.source)}"></i>
           </th>
-          <th >{{source.name}}</th>
-          <td ><b>{{source.totalCost | currency:"$":2}}</b>
-              <i ng-click="toggleSourceDetails(source)" class="fa fa-lg"
-                 ng-class="{'fa-plus-square-o':!source.showDetails, 'fa-minus-square-o':source.showDetails}"></i>
-          </td>
+          <th>{{source.name}} <i ng-click="toggleSourceDetails(source)" class="fa fa-lg"
+                                 ng-class="{'fa-plus-square-o':!source.showDetails, 'fa-minus-square-o':source.showDetails}"></i></th>
+          <td ><b>{{source.totalCost | currency:"$":2}}</b></td>
           <td >{{source.time}}</td>
           <td >{{source.contact | tel }}</td>
           <td >{{source.location}}</td>

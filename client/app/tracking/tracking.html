@@ -3,10 +3,10 @@
   <div class="panel panel-default">
 
     <div class="panel-heading">
-      <button type="button" class="btn btn-default btn-link" ng-click="queryLoads('FILLED',1)">Today's DO</button>
-      <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads('FILLED',3)">DO in last 3 days </button>
-      <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads('FILLED',7)">DO in last week</button>
-      <button type="button" class="btn btn-danger  btn-link" ng-click="queryLoads('FILLED',14)">All Open DO</button>
+      <button type="button" class="btn btn-default btn-link" ng-click="queryLoads('FILLED',1)">Today</button>
+      <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads('FILLED',3)">Last 3 days </button>
+      <button type="button" class="btn btn-warning btn-link" ng-click="queryLoads('FILLED',7)">Last week</button>
+      <button type="button" class="btn btn-danger  btn-link" ng-click="queryLoads('FILLED',14)">ALL</button>
     </div>
     <div class="panel-body">
       <table ng-table="tableParamsLoads" show-filter="true" class="table table-responsive table-hover">
@@ -27,6 +27,10 @@
           <td data-title="'Status'" class="col-md-5 active" >
             <load-status load="load"></load-status>
           </td>
+        </tr>
+        <tr ng-show="$data.length ==0">
+          <td></td>
+          <td colspan="4"><i class="fa fa-angle-double-right"></i> <b>No Loads found for {{searchCriteria}}</b>. Maybe expand the search time window.</td>
         </tr>
       </table>
     </div>

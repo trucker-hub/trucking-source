@@ -2,36 +2,36 @@
 
 angular.module('servicesApp')
   .controller('CustomerSettingUpdateCtrl', function ($scope, $modalInstance, customerSettingService, customer) {
-      console.log("Initialized CustomerSettingUpdateCtrl");
+    console.log("Initialized CustomerSettingUpdateCtrl");
 
-      $scope.customer = customer;
+    $scope.customer = customer;
 
 
-      customerSettingService.getSettings(customer._id,
-       function(settings) {
-           $scope.settings = settings;
-       },
-       function(defaultSettings) {
-           $scope.settings = defaultSettings;
-       }
+    customerSettingService.getCustomerSettings(customer._id,
+      function (settings) {
+        $scope.settings = settings;
+      },
+      function (defaultSettings) {
+        $scope.settings = defaultSettings;
+      }
+    );
+
+    $scope.ok = function () {
+
+      customerSettingService.updateCustomerSettings($scope.settings, $scope.customer._id,
+
+        function () {
+          console.log("saved successfully " + $scope.customer._id);
+          $modalInstance.close();
+        },
+        function () {
+          console.log("saved not successfully " + $scope.customer._id);
+        }
       );
 
-      $scope.ok = function () {
+    };
 
-          customerSettingService.updateSettings($scope.settings, $scope.customer._id,
-
-          function() {
-              console.log("saved successfully "+ $scope.customer._id);
-              $modalInstance.close();
-          },
-              function() {
-                  console.log("saved not successfully "+ $scope.customer._id);
-              }
-          );
-
-      };
-
-      $scope.cancel = function () {
-          $modalInstance.dismiss('cancel');
-      };
+    $scope.cancel = function () {
+      $modalInstance.dismiss('cancel');
+    };
   });

@@ -1,161 +1,172 @@
 'use strict';
 
 angular.module('servicesApp').controller('SourcingCtrl',
-    function ($scope, $http, $modal, ngTableParams, $filter, ngProgressFactory,
-              Auth, loadService, sourcingService) {
+  function ($scope, $http, $modal, ngTableParams, $filter, ngProgressFactory,
+            Auth, loadService, sourcingService) {
 
-  var loads = [];
+    $scope.loads = [];
 
-  $scope.queryLoads = function (days) {
+    $scope.searchCriteria ="Today";
 
-    $scope.progressbar = ngProgressFactory.createInstance();
-    $scope.progressbar.start();
-    loadService.fetch('ALL', days,
-      function () {
-        $scope.updateLoadsTable();
-      },
-      function () {
-        $scope.progressbar.stop();
+    $scope.queryLoads = function (days) {
+
+      if(days==1) {
+        $scope.searchCriteria ="Today";
+      }else if(days > 1) {
+        $scope.searchCriteria ="Last " + days + " days";
+      }else if (days < 1) {
+        $scope.searchCriteria ="All open loads";
       }
-    );
-  };
 
-  $scope.selectLoad = function (load) {
-    if ($scope.selectedLoad != load) {
-      $scope.sources = [];
-      $scope.selectedLoad = load;
-      if (!$scope.selectedLoad.brokerFees || $scope.selectedLoad.brokerFees.length == 0) {
-        sourcingService.getCustomerFeeSettings($scope.selectedLoad);
-      }
-    }
-  };
+      $scope.progressbar = ngProgressFactory.createInstance();
+      $scope.progressbar.start();
+      loadService.fetch('ALL', days,
+        function () {
+          $scope.updateLoadsTable();
+        },
+        function () {
+          $scope.progressbar.stop();
+        }
+      );
+    };
 
-  $scope.recalcAdjustments = function(source) {
-    sourcingService.recalcAdjustment($scope.selectedLoad, source);
-  };
-
-  $scope.updateLoadsTable = function () {
-    loads = loadService.getCombinedLoads();
-    $scope.tableParamsLoads.reload();
-    $scope.progressbar.complete();
-
-  };
-
-
-  $scope.selectSource = function (aSource) {
-    $scope.selectedSource = aSource;
-    sourcingService.selectSource($scope.selectedLoad, $scope.selectedSource);
-  };
-
-
-  $scope.sourcing = function () {
-
-    $scope.progressbar = ngProgressFactory.createInstance();
-    $scope.progressbar.start();
-    sourcingService.sourcing($scope.selectedLoad,
-      function () {
-        //after get the companies' data, we can calculate the prices on the client side.
-        $scope.progressbar.complete();
-      },
-      function () {
-        $scope.progressbar.stop();
-      }
-    );
-  };
-
-  $scope.finalizeSource = function () {
-    sourcingService.finalizeSource($scope.selectedLoad,
-      function () {
-        console.log("finalizeSource succesfully ");
-      },
-      function () {
-        console.log("finalizeSource  failed ");
-      }
-    );
-  };
-
-  $scope.createInvoice = function () {
-    var modalInstance = $modal.open({
-      animation: true,
-      templateUrl: 'app/sourcing/invoice/invoice.html',
-      controller: 'InvoiceCtrl',
-      size: 'lg',
-      resolve: {
-        load: function () {
-          return $scope.selectedLoad;
+    $scope.selectLoad = function (load) {
+      if ($scope.selectedLoad != load) {
+        $scope.sources = [];
+        $scope.selectedLoad = load;
+        if (!$scope.selectedLoad.brokerFees || $scope.selectedLoad.brokerFees.length == 0) {
+          sourcingService.getCustomerFeeSettings($scope.selectedLoad);
         }
       }
-    });
-    modalInstance.result.then(
-      function () {
-      },
-      function () {
-        console.log('Modal dismissed at: ' + new Date());
-      }
-    );
-  };
+    };
 
-  $scope.toggleSourceDetails = function (source) {
-    if (source.showDetails) {
-      source.showDetails = false;
-    } else {
+    $scope.recalcAdjustments = function (source) {
       sourcingService.recalcAdjustment($scope.selectedLoad, source);
-      source.showDetails = true;
-    }
-  };
+    };
 
-  $scope.toggleLoadDetails = function (load) {
-    if (load.showLoadDetails) {
-      load.showLoadDetails = false;
-    } else {
-      load.showLoadDetails = true;
-    }
-  };
+    $scope.updateLoadsTable = function () {
+      $scope.loads = loadService.getCombinedLoads();
+      $scope.tableParamsLoads.reload();
+      $scope.progressbar.complete();
 
-  $scope.createDO = function () {
-    var modalInstance = $modal.open({
-      animation: true,
-      templateUrl: 'app/tracking/do-details/do-details.html',
-      controller: 'DoDetailsCtrl',
-      size: 'lg',
-      resolve: {
-        load: function () {
-          return $scope.selectedLoad;
+    };
+
+
+    $scope.selectSource = function (aSource) {
+      $scope.selectedSource = aSource;
+      sourcingService.selectSource($scope.selectedLoad, $scope.selectedSource);
+    };
+
+
+    $scope.sourcing = function () {
+
+      $scope.progressbar = ngProgressFactory.createInstance();
+      $scope.progressbar.start();
+      sourcingService.sourcing($scope.selectedLoad,
+        function () {
+          //after get the companies' data, we can calculate the prices on the client side.
+          $scope.progressbar.complete();
+        },
+        function () {
+          $scope.progressbar.stop();
         }
+      );
+    };
+
+    $scope.finalizeSource = function () {
+      sourcingService.finalizeSource($scope.selectedLoad,
+        function () {
+          console.log("finalizeSource succesfully ");
+        },
+        function () {
+          console.log("finalizeSource  failed ");
+        }
+      );
+    };
+
+    $scope.createInvoice = function () {
+      var modalInstance = $modal.open({
+        animation: true,
+        templateUrl: 'app/sourcing/invoice/invoice.html',
+        controller: 'InvoiceCtrl',
+        size: 'lg',
+        resolve: {
+          load: function () {
+            return $scope.selectedLoad;
+          }
+        }
+      });
+      modalInstance.result.then(
+        function () {
+        },
+        function () {
+          console.log('Modal dismissed at: ' + new Date());
+        }
+      );
+    };
+
+    $scope.toggleSourceDetails = function (source) {
+      if (source.showDetails) {
+        source.showDetails = false;
+      } else {
+        sourcingService.recalcAdjustment($scope.selectedLoad, source);
+        source.showDetails = true;
+      }
+    };
+
+    $scope.toggleLoadDetails = function (load) {
+      if (load.showLoadDetails) {
+        load.showLoadDetails = false;
+      } else {
+        load.showLoadDetails = true;
+      }
+    };
+
+    $scope.createDO = function () {
+      var modalInstance = $modal.open({
+        animation: true,
+        templateUrl: 'app/tracking/do-details/do-details.html',
+        controller: 'DoDetailsCtrl',
+        size: 'lg',
+        resolve: {
+          load: function () {
+            return $scope.selectedLoad;
+          }
+        }
+      });
+
+      modalInstance.result.then(
+        function () {
+          var path = $scope.selectedLoad.loadType == 'FTL' ? '/api/load/ftl-loads/' : '/api/load/ltl-loads/';
+          $http.put(path + $scope.selectedLoad._id, $scope.selectedLoad).then(
+            function (response) {
+              console.log("request saved succesfully " + JSON.stringify(response));
+            },
+            function (err) {
+              console.log("request saving failed " + err);
+            }
+          );
+        },
+        function () {
+          console.log('Modal dismissed at: ' + new Date());
+        }
+      );
+    };
+    $scope.tableParamsLoads = new ngTableParams({
+      page: 1,            // show first page
+      count: 10,          // count per page
+      filter: {who: ''}
+    }, {
+      total: $scope.loads.length, // length of data
+      //counts: [], // hide page counts control
+      getData: function ($defer, params) {
+        // use build-in angular filter
+        var orderedData = params.filter() ? $filter('filter')($scope.loads, params.filter()) : $scope.loads;
+        var xxx = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+        params.total(orderedData.length); // set total for recalc pagination
+        $defer.resolve(xxx);
       }
     });
 
-    modalInstance.result.then(
-      function () {
-        var path = $scope.selectedLoad.loadType == 'FTL' ? '/api/load/ftl-loads/' : '/api/load/ltl-loads/';
-        $http.put(path + $scope.selectedLoad._id, $scope.selectedLoad).then(
-          function (response) {
-            console.log("request saved succesfully " + JSON.stringify(response));
-          },
-          function (err) {
-            console.log("request saving failed " + err);
-          }
-        );
-      },
-      function () {
-        console.log('Modal dismissed at: ' + new Date());
-      }
-    );
-  };
-  $scope.tableParamsLoads = new ngTableParams({
-    page: 1,            // show first page
-    count: 10,          // count per page
-    filter: {who: ''}
-  }, {
-    total: loads.length, // length of data
-    //counts: [], // hide page counts control
-    getData: function ($defer, params) {
-      // use build-in angular filter
-      var orderedData = params.filter() ? $filter('filter')(loads, params.filter()) : loads;
-      var xxx = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
-      params.total(orderedData.length); // set total for recalc pagination
-      $defer.resolve(xxx);
-    }
+    $scope.queryLoads(1);
   });
-
-});

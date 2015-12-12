@@ -14,11 +14,11 @@
                 </div>
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <span>Loads:</span>
+                    <span class="ac-highlighted">Loads for:</span>
                     <button type="button" class="btn btn-link" ng-click="fetch(1)">Today‘s</button>
                     <button type="button" class="btn btn-link" ng-click="fetch(3)">Last 3 days </button>
                     <button type="button" class="btn btn-link" ng-click="fetch(7)">Last week</button>
-                    <button type="button" class="btn btn-link" ng-click="fetch(-1)">All</button>
+                    <button type="button" class="btn btn-link" ng-click="fetch(-1)">ALL</button>
                 </div>
             </div>
             <br>
@@ -43,6 +43,10 @@
                     <td data-title="''">
                         <a ng-click="editLoad(load._id, load.loadType)"><i class="fa fa-pencil-square-o fa-lg"></i></a>
                     </td>
+                </tr>
+                <tr ng-show="$data.length ==0">
+                  <td></td>
+                  <td colspan="6"><i class="fa fa-angle-double-right"></i> <b>No Loads found for {{searchCriteria}}</b>. Maybe expand the search time window.</td>
                 </tr>
             </table>
         </tab>

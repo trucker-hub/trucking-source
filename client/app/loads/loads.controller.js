@@ -13,6 +13,8 @@ angular.module('servicesApp')
 
     $scope.loads = loadService.getCombinedLoads();
 
+    $scope.searchCriteria ='Today';
+
     $scope.tableParams = new ngTableParams({
       page: 1,            // show first page
       count: 25,          // count per page
@@ -107,6 +109,13 @@ angular.module('servicesApp')
 
     $scope.fetch = function(days) {
       console.log('fetch loads from the db');
+      if(days==1) {
+        $scope.searchCriteria ="Today";
+      }else if(days > 1) {
+        $scope.searchCriteria ="Last " + days + " days";
+      }else if (days < 1) {
+        $scope.searchCriteria ="All open loads";
+      }
       $scope.progressbar = ngProgressFactory.createInstance();
       $scope.progressbar.start();
       loadService.fetch('ALL', days, function() {
@@ -127,5 +136,5 @@ angular.module('servicesApp')
     };
 
 
-    //$scope.fetch('ALL');
+    $scope.fetch(1);
   });

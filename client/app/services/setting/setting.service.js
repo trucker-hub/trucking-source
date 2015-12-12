@@ -6,7 +6,7 @@ angular.module('servicesApp')
 
     var settingsRepo = {};
 
-    vm.updateSettings = function (settings, userId, cbOK, cbError) {
+    vm.updateCustomerSettings = function (settings, userId, cbOK, cbError) {
 
       var url = (settings._id) ? ('/api/settings/' + settings._id) : ('/api/settings/');
       $http.put(url, settings).then(function (response) {

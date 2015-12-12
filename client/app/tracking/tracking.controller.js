@@ -5,10 +5,20 @@ angular.module('servicesApp')
 
     var loads = [];
 
+    $scope.searchCriteria ="Today";
+
     $rootScope.dos = $rootScope.dos || { ftlLoads: [], ltlLoads: []};
     $scope.progressbar = ngProgressFactory.createInstance();
 
     $scope.queryLoads = function(type, days) {
+
+      if(days==1) {
+        $scope.searchCriteria ="Today";
+      }else if(days > 1) {
+        $scope.searchCriteria ="Last " + days + " days";
+      }else if (days < 1) {
+        $scope.searchCriteria ="All open loads";
+      }
 
       $scope.progressbar.start();
 
