@@ -1,15 +1,10 @@
 'use strict';
 
-angular.module('servicesApp').controller('SourcingCtrl', function ($scope, $http, $modal, ngTableParams, $filter, ngProgressFactory, loadService, sourcingService) {
-
-  var brokerFees = [
-    {name: "ABI-Customs Fee", charge: 15},
-    {name: "Chassy Fee", charge: 15},
-    {name: "Service Fee", charge: 50}
-  ];
+angular.module('servicesApp').controller('SourcingCtrl',
+    function ($scope, $http, $modal, ngTableParams, $filter, ngProgressFactory,
+              Auth, loadService, sourcingService) {
 
   var loads = [];
-
 
   $scope.queryLoads = function (days) {
 
