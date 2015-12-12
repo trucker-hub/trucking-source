@@ -25,7 +25,7 @@ angular.module('servicesApp').controller('SourcingCtrl',
       $scope.sources = [];
       $scope.selectedLoad = load;
       if (!$scope.selectedLoad.brokerFees || $scope.selectedLoad.brokerFees.length == 0) {
-        $scope.selectedLoad.brokerFees = brokerFees;
+        sourcingService.getCustomerFeeSettings($scope.selectedLoad);
       }
     }
   };

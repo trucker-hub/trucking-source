@@ -95,11 +95,11 @@ LtlLoad.find({}).remove(function() {
             notes: "A note",
             shipTo: {
                 location: {
-                    full_address:     "919 Westholme Ave, Los Angeles, CA 90024",
+                    full_address: "1712 Fremont St, Santa Clara, CA 95050",
                     state:      "CA",
-                    county:     "Los Angeles County",
-                    city:       "Los Angeles",
-                    zipCode:    "90024"
+                    county:     "Santa Clara County",
+                    city:       "Santa Clara",
+                    zipCode:    "95050"
                 },
                 services: [{service: 'Inside'}, {service: 'LifeGate'}]
             },
@@ -553,8 +553,8 @@ TruckingCompany.find({}).remove(function () {
                             zone: "E"
                         }, {
                             state: "CA",
-                            city: "Los Angeles",
-                            zipCode: "90024",
+                            city: "Santa Clara",
+                            zipCode: "95050",
                             zone: "C"
                         }]
                     }
@@ -761,8 +761,8 @@ TruckingCompany.find({}).remove(function () {
                             zone: "E"
                         }, {
                             state: "CA",
-                            city: "Los Angeles",
-                            zipCode: "90024",
+                            city: "Santa Clara",
+                            zipCode: "95050",
                             zone: "C"
                         }]
                     }
