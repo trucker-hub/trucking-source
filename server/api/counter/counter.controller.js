@@ -2,7 +2,7 @@
 
 var _ = require('lodash');
 var Counter = require('./counter.model');
-
+var Promise = require('promise');
 
 var getNextId = function (name, callback) {
     Counter.findOneAndUpdate(
@@ -14,7 +14,26 @@ var getNextId = function (name, callback) {
         });
 };
 
+var nextIdPromise = function(name) {
+
+  var promise = new Promise(function(resolve, reject) {
+    Counter.findOneAndUpdate(
+      { name: name },
+      { $inc:   { counter: 1 } },
+      { upsert: true, new:true },
+      function (err, idDoc) {
+        if(err) {
+          reject(err);
+        }
+        resolve(idDoc);
+      });
+  });
+
+  return promise;
+};
+
 exports.nextId = getNextId;
+exports.nextIdPromise = nextIdPromise;
 
 // Get list of counters
 exports.index = function(req, res) {
@@ -45,12 +64,11 @@ exports.create = function(req, res) {
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
 
-  getNextId(req.params.name, function(err, idDoc) {
-      if (err) {
-          return handleError(res, err);
-          console.error(err);
-      }
-      return res.status(200).json(idDoc);
+  nextIdPromise(req.params.name).then(function(idDoc) {
+    return res.status(200).json(idDoc);
+  }).catch(function(err) {
+    return handleError(res, err);
+    console.error(err);
   });
 };
 
