@@ -138,6 +138,28 @@ angular.module('servicesApp')
         });
     };
 
+    $scope.archive = function() {
+      console.log("test archiving companies");
+      $http.post('/api/trucking-companies/util/archives').then(
+          function (response) {
+            console.log("archived successfully")
+          },
+          function (response) {
+            console.log('ran into error ' + JSON.stringify(response));
+          });
+    };
+
+    $scope.extract = function() {
+      console.log("test extracting companies");
+      $http.post('/api/trucking-companies/util/extract').then(
+          function (response) {
+            console.log("extracted successfully")
+          },
+          function (response) {
+            console.log('ran into error ' + JSON.stringify(response));
+          });
+    };
+
     $scope.transitTime = function () {
       var data = {
         from: {
@@ -187,7 +209,7 @@ angular.module('servicesApp')
         value: 999 // Invoice value, set currency in options
       };
 
-      return $http.post('/api/ups/services/timeX', data);
+      return $http.post('/api/ups/services/time', data);
     };
 
 
@@ -263,12 +285,21 @@ angular.module('servicesApp')
     var logData = function(data) {
       console.log("logged data", JSON.stringify(data));
     };
+
+    var logData1 = function(data) {
+      console.log("logged data 1");
+    };
+
+    var logData2 = function(data) {
+      console.log("logged data 2");
+    };
+
     var catchError = function(data) {
       console.error("error happened", JSON.stringify(data));
     };
 
     $scope.promiseTest = function() {
-      $scope.transitTimePromise().then(anotherPromise).then(logData).catch(catchError);
+      $scope.transitTimePromise().then(anotherPromise).then(logData).then(logData1).then(logData2).catch(catchError);
     }
 
   });

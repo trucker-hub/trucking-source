@@ -13,4 +13,7 @@ router.put('/:id', auth.hasRole('operator'),    controller.update);
 router.patch('/:id', auth.hasRole('operator'),  controller.update);
 router.delete('/:id', auth.hasRole('operator'), controller.destroy);
 
+router.post('/util/archives', auth.hasRole('operator'),      controller.archive);
+router.post('/util/extract', auth.hasRole('operator'),      controller.extract);
+
 module.exports = router;
