@@ -108,9 +108,8 @@
     <table class="table table-striped">
       <tr>
         <th class="col-md-2">Unit Weight (lbs)</th>
-        <th class="col-md-1">Quantiy</th>
-        <th class="col-md-2">Packaging</th>
-        <th class="col-md-3">W x L x H(in)</th>
+        <th class="col-md-1">Quantity</th>
+        <th class="col-md-2">Container Size</th>
         <th class="col-md-3">Description</th>
         <th class="col-md-1"><span class="glyphicon glyphicon-plus" aria-hidden="true"
                                    ng-click="ftlCtrl.addLine()"></span></th>
@@ -128,16 +127,9 @@
         </td>
         <td>
           <select class="form-control" ng-model="line.packaging" id="" ng-change="ftlCtrl.change()">
-            <option value="">-- Packaging --</option>
+            <option value="">-- Container Size --</option>
             <option ng-repeat="packaging in ftlCtrl.packagings">{{packaging}}</option>
           </select>
-        </td>
-        <td>
-          <div class="form-inline">
-            <input class="form-control" type="text" ng-model="line.width"  size="2" min="1" ng-change="ftlCtrl.change()">
-            <input class="form-control" type="text" ng-model="line.length" size="2" min="1" ng-change="ftlCtrl.change()">
-            <input class="form-control" type="text" ng-model="line.height" size="2" min="1" ng-change="ftlCtrl.change()">
-          </div>
         </td>
         <td><input class="form-control" type="text" ng-model="line.description" placeholder="description" ng-change="ftlCtrl.change()"></td>
         <td><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="ftlCtrl.removeLine($index)"></span>

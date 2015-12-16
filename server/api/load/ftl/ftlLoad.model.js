@@ -49,23 +49,14 @@ var FtlLoadSchema = new Schema({
     packaging: {
       type: String, required: true,
       enum: [
-        "Full container",
-        "Pallets (48x40)",
-        "Pallets (48x48)",
-        "Pallets (60x48)",
-        "Bags",
-        "Bales",
-        "Cartons",
-        "Crates",
-        "Boxes",
-        "Rolls",
-        "Others"
+        "Container 20",
+        "Container 40",
+        "Container 40HQ",
+        "Container 45",
+        "Container 45HQ"
       ],
-      default: 'Full container'
+      default: 'Container 20'
     },
-    length: Number,
-    width: Number,
-    height: Number,
     description: String
   }],
   trailer: {
@@ -77,12 +68,7 @@ var FtlLoadSchema = new Schema({
         'Flatbed',
         'Other'
       ],
-      default: 'Dry Van'},
-    size: {
-      type: String, required: true,
-      enum: ["20", "40", "40HQ", "48"],
-      default: "40"
-    }
+      default: 'Dry Van'}
   },
 
   fulfilledBy: {

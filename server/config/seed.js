@@ -191,15 +191,11 @@ FtlLoad.find({}).remove(function() {
             lines: [{
                 weight: 17000,
                 quantity: 1,
-                packaging: "Full container",
-                length: 20,
-                width: 20,
-                height: 20,
+                packaging: "Container 20",
                 description: "Metals"
             }],
             trailer: {
-                type: 'Dry Van',
-                size: "40"
+                type: 'Dry Van'
             }
         },
         {
@@ -227,10 +223,7 @@ FtlLoad.find({}).remove(function() {
             lines: [{
                 weight: 10000,
                 quantity: 1,
-                packaging: "Full container",
-                length: 20,
-                width: 20,
-                height: 20,
+                packaging: "Container 20",
                 description: "Metals"
             }],
             trailer: {
