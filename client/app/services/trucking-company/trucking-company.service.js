@@ -164,6 +164,30 @@ angular.module('servicesApp')
       );
     };
 
+      this.openWeightChargesDialog = function (sizeCharge, callbackOK, callbackCancel) {
+
+          var modalInstance = $modal.open({
+              animation: true,
+              templateUrl: 'app/trucking-company/weight-charges/weight-charges.html',
+              controller: 'WeightChargesCtrl',
+              resolve: {
+                  sizeCharge: function () {
+                      return sizeCharge;
+                  }
+              }
+          });
+          modalInstance.result.then(
+              function (result) {
+                  console.log('Modal saved at: ' + new Date());
+                  callbackOK();
+              },
+              function () {
+                  console.log('Modal dismissed at: ' + new Date());
+                  callbackCancel();
+              }
+          );
+      };
+
     this.openContactDialog = function (company, callbackOK, callbackCancel) {
 
       var modalInstance = $modal.open({

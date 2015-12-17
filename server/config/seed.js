@@ -191,7 +191,7 @@ FtlLoad.find({}).remove(function() {
             lines: [{
                 weight: 17000,
                 quantity: 1,
-                packaging: "Container 20",
+                packaging: "20",
                 description: "Metals"
             }],
             trailer: {
@@ -223,12 +223,11 @@ FtlLoad.find({}).remove(function() {
             lines: [{
                 weight: 10000,
                 quantity: 1,
-                packaging: "Container 20",
+                packaging: "20",
                 description: "Metals"
             }],
             trailer: {
-                type: 'Dry Van',
-                size: "40"
+                type: 'Dry Van'
             }
         }
     )
@@ -246,20 +245,29 @@ TruckingCompany.find({}).remove(function () {
             rateBasis: "zipCode",
             ftl: {
                 fuelSurcharge: 20,
-                residentialCharge: 60.0,
-                pierPassFee: 66.50,
-                cleaningTruckFee: 35,
-                congestionFee: 150,
                 regions: [
                     { state: "CA", county: "Los Angeles County"}
                 ],
-                overWeightCharges: [
+                sizeCharges: [
                     {
-                        containerSize: "40",
-                        ranges: [
+                        containerSize: "20",
+                        weightRanges: [
                             { limit:13000, charge:100},
                             { limit:16000, charge:150}
-                        ]
+                        ],
+                        pierPassFee: 66.50,
+                        cleanTruckFee: 35,
+                        congestionFee: 150
+                    },
+                    {
+                        containerSize: "40",
+                        weightRanges: [
+                            { limit:13000, charge:100},
+                            { limit:16000, charge:150}
+                        ],
+                        pierPassFee: 66.50,
+                        cleanTruckFee: 35,
+                        congestionFee: 150
                     }
                 ],
                 rateDef: {
@@ -565,28 +573,31 @@ TruckingCompany.find({}).remove(function () {
             rateBasis: "city",
             ftl: {
                 fuelSurcharge: 20,
-                residentialCharge: 60.0,
-                pierPassFee: 66.50,
-                cleaningTruckFee: 35,
-                congestionFee: 150,
                 regions: [
                     {
                         state: "CA",
                         county: "Los Angeles County"
                     }
                 ],
-                overWeightCharges: [
-                    { containerSize: "28",
-                        ranges: [ {limit: 13000, charge: 150}, {limit: 16000, charge: 200}]
+                sizeCharges: [
+                    { containerSize: "20",
+                        weightRanges: [ {limit: 13000, charge: 150}, {limit: 16000, charge: 200}],
+                        pierPassFee: 66.50,
+                        cleanTruckFee: 35,
+                        congestionFee: 150
                     }, {
                         containerSize: "40",
-                        ranges: [ {limit: 13000, charge: 150}, {limit: 16000, charge: 200}]
-                    }, {
-                        containerSize: "40HQ",
-                        ranges: [ {limit: 13000, charge: 150}, {limit: 16000, charge: 200}]
-                    }, {
-                        containerSize: "48",
-                        ranges: [ {limit: 13000, charge: 150}, {limit: 16000, charge: 200}]
+                        weightRanges: [ {limit: 13000, charge: 150}, {limit: 16000, charge: 200}],
+                        pierPassFee: 66.50,
+                        cleanTruckFee: 35,
+                        congestionFee: 150
+                    },
+                    {
+                        containerSize: "45",
+                        weightRanges: [ {limit: 13000, charge: 150}, {limit: 16000, charge: 200}],
+                        pierPassFee: 66.50,
+                        cleanTruckFee: 35,
+                        congestionFee: 150
                     }
                 ],
                 rateDef: {

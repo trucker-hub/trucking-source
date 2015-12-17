@@ -70,24 +70,27 @@ var TruckingCompanySchema = new Schema({
   active: Boolean,
   ftl: {
     fuelSurcharge: Number,
-    residentialCharge: Number,
-    pierPassFee: Number,
-    cleaningTruckFee: Number,
-    congestionFee: Number,
-      additionalCharges: [{
-          name: String,
-          charge: Number
-      }],
+    additionalCharges: [{
+      name: String,
+      charge: Number
+    }],
     regions: [{
       state: String,
       county: String
     }],
-    overWeightCharges: [{
-      containerSize: String,
-      ranges: [{
+    sizeCharges: [{
+      containerSize: {
+        type: String, required: true,
+        enum: ['20', '40', '45'],
+        default: '20'
+      },
+      weightRanges: [{
         limit: Number,
         charge: Number
-      }]
+      }],
+      pierPassFee: Number,
+      cleanTruckFee: Number,
+      congestionFee: Number
     }],
     rateBasis: {
       type: String, required: true,

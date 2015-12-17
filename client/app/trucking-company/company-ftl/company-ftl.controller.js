@@ -18,6 +18,14 @@ angular.module('servicesApp')
         vm.company.changed = true;
       };
 
+      vm.editWeightRanges = function(sizeCharge) {
+          truckingCompany.openWeightChargesDialog(sizeCharge,
+              function() {
+                  vm.change();
+              },
+              function() {}
+          )};
+
       vm.editCharges = function() {
         truckingCompany.openChargesDialog(vm.company.ftl,
             function() {

@@ -1,0 +1,34 @@
+
+<div class="modal-header">
+    <span class="modal-title"><b>Weight Settings for Container Size</b></span>
+    <div style="float:right"> <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancel()"></span></div>
+</div>
+<div class="modal-body">
+
+    <table class="table">
+
+        <tr>
+            <th></th>
+            <td>Weight</td>
+            <td>Extra Charge</td>
+        </tr>
+        <tr ng-repeat="range in weightRangesCopy">
+            <th>#{{$index}}</th>
+            <td><div class="input-group">
+                <div class="input-group-addon">Over</div>
+                <input type="text" class="form-control"
+                       ng-model="range.limit" placeholder="weight">
+                <div class="input-group-addon">LBS</div>
+            </div></td>
+            <td><div class="input-group">
+                <div class="input-group-addon"> + $</div>
+                <input type="text" class="form-control"
+                       ng-model="range.charge" placeholder="Amount" >
+            </div></td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button style="float:left" class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+    <button style="float:right" class="btn btn-primary" type="button" ng-click="ok()">Save</button>
+</div>
