@@ -146,15 +146,15 @@ angular.module('servicesApp')
         controller: 'ChargesCtrl',
         size: 'lg',
         resolve: {
-          charges: function () {
-            return container.additionalCharges;
+          container: function () {
+            return container;
           }
         }
       });
 
       modalInstance.result.then(
-        function (result) {
-          container.additionalCharges = result;
+        function () {
+          console.log("saved the charge") ;
           callbackOK();
         },
         function () {

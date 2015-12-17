@@ -1,18 +1,17 @@
 
 <div class="modal-header">
-    <span class="modal-title"><b>Weight Settings for Container Size</b></span>
+    <span class="modal-title"><b>Weight/Fee Settings for Container Size: {{sizeCharge.containerSize}}</b></span>
     <div style="float:right"> <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancel()"></span></div>
 </div>
 <div class="modal-body">
 
     <table class="table">
-
         <tr>
             <th></th>
             <td>Weight</td>
             <td>Extra Charge</td>
         </tr>
-        <tr ng-repeat="range in weightRangesCopy">
+        <tr ng-repeat="range in weightRangesCopy track by $index">
             <th>#{{$index}}</th>
             <td><div class="input-group">
                 <div class="input-group-addon">Over</div>
@@ -25,6 +24,22 @@
                 <input type="text" class="form-control"
                        ng-model="range.charge" placeholder="Amount" >
             </div></td>
+            <td><a ng-click="removeLine($index)"><i class="fa fa-minus fa-lg"></i></a> </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td><div class="input-group">
+                <div class="input-group-addon">Over</div>
+                <input type="text" class="form-control"
+                       ng-model="newLimit" placeholder="weight">
+                <div class="input-group-addon">LBS</div>
+            </div></td>
+            <td><div class="input-group">
+                <div class="input-group-addon"> + $</div>
+                <input type="text" class="form-control"
+                       ng-model="newCharge" placeholder="Amount" >
+            </div></td>
+            <td><a ng-click="addLine()"><i class="fa fa-plus fa-lg"></i></a> </td>
         </tr>
     </table>
 </div>

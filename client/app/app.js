@@ -104,6 +104,27 @@ angular.module('servicesApp', [
 
     };
   })
+    .filter('containerWeightCharge', function () {
+      return function (weightRanges) {
+
+        if (!weightRanges || weightRanges.length==0) { return 'N/A'; }
+
+        return weightRanges.map(function(range) {
+          return range.limit + ", +$" + range.charge;
+        }).join(";  ");
+      };
+    })
+    .filter('additionalCharges', function () {
+      return function (charges) {
+
+        if (!charges || charges.length==0) { return 'N/A'; }
+
+        return charges.map(function(x) {
+          return "$"+x.charge + ":" + x.name;
+        }).join(";  ");
+      };
+    })
+
 
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider

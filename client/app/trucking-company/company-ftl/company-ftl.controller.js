@@ -26,7 +26,7 @@ angular.module('servicesApp')
               function() {}
           )};
 
-      vm.editCharges = function() {
+      vm.editAdditionalCharges = function() {
         truckingCompany.openChargesDialog(vm.company.ftl,
             function() {
               vm.change();
