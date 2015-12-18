@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .service('sourcingService', function ($http, loadService, customerSettingService, Auth) {
+  .service('sourcingService', function ($http, $modal, loadService, customerSettingService, Auth) {
     var vm = this;
 
     var upsRates = {};
@@ -349,6 +349,33 @@ angular.module('servicesApp')
 
       return data;
     };
+
+
+    this.showQuoteDialog = function (load) {
+
+      var modalInstance = $modal.open({
+        animation: true,
+        templateUrl: 'app/sourcing/quote/quote.html',
+        controller: 'QuoteCtrl',
+        size: 'lg',
+        resolve: {
+          load: function () {
+            return load;
+          }
+        }
+      });
+
+      modalInstance.result.then(
+          function (result) {
+            //callbackOK();
+          },
+          function () {
+            console.log('Modal dismissed at: ' + new Date());
+            //callbackCancel();
+          }
+      );
+    };
+
 
 
     return vm;
