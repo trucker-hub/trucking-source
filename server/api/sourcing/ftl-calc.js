@@ -50,10 +50,8 @@ exports.calc = function(load, company) {
   var zipCode = load.shipTo.location.zipCode;
   var city = load.shipTo.location.city;
   var freight = company.ftl;
-
-  var containerNumber = load.lines.length;
-
   var rates;
+
   if(freight.rateBasis=='zone') {
     rates = freight.rateDef.byZone.rates;
   }else if(freight.rateBasis=='city') {

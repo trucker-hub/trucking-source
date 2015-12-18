@@ -69,7 +69,11 @@ exports.index = function(req, res) {
       if(a.totalCost < b.totalCost) return -1;
       return 0;
     });
-    return res.status(200).json(sources);
+
+    var cleaned = sources.filter(function(source) {
+      return source.totalCost > 0;
+    });
+    return res.status(200).json(cleaned);
   });
 };
 
