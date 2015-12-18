@@ -49,13 +49,13 @@ var FtlLoadSchema = new Schema({
     packaging: {
       type: String, required: true,
       enum: [
-        "Container 20",
-        "Container 40",
-        "Container 40HQ",
-        "Container 45",
-        "Container 45HQ"
+        "20",
+        "40",
+        "40HQ",
+        "45",
+        "45HQ"
       ],
-      default: 'Container 20'
+      default: '20'
     },
     description: String
   }],
