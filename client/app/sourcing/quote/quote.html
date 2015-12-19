@@ -1,16 +1,17 @@
 <div class="modal-header" print-section="">
     <b>{{load.who}}</b>: {{load.shipFrom.location | location: true}} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> {{load.shipTo.location | location: true}}
+
     <i ng-click="toggleLoadDetails(load)" class="fa fa-lg"
        ng-class="{'fa-plus-square-o':!load.showLoadDetails, 'fa-minus-square-o':load.showLoadDetails}"></i>
-    <div style="float:right"> <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancel()"></span></div>
-</div>
-<div class="modal-body" print-section="">
 
+    <div style="float:right"><b><span style="color:green">{{load.fulfilledBy.charge | currency:"$":2}}</span></b> <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancel()"></span></div>
     <div class="panel panel-default" ng-show="load.showLoadDetails">
         <div class="panel-body panel">
             <load-details load="load"></load-details>
         </div>
     </div>
+</div>
+<div class="modal-body" print-section="">
     <div class="panel panel-default">
         <table class="table table-hover">
             <tr>
@@ -28,7 +29,7 @@
                 </th>
                 <th>{{source.name}} <i ng-click="toggleSourceDetails(source)" class="fa fa-lg"
                                        ng-class="{'fa-plus-square-o':!source.showDetails, 'fa-minus-square-o':source.showDetails}"></i></th>
-                <td ><b>{{source.totalCost | currency:"$":2}}</b></td>
+                <td ><b>{{source.totalAmount | currency:"$":2}}</b></td>
                 <td >{{source.time}}</td>
                 <td >{{source.contact | tel }}</td>
                 <td >{{source.location}}</td>
