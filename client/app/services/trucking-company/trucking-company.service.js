@@ -34,11 +34,7 @@ angular.module('servicesApp')
             ranges: [{limit: 44000, charge: 100}, {limit: 48000, charge: 150}]
           },
           {
-            "containerSize": "40HQ",
-            ranges: [{limit: 44000, charge: 100}, {limit: 48000, charge: 150}]
-          },
-          {
-            "containerSize": "48",
+            "containerSize": "45",
             ranges: [{limit: 44000, charge: 100}, {limit: 48000, charge: 150}]
           }]
       },
@@ -75,7 +71,7 @@ angular.module('servicesApp')
       );
     };
 
-    this.toggleFavorite = function (id) {
+    vm.toggleFavorite = function (id) {
       var index;
       for (index = 0; index < vm.list.length; ++index) {
         var company = vm.list[index];
@@ -116,7 +112,7 @@ angular.module('servicesApp')
     };
 
     vm.regions = [];
-    this.fetchRegions = function (callbackOK, callbackERR) {
+    vm.fetchRegions = function (callbackOK, callbackERR) {
       if (vm.regions.length > 0) {
         callbackOK();
         return;
@@ -134,11 +130,21 @@ angular.module('servicesApp')
       );
     };
 
-    this.getRegions = function () {
+    vm.getRegions = function () {
       return vm.regions;
     };
 
-    this.openChargesDialog = function (container, callbackOK, callbackCancel) {
+    vm.archive = function (cb, cbE) {
+      console.log("test archiving companies");
+      $http.post('/api/trucking-companies/util/archives').then(cb, cbE);
+    };
+
+    vm.extract = function (cb, cbE) {
+      console.log("test extracting companies");
+      $http.post('/api/trucking-companies/util/extract').then(cb, cbE);
+    };
+
+    vm.openChargesDialog = function (container, callbackOK, callbackCancel) {
 
       var modalInstance = $modal.open({
         animation: true,
@@ -154,7 +160,7 @@ angular.module('servicesApp')
 
       modalInstance.result.then(
         function () {
-          console.log("saved the charge") ;
+          console.log("saved the charge");
           callbackOK();
         },
         function () {
@@ -164,31 +170,31 @@ angular.module('servicesApp')
       );
     };
 
-      this.openWeightChargesDialog = function (sizeCharge, callbackOK, callbackCancel) {
+    vm.openWeightChargesDialog = function (sizeCharge, callbackOK, callbackCancel) {
 
-          var modalInstance = $modal.open({
-              animation: true,
-              templateUrl: 'app/trucking-company/weight-charges/weight-charges.html',
-              controller: 'WeightChargesCtrl',
-              resolve: {
-                  sizeCharge: function () {
-                      return sizeCharge;
-                  }
-              }
-          });
-          modalInstance.result.then(
-              function (result) {
-                  console.log('Modal saved at: ' + new Date());
-                  callbackOK();
-              },
-              function () {
-                  console.log('Modal dismissed at: ' + new Date());
-                  callbackCancel();
-              }
-          );
-      };
+      var modalInstance = $modal.open({
+        animation: true,
+        templateUrl: 'app/trucking-company/weight-charges/weight-charges.html',
+        controller: 'WeightChargesCtrl',
+        resolve: {
+          sizeCharge: function () {
+            return sizeCharge;
+          }
+        }
+      });
+      modalInstance.result.then(
+        function (result) {
+          console.log('Modal saved at: ' + new Date());
+          callbackOK();
+        },
+        function () {
+          console.log('Modal dismissed at: ' + new Date());
+          callbackCancel();
+        }
+      );
+    };
 
-    this.openContactDialog = function (company, callbackOK, callbackCancel) {
+    vm.openContactDialog = function (company, callbackOK, callbackCancel) {
 
       var modalInstance = $modal.open({
         animation: true,
@@ -212,6 +218,6 @@ angular.module('servicesApp')
       );
     };
 
-    return this;
+    return vm;
 
   });

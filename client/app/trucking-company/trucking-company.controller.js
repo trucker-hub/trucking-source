@@ -37,6 +37,24 @@ angular.module('servicesApp')
       delete $rootScope.companiesOpened[id];
     };
 
+    $scope.archive = function() {
+      truckingCompany.archive(function(response) {
+
+        $scope.alerts.push({ type: 'success', msg: 'Companies have been saved to files' });
+      }, function(response) {
+        $scope.alerts.push({ type: 'warning', msg: 'Companies did not get saved to files' });
+      });
+    };
+
+    $scope.extract = function() {
+      truckingCompany.extract(function(response) {
+        $scope.alerts.push({ type: 'success', msg: 'Companies have been extracted from files' });
+      }, function(response) {
+        $scope.alerts.push({ type: 'warning', msg: 'Companies did not get extracted from files' });
+      });
+    };
+
+
     $scope.saveCompany = function(company, successCallback, errorCallback) {
       truckingCompany.save(company,
         function(response) {

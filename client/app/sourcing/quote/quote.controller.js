@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('QuoteCtrl',  function ($scope, $http, $modalInstance, ngProgressFactory,
+  .controller('QuoteCtrl',  function ($scope, $http, $modal, $modalInstance, ngProgressFactory,
                                       sourcingService, load) {
 
       $scope.load = load;
