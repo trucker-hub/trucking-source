@@ -1,10 +1,13 @@
 <div class="modal-header" print-section="">
-    <b>{{load.who}}</b>: {{load.shipFrom.location | location: true}} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> {{load.shipTo.location | location: true}}
+    <b>{{load.who}}</b>: {{load.shipFrom.location | location: true}} <span class="glyphicon glyphicon-arrow-right"
+                                                                           aria-hidden="true"></span>
+    {{load.shipTo.location | location: true}}
 
     <i ng-click="toggleLoadDetails(load)" class="fa fa-lg"
        ng-class="{'fa-plus-square-o':!load.showLoadDetails, 'fa-minus-square-o':load.showLoadDetails}"></i>
 
-    <div style="float:right"><b><span style="color:green">{{load.fulfilledBy.charge | currency:"$":2}}</span></b> <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancel()"></span></div>
+    <div style="float:right"><b><span style="color:green">{{load.fulfilledBy.charge | currency:"$":2}}</span></b> <span
+            class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancel()"></span></div>
     <div class="panel panel-default" ng-show="load.showLoadDetails">
         <div class="panel-body panel">
             <load-details load="load"></load-details>
@@ -18,30 +21,38 @@
                 <th></th>
                 <th>Company</th>
                 <th>Trucking Cost</th>
-                <th>Time</th>
                 <th>Contact</th>
                 <th>Location</th>
-                <th></th>
+                <th>Select</th>
+                <th>Actions</th>
             </tr>
-            <tr ng-repeat-start="source in load.sources" ng-class="{'active':source.id==load.fulfilledBy.source}" >
-                <th>
-                    <i class="fa" ng-class="{'fa-check':source.id==load.fulfilledBy.source, 'fa-lock': (load.status=='FILLED' && source.id==load.fulfilledBy.source)}"></i>
+            <tr ng-repeat-start="source in load.sources" ng-class="{'active':source.id==load.fulfilledBy.source}">
+                <th class="col-md-1">
+                    <i class="fa"
+                       ng-class="{'fa-check':source.id==load.fulfilledBy.source, 'fa-lock': (load.status=='FILLED' && source.id==load.fulfilledBy.source)}"></i>
                 </th>
-                <th>{{source.name}} <i ng-click="toggleSourceDetails(source)" class="fa fa-lg"
-                                       ng-class="{'fa-plus-square-o':!source.showDetails, 'fa-minus-square-o':source.showDetails}"></i></th>
-                <td ><b>{{source.totalAmount | currency:"$":2}}</b></td>
-                <td >{{source.time}}</td>
-                <td >{{source.contact | tel }}</td>
-                <td >{{source.location}}</td>
-                <td>
-                    <button type="button" class="btn btn-default" ng-click="selectSource(source)" ng-disabled="source.id==load.fulfilledBy.source">
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Select
+                <th class="col-md-2">{{source.name}} <i ng-click="toggleSourceDetails(source)" class="fa fa-lg"
+                                       ng-class="{'fa-plus-square-o':!source.showDetails, 'fa-minus-square-o':source.showDetails}"></i>
+                </th>
+                <td class="col-md-1"><b>{{source.totalAmount | currency:"$":2}}</b></td>
+                <td class="col-md-2">{{source.contact | tel }}</td>
+                <td class="col-md-3">{{source.location}}</td>
+                <td class="col-md-1">
+                    <button type="button" class="btn btn-default text-success" ng-click="selectSource(source)"
+                            ng-disabled="source.id==load.fulfilledBy.source">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                     </button>
+                </td>
+                <td class="col-md-2">
+                    <div ng-show="source.id==load.fulfilledBy.source && load.status=='FILLED'">
+                            <button type="button" class="btn btn-default text-success" ng-click="createInvoice()"><i class="fa fa-list-alt"></i></button>
+                            <button type="button" class="btn btn-default text-success" ng-click="createDO()"><i class="fa fa-paper-plane-o"></i></button>
+                    </div>
                 </td>
             </tr>
             <tr ng-repeat-end>
                 <td colspan="7" ng-show="source.showDetails">
-                    <table class="table table-bordered" >
+                    <table class="table table-bordered">
                         <tr>
                             <th>Cost Items</th>
                             <th>Vendor Cost Description</th>
@@ -51,14 +62,17 @@
                         <tr ng-repeat="entry in source.costItems track by $index">
                             <td align="right">#{{$index+1}}</td>
                             <td><b>{{entry.charge | currency:"$":2}}</b> for {{entry.description}}</td>
-                            <td> <div class="input-group">
-                                <div class="input-group-addon">$</div>
-                                <input type="number" class="form-control" size="5" ng-model="entry.adjustment" placeholder="00.00" ng-change="recalcAdjustments(source)"></div>
+                            <td>
+                                <div class="input-group">
+                                    <div class="input-group-addon">$</div>
+                                    <input type="number" class="form-control" size="5" ng-model="entry.adjustment"
+                                           placeholder="00.00" ng-change="recalcAdjustments(source)"></div>
                             </td>
                             <td>{{entry.charge + entry.adjustment | currency:"$":2}}</td>
                         </tr>
                         <tr>
-                            <td colspan="3" align="right"><b>Total Trucking Cost:</b></td><td>{{source.vendorChargeAmount | currency:"$":2}}</td>
+                            <td colspan="3" align="right"><b>Total Trucking Cost:</b></td>
+                            <td>{{source.vendorChargeAmount | currency:"$":2}}</td>
                         </tr>
                         <tr>
                             <th></th>
@@ -70,7 +84,8 @@
                             <td colspan="2">
                                 <div class="input-group">
                                     <div class="input-group-addon">$</div>
-                                    <input type="number" class="form-control" size="5" ng-model="entry.charge" placeholder="00.00" ng-change="recalcAdjustments(source)">
+                                    <input type="number" class="form-control" size="5" ng-model="entry.charge"
+                                           placeholder="00.00" ng-change="recalcAdjustments(source)">
                                 </div>
                             </td>
                             <td></td>
@@ -78,17 +93,6 @@
                         <tr>
                             <td colspan="3" align="right"><b>Total Charge</b></td>
                             <td colspan="1">{{source.totalAmount | currency:"$":2}}
-                            </td>
-                        </tr>
-                        <tr ng-show="source.id==load.fulfilledBy.source">
-                            <td align="right"><button type="button" ng-disabled="selectedLoad.status=='FILLED'" class="btn btn-primary" ng-click="finalizeSource()">
-                                <span class="glyphicon glyphicon-ok" aria-hidden="true" ></span> Finalize</button>
-                            </td>
-                            <td colspan="3">
-                                <div ng-show="load.status=='FILLED'">
-                                    <button type="button" class="btn btn-default" ng-click="createInvoice()"><i class="fa fa-list-alt"></i> Review Invoice</button>
-                                    <button type="button" class="btn btn-default" ng-click="createDO()"><i class="fa fa-paper-plane-o"></i> Review DO</button>
-                                </div>
                             </td>
                         </tr>
                     </table>
@@ -100,6 +104,4 @@
 </div>
 <div class="modal-footer" print-hide="">
     <button style="float:left" class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
-    <button style="float:left" class="btn btn-warning" type="button" ng-disabled="sending" ng-click="sendInvoice()"><i class="fa fa-spinner" ng-class="{'fa-spin':sending}"></i> Send Invoice</button>
-    <button type="button" class="btn btn-default" print-btn=""><i class="fa fa-list-alt"></i> Print Invoice</button>
 </div>

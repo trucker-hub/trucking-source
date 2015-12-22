@@ -7,17 +7,13 @@ angular.module('servicesApp')
     var settingsRepo = {};
 
     vm.updateCustomerSettings = function (settings, userId, cbOK, cbError) {
-
-      var url = (settings._id) ? ('/api/settings/' + settings._id) : ('/api/settings/');
-      $http.put(url, settings).then(function (response) {
-        console.log("create or update response =" + JSON.stringify(response));
-        cbOK(response);
-      }, function (response) {
-        console.error(JSON.stringify(response));
-        cbError();
-      });
+        var url = (settings._id) ? ('/api/settings/' + settings._id) : ('/api/settings/');
+        if (settings._id) {
+            $http.put(url, settings).then(cbOK, cbError);
+        } else {
+            $http.post(url, settings).then(cbOK, cbError);
+        }
     };
-
     var defaultSettings = {
       ftlSettings: {
         brokerFees: [

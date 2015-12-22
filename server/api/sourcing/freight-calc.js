@@ -4,7 +4,7 @@
 'use strict';
 
 var _ = require('lodash');
-var weightCalculator = require('./util-calc');
+var utilCalculator = require('./util-calc');
 var zoneCostCalculator = require('./zone-rate-calc');
 
 var populateServiceCharges = function(result, services, freight, suffix) {
@@ -54,17 +54,7 @@ exports.calc = function(load, company) {
   var city = load.shipTo.location.city;
   var freight = load.loadType=='LTL'?company.ltl:company.air;
 
-
-  var rates;
-  if(freight.rateBasis=='zone') {
-    rates = freight.rateDef.byZone.rates;
-  }else if(freight.rateBasis=='city') {
-    rates = freight.rateDef.byCity.rates;
-  }else {
-    rates = freight.rateDef.byZipCode.rates;
-  }
-
-  var matchEntry =_.find(rates, {zipCode:zipCode});
+  var matchEntry = utilCalculator.matchEntry(freight, city, zipCode);
 
   if(matchEntry) {
     console.log("found a matching entry for zipCode " + zipCode + "=" + matchEntry.zone);

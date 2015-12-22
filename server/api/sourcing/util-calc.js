@@ -12,3 +12,18 @@ exports.weight = function(lines) {
   }
   return sum;
 };
+
+exports.matchEntry = function(freight, city, zipCode) {
+  var matchEntry;
+  if(freight.rateBasis=='zone') {
+    matchEntry =_.find(freight.rateDef.byZone.rates, {city:city});
+    if(!matchEntry) {
+      matchEntry =_.find(freight.rateDef.byZone.rates, {zipCode:zipCode});
+    }
+  }else if(freight.rateBasis=='city') {
+    matchEntry =_.find(freight.rateDef.byCity.rates, {city:city});
+  }else {
+    matchEntry =_.find(freight.rateDef.byZipCode.rates, {zipCode:zipCode});
+  }
+  return matchEntry;
+};

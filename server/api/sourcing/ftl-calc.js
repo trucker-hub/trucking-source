@@ -5,6 +5,7 @@
 
 var _ = require('lodash');
 var zoneCostCalculator = require('./zone-rate-calc');
+var utilCalculator = require('./util-calc');
 
 var zipCodeCityCosts = function(tariff, matchEntry, lineName) {
   var result = [];
@@ -50,26 +51,17 @@ exports.calc = function(load, company) {
   var zipCode = load.shipTo.location.zipCode;
   var city = load.shipTo.location.city;
   var freight = company.ftl;
-  var rates;
 
-  if(freight.rateBasis=='zone') {
-    rates = freight.rateDef.byZone.rates;
-  }else if(freight.rateBasis=='city') {
-    rates = freight.rateDef.byCity.rates;
-  }else {
-    rates = freight.rateDef.byZipCode.rates;
-  }
+  var matchEntry = utilCalculator.matchEntry(freight, city, zipCode);
 
-  var matchEntry =(freight.rateBasis=='city')?_.find(rates, {city:city}):_.find(rates, {zipCode:zipCode});
-
-  if(matchEntry) {
-    console.log("found a matching entry for zipCode " + zipCode + "=" + matchEntry.rate);
-  }else {
+  if(!matchEntry) {
     return {
       totalCost: -1,
       costItems: []
     };
   }
+
+  console.log("found a matching entry for zipCode=" + zipCode + ", city="+ city + ", rate=" + matchEntry.rate);
 
   for(var i=0; i < load.lines.length; ++i) {
     var line = load.lines[i];

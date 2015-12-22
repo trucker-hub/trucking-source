@@ -49,6 +49,7 @@ angular.module('servicesApp')
     $scope.extract = function() {
       truckingCompany.extract(function(response) {
         $scope.alerts.push({ type: 'success', msg: 'Companies have been extracted from files' });
+          $scope.loadCompanies();
       }, function(response) {
         $scope.alerts.push({ type: 'warning', msg: 'Companies did not get extracted from files' });
       });
