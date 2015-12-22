@@ -1,0 +1,301 @@
+{
+  "name": "DBI Inc",
+  "location": "10501 S La Cienega Blvd, Los Angeles, CA 90045",
+  "phone": "3103379688",
+  "favorite": false,
+  "fax": "3103379689",
+  "email": "sales@shipdbi.com",
+  "__v": 0,
+  "air": {
+    "fuelSurcharge": 0,
+    "residentialCharge": 15,
+    "liftGateCharge": 35,
+    "insideCharge": 10,
+    "tradeShowCharge": 25,
+    "rateDef": {
+      "byZone": {
+        "rates": [],
+        "weightRates": [],
+        "flatRates": [],
+        "zoneRateVariables": {
+          "zones": []
+        }
+      },
+      "byZipCode": {
+        "rates": []
+      },
+      "byCity": {
+        "rates": []
+      }
+    },
+    "rateBasis": "zone",
+    "regions": [],
+    "additionalCharges": []
+  },
+  "ltl": {
+    "fuelSurcharge": 25,
+    "residentialCharge": 15,
+    "liftGateCharge": 35,
+    "insideCharge": 10,
+    "tradeShowCharge": 25,
+    "rateDef": {
+      "byZone": {
+        "rates": [],
+        "weightRates": [
+          {
+            "tier": "1",
+            "rates": [
+              {
+                "zone": "A",
+                "rate": 7.78
+              },
+              {
+                "zone": "B",
+                "rate": 8.14
+              },
+              {
+                "zone": "C",
+                "rate": 8.44
+              },
+              {
+                "zone": "E",
+                "rate": 8.63
+              },
+              {
+                "zone": "F",
+                "rate": 8.63
+              },
+              {
+                "zone": "G",
+                "rate": 8.63
+              }
+            ],
+            "ranges": [
+              0,
+              100
+            ]
+          },
+          {
+            "tier": "2",
+            "rates": [
+              {
+                "zone": "A",
+                "rate": 6.49
+              },
+              {
+                "zone": "B",
+                "rate": 6.74
+              },
+              {
+                "zone": "C",
+                "rate": 7.33
+              },
+              {
+                "zone": "E",
+                "rate": 7.47
+              },
+              {
+                "zone": "F",
+                "rate": 7.47
+              },
+              {
+                "zone": "G",
+                "rate": 8.3
+              }
+            ],
+            "ranges": [
+              100,
+              1000
+            ]
+          },
+          {
+            "tier": "3",
+            "rates": [
+              {
+                "zone": "A",
+                "rate": 5.66
+              },
+              {
+                "zone": "B",
+                "rate": 6.2
+              },
+              {
+                "zone": "C",
+                "rate": 6.61
+              },
+              {
+                "zone": "E",
+                "rate": 6.86
+              },
+              {
+                "zone": "F",
+                "rate": 6.85
+              },
+              {
+                "zone": "G",
+                "rate": 6.87
+              }
+            ],
+            "ranges": [
+              1000,
+              3000
+            ]
+          },
+          {
+            "tier": "4",
+            "rates": [
+              {
+                "zone": "A",
+                "rate": 4.75
+              },
+              {
+                "zone": "B",
+                "rate": 4.93
+              },
+              {
+                "zone": "C",
+                "rate": 5.3
+              },
+              {
+                "zone": "E",
+                "rate": 5.37
+              },
+              {
+                "zone": "F",
+                "rate": 5.37
+              },
+              {
+                "zone": "G",
+                "rate": 5.58
+              }
+            ],
+            "ranges": [
+              3000,
+              5000
+            ]
+          }
+        ],
+        "flatRates": [],
+        "zoneRateVariables": {
+          "weightIncrement": 100,
+          "zones": [
+            {
+              "label": "A",
+              "dropOffCharge": 35,
+              "dropOffChargeOffhour": 45,
+              "dropOffChargeWeekend": 70,
+              "dropOffChargeHoliday": 80,
+              "minCharge": 13.99
+            },
+            {
+              "label": "B",
+              "dropOffCharge": 40,
+              "dropOffChargeOffhour": 50,
+              "dropOffChargeWeekend": 80,
+              "dropOffChargeHoliday": 90,
+              "minCharge": 14.63
+            },
+            {
+              "label": "C",
+              "dropOffCharge": 45,
+              "dropOffChargeOffhour": 55,
+              "dropOffChargeWeekend": 85,
+              "dropOffChargeHoliday": 100,
+              "minCharge": 15.74
+            },
+            {
+              "label": "E",
+              "dropOffCharge": 90,
+              "dropOffChargeOffhour": 100,
+              "dropOffChargeWeekend": 110,
+              "dropOffChargeHoliday": 120,
+              "minCharge": 16.47
+            },
+            {
+              "label": "F",
+              "dropOffCharge": 90,
+              "dropOffChargeOffhour": 100,
+              "dropOffChargeWeekend": 110,
+              "dropOffChargeHoliday": 120,
+              "minCharge": 17.01
+            },
+            {
+              "label": "G",
+              "dropOffCharge": 90,
+              "dropOffChargeOffhour": 100,
+              "dropOffChargeWeekend": 110,
+              "dropOffChargeHoliday": 120,
+              "minCharge": 16.68
+            }
+          ]
+        }
+      },
+      "byZipCode": {
+        "rates": []
+      },
+      "byCity": {
+        "rates": []
+      }
+    },
+    "rateBasis": "zone",
+    "regions": [
+      {
+        "county": "Los Angeles County",
+        "state": "CA"
+      },
+      {
+        "county": "Orange County",
+        "state": "CA"
+      },
+      {
+        "county": "San Bernardino County",
+        "state": "CA"
+      },
+      {
+        "county": "Ventura County",
+        "state": "CA"
+      },
+      {
+        "county": "Riverside County",
+        "state": "CA"
+      }
+    ],
+    "additionalCharges": [
+      {
+        "name": "2 Man per hour with 2 hr min",
+        "charge": 35
+      },
+      {
+        "name": "Waiting time per hour",
+        "charge": 35
+      },
+      {
+        "name": "Hotel/Hospital/School delivery",
+        "charge": 10
+      }
+    ]
+  },
+  "ftl": {
+    "fuelSurcharge": 0,
+    "rateDef": {
+      "byZone": {
+        "rates": [],
+        "weightRates": [],
+        "flatRates": [],
+        "zoneRateVariables": {
+          "zones": []
+        }
+      },
+      "byZipCode": {
+        "rates": []
+      },
+      "byCity": {
+        "rates": []
+      }
+    },
+    "rateBasis": "zipCode",
+    "sizeCharges": [],
+    "regions": [],
+    "additionalCharges": []
+  }
+}

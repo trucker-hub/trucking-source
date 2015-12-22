@@ -1,0 +1,183 @@
+{
+  "data": {
+    "Response": {
+      "ResponseStatus": {
+        "Code": "1",
+        "Description": "Success"
+      },
+      "Alert": {
+        "Code": "9369055",
+        "Description": "User is not eligible for contract rates."
+      }
+    },
+    "Rate": [
+      {
+        "Type": {
+          "Code": "DSCNT",
+          "Description": "DSCNT"
+        },
+        "Factor": {
+          "Value": "781.56",
+          "UnitOfMeasurement": {
+            "Code": "USD"
+          }
+        }
+      },
+      {
+        "Type": {
+          "Code": "DSCNT_RATE",
+          "Description": "DSCNT_RATE"
+        },
+        "Factor": {
+          "Value": "60.00",
+          "UnitOfMeasurement": {
+            "Code": "%"
+          }
+        }
+      },
+      {
+        "Type": {
+          "Code": "2",
+          "Description": "2"
+        },
+        "Factor": {
+          "Value": "119.32",
+          "UnitOfMeasurement": {
+            "Code": "USD"
+          }
+        }
+      },
+      {
+        "Type": {
+          "Code": "LND_GROSS",
+          "Description": "LND_GROSS"
+        },
+        "Factor": {
+          "Value": "1302.60",
+          "UnitOfMeasurement": {
+            "Code": "USD"
+          }
+        }
+      },
+      {
+        "Type": {
+          "Code": "AFTR_DSCNT",
+          "Description": "AFTR_DSCNT"
+        },
+        "Factor": {
+          "Value": "521.04",
+          "UnitOfMeasurement": {
+            "Code": "USD"
+          }
+        }
+      }
+    ],
+    "Commodity": [
+      {
+        "Description": "Dumper",
+        "Weight": {
+          "Value": "2000",
+          "UnitOfMeasurement": {
+            "Code": "LBS"
+          }
+        },
+        "AdjustedWeight": {
+          "Value": "2000",
+          "UnitOfMeasurement": {
+            "Code": "LBS"
+          }
+        }
+      }
+    ],
+    "TotalShipmentCharge": {
+      "CurrencyCode": "USD",
+      "MonetaryValue": "640.36"
+    },
+    "BillableShipmentWeight": {
+      "Value": "2000",
+      "UnitOfMeasurement": {
+        "Code": "LBS"
+      }
+    },
+    "DimensionalWeight": {
+      "Value": "0",
+      "UnitOfMeasurement": {
+        "Code": "LBS"
+      }
+    },
+    "Service": {
+      "Code": "308"
+    },
+    "GuaranteedIndicator": "",
+    "RatingSchedule": {
+      "Code": "02",
+      "Description": "Published Rates"
+    }
+  },
+  "status": 200,
+  "config": {
+    "method": "POST",
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "url": "/api/ups/services/rates",
+    "data": {
+      "ship_from": {
+        "name": "From Location",
+        "address": {
+          "address_line_1": "4489 Spencer St, Torrance, CA 90503",
+          "city": "Torrance",
+          "state_code": "CA",
+          "postal_code": "90503",
+          "country_code": "US"
+        }
+      },
+      "ship_to": {
+        "name": "Destination",
+        "address": {
+          "address_line_1": "30944 Rue de la Pierre, Rancho Palos Verdes, CA 90275",
+          "city": "Rancho Palos Verdes",
+          "state_code": "CA",
+          "postal_code": "90275",
+          "country_code": "US"
+        }
+      },
+      "payer": {
+        "name": "Trucking-Hub",
+        "address": {
+          "address_line_1": "9111 S La Cienega Blvd, #210",
+          "city": "Inglewood",
+          "state_code": "CA",
+          "postal_code": "90301",
+          "country_code": "US"
+        },
+        "shipper_number": "ABC123"
+      },
+      "billing_option": "10",
+      "service_code": "308",
+      "handling_unit_one": {
+        "quantity": 10,
+        "code": "OTH"
+      },
+      "commodity": [
+        {
+          "description": "Dumper",
+          "weight": 2000,
+          "number_of_pieces": 10,
+          "packaging_type": "CTN",
+          "freight_class": 60
+        }
+      ]
+    },
+    "headers": {
+      "Accept": "application/json, text/plain, */*",
+      "Content-Type": "application/json;charset=utf-8",
+      "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjU1MzY1NmJkODFjZTVjMDcxYzkyMzAiLCJpYXQiOjE0NDg0MjUwNjUsImV4cCI6MTQ0ODQ0MzA2NX0.fHkOvihz2VkJDYsLSamYYsAfyGQGMH4noEwd-HWrLbA"
+    },
+    "withCredentials": true
+  },
+  "statusText": "OK"
+}

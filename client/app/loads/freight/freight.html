@@ -3,11 +3,14 @@
   <table class="table table-striped">
     <tr>
       <th class="col-md-2">To</th>
-      <td class="col-md-4"><location info="freightCtrl.freight.shipTo"></location></td>
+      <td class="col-md-4">
+        <location info="freightCtrl.freight.shipTo"></location>
+      </td>
       <td class="col-md-2">Delivery Services</td>
       <td class="col-md-4">
         <div>
-          <ui-select class="form-control col-md-10" id="deliveryServices" multiple ng-model="freightCtrl.freight.shipTo.services" ng-change="freightCtrl.change()">
+          <ui-select class="form-control col-md-10" id="deliveryServices" multiple
+                     ng-model="freightCtrl.freight.shipTo.services" ng-change="freightCtrl.change()">
             <ui-select-match placeholder="Select services">{{$item.service}}
             </ui-select-match>
             <ui-select-choices repeat="entry in freightCtrl.toServices | filter: $select.search"
@@ -21,11 +24,14 @@
     </tr>
     <tr>
       <th class="col-md-2">From</th>
-      <td class="col-md-4"><location info="freightCtrl.freight.shipFrom"></location></td>
+      <td class="col-md-4">
+        <location info="freightCtrl.freight.shipFrom"></location>
+      </td>
       <td class="col-md-2">PickUp Services</td>
       <td class="col-md-4">
         <div>
-          <ui-select class="form-control col-md-10" id="pickUpServices" multiple ng-model="freightCtrl.freight.shipFrom.services" ng-change="freightCtrl.change()">
+          <ui-select class="form-control col-md-10" id="pickUpServices" multiple
+                     ng-model="freightCtrl.freight.shipFrom.services" ng-change="freightCtrl.change()">
             <ui-select-match placeholder="Select services">{{$item.service}}
             </ui-select-match>
             <ui-select-choices repeat="entry in freightCtrl.fromServices | filter: $select.search "
@@ -62,11 +68,13 @@
 
     <tr>
       <th>Delivery By</th>
-      <td><div style="display:inline-block; min-height:290px;">
-        <datepicker ng-model="freightCtrl.freight.expectedBy" min-date="minDate" show-weeks="true" class="well well-sm"
-                    custom-class="getDayClass(date, mode)" ng-change="freightCtrl.change()">
-        </datepicker>
-      </div>
+      <td>
+        <div style="display:inline-block; min-height:290px;">
+          <datepicker ng-model="freightCtrl.freight.expectedBy" min-date="minDate" show-weeks="true"
+                      class="well well-sm"
+                      custom-class="getDayClass(date, mode)" ng-change="freightCtrl.change()">
+          </datepicker>
+        </div>
       </td>
       <td class="col-md-2">Notes</td>
       <td class="col-md-4">
@@ -96,12 +104,16 @@
         </tr>
         <tr ng-repeat="line in freightCtrl.freight.lines track by $index">
           <form name="innerForm" novalidate>
-            <td><div class="form-group" ng-class="{'has-error':innerForm.weight.$invalid}">
-              <input type="number" class="form-control" size="6" ng-model="line.weight" name="weight"
-                     placeholder="weight" required min="100" ng-change="freightCtrl.computeClass(line)"></div></td>
-            <td><div ng-class="{'has-error':innerForm.quantity.$invalid}">
-              <input class="form-control" type="number" size="3" ng-model="line.quantity" min="1" name="quantity" required ng-change="freightCtrl.change()">
-            </div>
+            <td>
+              <div class="form-group" ng-class="{'has-error':innerForm.weight.$invalid}">
+                <input type="number" class="form-control" size="6" ng-model="line.weight" name="weight"
+                       placeholder="weight" required min="100" ng-change="freightCtrl.computeClass(line)"></div>
+            </td>
+            <td>
+              <div ng-class="{'has-error':innerForm.quantity.$invalid}">
+                <input class="form-control" type="number" size="3" ng-model="line.quantity" min="1" name="quantity"
+                       required ng-change="freightCtrl.change()">
+              </div>
             </td>
             <td>
               <select class="form-control" ng-model="line.packaging" id="" ng-change="freightCtrl.prefillWL(line)">
@@ -111,14 +123,19 @@
             </td>
             <td>
               <div class="form-inline">
-                <input class="form-control" type="text" ng-model="line.width"  size="2" min="1" ng-change="freightCtrl.computeClass(line)">
-                <input class="form-control" type="text" ng-model="line.length" size="2" min="1" ng-change="freightCtrl.computeClass(line)">
-                <input class="form-control" type="text" ng-model="line.height" size="2" min="1" ng-change="freightCtrl.computeClass(line)">
+                <input class="form-control" type="text" ng-model="line.width" size="2" min="1"
+                       ng-change="freightCtrl.computeClass(line)">
+                <input class="form-control" type="text" ng-model="line.length" size="2" min="1"
+                       ng-change="freightCtrl.computeClass(line)">
+                <input class="form-control" type="text" ng-model="line.height" size="2" min="1"
+                       ng-change="freightCtrl.computeClass(line)">
                 <span ng-show="line.freightClass!=-1">Class: {{line.freightClass}}</span>
               </div>
             </td>
-            <td><input class="form-control" type="text" ng-model="line.description" placeholder="description" ng-change="freightCtrl.change()"></td>
-            <td><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="freightCtrl.removeLine($index)"></span>
+            <td><input class="form-control" type="text" ng-model="line.description" placeholder="description"
+                       ng-change="freightCtrl.change()"></td>
+            <td><span class="glyphicon glyphicon-remove" aria-hidden="true"
+                      ng-click="freightCtrl.removeLine($index)"></span>
             </td>
           </form>
         </tr>
@@ -126,15 +143,19 @@
     </form>
   </div>
   <div class="row">
-      <div class="col-md-3"><a class="btn btn-danger" ng-click="freightCtrl.delete()"><i class="fa fa-trash-o fa-lg"></i> Delete</a>
+    <div class="col-md-3"><a class="btn btn-danger" ng-click="freightCtrl.delete()"><i class="fa fa-trash-o fa-lg"></i>
+      Delete</a>
+    </div>
+    <div class="col-md-9">
+      <div style="float:right">
+        <button type="button" class="btn btn-default" ng-click="freightCtrl.close()"><i class="fa fa-times fa-lg"></i>
+          Close
+        </button>
+        <button type="button" class="btn btn-default" ng-click="freightCtrl.submit()"
+                ng-disabled="!freightCtrl.freight.changed"><i class="fa fa-floppy-o fa-lg"></i>Save
+        </button>
       </div>
-      <div class="col-md-9">
-          <div style="float:right">
-              <button  type="button" class="btn btn-default" ng-click="freightCtrl.close()"> <i class="fa fa-times fa-lg"></i> Close</button>
-              <button  type="button" class="btn btn-default" ng-click="freightCtrl.submit()"
-                       ng-disabled="locationForm.$invalid || !freightCtrl.load.changed"> <i class="fa fa-floppy-o fa-lg"></i> Save</button>
-          </div>
-      </div>
+    </div>
   </div>
   <div>
   </div>

@@ -95,11 +95,11 @@ LtlLoad.find({}).remove(function() {
             notes: "A note",
             shipTo: {
                 location: {
-                    full_address: "1712 Fremont St, Santa Clara, CA 95050",
+                    full_address: "9111 S La Cienega Blvd, Inglewood, CA 90301",
                     state:      "CA",
-                    county:     "Santa Clara County",
-                    city:       "Santa Clara",
-                    zipCode:    "95050"
+                    county:     "Los Angeles County",
+                    city:       "Inglewood",
+                    zipCode:    "90301"
                 },
                 services: [{service: 'Inside'}, {service: 'LifeGate'}]
             },

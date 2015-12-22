@@ -19,8 +19,8 @@ angular.module('servicesApp')
     };
 
     this.newOne = {
-      name: "Company name",
-      location: "Street, City, State",
+      name: "",
+      location: "",
       phone: "(999)999-9999",
       favorite: false,
       ftl: {

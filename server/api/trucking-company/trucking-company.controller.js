@@ -7,7 +7,11 @@ var path = require('path');
 var fs = require("fs");
 
 var archiveCompany = function(company) {
-  var fileName = company.name + ".json";
+
+  var name = company.name;
+  name = name.replace(/\s+/g, '-').toLowerCase();
+
+  var fileName =  name + ".json";
   var archiveDir = path.join(__dirname, 'archives', fileName);
 
   fs.writeFile(archiveDir,
