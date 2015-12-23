@@ -119,9 +119,14 @@ angular.module('servicesApp', [
 
         if (!charges || charges.length==0) { return 'N/A'; }
 
-        return charges.map(function(x) {
+        var str = charges.map(function(x) {
           return "$"+x.charge + ":" + x.name;
         }).join(";  ");
+        if(str.length > 30) {
+          str = str.substring(0,28);
+          str += "..";
+        }
+        return str;
       };
     })
 

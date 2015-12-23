@@ -24,19 +24,38 @@ angular.module('servicesApp')
       phone: "(999)999-9999",
       favorite: false,
       ftl: {
-        overWeightCharges: [
+        sizeCharges: [
           {
-            "containerSize": "20",
-            ranges: [{limit: 36000, charge: 100}, {limit: 39000, charge: 150}]
+            containerSize: "20",
+            weightRanges: [
+              { limit:13000, charge:100},
+              { limit:16000, charge:150}
+            ],
+            pierPassFee: 66.50,
+            cleanTruckFee: 35,
+            congestionFee: 150
           },
           {
-            "containerSize": "40",
-            ranges: [{limit: 44000, charge: 100}, {limit: 48000, charge: 150}]
+            containerSize: "40",
+            weightRanges: [
+              { limit:13000, charge:100},
+              { limit:16000, charge:150}
+            ],
+            pierPassFee: 66.50,
+            cleanTruckFee: 35,
+            congestionFee: 150
           },
           {
-            "containerSize": "45",
-            ranges: [{limit: 44000, charge: 100}, {limit: 48000, charge: 150}]
-          }]
+            containerSize: "45",
+            weightRanges: [
+              { limit:13000, charge:100},
+              { limit:16000, charge:150}
+            ],
+            pierPassFee: 66.50,
+            cleanTruckFee: 35,
+            congestionFee: 150
+          }
+        ]
       },
       ltl: {},
       air: {}
