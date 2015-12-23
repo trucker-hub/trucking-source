@@ -158,10 +158,26 @@ angular.module('servicesApp')
       $http.post('/api/trucking-companies/util/archives').then(cb, cbE);
     };
 
+    vm.archiveOne = function (id, cb, cbE) {
+      console.log("test archiving companies");
+      $http.put('/api/trucking-companies/util/archives/' +id).then(cb, cbE);
+    };
+
+    vm.archiveList = function (cb, cbE) {
+      console.log("test archiving companies");
+      $http.get('/api/trucking-companies/util/archives').then(cb, cbE);
+    };
+
     vm.extract = function (cb, cbE) {
       console.log("test extracting companies");
       $http.post('/api/trucking-companies/util/extract').then(cb, cbE);
     };
+
+    vm.extractOne = function (name, cb, cbE) {
+      console.log("test extracting companies");
+      $http.put('/api/trucking-companies/util/extract/' + name).then(cb, cbE);
+    };
+
 
     vm.openChargesDialog = function (container, callbackOK, callbackCancel) {
 

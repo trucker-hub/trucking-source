@@ -41,6 +41,17 @@ angular.module('servicesApp')
       truckingCompany.archive(function(response) {
 
         $scope.alerts.push({ type: 'success', msg: 'Companies have been saved to files' });
+        $scope.getArchiveList();
+      }, function(response) {
+        $scope.alerts.push({ type: 'warning', msg: 'Companies did not get saved to files' });
+      });
+    };
+
+    $scope.archiveOne = function(id) {
+      truckingCompany.archiveOne(id, function(response) {
+
+        $scope.alerts.push({ type: 'success', msg: 'Companies have been saved to files' });
+        $scope.getArchiveList();
       }, function(response) {
         $scope.alerts.push({ type: 'warning', msg: 'Companies did not get saved to files' });
       });
@@ -54,6 +65,16 @@ angular.module('servicesApp')
         $scope.alerts.push({ type: 'warning', msg: 'Companies did not get extracted from files' });
       });
     };
+
+    $scope.extractOne = function(name) {
+      truckingCompany.extractOne(name, function(response) {
+        $scope.alerts.push({ type: 'success', msg: 'Company has been extracted from the file' });
+        $scope.loadCompanies();
+      }, function(response) {
+        $scope.alerts.push({ type: 'warning', msg: 'Company did not get extracted from the file' });
+      });
+    };
+
 
 
     $scope.saveCompany = function(company, successCallback, errorCallback) {
@@ -83,6 +104,16 @@ angular.module('servicesApp')
           $scope.alerts.push({ type: 'warning', msg: 'Failed to delete the company!' });
         }
       );
+    };
+
+    $scope.getArchiveList = function() {
+      truckingCompany.archiveList(
+          function(response){
+            $scope.files = response.data;
+          },
+          function(err){
+            console.error(err);
+          });
     };
 
     $scope.toggleFavorite = function(id) {

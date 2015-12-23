@@ -14,6 +14,9 @@ router.patch('/:id', auth.hasRole('operator'),  controller.update);
 router.delete('/:id', auth.hasRole('operator'), controller.destroy);
 
 router.post('/util/archives', auth.hasRole('operator'),      controller.archive);
-router.post('/util/extract', auth.hasRole('operator'),      controller.extract);
+router.get('/util/archives', auth.hasRole('operator'),      controller.archiveList);
+router.put('/util/archives/:id', auth.hasRole('operator'),      controller.archiveOne);
+router.post('/util/extract', auth.hasRole('operator'),      controller.extractAll);
+router.put('/util/extract/:name', auth.hasRole('operator'),      controller.extractOne);
 
 module.exports = router;

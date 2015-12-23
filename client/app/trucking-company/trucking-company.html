@@ -20,6 +20,9 @@
             <td data-title="'Edit'">
               <a ng-click="editCompany(company._id)"><i class="fa fa-pencil-square-o fa-lg"></i></a>
             </td>
+            <td data-title="'Archive'">
+              <a ng-click="archiveOne(company._id)"><i class="fa fa-lg fa-archive"></i></a>
+            </td>
           </tr>
         </table>
       </div>
@@ -71,7 +74,11 @@
             <td colspan="3"><button class="btn btn-sm btn-default" type="button" ng-click="archive()"><i class="fa fa-lg fa-archive"></i> Save as Files</button>
               <button class="btn btn-sm btn-default" type="button" ng-click="extract()"><i class="fa fa-lg fa-upload"></i> Load from Files</button>
             </td>
-            <td></td>
+            <td><button class="btn btn-sm btn-default" type="button" ng-click="getArchiveList()"><i class="fa fa-lg fa-upload"></i> Archive files</button></td>
+          </tr>
+          <tr ng-repeat="file in files">
+            <td colspan="3">{{file}}</td>
+            <td><button class="btn btn-sm btn-default" type="button" ng-click="extractOne(file)"><i class="fa fa-lg fa-upload"></i> Load</button></td>
           </tr>
         </table>
         </div>
