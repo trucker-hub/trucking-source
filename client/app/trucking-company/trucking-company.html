@@ -2,7 +2,7 @@
 
   <br>
   <tabset type="tabs">
-    <tab >
+    <tab>
       <tab-heading><span>Companies <span class="badge">{{allCompanies.length}}</span></span></tab-heading>
       <div class="panel panel-default">
         <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover">
@@ -90,8 +90,6 @@
     </tab>
 
   </tabset>
-
-
 
   <div>
     <alert ng-repeat="alert in alerts" type="{{alert.type}}" dismiss-on-timeout='3000' close="closeAlert()">

@@ -13,7 +13,7 @@
     <div class="panel-body">
       <table ng-table="tableParamsLoads" show-filter="true" class="table table-responsive table-hover table-condensed">
 
-        <tr ng-repeat="load in $data" ng-click="selectLoad(load)" ng-class="{'active':load==selectedLoad}">
+        <tr ng-repeat="load in $data">
           <td data-title="'Type'"><load-type type="load.loadType"></load-type></td>
           <td data-title="'Shipper'" filter="{ 'who': 'text' }">
             {{load.who}}
@@ -31,7 +31,10 @@
             <b>{{load.fulfilledBy.charge | currency:"$":2}}</b> {{load.vendorChargeAmount | currency:"$":2}}
           </td>
           <td data-title="'Sourcing'">
-            <div ng-show="selectedLoad==load"><a ng-click="sourcing()"><i  class="fa fa-search-plus fa-lg"></i></a></div>
+            <div ng-show="!load.sources || load.sources.length ==0"><a ng-click="sourcing(load)"><i class="fa fa-search"></i></a></div>
+          </td>
+          <td data-title="'Result'">
+            <div ng-show="load.sources.length>0"><b>{{load.sources.length}} choices <a ng-click="clearSources(load)"><i class="fa fa-eraser"></i></a></b></div>
           </td>
         </tr>
         <tr ng-show="$data.length ==0">

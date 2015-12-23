@@ -44,14 +44,16 @@ angular.module('servicesApp')
         }
       };
 
-      vm.getCustomerFeeSettings = function (load) {
+      vm.getCustomerFeeSettings = function (load, cb, cbErr) {
 
         customerSettingService.getCustomerSettings(load.createdBy,
             function (settings) {
               setBrokerFees(load, settings);
+              cb(settings);
             },
             function (defaultSettings) {
               setBrokerFees(load, defaultSettings);
+              cb(settings);
             });
       };
 
@@ -202,6 +204,19 @@ angular.module('servicesApp')
             additionalCharges: []
           }
         }
+      };
+
+      vm.clearSources = function(load) {
+        load.status = 'OPEN';
+        load.fulfilledBy =
+        {
+          name: "",
+          source: null,
+          charge: null,
+          costItems: [],
+          additionalCharges: []
+        };
+        load.sources = [];
       };
 
       var upsType = function (type) {
