@@ -21,11 +21,11 @@ var populateServiceCharges = function(result, services, freight, suffix) {
       charge= freight.tradeShowCharge;
     }else if(service=='Residential') {
       charge= freight.residentialCharge;
-    }else if(service=='OffHours') {
+    }else if(service=='OffHours' && matchZone.dropOffChargeOffhour) {
       charge= matchZone.dropOffChargeOffhour;
-    }else if(service=='Holidays') {
+    }else if(service=='Holidays' && matchZone.dropOffChargeHoliday) {
       charge= matchZone.dropOffChargeHoliday;
-    }else if (service=="Weekends") {
+    }else if (service=="Weekends" && matchZone.dropOffChargeWeekend) {
       charge= matchZone.dropOffChargeWeekend;
     }
     if(charge) {

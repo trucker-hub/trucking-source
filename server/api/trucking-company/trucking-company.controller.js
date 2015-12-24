@@ -18,9 +18,7 @@ var archiveCompanyPromise = function(company) {
 
     fs.writeFile(archiveDir,
         JSON.stringify(company, function (key, value) {
-          if (key == '_id') {
-            return undefined;
-          }
+          if (key == '_id') { return undefined; }
           return value;
         }, 2),
         function (err) {
