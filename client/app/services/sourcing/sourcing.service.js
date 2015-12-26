@@ -45,15 +45,19 @@ angular.module('servicesApp')
       };
 
       vm.getCustomerFeeSettings = function (load, cb, cbErr) {
+        var user_id = load.createdBy;
+        if (!user_id) {
+          user_id = Auth.getCurrentUser()._id;
+        }
 
-        customerSettingService.getCustomerSettings(load.createdBy,
+        customerSettingService.getCustomerSettings(user_id,
             function (settings) {
               setBrokerFees(load, settings);
               cb(settings);
             },
             function (defaultSettings) {
               setBrokerFees(load, defaultSettings);
-              cb(settings);
+              cb(defaultSettings);
             });
       };
 
@@ -85,29 +89,6 @@ angular.module('servicesApp')
               console.error(response);
               cb();
             });
-      };
-
-
-      var getCustomerSettings = function (load, cb, cbErr) {
-        var user_id = load.createdBy;
-        if (!user_id) {
-          user_id = Auth.getCurrentUser()._id;
-        }
-
-        var result = vm.settingsPerCustomers[user_id];
-        if (result) {
-          cb(result);
-          return;
-        } else {
-          customerSettingService.getSettings(user_id,
-              function (settings) {
-                vm.settingsPerCustomers[user_id] = settings;
-              },
-              function (defaultSettings) {
-                cb(defaultSettings);
-              }
-          );
-        }
       };
 
       vm.sourcing = function (load, cbOK, cbErr) {

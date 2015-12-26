@@ -52,6 +52,7 @@ angular.module('servicesApp')
           settings = angular.copy(defaultSettings);
           settings.user_id = userId;
           console.error(JSON.stringify(response));
+          settingsRepo[userId] = settings;
           cbError(settings);
         });
     };

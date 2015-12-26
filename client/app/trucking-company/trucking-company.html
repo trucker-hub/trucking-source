@@ -71,10 +71,10 @@
           </tr>
           <tr><th colspan="3">Admin Task</th><th></th></tr>
           <tr>
-            <td colspan="3"><button class="btn btn-sm btn-default" type="button" ng-click="archive()"><i class="fa fa-lg fa-archive"></i> Save as Files</button>
-              <button class="btn btn-sm btn-default" type="button" ng-click="extract()"><i class="fa fa-lg fa-upload"></i> Load from Files</button>
+            <td colspan="3"><button class="btn btn-sm btn-default" type="button" ng-click="archive()"><i class="fa fa-lg fa-archive"></i> Save All Companies as Files</button>
+              <button class="btn btn-sm btn-default" type="button" ng-click="extract()"><i class="fa fa-lg fa-upload"></i> Load All Companies from Files</button>
             </td>
-            <td><button class="btn btn-sm btn-default" type="button" ng-click="getArchiveList()"><i class="fa fa-lg fa-upload"></i> Archive files</button></td>
+            <td><button class="btn btn-sm btn-default" type="button" ng-click="getArchiveList()"><i class="fa fa-lg fa-upload"></i> Show Archive files</button></td>
           </tr>
           <tr ng-repeat="file in files">
             <td colspan="3">{{file}}</td>

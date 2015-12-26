@@ -33,13 +33,15 @@ angular.module('servicesApp').controller('SourcingCtrl',
       var settingsPromise = function(load) {
         console.log("fetching settings before sourcing");
         var deferred = $q.defer();
-        if (!load.brokerFees) {
+        console.log("broker fee" + JSON.stringify(load.brokerFees));
+        if (!load.brokerFees || load.brokerFees.length==0) {
           sourcingService.getCustomerFeeSettings(load, function(response) {
             deferred.resolve(load);
           }, function(response) {
             deferred.reject("error");
           });
         }else {
+          console.log("already has broker fees set!")
           deferred.resolve(load);
         }
         return deferred.promise;
