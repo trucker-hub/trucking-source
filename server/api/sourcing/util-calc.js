@@ -14,6 +14,7 @@ exports.weight = function(lines) {
 };
 
 exports.matchEntry = function(freight, city, zipCode) {
+  city = city.toLowerCase();
   var matchEntry;
   if(freight.rateBasis=='zone') {
     matchEntry =_.find(freight.rateDef.byZone.rates, {city:city});

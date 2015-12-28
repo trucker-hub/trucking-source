@@ -28,18 +28,10 @@ var serviceSubSchema = {
 
 var LtlLoadSchema = new Schema({
 
-  status: {
-    type: String, required: true,
-    enum: ['OPEN', 'FILLED', 'CONFIRMED', 'CLOSED'],
-    default: 'OPEN'},
-
-  payment: {
-    type: String, required: true,
-    enum: ['OPEN', 'INVOICED', 'PAID'],
-    default: 'OPEN'},
-
+  status: { type: String, required: true, enum: ['OPEN', 'FILLED', 'CONFIRMED', 'CLOSED'], default: 'OPEN'},
+  payment: { type: String, required: true, enum: ['OPEN', 'INVOICED', 'PAID'],  default: 'OPEN'},
   who: String,
-    createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
+  createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
   loadType:  { type: String, default: 'LTL'},
   createdAt: { type: Date, required: true, default: Date.now },
   email:String,
@@ -80,15 +72,8 @@ var LtlLoadSchema = new Schema({
     description: String
   }],
 
-  extraServices: [{
-    service: String,
-    charge: Number
-  }],
-
-  brokerFees: [
-    {name: String, charge: Number}
-  ],
-
+  extraServices: [{ service: String, charge: Number}],
+  brokerFees: [ {name: String, charge: Number}],
   fulfilledBy: {
     source: { type: Schema.Types.ObjectId, ref: 'TruckingCompany' },
     charge: Number,
@@ -98,24 +83,17 @@ var LtlLoadSchema = new Schema({
       description: String,
       adjustment: {type: Number, default:0}
     }],
-      additionalCharges: [{
-          name: String,
-          charge: Number
-      }]
+    additionalCharges: [{name: String,charge: Number }]
   },
 
-  invoice: {
-    referenceNumber: String
-  },
+  invoice: { referenceNumber: String },
 
   deliveryOrderReference: {
     email: String,
     phone: String,
     instructions: String
   },
-    activityLog: [
-        {time: Date, activity: String}
-    ]
+  activityLog: [ {time: Date, activity: String}]
 });
 
 LtlLoadSchema.set('versionKey', false);

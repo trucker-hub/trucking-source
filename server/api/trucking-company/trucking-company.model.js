@@ -6,8 +6,8 @@ var mongoose = require('mongoose'),
 
 var byCitySubSchema = {
   rates: [{
-    state: String,
-    city: String,
+    state: {type: String, lowercase: true},
+    city: {type:String, lowercase: true},
     rate: Number,
     dropOffCharge: Number,
     dropOffChargeOffhour: Number,
@@ -53,8 +53,8 @@ var byZoneSubSchema = {
     rates: [{zone: String, rate: Number}]
   }],
   rates: [ {
-    state: String,
-    city: String,
+    state: {type: String, lowercase: true},
+    city: {type:String, lowercase: true},
     zipCode: String,
     zone: String
   }]
@@ -75,8 +75,8 @@ var TruckingCompanySchema = new Schema({
       charge: Number
     }],
     regions: [{
-      state: String,
-      county: String
+      state: {type:String},
+      county: {type:String}
     }],
     sizeCharges: [{
       containerSize: {
@@ -113,8 +113,8 @@ var TruckingCompanySchema = new Schema({
       charge: Number
     }],
     regions: [{
-      state: String,
-      county: String,
+      state: {type:String},
+      county: {type:String},
       rateByCity: Boolean
     }],
     rateBasis: {
@@ -138,8 +138,8 @@ var TruckingCompanySchema = new Schema({
       charge: Number
     }],
     regions: [{
-      state: String,
-      county: String,
+      state: {type:String},
+      county: {type:String},
       rateByCity: Boolean
     }],
     rateBasis: {

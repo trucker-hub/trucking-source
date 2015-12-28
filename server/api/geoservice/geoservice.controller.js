@@ -24,7 +24,7 @@ function _initializeDatabase(callback) {
   }
 }
 
-exports.getRegions = function(req, res) {
+exports.index = function(req, res) {
 
   console.log("calling regions");
 

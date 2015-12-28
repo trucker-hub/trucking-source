@@ -24,16 +24,8 @@ var serviceSubSchema = {
 };
 
 var FtlLoadSchema = new Schema({
-  status: {
-    type: String, required: true,
-    enum: ['OPEN', 'FILLED', 'CONFIRMED', 'CLOSED'],
-    default: 'OPEN'},
-
-  payment: {
-    type: String, required: true,
-    enum: ['OPEN', 'INVOICED', 'PAID'],
-    default: 'OPEN'},
-
+  status: { type: String, required: true, enum: ['OPEN', 'FILLED', 'CONFIRMED', 'CLOSED'], default: 'OPEN'},
+  payment: { type: String, required: true, enum: ['OPEN', 'INVOICED', 'PAID'], default: 'OPEN'},
   who: String,
   createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
   loadType:  { type: String, default: 'FTL'},
@@ -46,30 +38,10 @@ var FtlLoadSchema = new Schema({
   lines: [{
     weight: Number,
     quantity: Number,
-    packaging: {
-      type: String, required: true,
-      enum: [
-        "20",
-        "40",
-        "40HQ",
-        "45",
-        "45HQ"
-      ],
-      default: '20'
-    },
+    packaging: { type: String, required: true, enum: [ "20", "40", "45"], default: '20'},
     description: String
   }],
-  trailer: {
-    type: {
-      type: String, required: true,
-      enum: [
-        'Dry Van',
-        'Refrigerated',
-        'Flatbed',
-        'Other'
-      ],
-      default: 'Dry Van'}
-  },
+  trailer: { type: { type: String, required: true, enum: [ 'Dry Van', 'Refrigerated', 'Flatbed', 'Other'], default: 'Dry Van'}},
 
   fulfilledBy: {
     source: { type: Schema.Types.ObjectId, ref: 'TruckingCompany' },
@@ -86,13 +58,9 @@ var FtlLoadSchema = new Schema({
     }]
   },
 
-  brokerFees: [
-    {name: String, charge: Number}
-  ],
+  brokerFees: [ {name: String, charge: Number}],
 
-  invoice: {
-    referenceNumber: String
-  },
+  invoice: { referenceNumber: String },
 
   deliveryOrder: {
     email: String,
@@ -100,9 +68,7 @@ var FtlLoadSchema = new Schema({
     instructions: String
   },
 
-  activityLog: [
-    {time: Date, activity: String}
-  ]
+  activityLog: [ {time: Date, activity: String} ]
 
 });
 

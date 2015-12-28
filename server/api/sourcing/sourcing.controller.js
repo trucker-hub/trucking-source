@@ -34,7 +34,9 @@ exports.index = function(req, res) {
 
   var load = req.body;
   var shipTo = load.shipTo;
+  console.log("Ship to = " + JSON.stringify(shipTo));
   var countyTo = shipTo.location.county;
+
 
   var options = {};
     if(load.loadType=="FTL") {

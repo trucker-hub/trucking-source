@@ -18,20 +18,18 @@ angular.module('servicesApp')
       ftlSettings: {
         brokerFees: [
           {name: "ABI-Customs Fee", charge: 15},
-          {name: "Chassy Fee", charge: 15},
+          {name: "Chassis Fee", charge: 15},
           {name: "Service Fee", charge: 50}]
       },
       ltlSettings: {
         brokerFees: [
-          {name: "ABI-Customs Fee", charge: 200},
-          {name: "Chassy Fee", charge: 15},
-          {name: "Service Fee", charge: 50}]
+          {name: "ABI-Customs Fee", charge: 15},
+          {name: "Service Fee", charge: 10}]
       },
       airSettings: {
         brokerFees: [
           {name: "ABI-Customs Fee", charge: 15},
-          {name: "Chassy Fee", charge: 15},
-          {name: "Service Fee", charge: 50}]
+          {name: "Service Fee", charge: 10}]
       }
     };
     vm.getCustomerSettings = function (userId, cbOK, cbError) {
@@ -58,7 +56,7 @@ angular.module('servicesApp')
     };
 
 
-    this.openCustomerSettingsDialog = function (customer, callbackOK, callbackCancel) {
+    vm.openCustomerSettingsDialog = function (customer, callbackOK, callbackCancel) {
 
       var modalInstance = $modal.open({
         animation: true,
