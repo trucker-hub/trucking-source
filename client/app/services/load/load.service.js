@@ -157,6 +157,19 @@ angular.module('servicesApp')
       }
     };
 
+    vm.save = function(load, cb, cbE) {
+
+      var url = load.loadType=='FTL'?'/api/load/ftl-loads':'/api/load/ltl-loads';
+      if(load._id !=-1 || load._id !=-2) {
+        url = url + "/" + load._id;
+        $http.put(url, load).then(cb, cbE)
+      }else {
+        delete load._id;
+        $http.post(url, load).then(cb, cbE);
+      }
+    };
+
+
     vm.getLoads = function() {
       return vm.loads;
     };

@@ -112,33 +112,10 @@ angular.module('servicesApp')
     };
 
     vm.submit = function() {
-      //console.log("updating ltl load = " + JSON.stringify(vm.freight));
-      //populate location with raw data.
-
-      var id = vm.freight._id;
-      if(vm.freight._id == -1) {
-        delete vm.freight._id;
-        $http.post('/api/load/ltl-loads', vm.freight).then(
-
-            function(response) {
-              console.log("request saved succesfully " + response);
-              //$scope.$parent.closeTab(id, 'LTL', true);
-            },
-            function(err) {
-              console.log("request saving failed " + JSON.stringify(err));
-            }
-        );
-      }else {
-        $http.put('/api/load/ltl-loads/'+vm.freight._id, vm.freight).then(
-
-            function(response) {
-              console.log("request saved succesfully " + JSON.stringify(response));
-              //$scope.$parent.closeTab(id, 'LTL', true);
-            },
-            function(err) {
-              console.log("request saving failed " + err);
-            }
-        );
-      }
+      loadService.save(vm.freight, function () {
+        vm.freight.changed = false;
+      }, function () {
+        console.log("saving FTL failed");
+      });
     }
   });

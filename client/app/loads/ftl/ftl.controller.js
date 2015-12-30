@@ -84,30 +84,11 @@ angular.module('servicesApp')
     };
 
     vm.submit = function () {
-      //console.log("updating load = " + JSON.stringify(vm.load));
-      //populate location with raw data.
-      var id = vm.load._id;
-      if (vm.load._id == -2) {
-        delete vm.load._id;
-        $http.post('/api/load/ftl-loads', vm.load).then(
-          function (response) {
-            console.log("request saved succesfully " + response);
-            //$scope.$parent.closeTab(id, 'FTL', true);
-          },
-          function (err) {
-            console.log("request saving failed " + err);
-          }
-        );
-      } else {
-        $http.put('/api/load/ftl-loads/' + vm.load._id, vm.load).then(
-          function (response) {
-            console.log("request saved succesfully " + JSON.stringify(response));
-            //$scope.$parent.closeTab(id, 'FTL', true);
-          },
-          function (err) {
-            console.log("request saving failed " + err);
-          }
-        );
-      }
-    }
+      loadService.save(vm.load, function () {
+        vm.load.changed = false;
+      }, function () {
+        console.log("saving FTL failed");
+      });
+    };
+
   });

@@ -7,13 +7,13 @@
             <tab-heading><span>Loads <span class="badge">{{loads.length}}</span></span></tab-heading>
             <br>
             <div class="row">
-                <div class="col-md-3">
-                    <button class="btn btn-sm btn-default" type="button" ng-click="newFTLLoad()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> FTL load</button>
-                    <button class="btn btn-sm btn-default" type="button" ng-click="newFreightLoad()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> LTL load</button>
-                    <button class="btn btn-sm btn-default" type="button" ng-click="newAirLoad()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Air load</button>
-                </div>
-                <div class="col-md-3"></div>
                 <div class="col-md-6">
+                    <button class="btn btn-default" type="button" ng-click="newFTLLoad()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> FTL load</button>
+                    <button class="btn btn-default" type="button" ng-click="newFreightLoad()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> LTL load</button>
+                    <button class="btn btn-default" type="button" ng-click="newAirLoad()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Air load</button>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
                     <span class="ac-highlighted">Loads for:</span>
                     <button type="button" class="btn btn-link" ng-click="fetch(1)">Today‘s</button>
                     <button type="button" class="btn btn-link" ng-click="fetch(3)">Last 3 days </button>

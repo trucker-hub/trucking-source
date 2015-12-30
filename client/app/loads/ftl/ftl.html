@@ -1,4 +1,4 @@
-<form class="form-horizontal" name="locationForm">
+<form class="form-horizontal" name="ftlForm">
   <br>
 
   <div class="row">
@@ -56,7 +56,7 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <div class="row ftlPadding" ng-class="{'has-error':locationForm.customerName.$invalid}">
+      <div class="row ftlPadding" ng-class="{'has-error':ftlForm.customerName.$invalid}">
         <label for="customerName" class="col-md-2 control-label">Consignee</label>
 
         <div class="col-md-10">
@@ -67,7 +67,7 @@
                  placeholder="Consignee name" required="" ng-change="ftlCtrl.change()">
         </div>
       </div>
-      <div class="row ftlPadding" ng-class="{'has-error':locationForm.customerEmail.$invalid}">
+      <div class="row ftlPadding" ng-class="{'has-error':ftlForm.customerEmail.$invalid}">
         <label for="customerEmail" class="col-md-2 control-label">Email</label>
 
         <div class="col-md-10">
@@ -84,10 +84,10 @@
 
         <div class="col-md-10">
           <textarea
-            class="form-control" id="customerNote" size="20"
-            ng-model="ftlCtrl.load.notes"
-            rows="4"
-            placeholder="Note name" ng-change="ftlCtrl.change()"></textarea>
+                  class="form-control" id="customerNote" size="20"
+                  ng-model="ftlCtrl.load.notes"
+                  rows="4"
+                  placeholder="Note name" ng-change="ftlCtrl.change()"></textarea>
         </div>
       </div>
     </div>
@@ -106,7 +106,7 @@
   </div>
 
 
-</form>
+
 <div class="row container table-responsive">
   <form class="form-inline">
     <table class="table table-striped">
@@ -153,10 +153,9 @@
   <div class="col-md-9">
     <div style="float:right">
       <button type="button" class="btn btn-default" ng-click="ftlCtrl.close()"><i class="fa fa-times fa-lg"></i> Close</button>
-      <button type="button" class="btn btn-default" ng-click="ftlCtrl.submit()" ng-disabled="locationForm.$invalid || !ftlCtrl.load.changed"><i class="fa fa-floppy-o fa-lg"></i> Save</button>
-      <button type="button" class="btn btn-default" ng-click="ftlCtrl.quote()" ng-disabled="locationForm.$invalid || ftlCtrl.load.changed"><i class="fa fa-floppy-o fa-lg"></i> Quote</button>
+      <button type="button" class="btn btn-default" ng-click="ftlCtrl.submit()" ng-disabled="ftlForm.$invalid || !ftlCtrl.load.changed"><i class="fa fa-floppy-o fa-lg"></i> Save</button>
+      <button type="button" class="btn btn-default" ng-click="ftlCtrl.quote()" ng-disabled="ftlForm.$invalid || ftlCtrl.load.changed"><i class="fa fa-floppy-o fa-lg"></i> Quote</button>
     </div>
   </div>
 </div>
-<div>
-</div>
+</form>
