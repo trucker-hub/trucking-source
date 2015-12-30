@@ -2,7 +2,7 @@
 
 angular.module('servicesApp')
   .controller('FtlCtrl', function ($rootScope, $scope, $http, loadService, sourcingService) {
-    
+
     var vm = this;
     vm.packagings = [];
 
