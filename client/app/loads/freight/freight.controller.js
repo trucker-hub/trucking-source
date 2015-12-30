@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('FreightCtrl', function ($rootScope, $scope, $http, loadService) {
+  .controller('FreightCtrl', function ($rootScope, $scope, $http, loadService, sourcingService) {
 
 
     var vm = this;
@@ -107,6 +107,10 @@ angular.module('servicesApp')
       vm.change();
     };
 
+    vm.quote = function () {
+      sourcingService.sourcing(vm.freight);
+    };
+
     vm.submit = function() {
       //console.log("updating ltl load = " + JSON.stringify(vm.freight));
       //populate location with raw data.
@@ -118,7 +122,7 @@ angular.module('servicesApp')
 
             function(response) {
               console.log("request saved succesfully " + response);
-              $scope.$parent.closeTab(id, 'LTL', true);
+              //$scope.$parent.closeTab(id, 'LTL', true);
             },
             function(err) {
               console.log("request saving failed " + JSON.stringify(err));
@@ -129,7 +133,7 @@ angular.module('servicesApp')
 
             function(response) {
               console.log("request saved succesfully " + JSON.stringify(response));
-              $scope.$parent.closeTab(id, 'LTL', true);
+              //$scope.$parent.closeTab(id, 'LTL', true);
             },
             function(err) {
               console.log("request saving failed " + err);

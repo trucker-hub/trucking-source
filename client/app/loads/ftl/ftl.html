@@ -4,35 +4,35 @@
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <location info="ftlCtrl.load.shipTo" label="'To'" ></location>
+        <location info="ftlCtrl.load.shipTo" label="'To'"></location>
 
         <div class="row" ng-show="ftlCtrl.load.shipTo.locationType">
-            <label for="inputShipTypeTo" class="col-md-2 control-label">Type</label>
-            <div class="col-md-10" id="inputShipTypeTo">
-                <div class="radio" ng-repeat="type in ftlCtrl.toLocationTypes">
-                    <label>
-                        <input type="radio" id="typeTo" ng-value="type" ng-model="ftlCtrl.load.shipTo.locationType">
-                        {{type}}
-                    </label>
-                </div>
+          <label for="inputShipTypeTo" class="col-md-2 control-label">Type</label>
+
+          <div class="col-md-10" id="inputShipTypeTo">
+            <div class="radio" ng-repeat="type in ftlCtrl.toLocationTypes">
+              <label>
+                <input type="radio" id="typeTo" ng-value="type" ng-model="ftlCtrl.load.shipTo.locationType">{{type}}
+              </label>
             </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
-        <location info="ftlCtrl.load.shipFrom" label="'From'" ></location>
-          <div class="row" ng-show="ftlCtrl.load.shipTo.locationType">
-              <label for="inputShipType" class="col-md-2 control-label">Type</label>
-              <div class="col-md-10" id="inputShipType">
-                  <div class="radio" ng-repeat="type in ftlCtrl.fromLocationTypes">
-                      <label>
-                          <input type="radio" id="type" ng-value="type" ng-model="ftlCtrl.load.shipFrom.locationType">
-                          {{type}}
-                      </label>
-                  </div>
-              </div>
+        <location info="ftlCtrl.load.shipFrom" label="'From'"></location>
+        <div class="row" ng-show="ftlCtrl.load.shipTo.locationType">
+          <label for="inputShipType" class="col-md-2 control-label">Type</label>
+
+          <div class="col-md-10" id="inputShipType">
+            <div class="radio" ng-repeat="type in ftlCtrl.fromLocationTypes">
+              <label>
+                <input type="radio" id="type" ng-value="type" ng-model="ftlCtrl.load.shipFrom.locationType">{{type}}
+              </label>
+            </div>
           </div>
+        </div>
       </div>
     </div>
   </div>
@@ -41,11 +41,11 @@
       <div class="form-group">
         <label for="inputTrailerType" class="col-md-1 control-label">Trailer Type</label>
 
-        <div class="col-md-11" id="inputTrailerType" >
+        <div class="col-md-11" id="inputTrailerType">
           <div class="radio-inline" ng-repeat="trailerType in ftlCtrl.trailerTypes">
             <label>
-              <input type="radio" name="{{trailerType}}" ng-value="trailerType" ng-model="ftlCtrl.load.trailer.type" ng-change="ftlCtrl.change()">
-              {{trailerType}}
+              <input type="radio" name="{{trailerType}}" ng-value="trailerType" ng-model="ftlCtrl.load.trailer.type"
+                     ng-change="ftlCtrl.change()">{{trailerType}}
             </label>
           </div>
         </div>
@@ -58,6 +58,7 @@
     <div class="col-md-6">
       <div class="row ftlPadding" ng-class="{'has-error':locationForm.customerName.$invalid}">
         <label for="customerName" class="col-md-2 control-label">Consignee</label>
+
         <div class="col-md-10">
           <input type="text"
                  class="form-control" id="customerName" size="20" name="customerName"
@@ -68,6 +69,7 @@
       </div>
       <div class="row ftlPadding" ng-class="{'has-error':locationForm.customerEmail.$invalid}">
         <label for="customerEmail" class="col-md-2 control-label">Email</label>
+
         <div class="col-md-10">
           <input type="email"
                  class="form-control" id="customerEmail" size="20" name="customerEmail"
@@ -79,6 +81,7 @@
 
       <div class="row ftlPadding">
         <label for="customerNote" class="col-md-2 control-label">Notes</label>
+
         <div class="col-md-10">
           <textarea
             class="form-control" id="customerNote" size="20"
@@ -90,6 +93,7 @@
     </div>
     <div class="col-md-6 form-inline">
       <label for="loadDate" class="control-label col-md-2">Expected By </label>
+
       <div class="col-md-10">
         <div style="display:inline-block; min-height:290px;" id="loadDate">
           <datepicker ng-model="ftlCtrl.load.expectedBy" min-date="minDate" show-weeks="true" class="well well-sm"
@@ -116,24 +120,27 @@
       </tr>
       <tr ng-repeat="line in ftlCtrl.load.lines track by $index">
         <form name="innerForm" novalidate>
-        <td>
-          <div class="form-group" ng-class="{'has-error':innerForm.weight.$invalid}">
-          <input type="number" class="form-control" size="6" ng-model="line.weight" name="weight"
-                   placeholder="weight" required min="100" ng-change="ftlCtrl.change()"></div>
-        </td>
-        <td><div ng-class="{'has-error':innerForm.quantity.$invalid}">
-          <input class="form-control" type="number" size="3" ng-model="line.quantity" min="1" name="quantity" required ng-change="ftlCtrl.change()">
-          </div>
-        </td>
-        <td>
-          <select class="form-control" ng-model="line.packaging" id="" ng-change="ftlCtrl.change()">
-            <option value="">-- Container Size --</option>
-            <option ng-repeat="packaging in ftlCtrl.packagings">{{packaging}}</option>
-          </select>
-        </td>
-        <td><input class="form-control" type="text" ng-model="line.description" placeholder="description" ng-change="ftlCtrl.change()"></td>
-        <td><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="ftlCtrl.removeLine($index)"></span>
-        </td>
+          <td>
+            <div class="form-group" ng-class="{'has-error':innerForm.weight.$invalid}">
+              <input type="number" class="form-control" size="6" ng-model="line.weight" name="weight"
+                     placeholder="weight" required min="100" ng-change="ftlCtrl.change()"></div>
+          </td>
+          <td>
+            <div ng-class="{'has-error':innerForm.quantity.$invalid}">
+              <input class="form-control" type="number" size="3" ng-model="line.quantity" min="1" name="quantity"
+                     required ng-change="ftlCtrl.change()">
+            </div>
+          </td>
+          <td>
+            <select class="form-control" ng-model="line.packaging" id="" ng-change="ftlCtrl.change()">
+              <option value="">-- Container Size --</option>
+              <option ng-repeat="packaging in ftlCtrl.packagings">{{packaging}}</option>
+            </select>
+          </td>
+          <td><input class="form-control" type="text" ng-model="line.description" placeholder="description"
+                     ng-change="ftlCtrl.change()"></td>
+          <td><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="ftlCtrl.removeLine($index)"></span>
+          </td>
         </form>
       </tr>
     </table>
@@ -143,11 +150,11 @@
   <div class="col-md-3"><a class="btn btn-danger" ng-click="ftlCtrl.delete()"><i class="fa fa-trash-o fa-lg"></i> Delete</a>
   </div>
   <div class="col-md-9">
-      <div style="float:right">
-      <button  type="button" class="btn btn-default" ng-click="ftlCtrl.close()"> <i class="fa fa-times fa-lg"></i> Close</button>
-      <button  type="button" class="btn btn-default" ng-click="ftlCtrl.submit()"
-              ng-disabled="locationForm.$invalid || !ftlCtrl.load.changed"> <i class="fa fa-floppy-o fa-lg"></i> Save</button>
-      </div>
+    <div style="float:right">
+      <button type="button" class="btn btn-default" ng-click="ftlCtrl.close()"><i class="fa fa-times fa-lg"></i> Close</button>
+      <button type="button" class="btn btn-default" ng-click="ftlCtrl.submit()" ng-disabled="locationForm.$invalid || !ftlCtrl.load.changed"><i class="fa fa-floppy-o fa-lg"></i> Save</button>
+      <button type="button" class="btn btn-default" ng-click="ftlCtrl.quote()" ng-disabled="locationForm.$invalid || ftlCtrl.load.changed"><i class="fa fa-floppy-o fa-lg"></i> Quote</button>
+    </div>
   </div>
 </div>
 <div>

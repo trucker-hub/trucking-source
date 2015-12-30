@@ -1,20 +1,19 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('FtlCtrl', function ($rootScope, $scope, $http, loadService) {
-
-
+  .controller('FtlCtrl', function ($rootScope, $scope, $http, loadService, sourcingService) {
+    
     var vm = this;
     vm.packagings = [];
 
-    vm.init = function(load) {
+    vm.init = function (load) {
       //console.log("initialize controller for load = " + JSON.stringify(load));
       vm.load = load;
-      if(vm.load._id!=-2 ) {
+      if (vm.load._id != -2) {
         vm.load.shipTo.location.raw = vm.load.shipTo.location.full_address;
         vm.load.shipFrom.location.raw = vm.load.shipFrom.location.full_address;
         vm.load.changed = false;
-      }else {
+      } else {
         vm.load.changed = true;
       }
       vm.setInitialExpectedDate();
@@ -22,20 +21,20 @@ angular.module('servicesApp')
     };
 
     vm.setInitialExpectedDate = function () {
-      if(!vm.load.expectedBy) {
+      if (!vm.load.expectedBy) {
         vm.load.expectedBy = new Date();
         vm.load.expectedBy.setDate(vm.load.expectedBy.getDate() + 2);
       }
     };
-    vm.loadConstants = function() {
+    vm.loadConstants = function () {
       loadService.fetchConstants(
-        function() {
-          vm.packagings =       loadService.loadConstants.ftl.packagings;
-          vm.toLocationTypes =  loadService.loadConstants.ftl.toLocationTypes;
+        function () {
+          vm.packagings = loadService.loadConstants.ftl.packagings;
+          vm.toLocationTypes = loadService.loadConstants.ftl.toLocationTypes;
           vm.fromLocationTypes = loadService.loadConstants.ftl.fromLocationTypes;
-          vm.trailerTypes =      loadService.loadConstants.ftl.trailerTypes;
+          vm.trailerTypes = loadService.loadConstants.ftl.trailerTypes;
         },
-        function() {
+        function () {
           console.log("loading constants failed");
         });
     };
@@ -57,57 +56,55 @@ angular.module('servicesApp')
       vm.change();
     };
 
-    vm.isNew = function() {
+    vm.isNew = function () {
       return vm.load._id == -2;
     };
-    vm.change = function() {
+    vm.change = function () {
       vm.load.changed = true;
     };
 
-
-    vm.close = function() {
+    vm.close = function () {
       $scope.$parent.closeTab(vm.load._id, 'FTL', false);
     };
 
-    vm.delete = function() {
-      $http.delete('/api/load/ftl-loads/'+vm.load._id).then(
-
-        function(response) {
+    vm.delete = function () {
+      $http.delete('/api/load/ftl-loads/' + vm.load._id).then(
+        function (response) {
           console.log("request saved succesfully " + response);
           $scope.$parent.closeTab(vm.load._id, 'FTL', true);
         },
-        function(err) {
+        function (err) {
           console.log("request saving failed " + err);
         }
       );
-    }
+    };
 
-    vm.submit = function() {
+    vm.quote = function () {
+      sourcingService.sourcing(vm.load);
+    };
 
+    vm.submit = function () {
       //console.log("updating load = " + JSON.stringify(vm.load));
       //populate location with raw data.
-
       var id = vm.load._id;
-      if(vm.load._id == -2) {
+      if (vm.load._id == -2) {
         delete vm.load._id;
         $http.post('/api/load/ftl-loads', vm.load).then(
-
-          function(response) {
+          function (response) {
             console.log("request saved succesfully " + response);
-            $scope.$parent.closeTab(id, 'FTL', true);
+            //$scope.$parent.closeTab(id, 'FTL', true);
           },
-          function(err) {
+          function (err) {
             console.log("request saving failed " + err);
           }
         );
-      }else {
-        $http.put('/api/load/ftl-loads/'+vm.load._id, vm.load).then(
-
-          function(response) {
+      } else {
+        $http.put('/api/load/ftl-loads/' + vm.load._id, vm.load).then(
+          function (response) {
             console.log("request saved succesfully " + JSON.stringify(response));
-            $scope.$parent.closeTab(id, 'FTL', true);
+            //$scope.$parent.closeTab(id, 'FTL', true);
           },
-          function(err) {
+          function (err) {
             console.log("request saving failed " + err);
           }
         );

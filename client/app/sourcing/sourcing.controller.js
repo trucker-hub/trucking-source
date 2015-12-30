@@ -30,38 +30,7 @@ angular.module('servicesApp').controller('SourcingCtrl',
         );
       };
 
-      var settingsPromise = function(load) {
-        console.log("fetching settings before sourcing");
-        var deferred = $q.defer();
-        console.log("broker fee" + JSON.stringify(load.brokerFees));
-        if (!load.brokerFees || load.brokerFees.length==0) {
-          sourcingService.getCustomerFeeSettings(load, function(response) {
-            deferred.resolve(load);
-          }, function(response) {
-            deferred.reject("error");
-          });
-        }else {
-          console.log("already has broker fees set!")
-          deferred.resolve(load);
-        }
-        return deferred.promise;
-      };
 
-      var search = function(load) {
-        $scope.progressbar = ngProgressFactory.createInstance();
-        $scope.progressbar.start();
-        sourcingService.sourcing(load,
-            function () {
-              //after get the companies' data, we can calculate the prices on the client side.
-              $scope.progressbar.complete();
-              load.showLoadDetails = false;
-              sourcingService.showQuoteDialog(load);
-            },
-            function () {
-              $scope.progressbar.stop();
-            }
-        );
-      };
       $scope.clearSources = function(load) {
         sourcingService.clearSources(load);
         $scope.tableParamsLoads.reload();
@@ -75,9 +44,7 @@ angular.module('servicesApp').controller('SourcingCtrl',
       };
 
       $scope.sourcing = function (load) {
-        settingsPromise(load).then(search).catch(function(err) {
-          console.error("sourcing error");
-        });
+        sourcingService.sourcing(load);
       };
 
       $scope.tableParamsLoads = new ngTableParams({

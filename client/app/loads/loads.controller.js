@@ -7,8 +7,6 @@ angular.module('servicesApp')
     var NEW_LTL_ID = -1;
 
     // a list contains LTL, FTL and Air
-
-
     $rootScope.loadsOpened  = $rootScope.loadsOpened || { ftl:  {},  ltl:  {},  air:  {} };
 
     $scope.loads = loadService.getCombinedLoads();
@@ -25,9 +23,7 @@ angular.module('servicesApp')
       getData: function($defer, params) {
         // use build-in angular filter
         var orderedData = params.filter() ? $filter('filter')($scope.loads, params.filter()) : $scope.loads;
-
         var xxx = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
-
         params.total(orderedData.length); // set total for recalc pagination
         $defer.resolve(xxx);
       }
@@ -61,11 +57,8 @@ angular.module('servicesApp')
       }
     };
 
-
     $scope.emptyFtlLoad  = loadService.emptyFtlLoad;
-
     $scope.emptyFreightLoad  = loadService.emptyFreightLoad;
-
     $scope.closeTab = function(id, type, update) {
 
       if(type =='FTL') {
@@ -73,12 +66,10 @@ angular.module('servicesApp')
       }else if (type=='LTL' || type=='AIR') {
         delete $rootScope.loadsOpened.ltl[id];
       }
-
       if(update) {
         $scope.fetch(type);
       }
     };
-
 
     $scope.newFTLLoad = function() {
       console.log("calling createFTLLoad");
@@ -87,7 +78,6 @@ angular.module('servicesApp')
       $rootScope.loadsOpened.ftl[NEW_FTL_ID] = {data:load, active:true};
       $scope.editLoad(load._id);
     };
-
 
     $scope.newFreightLoad = function() {
       console.log("calling createFTLLoad");
@@ -134,7 +124,6 @@ angular.module('servicesApp')
       $scope.tableParams.reload();
       $scope.progressbar.complete();
     };
-
 
     $scope.fetch(1);
   });
