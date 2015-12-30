@@ -78,32 +78,33 @@
       </td>
       <td class="col-md-2">Notes</td>
       <td class="col-md-4">
-        <div class="input-group">
-          <textarea class="form-control" id="customerNote" size="20" ng-model="freightCtrl.freight.notes" rows="4"
+        <div class="input-group col-md-12">
+          <textarea class="form-control" id="customerNote" size="30" ng-model="freightCtrl.freight.notes" rows="10"
                     placeholder="Note name" ng-change="freightCtrl.change()"></textarea>
         </div>
       </td>
-
     </tr>
-
-
   </table>
 
   <div class="row container table-responsive">
     <form class="form-inline">
       <table class="table table-striped">
         <tr>
+          <th class="col-md-1">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="freightCtrl.addLine()"></span>
+          </th>
           <th class="col-md-2">Unit Weight (lbs)</th>
           <th class="col-md-1">Quantity</th>
           <th class="col-md-2">Packaging</th>
           <th class="col-md-3">W x L x H (in)</th>
           <th class="col-md-3">Description</th>
-          <th class="col-md-1">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="freightCtrl.addLine()"></span>
-          </th>
+
         </tr>
         <tr ng-repeat="line in freightCtrl.freight.lines track by $index">
           <form name="innerForm" novalidate>
+            <td><span class="glyphicon glyphicon-remove" aria-hidden="true"
+                      ng-click="freightCtrl.removeLine($index)"></span>
+            </td>
             <td>
               <div class="form-group" ng-class="{'has-error':innerForm.weight.$invalid}">
                 <input type="number" class="form-control" size="6" ng-model="line.weight" name="weight"
@@ -134,9 +135,7 @@
             </td>
             <td><input class="form-control" type="text" ng-model="line.description" placeholder="description"
                        ng-change="freightCtrl.change()"></td>
-            <td><span class="glyphicon glyphicon-remove" aria-hidden="true"
-                      ng-click="freightCtrl.removeLine($index)"></span>
-            </td>
+
           </form>
         </tr>
       </table>
