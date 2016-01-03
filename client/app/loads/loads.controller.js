@@ -3,9 +3,6 @@
 angular.module('servicesApp')
   .controller('LoadsCtrl', function ($rootScope, $scope, $http, $filter, ngTableParams, loadService, ngProgressFactory) {
 
-    var NEW_FTL_ID = -2;
-    var NEW_LTL_ID = -1;
-
     // a list contains LTL, FTL and Air
     $rootScope.loadsOpened  = $rootScope.loadsOpened || { ftl:  {},  ltl:  {},  air:  {} };
 
@@ -13,21 +10,6 @@ angular.module('servicesApp')
 
     $scope.searchCriteria ='Today';
 
-    $scope.tableParams = new ngTableParams({
-      page: 1,            // show first page
-      count: 25,          // count per page
-      filter: { who: '' }
-    }, {
-      total: $scope.loads.length, // length of data,
-      //counts: [],
-      getData: function($defer, params) {
-        // use build-in angular filter
-        var orderedData = params.filter() ? $filter('filter')($scope.loads, params.filter()) : $scope.loads;
-        var xxx = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
-        params.total(orderedData.length); // set total for recalc pagination
-        $defer.resolve(xxx);
-      }
-    });
 
 
     $scope.editLoad = function(id, type) {
@@ -39,7 +21,7 @@ angular.module('servicesApp')
         xx = $rootScope.loadsOpened.ltl;
       }
 
-      console.log("edit a load whose id is " + id);
+      console.log("edit a load whose id/tab is " + id);
 
       var detail = xx[id];
       if(detail) {
@@ -73,27 +55,23 @@ angular.module('servicesApp')
 
     $scope.newFTLLoad = function() {
       console.log("calling createFTLLoad");
-      var load = angular.copy($scope.emptyFtlLoad);
-      load._id = NEW_FTL_ID;
-      $rootScope.loadsOpened.ftl[NEW_FTL_ID] = {data:load, active:true};
-      $scope.editLoad(load._id);
+      var load = loadService.create('FTL');
+      $rootScope.loadsOpened.ftl[load.tabId] = {data:load, active:true};
+      $scope.editLoad(load.tabId);
     };
 
     $scope.newFreightLoad = function() {
-      console.log("calling createFTLLoad");
-      var load = angular.copy($scope.emptyFreightLoad);
-      load._id = NEW_LTL_ID;
-      $rootScope.loadsOpened.ltl[NEW_LTL_ID] = {data:load, active:true};
-      $scope.editLoad(load._id);
+      console.log("calling createLTLLoad");
+      var load = loadService.create('LTL');
+      $rootScope.loadsOpened.ltl[load.tabId] = {data:load, active:true};
+      $scope.editLoad(load.tabId);
     };
 
     $scope.newAirLoad = function() {
-      console.log("calling createFTLLoad");
-      var load = angular.copy($scope.emptyFreightLoad);
-      load._id = NEW_LTL_ID;
-      load.loadType="AIR";
-      $rootScope.loadsOpened.ltl[NEW_LTL_ID] = {data:load, active:true};
-      $scope.editLoad(load._id);
+      console.log("calling create AIR Load");
+      var load = loadService.create('AIR');
+      $rootScope.loadsOpened.ltl[load.tabId] = {data:load, active:true};
+      $scope.editLoad(load.tabId);
     };
 
 
@@ -124,6 +102,23 @@ angular.module('servicesApp')
       $scope.tableParams.reload();
       $scope.progressbar.complete();
     };
+
+    $scope.tableParams = new ngTableParams({
+      page: 1,            // show first page
+      count: 25,          // count per page
+      filter: { who: '' }
+    }, {
+      total: $scope.loads.length, // length of data,
+      //counts: [],
+      getData: function($defer, params) {
+        // use build-in angular filter
+        var orderedData = params.filter() ? $filter('filter')($scope.loads, params.filter()) : $scope.loads;
+        var xxx = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+        params.total(orderedData.length); // set total for recalc pagination
+        $defer.resolve(xxx);
+      }
+    });
+
 
     $scope.fetch(1);
   });

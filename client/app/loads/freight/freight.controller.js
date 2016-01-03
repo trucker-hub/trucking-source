@@ -11,7 +11,7 @@ angular.module('servicesApp')
     vm.init = function(load) {
       //console.log("initialize controller for load = " + JSON.stringify(load));
       vm.freight = load;
-      if(vm.freight._id!=-1 ) {
+      if(!vm.freight.new) {
         vm.freight.shipTo.location.raw = load.shipTo.location.full_address;
         vm.freight.shipFrom.location.raw = load.shipFrom.location.full_address;
         vm.freight.changed = false;
@@ -65,11 +65,11 @@ angular.module('servicesApp')
     };
 
     vm.isNew = function() {
-      return vm.freight._id == -1;
+      return vm.freight.new;
     };
 
     vm.close = function() {
-      $scope.$parent.closeTab(vm.freight._id, 'LTL', false);
+      $scope.$parent.closeTab(vm.freight.new?vm.freight.tabId:vm.freight._id, 'LTL', false);
     };
 
     vm.delete = function() {

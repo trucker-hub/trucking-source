@@ -4,15 +4,31 @@ angular.module('servicesApp')
   .service('loadService', function ($http) {
 
     var vm = this;
+    vm.newLoadId =0;
     vm.loads = {
       ltl: [],
       ftl: []
     };
 
+    vm.create = function(type) {
+      var load;
+      if(type=='FTL') {
+        load = angular.copy(vm.emptyFtlLoad);
+      }else if(type=='LTL' || type=='AIR') {
+        load = angular.copy(vm.emptyFreightLoad);
+      }
+      load.loadType=type;
+      load.tabId = (vm.newLoadId++);
+      load.new = true;
+
+      console.log("calling create");
+      return load;
+    };
+
     vm.loadConstants = null;
 
     vm.emptyFtlLoad  = {
-      who: 'NEW one',
+      who: 'Your Consignee Name',
       loadType:'FTL',
       expectedBy: null,
       notes: "",
@@ -28,7 +44,10 @@ angular.module('servicesApp')
         locationType: "Business with Dock/Fork",
         extraServices: []
       },
-      lines: [],
+      lines: [{weight: 20000,
+        quantity: 1,
+        packaging: '20',
+        description: ''}],
 
       trailer: {
         type: "Dry Van"
@@ -36,7 +55,7 @@ angular.module('servicesApp')
     };
 
     vm.emptyFreightLoad  = {
-      who: 'NEW one',
+      who: 'Your Consignee Name',
       loadType:'LTL',
       expectedBy: null,
       notes: "",
@@ -52,7 +71,13 @@ angular.module('servicesApp')
         services: [],
         extraServices: []
       },
-      lines: []
+      lines: [ {weight: 1000,
+      quantity: 1,
+      packaging: "Cartons",
+      length: 20,
+      width: 20,
+      height: 20,
+      description: ""}]
     };
 
 
@@ -160,12 +185,19 @@ angular.module('servicesApp')
     vm.save = function(load, cb, cbE) {
 
       var url = load.loadType=='FTL'?'/api/load/ftl-loads':'/api/load/ltl-loads';
-      if(load._id !=-1 || load._id !=-2) {
+      if(!load.new) {
         url = url + "/" + load._id;
         $http.put(url, load).then(cb, cbE)
       }else {
-        delete load._id;
-        $http.post(url, load).then(cb, cbE);
+        $http.post(url, load).then(function(response) {
+          console.log("created load " + JSON.stringify(response));
+          var created = response.data;
+          created.tabId = load.tabId;
+          load.fulfilledBy = created.fulfilledBy;
+          load._id = created._id;
+          console.log("created load " + JSON.stringify(created));
+          cb(response);
+        }, cbE);
       }
     };
 

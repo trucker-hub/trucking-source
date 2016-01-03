@@ -42,6 +42,7 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
     console.log("req + " + JSON.stringify(req.body));
     var load = req.body;
+    if(load._id) { delete load._id; }
     load.createdBy = req.user._id;
     Ltl.create(load, function(err, ltl) {
         if(err) {

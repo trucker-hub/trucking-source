@@ -58,8 +58,9 @@ exports.show = function(req, res) {
 // Creates a new emptyFtlLoad in the DB.
 exports.create = function(req, res) {
     var load = req.body;
+    if(load._id) { delete req.body._id; }
     load.createdBy = req.user._id;
-    FtlLoad.create(req.body, function(err, ftlLoad) {
+    FtlLoad.create(load, function(err, ftlLoad) {
         if(err) {
             console.log("error " + err);
             return handleError(res, err);

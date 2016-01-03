@@ -196,7 +196,8 @@ angular.module('servicesApp')
         }
       }
       source.totalAmount = sum;
-      if (load.fulfilledBy.source == source.id) {
+      //if already selected, need to adjust the load charges
+      if (load.fulfilledBy.source && load.fulfilledBy.source == source.id) {
         load.fulfilledBy.charge = source.totalAmount;
         load.fulfilledBy.costItems = source.costItems;
       }

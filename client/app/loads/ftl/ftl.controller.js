@@ -9,7 +9,7 @@ angular.module('servicesApp')
     vm.init = function (load) {
       //console.log("initialize controller for load = " + JSON.stringify(load));
       vm.load = load;
-      if (vm.load._id != -2) {
+      if (!vm.load.new) {
         vm.load.shipTo.location.raw = vm.load.shipTo.location.full_address;
         vm.load.shipFrom.location.raw = vm.load.shipFrom.location.full_address;
         vm.load.changed = false;
@@ -57,14 +57,15 @@ angular.module('servicesApp')
     };
 
     vm.isNew = function () {
-      return vm.load._id == -2;
+      return vm.load.new;
     };
     vm.change = function () {
       vm.load.changed = true;
     };
 
     vm.close = function () {
-      $scope.$parent.closeTab(vm.load._id, 'FTL', false);
+      console.log("load id is " + vm.load._id);
+      $scope.$parent.closeTab(vm.load.new?vm.load.tabId:vm.load._id, 'FTL', false);
     };
 
     vm.delete = function () {
