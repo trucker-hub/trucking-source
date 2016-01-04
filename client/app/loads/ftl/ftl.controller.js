@@ -14,6 +14,7 @@ angular.module('servicesApp')
     vm.init = function (load) {
       //console.log("initialize controller for load = " + JSON.stringify(load));
       vm.load = load;
+      vm.load.updated = false;
       if (!vm.load.new) {
         vm.load.shipTo.location.raw = vm.load.shipTo.location.full_address;
         vm.load.shipFrom.location.raw = vm.load.shipFrom.location.full_address;
@@ -71,7 +72,7 @@ angular.module('servicesApp')
 
     vm.close = function () {
       console.log("load id is " + vm.load._id);
-      $scope.$parent.closeTab(vm.load.new?vm.load.tabId:vm.load._id, 'FTL', false);
+      $scope.$parent.closeTab(vm.load.new?vm.load.tabId:vm.load._id, 'FTL', vm.load.updated);
     };
 
     vm.delete = function () {
@@ -88,6 +89,7 @@ angular.module('servicesApp')
 
     vm.quote = function () {
       sourcingService.sourcing(vm.load, function() {
+        vm.load.updated = true;
         vm.close();
       });
     };
@@ -95,6 +97,7 @@ angular.module('servicesApp')
     vm.submit = function () {
       loadService.save(vm.load, function () {
         vm.load.changed = false;
+        vm.load.updated = true;
       }, function () {
         console.log("saving FTL failed");
       });

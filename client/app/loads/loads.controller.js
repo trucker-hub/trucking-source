@@ -9,9 +9,6 @@ angular.module('servicesApp')
     $scope.loads = loadService.getCombinedLoads();
 
     $scope.searchCriteria ='Today';
-
-
-
     $scope.editLoad = function(id, type) {
 
       var xx = {};
@@ -48,8 +45,9 @@ angular.module('servicesApp')
       }else if (type=='LTL' || type=='AIR') {
         delete $rootScope.loadsOpened.ltl[id];
       }
+      console.log("close tab =" + update);
       if(update) {
-        $scope.fetch(type);
+        $scope.fetch(1);
       }
     };
 

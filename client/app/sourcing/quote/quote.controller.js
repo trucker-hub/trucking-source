@@ -25,9 +25,7 @@ angular.module('servicesApp')
       $scope.selectSource = function (aSource) {
         $scope.selectedSource = aSource;
         sourcingService.selectSource($scope.load, $scope.selectedSource);
-        finalizeSource();
       };
-
 
       $scope.sourcing = function () {
 
@@ -43,7 +41,6 @@ angular.module('servicesApp')
             }
         );
       };
-
 
       $scope.createInvoice = function () {
         var modalInstance = $modal.open({
@@ -90,6 +87,7 @@ angular.module('servicesApp')
 
       $scope.confirm = function() {
         $scope.$emit("QuoteConfirmed", load);
+        finalizeSource();
         $modalInstance.close();
       };
 
