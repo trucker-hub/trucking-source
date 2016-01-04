@@ -46,6 +46,7 @@ angular.module('servicesApp')
           result.raw = raw;
           scope.info.location = result;
           scope.info.changed = true;
+          scope.$emit("LocationChanged");
 
         }
       }

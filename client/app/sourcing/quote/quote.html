@@ -1,17 +1,17 @@
 <div class="modal-header" print-section="">
-  <div class="panel panel-default" >
-    <div class="panel-heading panel">
-        <b>{{load.who}}</b>: {{load.shipFrom.location | location: true}} <span class="glyphicon glyphicon-arrow-right"
-                                                                               aria-hidden="true"></span>
-        {{load.shipTo.location | location: true}}
-        <i ng-click="toggleLoadDetails(load)" class="fa fa-lg"
-           ng-class="{'fa-plus-square-o':!load.showLoadDetails, 'fa-minus-square-o':load.showLoadDetails}"></i>
-      <div style="float:right"><b><span style="color:green">{{load.fulfilledBy.charge | currency:"$":2}}</span></b></div>
+    <div class="panel panel-default" >
+        <div class="panel-heading panel">
+            <b>{{load.who}}</b>: {{load.shipFrom.location | location: true}} <span class="glyphicon glyphicon-arrow-right"
+                                                                                   aria-hidden="true"></span>
+            {{load.shipTo.location | location: true}}
+            <i ng-click="toggleLoadDetails(load)" class="fa fa-lg"
+               ng-class="{'fa-plus-square-o':!load.showLoadDetails, 'fa-minus-square-o':load.showLoadDetails}"></i>
+            <div style="float:right"><b><span style="color:green">{{load.fulfilledBy.charge | currency:"$":2}}</span></b></div>
+        </div>
+        <div class="panel-body panel" ng-show="load.showLoadDetails">
+            <load-details load="load"></load-details>
+        </div>
     </div>
-    <div class="panel-body panel" ng-show="load.showLoadDetails">
-      <load-details load="load"></load-details>
-    </div>
-  </div>
 </div>
 <div class="modal-body" print-section="">
     <div class="panel panel-default">
@@ -31,7 +31,7 @@
                        ng-class="{'fa-check':source.id==load.fulfilledBy.source, 'fa-lock': (load.status=='FILLED' && source.id==load.fulfilledBy.source)}"></i>
                 </th>
                 <th class="col-md-2">{{source.name}} <i ng-click="toggleSourceDetails(source)" class="fa fa-lg"
-                                       ng-class="{'fa-plus-square-o':!source.showDetails, 'fa-minus-square-o':source.showDetails}"></i>
+                                                        ng-class="{'fa-plus-square-o':!source.showDetails, 'fa-minus-square-o':source.showDetails}"></i>
                 </th>
                 <td class="col-md-1"><b>{{source.totalAmount | currency:"$":2}}</b></td>
                 <td class="col-md-2">{{source.contact | tel }}</td>
@@ -44,8 +44,8 @@
                 </td>
                 <td class="col-md-2">
                     <div ng-show="source.id==load.fulfilledBy.source && load.status=='FILLED'">
-                            <button type="button" class="btn btn-default text-success" ng-click="createInvoice()"><i class="fa fa-list-alt"></i></button>
-                            <button type="button" class="btn btn-default text-success" ng-click="createDO()"><i class="fa fa-paper-plane-o"></i></button>
+                        <button type="button" class="btn btn-default text-success" ng-click="createInvoice()"><i class="fa fa-list-alt"></i></button>
+                        <button type="button" class="btn btn-default text-success" ng-click="createDO()"><i class="fa fa-paper-plane-o"></i></button>
                     </div>
                 </td>
             </tr>
@@ -102,5 +102,6 @@
 
 </div>
 <div class="modal-footer" print-hide="">
-    <button style="float:left" class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+    <button style="float:left" class="btn btn-warning" type="button" ng-click="cancel()">Discard</button>
+    <button style="float:right" class="btn btn-success" type="button" ng-disabled="!load.fulfilledBy.source" ng-click="confirm()">Confirm</button>
 </div>

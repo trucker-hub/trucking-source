@@ -1,10 +1,14 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('FreightCtrl', function ($rootScope, $scope, $http, loadService, sourcingService) {
+  .controller('FreightCtrl', function ($scope, $http, loadService, sourcingService) {
 
 
     var vm = this;
+
+    $scope.$on("LocationChanged", function(event, data) {
+      vm.change();
+    });
 
     vm.packagings = [];
 
@@ -76,7 +80,7 @@ angular.module('servicesApp')
       $http.delete('/api/load/ltl-loads/'+vm.freight._id).then(
 
           function(response) {
-            //console.log("request saved succesfully " + response);
+            //console.log("request saved successfully " + response);
             $scope.$parent.closeTab(vm.freight._id, 'LTL', true);
           },
           function(err) {
@@ -108,7 +112,9 @@ angular.module('servicesApp')
     };
 
     vm.quote = function () {
-      sourcingService.sourcing(vm.freight);
+      sourcingService.sourcing(vm.freight, function() {
+        vm.close();
+      });
     };
 
     vm.submit = function() {

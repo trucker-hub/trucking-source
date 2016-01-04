@@ -84,9 +84,14 @@ angular.module('servicesApp')
       };
 
       $scope.cancel = function () {
+        sourcingService.clearSources(load);
         $modalInstance.dismiss('Close');
       };
 
+      $scope.confirm = function() {
+        $scope.$emit("QuoteConfirmed", load);
+        $modalInstance.close();
+      };
 
       $scope.createDO = function () {
         var modalInstance = $modal.open({
@@ -106,7 +111,7 @@ angular.module('servicesApp')
               var path = $scope.load.loadType == 'FTL' ? '/api/load/ftl-loads/' : '/api/load/ltl-loads/';
               $http.put(path + $scope.load._id, $scope.load).then(
                   function (response) {
-                    console.log("request saved succesfully " + JSON.stringify(response));
+                    console.log("request was saved successfully " + JSON.stringify(response));
                   },
                   function (err) {
                     console.log("request saving failed " + err);

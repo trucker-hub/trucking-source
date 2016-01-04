@@ -1,10 +1,15 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('FtlCtrl', function ($rootScope, $scope, $http, loadService, sourcingService) {
+  .controller('FtlCtrl', function ($scope, $http, loadService, sourcingService) {
 
     var vm = this;
     vm.packagings = [];
+
+    $scope.$on("LocationChanged", function(event, data) {
+      vm.change();
+    });
+
 
     vm.init = function (load) {
       //console.log("initialize controller for load = " + JSON.stringify(load));
@@ -60,6 +65,7 @@ angular.module('servicesApp')
       return vm.load.new;
     };
     vm.change = function () {
+      console.log("form is changed");
       vm.load.changed = true;
     };
 
@@ -81,7 +87,9 @@ angular.module('servicesApp')
     };
 
     vm.quote = function () {
-      sourcingService.sourcing(vm.load);
+      sourcingService.sourcing(vm.load, function() {
+        vm.close();
+      });
     };
 
     vm.submit = function () {

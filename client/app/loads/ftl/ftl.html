@@ -12,7 +12,7 @@
           <div class="col-md-10" id="inputShipTypeTo">
             <div class="radio" ng-repeat="type in ftlCtrl.toLocationTypes">
               <label>
-                <input type="radio" id="typeTo" ng-value="type" ng-model="ftlCtrl.load.shipTo.locationType">{{type}}
+                <input type="radio" ng-value="type" ng-model="ftlCtrl.load.shipTo.locationType" ng-change="ftlCtrl.change()">{{type}}
               </label>
             </div>
           </div>
@@ -28,7 +28,7 @@
           <div class="col-md-10" id="inputShipType">
             <div class="radio" ng-repeat="type in ftlCtrl.fromLocationTypes">
               <label>
-                <input type="radio" id="type" ng-value="type" ng-model="ftlCtrl.load.shipFrom.locationType">{{type}}
+                <input type="radio" ng-value="type" ng-change="ftlCtrl.change()" ng-model="ftlCtrl.load.shipFrom.locationType">{{type}}
               </label>
             </div>
           </div>
@@ -116,7 +116,6 @@
         <th class="col-md-3">Description</th>
       </tr>
       <tr ng-repeat="line in ftlCtrl.load.lines track by $index">
-        <form name="innerForm" novalidate>
           <td><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="ftlCtrl.removeLine($index)"></span>
           </td>
           <td>
@@ -139,7 +138,6 @@
           <td><input class="form-control" type="text" ng-model="line.description" placeholder="description"
                      ng-change="ftlCtrl.change()"></td>
 
-        </form>
       </tr>
     </table>
 </div>
@@ -149,8 +147,8 @@
   <div class="col-md-9">
     <div style="float:right">
       <button type="button" class="btn btn-default" ng-click="ftlCtrl.close()"><i class="fa fa-times fa-lg"></i> Close</button>
-      <button type="button" class="btn btn-default" ng-click="ftlCtrl.submit()" ng-disabled="!ftlCtrl.load.changed"><i class="fa fa-floppy-o fa-lg"></i> Save</button>
-      <button type="button" class="btn btn-default" ng-click="ftlCtrl.quote()" ng-disabled="ftlCtrl.load.changed"><i class="fa fa-floppy-o fa-lg"></i> Quote</button>
+      <button type="button" class="btn btn-default" ng-click="ftlCtrl.submit()" ng-disabled="ftlFormNew.$invalid || !ftlCtrl.load.changed"><i class="fa fa-floppy-o fa-lg"></i> Save</button>
+      <button type="button" class="btn btn-default" ng-click="ftlCtrl.quote()" ng-disabled="ftlFormNew.$invalid || ftlCtrl.load.changed"><i class="fa fa-floppy-o fa-lg"></i> Quote</button>
     </div>
   </div>
 </div>
