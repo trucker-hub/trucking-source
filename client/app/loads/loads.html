@@ -35,27 +35,25 @@
             <br>
             <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover table-condensed">
                 <tr ng-repeat="load in $data">
-                    <td class="col-md-1"><load-type type="load.loadType"></load-type></td>
                     <td class="col-md-3" data-title="'Consignee'" filter="{ 'who': 'text' }">
-                        {{load.who}}
+                        <load-type type="load.loadType"></load-type> {{load.who}}
                     </td>
                     <td class="col-md-2" data-title="'Delivery'">
                         {{load.shipFrom.location | location: true}} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> {{load.shipTo.location | location: true}}
                     </td>
-                    <td class="col-md-2" data-title="'Cost'">
+                    <td class="col-md-4" data-title="'Trucker'">
                         <b>{{load.fulfilledBy.name}}</b> {{load.fulfilledBy.charge | currency:"$":2}}
-                    </td>
-                    <td class="col-md-4" data-title="'Actions'">
                         <span ng-show="load.status!='FILLED'"><a ng-click="sourcing(load)"><i class="fa fa-search fa-lg"></i></a></span>
-                        <span ng-show="load.status!='FILLED'"><a ng-click="editLoad(load._id, load.loadType)"><i class="fa fa-pencil-square-o fa-lg"></i></a></span>
-                        <span ng-show="load.sources.length>0"><b>{{load.sources.length}} choices <a ng-click="clearSources(load)"><i class="fa fa-eraser fa-lg"></i></a></b></span>
-                        <load-status load="load" ng-show="load.status=='FILLED'"></load-status>
                         <span ng-show="load.status=='FILLED'"><a ng-click="clearSources(load)"><i class="fa fa-eraser fa-lg"></i></a></span>
+                    </td>
+                    <td class="col-md-3" data-title="'Actions'">
+                        <span ng-show="load.status!='FILLED'"><a ng-click="editLoad(load._id, load.loadType)"><i class="fa fa-pencil-square-o fa-lg"></i></a></span>
+                        <load-status load="load" ng-show="load.status=='FILLED'"></load-status>
                     </td>
                 </tr>
                 <tr ng-show="$data.length ==0">
                   <td></td>
-                  <td colspan="5"><i class="fa fa-angle-double-right"></i> <b>No Loads found for {{searchCriteria}}</b>. Maybe expand the search time window.</td>
+                  <td colspan="4"><i class="fa fa-angle-double-right"></i> <b>No Loads found for {{searchCriteria}}</b>. Maybe expand the search time window.</td>
                 </tr>
             </table>
         </tab>
