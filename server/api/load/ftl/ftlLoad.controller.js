@@ -12,7 +12,8 @@ exports.index = function(req, res) {
     var user = req.user;
     var options = {}
     if(req.query.status) {
-        options.status = req.query.status;
+        var statusString = req.query.status.split(',');
+        options.status = {$in: statusString};
     }
 
     if(user.role!='operator' && user.role !='admin') {
@@ -25,6 +26,8 @@ exports.index = function(req, res) {
         console.log("any loads before this date " + time);
         options.createdAt = {$gt: time};
     }
+
+    console.log("query options=" + JSON.stringify(options));
 
     FtlLoad.find(options).sort({expectedBy:1}).exec( function (err, ftlLoads) {
         if(err) { return handleError(res, err); }

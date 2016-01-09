@@ -9,7 +9,13 @@ exports.index = function(req, res) {
 
     var options = {}
     if(req.query.status) {
-        options.status = req.query.status;
+        var statusString = req.query.status.split(',');
+        options.status = {$in: statusString};
+    }
+
+    if(req.query.types) {
+        var typesString = req.query.types.split(',');
+        options.loadType = {$in: typesString};
     }
 
     var user = req.user;

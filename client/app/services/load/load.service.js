@@ -81,14 +81,30 @@ angular.module('servicesApp')
     };
 
 
-    vm.fetch = function(type, days, cbOK, cbErr) {
+    vm.fetch = function(filters, cbOK, cbErr) {
 
+        vm.loads = {
+            ltl: [],
+            ftl: []
+        };
       console.log('fetch loads from the db');
-      var queryType = (type || 'ALL');
-      var queryDaysString = days!=-1?('&days='+days):'';
+        var queryDaysString = filters.period!=-1?('&days='+filters.period):'';
 
-      if(queryType=='ALL' || queryType=='FTL') {
-        $http.get('/api/load/ftl-loads?status=OPEN' + queryDaysString).then(
+      var statusString ='status=';
+      if(filters.status.open) {
+          statusString +='OPEN,'
+      }
+        if(filters.status.filled) {
+          statusString +='FILLED,'
+      } if(filters.status.paid) {
+          statusString +='PAID,'
+      }
+      statusString = statusString.substring(0, statusString.length-1);
+
+      if(filters.types.ftl) {
+        var url = '/api/load/ftl-loads?' + statusString + queryDaysString;
+        console.log("load url =" + url);
+        $http.get(url).then(
           function(response) {
             //console.log(JSON.stringify(response.data));
             vm.loads.ftl = response.data;
@@ -99,8 +115,18 @@ angular.module('servicesApp')
             cbErr();
           });
       }
-      if(queryType=='ALL' || queryType=='LTL') {
-        $http.get('/api/load/ltl-loads?status=OPEN' + queryDaysString).then(
+      if(filters.types.ltl || filters.types.air) {
+        var typesString = '';
+        if(filters.types.ltl && filters.types.air) {
+            typesString='&types=LTL,AIR';
+        }else if(filters.types.ltl && !filters.types.air) {
+            typesString='&types=LTL';
+        }else if(!filters.types.ltl && filters.types.air) {
+            typesString='&types=AIR';
+        }
+        var url = '/api/load/ltl-loads?' + statusString + queryDaysString + typesString;
+        console.log("ltl/air loads url=" + url);
+        $http.get(url).then(
           function(response) {
             //console.log(JSON.stringify(response.data));
             vm.loads.ltl = response.data;

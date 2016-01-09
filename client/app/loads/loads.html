@@ -1,6 +1,24 @@
 <br>
-<div class="container">
+<div class="row">
+<div class="col-md-2">
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-success"><b>Load Types</b></li>
+        <li class="list-group-item"><input type="checkbox" ng-model="filters.types.ftl" ng-value="true" ng-change="fetch()"> FTL</li>
+        <li class="list-group-item"><input type="checkbox" ng-model="filters.types.ltl" ng-value="true" ng-change="fetch()"> LTL</li>
+        <li class="list-group-item"><input type="checkbox" ng-model="filters.types.air" ng-value="true" ng-change="fetch()"> AIR</li>
+        <li class="list-group-item list-group-item-success"><b>Period</b></li>
+        <li class="list-group-item"><input type="radio" ng-model="filters.period" ng-value="1" name="period" ng-change="fetch()"> Today</li>
+        <li class="list-group-item"><input type="radio" ng-model="filters.period" ng-value="3" name="period" ng-change="fetch()"> Last 3 Days</li>
+        <li class="list-group-item"><input type="radio" ng-model="filters.period" ng-value="7" name="period" ng-change="fetch()"> Last week</li>
+        <li class="list-group-item"><input type="radio" ng-model="filters.period" ng-value="-1" name="period" ng-change="fetch()"> All</li>
+        <li class="list-group-item list-group-item-success"><b>Status</b></li>
+        <li class="list-group-item"><input type="checkbox" ng-model="filters.status.open" ng-value="true" ng-change="fetch()"> Open</li>
+        <li class="list-group-item"><input type="checkbox" ng-model="filters.status.filled" ng-value="true" ng-change="fetch()"> Filled</li>
+        <li class="list-group-item"><input type="checkbox" ng-model="filters.status.paid" ng-value="true" ng-change="fetch()"> Paid</li>
+    </ul>
+</div>
 
+<div class="col-md-9">
     <tabset type="tabs">
 
         <tab>
@@ -13,40 +31,31 @@
                     <button class="btn btn-default" type="button" ng-click="newAirLoad()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Air load</button>
                 </div>
                 <div class="col-md-1"></div>
-                <div class="col-md-5">
-                    <span class="ac-highlighted">Loads for:</span>
-                    <button type="button" class="btn btn-link" ng-click="fetch(1)">Today‘s</button>
-                    <button type="button" class="btn btn-link" ng-click="fetch(3)">Last 3 days </button>
-                    <button type="button" class="btn btn-link" ng-click="fetch(7)">Last week</button>
-                    <button type="button" class="btn btn-link" ng-click="fetch(-1)">ALL</button>
-                </div>
             </div>
             <br>
-            <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover">
+            <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover table-condensed">
                 <tr ng-repeat="load in $data">
-                    <td><load-type type="load.loadType"></load-type></td>
-                    <td data-title="'Consignee'" filter="{ 'who': 'text' }">
+                    <td class="col-md-1"><load-type type="load.loadType"></load-type></td>
+                    <td class="col-md-3" data-title="'Consignee'" filter="{ 'who': 'text' }">
                         {{load.who}}
                     </td>
-                    <td data-title="'Delivery'">
+                    <td class="col-md-2" data-title="'Delivery'">
                         {{load.shipFrom.location | location: true}} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> {{load.shipTo.location | location: true}}
                     </td>
-                    <td data-title="'Delivery By'">
-                        {{load.expectedBy | date:'shortDate'}}
+                    <td class="col-md-2" data-title="'Cost'">
+                        <b>{{load.fulfilledBy.name}}</b> {{load.fulfilledBy.charge | currency:"$":2}}
                     </td>
-                    <td data-title="'Description'">
-                        <span>{{load.description}}</span>
-                    </td>
-                    <td data-title="'Created'">
-                        {{load.createdAt | date:'shortDate'}}
-                    </td>
-                    <td data-title="''">
-                        <a ng-click="editLoad(load._id, load.loadType)"><i class="fa fa-pencil-square-o fa-lg"></i></a>
+                    <td class="col-md-4" data-title="'Actions'">
+                        <span ng-show="load.status!='FILLED'"><a ng-click="sourcing(load)"><i class="fa fa-search fa-lg"></i></a></span>
+                        <span ng-show="load.status!='FILLED'"><a ng-click="editLoad(load._id, load.loadType)"><i class="fa fa-pencil-square-o fa-lg"></i></a></span>
+                        <span ng-show="load.sources.length>0"><b>{{load.sources.length}} choices <a ng-click="clearSources(load)"><i class="fa fa-eraser fa-lg"></i></a></b></span>
+                        <load-status load="load" ng-show="load.status=='FILLED'"></load-status>
+                        <span ng-show="load.status=='FILLED'"><a ng-click="clearSources(load)"><i class="fa fa-eraser fa-lg"></i></a></span>
                     </td>
                 </tr>
                 <tr ng-show="$data.length ==0">
                   <td></td>
-                  <td colspan="6"><i class="fa fa-angle-double-right"></i> <b>No Loads found for {{searchCriteria}}</b>. Maybe expand the search time window.</td>
+                  <td colspan="5"><i class="fa fa-angle-double-right"></i> <b>No Loads found for {{searchCriteria}}</b>. Maybe expand the search time window.</td>
                 </tr>
             </table>
         </tab>
@@ -63,4 +72,5 @@
         <div ng-include="'app/loads/freight/freight.html'" ng-controller="FreightCtrl as freightCtrl" ng-init="freightCtrl.init(item.data)"></div>
       </tab>
 
+</div>
 </div>

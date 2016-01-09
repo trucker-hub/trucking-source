@@ -35,16 +35,6 @@ angular.module('servicesApp')
                     'title': 'Loads',
                     'link': '/loads',
                     'alwaysShow': true
-                },
-                {
-                    'title': 'Sourcing',
-                    'link': '/sourcing',
-                    'alwaysShow': menuForOperator
-                },
-                {
-                    'title': 'Tracking',
-                    'link': '/tracking',
-                    'alwaysShow': menuForOperator
                 }
             ];
             $scope.managementMenu = [
@@ -101,5 +91,7 @@ angular.module('servicesApp')
         $scope.isActive = function (route) {
             return route === $location.path();
         };
-        $scope.setVisibilityBasedOnRole();
+        Auth.isLoggedInAsync(function(loggedIn) {
+            $scope.setVisibilityBasedOnRole();
+        });
     });

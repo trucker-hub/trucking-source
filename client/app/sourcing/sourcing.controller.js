@@ -8,6 +8,12 @@ angular.module('servicesApp').controller('SourcingCtrl',
 
       $scope.searchCriteria = "Today";
 
+        $scope.filters = {
+            period:1,
+            types: { ftl:true, ltl:true, air:true},
+            status: {open:open, filled:false, paid: false}
+        };
+
       $scope.queryLoads = function (days) {
 
         if (days == 1) {
@@ -18,9 +24,11 @@ angular.module('servicesApp').controller('SourcingCtrl',
           $scope.searchCriteria = "All open loads";
         }
 
+        $scope.filters.period= days;
+
         $scope.progressbar = ngProgressFactory.createInstance();
         $scope.progressbar.start();
-        loadService.fetch('ALL', days,
+        loadService.fetch($scope.filters,
             function () {
               $scope.updateLoadsTable();
             },
