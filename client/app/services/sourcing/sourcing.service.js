@@ -125,6 +125,7 @@ angular.module('servicesApp')
         return deferred.promise;
       };
 
+
       vm.sourcing = function (load, cb) {
         vm.progressbar.start();
         settingsPromise(load)
@@ -387,6 +388,24 @@ angular.module('servicesApp')
         return data;
       };
 
+      vm.quickQuote = function (load, cb, cbErr) {
+        load.brokerFees = [];
+        vm.progressbar.start();
+        sourcingPromise(load)
+            .then(function (load) {
+              var index;
+              for (index = 0; index < load.sources.length; ++index) {
+                var source = load.sources[index];
+                vm.recalcAdjustment(load, source);
+              }
+              vm.progressbar.complete();
+              cb(load);
+            })
+            .catch(function (err) {
+              vm.progressbar.stop();
+              cbErr(load);
+            });
+      };
 
       vm.showQuoteDialog = function (load, cb, dismissCb) {
         load.showLoadDetails = false;

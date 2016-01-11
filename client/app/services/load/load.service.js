@@ -36,13 +36,13 @@ angular.module('servicesApp')
         label: "shipTo",
         location: {},
         locationType: "Business with Dock/Fork",
-        extraServices: []
+        services: []
       },
       shipFrom: {
         label: "shipFrom",
         location: {},
         locationType: "Business with Dock/Fork",
-        extraServices: []
+        services: []
       },
       lines: [{weight: 20000,
         quantity: 1,
@@ -51,7 +51,16 @@ angular.module('servicesApp')
 
       trailer: {
         type: "Dry Van"
+      },
+
+      fulfilledBy: {
+        source: null,
+        charge: null,
+        name: null,
+        costItems: [],
+        additionalCharges: []
       }
+
     };
 
     vm.emptyFreightLoad  = {
@@ -62,14 +71,12 @@ angular.module('servicesApp')
       shipTo: {
         label: "shipTo",
         location: {},
-        services: [],
-        extraServices: []
+        services: []
       },
       shipFrom: {
         label: "shipFrom",
         location: {},
-        services: [],
-        extraServices: []
+        services: []
       },
       lines: [ {weight: 1000,
       quantity: 1,
@@ -77,7 +84,14 @@ angular.module('servicesApp')
       length: 20,
       width: 20,
       height: 20,
-      description: ""}]
+      description: ""}],
+      fulfilledBy: {
+        source: null,
+        charge: null,
+        name: null,
+        costItems: [],
+        additionalCharges: []
+      }
     };
 
 

@@ -1,50 +1,72 @@
 <header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>Trucking-Hub.com</h1>
-    <p class="lead">Help local Southern California trucking companies expand via Technologies</p>
-    <img src="assets/images/truck-banner.png" class="img" alt="Responsive image" alt="Trucking-Hub">
-  </div>
+    <div class="container">
+        <h1>Trucking-Hub.com</h1>
+
+        <p class="lead">Help local Southern California trucking companies expand via Technologies</p>
+        <img src="assets/images/truck-banner.png" width="300" class="img" alt="Responsive image" alt="Trucking-Hub">
+    </div>
 </header>
 
 
-  <div class="section">
+<div class="section">
     <div class="container">
-      <hr>
-      <div class="row">
-        <div class="col-lg-4 col-md-4"><a href="/loads"><h3>Full Truck Load</h3></a>
-        </div>
-        <div class="col-lg-4 col-md-4"><a href="/loads"><h3>Less than Full Load</h3></a>
-        </div>
-        <div class="col-lg-4 col-md-4"><a href="/loads"><h3>Air Freight</h3></a>
+        <h2>Quick Quote</h2>
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <location info="quickie.shipTo"></location>
+            </div>
+            <div class="col-md-2">
+                <input type="number" class="form-control" size="6" ng-model="quickie.weight" name="weight"
+                               placeholder="Total Weight" required min="1"></div>
+            <div class="col-md-3">
+                <button class="btn btn-default" type="button" ng-click="quickFTL()"><i class="fa fa-lg fa-ship"></i> FTL
+                </button>
+                <button class="btn btn-default" type="button" ng-click="quickLTL()"><i class="fa fa-lg fa-truck"></i> LTL
+                </button>
+                <button class="btn btn-default" type="button" ng-click="quickAIR()"><i class="fa fa-lg fa-plane"></i> AIR
+                </button>
+            </div>
+            <div class="col-md-3">
+                <b>Quote</b>: <b><span style="color:green">{{quickie.quote | currency:"$":2}}</span></b> <br>{{quickie.description}}
+            </div>
         </div>
 
-      </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-4 col-md-4">
+                <h4><i class="fa fa-check"></i> Advanced Cloud platform</h4>
 
-      <hr>
-      <div class="row">
-        <div class="col-lg-4 col-md-4">
-          <h4><i class="fa fa-check"></i> Advanced Cloud platform</h4>
-          <p>Trucking-hub.com is running on the scalable cloud platform and the latest technology stack. As a result, it provides truckers, shippers and brokers the much needed real time updates on open loads, delivery order and other critical changes. </p>
-        </div>
-        <div class="col-lg-4 col-md-4">
-          <h4><i class="fa fa-check"></i> Smart sourcing capabilities</h4>
-          <p>Trucking-hub.com not only enables brokers to find truckers for the shippment easily with a few clicks, it also allows truckers to find loads to improve their truck utilization rate. </p>
-        </div>
-        <div class="col-lg-4 col-md-4">
-          <h4><i class="fa fa-check"></i> Experience service team</h4>
-          <p>In addition to the advanced platform technology, we made it even better by providing the first-class customer service to our truckers and shippers on logistics related issues.</p>
-          </div>
+                <p>Trucking-hub.com is running on the scalable cloud platform and the latest technology stack. As a
+                    result, it
+                    provides truckers, shippers and brokers the much needed real time updates on open loads, delivery
+                    order and
+                    other critical changes. </p>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <h4><i class="fa fa-check"></i> Smart sourcing capabilities</h4>
 
-      </div>
+                <p>Trucking-hub.com not only enables brokers to find truckers for the shippment easily with a few
+                    clicks, it
+                    also allows truckers to find loads to improve their truck utilization rate. </p>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <h4><i class="fa fa-check"></i> Experience service team</h4>
+
+                <p>In addition to the advanced platform technology, we made it even better by providing the first-class
+                    customer
+                    service to our truckers and shippers on logistics related issues.</p>
+            </div>
+
+        </div>
     </div>
-
-  </div>
 
 </div>
 
 
+
 <footer class="footer">
-  <div class="container">
-      <p>Trucking-hub.com <i class="fa fa-copyright"></i> Copyright 2015 </p>
-  </div>
+    <div class="container">
+        <p>Trucking-hub.com <i class="fa fa-copyright"></i> Copyright 2015 </p>
+    </div>
 </footer>

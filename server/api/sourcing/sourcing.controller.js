@@ -36,18 +36,20 @@ exports.index = function(req, res) {
   var shipTo = load.shipTo;
   console.log("Ship to = " + JSON.stringify(shipTo));
   var countyTo = shipTo.location.county;
+  var stateTo = shipTo.location.state;
 
 
   var options = {};
     if(load.loadType=="FTL") {
-        options = { "ftl.regions.county": { $in: [countyTo]}};
-    }else if (load.loadType=="FTL") {
-        options = { "ltl.regions.county": { $in: [countyTo]}};
+        options = { "ftl.regions": { "$elemMatch": { state: stateTo, county: countyTo}}};
+    }else if (load.loadType=="LTL") {
+        options = { "ltl.regions": { "$elemMatch": { state: stateTo, county: countyTo}}};
     }else if (load.loadType=="AIR") {
-        options = { "air.regions.county": { $in: [countyTo]}};
+        options = { "air.regions": { "$elemMatch": { state: stateTo, county: countyTo}}};
     }
 
-  console.log("request companies serving region=" + countyTo + " loadType=" + load.loadType);
+  console.log("request companies serving region=" + countyTo + "," + stateTo + " loadType=" + load.loadType);
+  console.log("query options " + JSON.stringify(options));
   TruckingCompany.find(options, function(err, companies) {
 
     if(err) {

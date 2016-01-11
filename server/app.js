@@ -19,6 +19,7 @@ mongoose.connection.on('error', function(err) {
 	process.exit(-1);
 	}
 );
+//mongoose.set('debug', true);
 // Populate DB with sample data
 if(config.seedDB) { require('./config/seed'); }
 

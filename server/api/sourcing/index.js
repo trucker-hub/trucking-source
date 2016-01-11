@@ -6,7 +6,7 @@ var auth = require('../../auth/auth.service');
 
 var router = express.Router();
 
-router.post('/', auth.hasRole('operator'), controller.index);
+router.post('/', controller.index);
 router.get('/:id',auth.hasRole('operator'),  controller.show);
 
 module.exports = router;
