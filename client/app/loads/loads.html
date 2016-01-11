@@ -43,8 +43,8 @@
                     </td>
                     <td class="col-md-4" data-title="'Trucker'">
                         <b>{{load.fulfilledBy.name}}</b> {{load.fulfilledBy.charge | currency:"$":2}}
-                        <span ng-show="load.status!='FILLED'"><a ng-click="sourcing(load)"><i class="fa fa-search fa-lg"></i></a></span>
-                        <span ng-show="load.status=='FILLED'"><a ng-click="clearSources(load)"><i class="fa fa-eraser fa-lg"></i></a></span>
+                        <span ng-show="load.status!='FILLED'"><a ng-click="sourcing(load)"> --- <i class="fa fa-search fa-lg"></i></a></span>
+                        <span ng-show="load.status=='FILLED'"><a ng-click="clearSources(load)"><i class="fa fa-times-circle fa-lg"></i></a></span>
                     </td>
                     <td class="col-md-3" data-title="'Actions'">
                         <span ng-show="load.status!='FILLED'"><a ng-click="editLoad(load._id, load.loadType)"><i class="fa fa-pencil-square-o fa-lg"></i></a></span>
