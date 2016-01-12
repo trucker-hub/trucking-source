@@ -14,20 +14,20 @@
         <hr>
         <div class="row">
             <div class="col-md-3">
-                <location info="quickie.shipTo"></location>
+                <location info="quickie.shipTo" label="'TO:'"></location>
             </div>
           <form name="mainForm" novalidate>
             <div class="col-md-2" ng-class="{'has-error':mainForm.weight.$invalid}">
                 <input type="number" class="form-control" size="6" ng-model="quickie.weight" name="weight"
                                placeholder="Total Weight" required min="1"></div>
           </form>
-            <div class="col-md-4">
+            <div class="col-md-4"><span>
                 <button class="btn btn-default" type="button" ng-click="quickFTL()" ng-disabled="!quickie.weight || !quickie.shipTo.location.full_address"><i class="fa fa-lg fa-ship"></i> FTL
                 </button>
                 <button class="btn btn-default" type="button" ng-click="quickLTL()" ng-disabled="!quickie.weight || !quickie.shipTo.location.full_address"><i class="fa fa-lg fa-truck"></i> LTL
                 </button>
                 <button class="btn btn-default" type="button" ng-click="quickAIR()" ng-disabled="!quickie.weight || !quickie.shipTo.location.full_address"><i class="fa fa-lg fa-plane"></i> AIR
-                </button>
+                </button> <i class="fa fa-spinner fa-spin fa-2x" ng-show="quickie.processing"></i></span>
             </div>
             <div class="col-md-3">
                 <b>Quote</b>: <b><span style="color:green" ng-show="quickie.quote.lowest">{{quickie.quote.average | currency:"$":2}}

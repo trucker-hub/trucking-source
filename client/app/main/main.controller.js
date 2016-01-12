@@ -32,6 +32,7 @@ angular.module('servicesApp')
 
 
       var quickQuote = function () {
+        $scope.quickie.processing = true;
         $scope.quickie.lines[0].weight = $scope.quickie.weight;
         $scope.quickie.quote = {lowest: null, highest:null};
         sourcingService.quickQuote($scope.quickie,
@@ -44,8 +45,10 @@ angular.module('servicesApp')
               }else {
                 $scope.quickie.description = "No Quote Found";
               }
+              $scope.quickie.processing = false;
             },
             function (load) {
+              $scope.quickie.processing = false;
               $scope.quickie.description = "No Quote Found";
             });
       };
