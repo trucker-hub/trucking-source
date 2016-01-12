@@ -13,24 +13,41 @@
         <h2>Quick Quote</h2>
         <hr>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <location info="quickie.shipTo"></location>
             </div>
-            <div class="col-md-2">
+          <form name="mainForm" novalidate>
+            <div class="col-md-2" ng-class="{'has-error':mainForm.weight.$invalid}">
                 <input type="number" class="form-control" size="6" ng-model="quickie.weight" name="weight"
                                placeholder="Total Weight" required min="1"></div>
-            <div class="col-md-3">
-                <button class="btn btn-default" type="button" ng-click="quickFTL()"><i class="fa fa-lg fa-ship"></i> FTL
+          </form>
+            <div class="col-md-4">
+                <button class="btn btn-default" type="button" ng-click="quickFTL()" ng-disabled="!quickie.weight || !quickie.shipTo.location.full_address"><i class="fa fa-lg fa-ship"></i> FTL
                 </button>
-                <button class="btn btn-default" type="button" ng-click="quickLTL()"><i class="fa fa-lg fa-truck"></i> LTL
+                <button class="btn btn-default" type="button" ng-click="quickLTL()" ng-disabled="!quickie.weight || !quickie.shipTo.location.full_address"><i class="fa fa-lg fa-truck"></i> LTL
                 </button>
-                <button class="btn btn-default" type="button" ng-click="quickAIR()"><i class="fa fa-lg fa-plane"></i> AIR
+                <button class="btn btn-default" type="button" ng-click="quickAIR()" ng-disabled="!quickie.weight || !quickie.shipTo.location.full_address"><i class="fa fa-lg fa-plane"></i> AIR
                 </button>
             </div>
             <div class="col-md-3">
-                <b>Quote</b>: <b><span style="color:green">{{quickie.quote | currency:"$":2}}</span></b> <br>{{quickie.description}}
+                <b>Quote</b>: <b><span style="color:green" ng-show="quickie.quote.lowest">{{quickie.quote.lowest | currency:"$":2}} - {{quickie.quote.highest | currency:"$":2}}</span></b>
+                <i ng-show="quickie.description">{{quickie.description}}</i>
             </div>
         </div>
+      <div class="row">
+        <div class="col-md-3">
+          <small>Use location auto-completion to fill the address quickly and accurately</small>
+        </div>
+        <div class="col-md-2">
+          <small>Use total weight to estimate the cost</small>
+        </div>
+        <div class="col-md-4">
+          <small>Click one of the buttons to get competitive quotes from Trucking-Hub.com</small>
+        </div>
+        <div class="col-md-3">
+          <small>For detailed quote and trucking arrangement, please signup</small>
+        </div>
+      </div>
 
         <hr>
         <div class="row">

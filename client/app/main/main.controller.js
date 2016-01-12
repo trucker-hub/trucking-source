@@ -30,14 +30,16 @@ angular.module('servicesApp')
       };
       $scope.quickie = loadService.emptyFtlLoad;
 
+
       var quickQuote = function () {
         $scope.quickie.lines[0].weight = $scope.quickie.weight;
-        $scope.quickie.quote = null;
+        $scope.quickie.quote = {lowest: null, highest:null};
         sourcingService.quickQuote($scope.quickie,
             function (load) {
               if(load.sources.length > 0) {
-                $scope.quickie.quote = load.sources[0].totalCost;
-                $scope.quickie.description = "Lowest from " + load.sources.length + "sources";
+                $scope.quickie.quote.lowest = load.sources[0].totalCost;
+                $scope.quickie.quote.highest =load.sources[load.sources.length-1].totalCost;
+                $scope.quickie.description = "(" + load.sources.length + " matches)";
               }else {
                 $scope.quickie.description = "No Quote Found";
               }

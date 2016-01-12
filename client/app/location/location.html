@@ -1,4 +1,4 @@
-<form name="innerFormLocation" novalidate>
+<form name="innerFormLocation" novalidate autocomplete="off">
   <div class="row" ng-class="{'has-error':innerFormLocation.address.$invalid}">
     <label for="inputLocation" class="col-md-2 control-label" ng-show="label">{{label}} </label>
     <div class="col-md-10">
@@ -9,7 +9,7 @@
              name="address"
              ng-minlength="5"
              g-places-autocomplete
-             force-selection="true"
+             force-selection="false"
              placeholder="Address" required ng-change="change()">
     </div>
   </div>
