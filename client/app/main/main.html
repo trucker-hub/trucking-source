@@ -30,8 +30,9 @@
                 </button>
             </div>
             <div class="col-md-3">
-                <b>Quote</b>: <b><span style="color:green" ng-show="quickie.quote.lowest">{{quickie.quote.lowest | currency:"$":2}} - {{quickie.quote.highest | currency:"$":2}}</span></b>
-                <i ng-show="quickie.description">{{quickie.description}}</i>
+                <b>Quote</b>: <b><span style="color:green" ng-show="quickie.quote.lowest">{{quickie.quote.average | currency:"$":2}}
+              <small>({{quickie.quote.lowest | currency:"$":2}} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> {{quickie.quote.highest | currency:"$":2}})</small></span></b>
+                <small><i ng-show="quickie.description"><br>Costs are based on {{quickie.description}}</i></small>
             </div>
         </div>
       <div class="row">
@@ -45,7 +46,7 @@
           <small>Click one of the buttons to get competitive quotes from Trucking-Hub.com</small>
         </div>
         <div class="col-md-3">
-          <small>For detailed quote and trucking arrangement, please signup</small>
+          <small>For detailed quote and trucking arrangement, please signup, login and go to <a href="/loads">Loads</a></small>
         </div>
       </div>
 

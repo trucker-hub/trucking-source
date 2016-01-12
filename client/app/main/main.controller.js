@@ -37,9 +37,10 @@ angular.module('servicesApp')
         sourcingService.quickQuote($scope.quickie,
             function (load) {
               if(load.sources.length > 0) {
-                $scope.quickie.quote.lowest = load.sources[0].totalCost;
-                $scope.quickie.quote.highest =load.sources[load.sources.length-1].totalCost;
-                $scope.quickie.description = "(" + load.sources.length + " matches)";
+                $scope.quickie.quote.lowest  = load.sources[0].totalCost;
+                $scope.quickie.quote.highest = load.sources[load.sources.length-1].totalCost;
+                $scope.quickie.quote.average = load.sources.reduce(function(total, item) {return total + item.totalCost;}, 0)/(load.sources.length || 1);
+                $scope.quickie.description =  load.sources.length + " matches";
               }else {
                 $scope.quickie.description = "No Quote Found";
               }
