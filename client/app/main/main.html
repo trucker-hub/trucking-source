@@ -32,7 +32,7 @@
             <div class="col-md-3">
                 <b>Quote</b>: <b><span style="color:green" ng-show="quickie.quote.lowest">{{quickie.quote.average | currency:"$":2}}
               <small>({{quickie.quote.lowest | currency:"$":2}} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> {{quickie.quote.highest | currency:"$":2}})</small></span></b>
-                <small><i ng-show="quickie.description"><br>Costs are based on {{quickie.description}}</i></small>
+                <small><span style="color:grey" ng-show="quickie.description"><i ng-show="quickie.description"><br>{{quickie.description}}</i></span></small>
             </div>
         </div>
       <div class="row">
