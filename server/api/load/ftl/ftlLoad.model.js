@@ -24,7 +24,7 @@ var serviceSubSchema = {
 };
 
 var FtlLoadSchema = new Schema({
-  status: { type: String, required: true, enum: ['OPEN', 'FILLED', 'CONFIRMED', 'CLOSED'], default: 'OPEN'},
+  status: { type: String, required: true, enum: ['OPEN', 'FILLED', 'QUICK', 'CONFIRMED', 'CLOSED'], default: 'OPEN'},
   payment: { type: String, required: true, enum: ['OPEN', 'INVOICED', 'PAID'], default: 'OPEN'},
   who: String,
   createdBy: { type: Schema.Types.ObjectId, ref: 'User' },

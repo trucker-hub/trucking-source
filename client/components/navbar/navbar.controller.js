@@ -5,7 +5,6 @@ angular.module('servicesApp')
 
         $scope.isCollapsed = true;
         $scope.isLoggedIn = Auth.isLoggedIn;
-        $scope.isLoggedInAsync = Auth.isLoggedInAsync;
         $scope.isAdmin = Auth.isAdmin;
         $scope.isOperator = Auth.isOperator;
         $scope.isCarrier = Auth.isCarrier;

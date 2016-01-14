@@ -1,13 +1,79 @@
 'use strict';
 
 angular.module('servicesApp')
-  .service('loadService', function ($http) {
+  .service('loadService', function ($http, $rootScope) {
 
     var vm = this;
     vm.newLoadId =0;
     vm.loads = {
       ltl: [],
       ftl: []
+    };
+
+    $rootScope.loadsOpened = $rootScope.loadsOpened || {ftl: {}, ltl: {}, air: {}};
+
+
+    var setEditingAttribute = function(id, xx) {
+      var index;
+      for (index = 0; index < vm.loads.ftl.length; ++index) {
+        var load = vm.loads.ftl[index];
+        if (load._id == id) {
+          xx[id] = {data: load, active: true};
+          return;
+        }
+      }
+      for (index = 0; index < vm.loads.ltl.length; ++index) {
+        var load = vm.loads.ltl[index];
+        if (load._id == id) {
+          xx[id] = {data: load, active: true};
+          return;
+        }
+      }
+    };
+
+    vm.editLoad = function (id, type) {
+
+      var xx = {};
+      if (type == 'FTL') {
+        xx = $rootScope.loadsOpened.ftl;
+      } else if (type == 'LTL' || type == 'AIR') {
+        xx = $rootScope.loadsOpened.ltl;
+      }
+      console.log("edit a load whose id/tab is " + id);
+      var detail = xx[id];
+      if (detail) {
+        detail.active = true;
+        return;
+      }
+      setEditingAttribute(id, xx);
+    };
+
+    vm.closeTab = function (id, type) {
+
+      if (type == 'FTL') {
+        delete $rootScope.loadsOpened.ftl[id];
+      } else if (type == 'LTL' || type == 'AIR') {
+        delete $rootScope.loadsOpened.ltl[id];
+      }
+      console.log("close tab =" + id);
+    };
+
+    vm.editNewFTLLoad = function () {
+      console.log("calling createFTLLoad");
+      var load = loadService.create('FTL');
+      $rootScope.loadsOpened.ftl[load.tabId] = {data: load, active: true};
+    };
+
+    vm.editNewFreightLoad = function () {
+      console.log("calling createLTLLoad");
+      var load = loadService.create('LTL');
+      $rootScope.loadsOpened.ltl[load.tabId] = {data: load, active: true};
+    };
+
+    vm.editNewAirLoad = function () {
+      console.log("calling create AIR Load");
+      var load = loadService.create('AIR');
+      $rootScope.loadsOpened.ltl[load.tabId] = {data: load, active: true};
     };
 
     vm.create = function(type) {
