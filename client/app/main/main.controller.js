@@ -2,16 +2,32 @@
 
 angular.module('servicesApp')
   .controller('MainCtrl', function ($scope, $rootScope, $http, $location, socket, Auth, loadService, sourcingService) {
+
+    console.log("started MainCtrl");
+
     $scope.awesomeThings = [];
 
-    $scope.isLoggedIn = Auth.isLoggedIn();
-    $scope.isOperator = Auth.isOperator();
-    $scope.isCarrier = Auth.isCarrier();
+    Auth.isLoggedInAsync(function() {
+      $scope.isLoggedIn = Auth.isLoggedIn();
+    });
+
+    $scope.$on('login', function () {
+      console.log("MainCtrl received broadcast on login event");
+       Auth.isLoggedInAsync(function() {
+         $scope.isLoggedIn = Auth.isLoggedIn();
+      });
+    });
+
+    $scope.$on('logout', function () {
+      console.log("MainCtrl received broadcast on logout event");
+      $scope.isLoggedIn = Auth.isLoggedIn();
+    });
 
     $http.get('/api/things').success(function (awesomeThings) {
       $scope.awesomeThings = awesomeThings;
       socket.syncUpdates('thing', $scope.awesomeThings);
     });
+
 
     $scope.addThing = function () {
       if ($scope.newThing === '') {

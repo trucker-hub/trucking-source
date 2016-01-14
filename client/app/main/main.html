@@ -38,7 +38,7 @@
               <small>({{quickie.quote.lowest | currency:"$":2}} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> {{quickie.quote.highest | currency:"$":2}})</small>
               </span></b><span ng-show="isLoggedIn && quickie.quote.lowest"><a href="" ng-click="editQuickie()" ><i class="fa fa-pencil"></i></a></span>
         <small><span style="color:grey" ng-show="quickie.description"><i ng-show="quickie.description"><br>{{quickie.description}}</i></span>
-        </small>
+        </small> Login:{{isLoggedIn}}
       </div>
     </div>
     <div class="row">

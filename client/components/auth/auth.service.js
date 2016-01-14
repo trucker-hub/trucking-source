@@ -48,6 +48,7 @@ angular.module('servicesApp')
       logout: function() {
         $cookieStore.remove('token');
         currentUser = {};
+        $rootScope.$broadcast('logout', "User logout");
       },
 
       /**
