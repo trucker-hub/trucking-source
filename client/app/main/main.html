@@ -22,11 +22,11 @@
                                placeholder="Total Weight" required min="1" uib-tooltip="Fill the total weight"></div>
           </form>
             <div class="col-md-4"><span>
-                <button class="btn btn-default" type="button" ng-click="quickFTL()" ng-disabled="!quickie.weight || !quickie.shipTo.location.full_address"><i class="fa fa-lg fa-ship"></i> FTL
+                <button class="btn btn-default" type="button" ng-click="quickFTL()" ng-disabled="disableQuickQuote()"><i class="fa fa-lg fa-ship"></i> FTL
                 </button>
-                <button class="btn btn-default" type="button" ng-click="quickLTL()" ng-disabled="!quickie.weight || !quickie.shipTo.location.full_address"><i class="fa fa-lg fa-truck"></i> LTL
+                <button class="btn btn-default" type="button" ng-click="quickLTL()" ng-disabled="disableQuickQuote()"><i class="fa fa-lg fa-truck"></i> LTL
                 </button>
-                <button class="btn btn-default" type="button" ng-click="quickAIR()" ng-disabled="!quickie.weight || !quickie.shipTo.location.full_address"><i class="fa fa-lg fa-plane"></i> AIR
+                <button class="btn btn-default" type="button" ng-click="quickAIR()" ng-disabled="disableQuickQuote()"><i class="fa fa-lg fa-plane"></i> AIR
                 </button> <i class="fa fa-spinner fa-spin fa-2x" ng-show="quickie.processing"></i></span>
             </div>
             <div class="col-md-3">
@@ -46,7 +46,7 @@
           <small>Click one of the buttons to get competitive quotes from Trucking-Hub.com</small>
         </div>
         <div class="col-md-3">
-          <small>For detailed quote and trucking arrangement, please signup, login and go to <a href="/loads">Loads</a></small>
+          <small>To get detailed quote and trucking arrangement, please signup, login and go to <a href="/loads">Loads</a></small>
         </div>
       </div>
 

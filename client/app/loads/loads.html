@@ -1,17 +1,17 @@
 <br>
 <div class="row">
-<div class="col-md-2">
+<div class="col-md-2 filter-nav-padding">
     <ul class="list-group">
-        <li class="list-group-item list-group-item-success"><b>Load Types</b></li>
+        <li class="list-group-item list-group-item-info"><b>Load Types</b></li>
         <li class="list-group-item"><input type="checkbox" ng-model="filters.types.ftl" ng-value="true" ng-change="fetch()"> FTL</li>
         <li class="list-group-item"><input type="checkbox" ng-model="filters.types.ltl" ng-value="true" ng-change="fetch()"> LTL</li>
         <li class="list-group-item"><input type="checkbox" ng-model="filters.types.air" ng-value="true" ng-change="fetch()"> AIR</li>
-        <li class="list-group-item list-group-item-success"><b>Period</b></li>
+        <li class="list-group-item list-group-item-info"><b>Period</b></li>
         <li class="list-group-item"><input type="radio" ng-model="filters.period" ng-value="1" name="period" ng-change="fetch()"> Today</li>
         <li class="list-group-item"><input type="radio" ng-model="filters.period" ng-value="3" name="period" ng-change="fetch()"> Last 3 Days</li>
         <li class="list-group-item"><input type="radio" ng-model="filters.period" ng-value="7" name="period" ng-change="fetch()"> Last week</li>
         <li class="list-group-item"><input type="radio" ng-model="filters.period" ng-value="-1" name="period" ng-change="fetch()"> All</li>
-        <li class="list-group-item list-group-item-success"><b>Status</b></li>
+        <li class="list-group-item list-group-item-info"><b>Status</b></li>
         <li class="list-group-item"><input type="checkbox" ng-model="filters.status.open" ng-value="true" ng-change="fetch()"> Open</li>
         <li class="list-group-item"><input type="checkbox" ng-model="filters.status.filled" ng-value="true" ng-change="fetch()"> Filled</li>
         <li class="list-group-item"><input type="checkbox" ng-model="filters.status.paid" ng-value="true" ng-change="fetch()"> Paid</li>

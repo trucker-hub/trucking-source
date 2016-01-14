@@ -28,6 +28,10 @@ angular.module('servicesApp')
       $scope.showContent = function ($fileContent) {
         $scope.content = $fileContent;
       };
+
+    $scope.disableQuickQuote = function() {
+      return !$scope.quickie.weight || !$scope.quickie.shipTo.location.full_address
+    };
       $scope.quickie = loadService.emptyFtlLoad;
 
 
