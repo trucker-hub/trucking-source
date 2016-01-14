@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('TrackingCtrl', function ($rootScope, $scope, $http,ngTableParams, $filter, $modal, ngProgressFactory) {
+  .controller('TrackingCtrl', function ($rootScope, $scope, $http, ngTableParams, $filter, $uibModal, ngProgressFactory) {
 
     var loads = [];
 

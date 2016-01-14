@@ -1,9 +1,9 @@
 <div class="container-fluid">
 
   <br>
-  <tabset type="tabs">
-    <tab>
-      <tab-heading><span>Companies <span class="badge">{{allCompanies.length}}</span></span></tab-heading>
+  <uib-tabset type="tabs">
+    <uib-tab>
+      <uib-tab-heading><span>Companies <span class="badge">{{allCompanies.length}}</span></span></uib-tab-heading>
       <div class="panel panel-default">
         <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover">
           <tr ng-repeat="company in $data">
@@ -83,18 +83,18 @@
         </table>
         </div>
       </div>
-    </tab>
-    <tab ng-repeat="(id, detail) in companiesOpened " active="detail.active">
-      <tab-heading><span>{{detail.data.name}}</span>&nbsp<a ng-click="closeTab(id)"><i class="fa fa-times fa-lg"></i></a></tab-heading>
+    </uib-tab>
+    <uib-tab ng-repeat="(id, detail) in companiesOpened " active="detail.active">
+      <uib-tab-heading><span>{{detail.data.name}}</span>&nbsp<a ng-click="closeTab(id)"><i class="fa fa-times fa-lg"></i></a></uib-tab-heading>
       <div ng-controller="CompanyDetailsCtrl as dCtrl" ng-init="dCtrl.setCompany(detail.data)" ng-include="'app/trucking-company/company-details/company-details.html'"></div>
-    </tab>
+    </uib-tab>
 
-  </tabset>
+  </uib-tabset>
 
   <div>
-    <alert ng-repeat="alert in alerts" type="{{alert.type}}" dismiss-on-timeout='3000' close="closeAlert()">
+    <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" dismiss-on-timeout='3000' close="closeAlert()">
       {{alert.msg}}
-    </alert>
+    </uib-alert>
   </div>
 
 

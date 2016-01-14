@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('WeightChargesCtrl', function ($scope, $modalInstance, sizeCharge) {
+  .controller('WeightChargesCtrl', function ($scope, $uibModalInstance, sizeCharge) {
       console.log("Initialized WeightChargesCtrl");
 
       $scope.sizeCharge = sizeCharge;

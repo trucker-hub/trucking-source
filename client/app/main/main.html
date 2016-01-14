@@ -3,23 +3,23 @@
         <h1>Trucking-Hub.com</h1>
 
         <p class="lead">Help local Southern California trucking companies expand via Technologies</p>
-        <img src="assets/images/truck-banner.png" width="300" class="img" alt="Responsive image" alt="Trucking-Hub">
+        <img src="assets/images/truck-banner.png" width="350" class="img" alt="Responsive image" alt="Trucking-Hub">
     </div>
 </header>
 
 
 <div class="section">
     <div class="container">
-        <h2>Quick Quote</h2>
+        <h3>Quick Quote</h3>
         <hr>
         <div class="row">
             <div class="col-md-3">
-                <location info="quickie.shipTo" label="'TO:'"></location>
+                <location info="quickie.shipTo" label="'TO:'" uib-tooltip="Fill the complete address for the delivery"></location>
             </div>
           <form name="mainForm" novalidate>
             <div class="col-md-2" ng-class="{'has-error':mainForm.weight.$invalid}">
                 <input type="number" class="form-control" size="6" ng-model="quickie.weight" name="weight"
-                               placeholder="Total Weight" required min="1"></div>
+                               placeholder="Total Weight" required min="1" uib-tooltip="Fill the total weight"></div>
           </form>
             <div class="col-md-4"><span>
                 <button class="btn btn-default" type="button" ng-click="quickFTL()" ng-disabled="!quickie.weight || !quickie.shipTo.location.full_address"><i class="fa fa-lg fa-ship"></i> FTL
@@ -85,6 +85,6 @@
 
 <footer class="footer">
     <div class="container">
-        <p>Trucking-hub.com <i class="fa fa-copyright"></i> Copyright 2015 </p>
+        <p>Trucking-hub.com <i class="fa fa-copyright"></i> Copyright 2016 </p>
     </div>
 </footer>

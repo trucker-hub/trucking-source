@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-    .controller('QuoteCtrl', function ($scope, $http, $modal, $modalInstance, ngProgressFactory,
+    .controller('QuoteCtrl', function ($scope, $http, $uibModal, $uibModalInstance, ngProgressFactory,
                                        sourcingService, load) {
 
       $scope.load = load;
@@ -43,7 +43,7 @@ angular.module('servicesApp')
       };
 
       $scope.createInvoice = function () {
-        var modalInstance = $modal.open({
+        var modalInstance = $uibModal.open({
           animation: true,
           templateUrl: 'app/sourcing/invoice/invoice.html',
           controller: 'InvoiceCtrl',
@@ -82,17 +82,17 @@ angular.module('servicesApp')
 
       $scope.cancel = function () {
         sourcingService.clearSources(load);
-        $modalInstance.dismiss('Close');
+        $uibModalInstance.dismiss('Close');
       };
 
       $scope.confirm = function() {
         $scope.$emit("QuoteConfirmed", load);
         finalizeSource();
-        $modalInstance.close();
+        $uibModalInstance.close();
       };
 
       $scope.createDO = function () {
-        var modalInstance = $modal.open({
+        var modalInstance = $uibModal.open({
           animation: true,
           templateUrl: 'app/tracking/do-details/do-details.html',
           controller: 'DoDetailsCtrl',

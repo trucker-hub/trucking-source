@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .service('customerSettingService', function ($http, $modal) {
+  .service('customerSettingService', function ($http, $uibModal) {
     var vm = this;
 
     var settingsRepo = {};
@@ -58,7 +58,7 @@ angular.module('servicesApp')
 
     vm.openCustomerSettingsDialog = function (customer, callbackOK, callbackCancel) {
 
-      var modalInstance = $modal.open({
+      var modalInstance = $uibModal.open({
         animation: true,
         templateUrl: 'app/settings/setting-update/setting-update.html',
         controller: 'CustomerSettingUpdateCtrl',

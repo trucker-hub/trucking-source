@@ -7,6 +7,7 @@ angular.module('servicesApp', [
   'ngRoute',
   'btford.socket-io',
   'ui.bootstrap',
+  'ngAnimate',
   'ngProgress',
   'ngTable',
   'ui.mask',

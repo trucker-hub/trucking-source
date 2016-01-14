@@ -1,4 +1,13 @@
 <div class="container">
+    <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="1000">{{alert.msg}}</uib-alert>
+    <br>
+    <button type="button" class="btn btn-default btn-sm" ng-click="extract()">Test Extract</button>
+    <button type="button" uib-tooltip="Add Alert" class="btn btn-default btn-sm" ng-click="addAlert()">Add Alert</button>
+    <br>
+</div>
+
+
+<div class="container">
 <br>
     <button type="button" class="btn btn-default btn-sm" ng-click="transitTime()">Test UPS Transit Time</button>
     <button type="button" class="btn btn-default btn-sm" ng-click="rates()">Test UPS Rates</button>
@@ -19,11 +28,8 @@
     <br>
 </div>
 
-<div class="container">
-    <br>
-    <button type="button" class="btn btn-default btn-sm" ng-click="extract()">Test Extract</button>
-    <br>
-</div>
+
+
 
 <div class="modal-body" print-section="">
     <div class="form-inline">

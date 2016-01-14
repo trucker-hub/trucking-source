@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('servicesApp')
-    .controller('DoDetailsCtrl', function ($scope, $modalInstance, load) {
+    .controller('DoDetailsCtrl', function ($scope, $uibModalInstance, load) {
 
     $scope.load = load;
 
     $scope.send = function () {
-      $modalInstance.close();
+      $uibModalInstance.close();
     };
 
     $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
+      $uibModalInstance.dismiss('cancel');
     };
 
   });

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('ChargesCtrl', function ($scope, $modalInstance, container) {
+  .controller('ChargesCtrl', function ($scope, $uibModalInstance, container) {
         console.log("Initialized ChargesCtrl");
 
         $scope.container = container;
@@ -37,10 +37,10 @@ angular.module('servicesApp')
             }
             $scope.container.additionalCharges = list;
 
-            $modalInstance.close();
+          $uibModalInstance.close();
         };
 
         $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
+          $uibModalInstance.dismiss('cancel');
         };
   });

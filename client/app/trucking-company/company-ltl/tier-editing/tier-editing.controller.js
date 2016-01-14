@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-    .controller('TierEditingCtrl', function ($scope, $modalInstance, flatTiers, weightTiers) {
+    .controller('TierEditingCtrl', function ($scope, $uibModalInstance, flatTiers, weightTiers) {
 
       console.log("Initialized TierEditingCtrl");
       $scope.newFlatTier = {
@@ -40,11 +40,11 @@ angular.module('servicesApp')
 
 
       $scope.ok = function () {
-        $modalInstance.close({flat: flatTiers, weight: weightTiers});
+        $uibModalInstance.close({flat: flatTiers, weight: weightTiers});
       };
 
       $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
+        $uibModalInstance.dismiss('cancel');
       };
 
     });

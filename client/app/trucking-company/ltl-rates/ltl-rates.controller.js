@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-    .controller('LtlRatesCtrl', function ($scope, $modalInstance, type, rates) {
+    .controller('LtlRatesCtrl', function ($scope, $uibModalInstance, type, rates) {
 
       $scope.type = type;
       $scope.gridOptions = {};
@@ -25,10 +25,10 @@ angular.module('servicesApp')
         });
       }
       $scope.ok = function () {
-        $modalInstance.close($scope.gridOptions.data);
+        $uibModalInstance.close($scope.gridOptions.data);
       };
 
       $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
+        $uibModalInstance.dismiss('cancel');
       };
     });

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('CustomerSettingUpdateCtrl', function ($scope, $modalInstance, customerSettingService, customer) {
+  .controller('CustomerSettingUpdateCtrl', function ($scope, $uibModalInstance, customerSettingService, customer) {
     console.log("Initialized CustomerSettingUpdateCtrl");
 
     $scope.customer = customer;
@@ -32,6 +32,6 @@ angular.module('servicesApp')
     };
 
     $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
+      $uibModalInstance.dismiss('cancel');
     };
   });

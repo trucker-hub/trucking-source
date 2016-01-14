@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('CompanyContactCtrl', function ($scope, $modalInstance, company) {
+  .controller('CompanyContactCtrl', function ($scope, $uibModalInstance, company) {
 
       $scope.company = company;
 
@@ -9,10 +9,10 @@ angular.module('servicesApp')
          $scope.company.changed = true;
       };
       $scope.ok = function () {
-        $modalInstance.close();
+        $uibModalInstance.close();
       };
 
       $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
+        $uibModalInstance.dismiss('cancel');
       };
   });

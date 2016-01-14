@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-    .service('sourcingService', function ($http, $modal, $q, loadService, customerSettingService, Auth, ngProgressFactory) {
+    .service('sourcingService', function ($http, $uibModal, $q, loadService, customerSettingService, Auth, ngProgressFactory) {
       var vm = this;
 
       var upsRates = {};
@@ -411,7 +411,7 @@ angular.module('servicesApp')
         load.showLoadDetails = false;
         cb = (cb || angular.noop);
         dismissCb = (dismissCb || angular.noop);
-        var modalInstance = $modal.open({
+        var modalInstance = $uibModal.open({
           animation: true,
           templateUrl: 'app/sourcing/quote/quote.html',
           controller: 'QuoteCtrl',

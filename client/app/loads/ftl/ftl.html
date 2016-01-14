@@ -96,17 +96,17 @@
 
       <div class="col-md-10">
         <div style="display:inline-block; min-height:290px;" id="loadDate">
-          <datepicker ng-model="ftlCtrl.load.expectedBy" min-date="minDate" show-weeks="true" class="well well-sm"
+          <uib-datepicker ng-model="ftlCtrl.load.expectedBy" min-date="minDate" show-weeks="true" class="well well-sm"
                       custom-class="getDayClass(date, mode)" ng-change="ftlCtrl.change()">
 
-          </datepicker>
+          </uib-datepicker>
         </div>
       </div>
     </div>
   </div>
 
-<div class="row container table-responsive">
-    <table class="table table-striped">
+<div class="row ">
+    <table class="table table-striped table-responsive">
       <tr>
         <th class="col-md-1"><span class="glyphicon glyphicon-plus" aria-hidden="true"
                                    ng-click="ftlCtrl.addLine()"></span></th>

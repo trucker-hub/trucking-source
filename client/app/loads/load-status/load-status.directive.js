@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .directive('loadStatus', function ($http, $modal) {
+  .directive('loadStatus', function ($http, $uibModal) {
     return {
       templateUrl: 'app/loads/load-status/load-status.html',
       restrict: 'E',
@@ -15,7 +15,7 @@ angular.module('servicesApp')
           scope.showLog = !scope.showLog;
         };
         scope.viewInvoice = function() {
-          var modalInstance = $modal.open({
+          var modalInstance = $uibModal.open({
             animation: true,
             templateUrl: 'app/sourcing/invoice/invoice.html',
             controller: 'InvoiceCtrl',
@@ -37,7 +37,7 @@ angular.module('servicesApp')
 
 
         scope.viewDO = function() {
-          var modalInstance = $modal.open({
+          var modalInstance = $uibModal.open({
             animation: true,
             templateUrl: 'app/tracking/do-details/do-details.html',
             controller: 'DoDetailsCtrl',

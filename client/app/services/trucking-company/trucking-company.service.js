@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .service('truckingCompany', function ($http, $modal) {
+  .service('truckingCompany', function ($http, $uibModal) {
 
     var vm = this;
     this.fetch = function (callbackOK, callbackERR) {
@@ -181,7 +181,7 @@ angular.module('servicesApp')
 
     vm.openChargesDialog = function (container, callbackOK, callbackCancel) {
 
-      var modalInstance = $modal.open({
+      var modalInstance = $uibModal.open({
         animation: true,
         templateUrl: 'app/trucking-company/charges/charges.html',
         controller: 'ChargesCtrl',
@@ -207,7 +207,7 @@ angular.module('servicesApp')
 
     vm.openWeightChargesDialog = function (sizeCharge, callbackOK, callbackCancel) {
 
-      var modalInstance = $modal.open({
+      var modalInstance = $uibModal.open({
         animation: true,
         templateUrl: 'app/trucking-company/weight-charges/weight-charges.html',
         controller: 'WeightChargesCtrl',
@@ -231,7 +231,7 @@ angular.module('servicesApp')
 
     vm.openContactDialog = function (company, callbackOK, callbackCancel) {
 
-      var modalInstance = $modal.open({
+      var modalInstance = $uibModal.open({
         animation: true,
         templateUrl: 'app/trucking-company/company-contact/company-contact.html',
         controller: 'CompanyContactCtrl',

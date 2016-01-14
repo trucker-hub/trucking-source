@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .directive('zoneDefinition', function ($modal, truckingCompany) {
+  .directive('zoneDefinition', function ($uibModal, truckingCompany) {
     return {
       templateUrl: 'app/trucking-company/zones/zones.html',
       restrict: 'E',
@@ -204,7 +204,7 @@ angular.module('servicesApp')
             controllerStr = 'FtlRatesCtrl';
           }
 
-          var modalInstance = $modal.open({
+          var modalInstance = $uibModal.open({
             animation: true,
             templateUrl: templateUrlStr,
             controller: controllerStr,
@@ -233,7 +233,7 @@ angular.module('servicesApp')
 
         scope.openTierDialog = function () {
 
-          var modalInstance = $modal.open({
+          var modalInstance = $uibModal.open({
             animation: true,
             templateUrl: 'app/trucking-company/company-ltl/tier-editing/tier-editing.html',
             controller: 'TierEditingCtrl',

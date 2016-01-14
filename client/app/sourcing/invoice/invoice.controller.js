@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('InvoiceCtrl', function ($scope, $http, $modalInstance, load) {
+  .controller('InvoiceCtrl', function ($scope, $http, $uibModalInstance, load) {
 
     $scope.load = load;
     var computeTotalCost = function() {
@@ -29,11 +29,11 @@ angular.module('servicesApp')
     };
 
     $scope.send = function () {
-      $modalInstance.close();
+      $uibModalInstance.close();
     };
 
     $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
+      $uibModalInstance.dismiss('cancel');
     };
 
 

@@ -19,10 +19,10 @@
 </div>
 
 <div class="col-md-9">
-    <tabset type="tabs">
+    <uib-tabset type="tabs">
 
-        <tab>
-            <tab-heading><span>Loads <span class="badge">{{loads.length}}</span></span></tab-heading>
+        <uib-tab>
+            <uib-tab-heading><span>Loads <span class="badge">{{loads.length}}</span></span></uib-tab-heading>
             <br>
             <div class="row">
                 <div class="col-md-6">
@@ -56,19 +56,19 @@
                   <td colspan="4"><i class="fa fa-angle-double-right"></i> <b>No Loads found for {{searchCriteria}}</b>. Maybe expand the search time window.</td>
                 </tr>
             </table>
-        </tab>
+        </uib-tab>
 
-        <tab ng-repeat="(id, item) in loadsOpened.ftl" active="item.active">
-            <tab-heading><load-type type="item.data.loadType"></load-type>
+        <uib-tab ng-repeat="(id, item) in loadsOpened.ftl" active="item.active">
+            <uib-tab-heading><load-type type="item.data.loadType"></load-type>
               <span>{{item.data.who }}</span>&nbsp<a ng-click="closeTab(id, 'FTL')"><i class="fa fa-times fa-lg"></i></a>
-            </tab-heading>
+            </uib-tab-heading>
             <div ng-include="'app/loads/ftl/ftl.html'" ng-controller="FtlCtrl as ftlCtrl" ng-init="ftlCtrl.init(item.data)"></div>
-        </tab>
-      <tab ng-repeat="(id, item) in loadsOpened.ltl" active="item.active">
-        <tab-heading><load-type type="item.data.loadType"></load-type>
-          <span>{{item.data.who }}</span>&nbsp<a ng-click="closeTab(id, 'LTL')"><i class="fa fa-times fa-lg"></i></a></tab-heading>
+        </uib-tab>
+      <uib-tab ng-repeat="(id, item) in loadsOpened.ltl" active="item.active">
+        <uib-tab-heading><load-type type="item.data.loadType"></load-type>
+          <span>{{item.data.who }}</span>&nbsp<a ng-click="closeTab(id, 'LTL')"><i class="fa fa-times fa-lg"></i></a></uib-tab-heading>
         <div ng-include="'app/loads/freight/freight.html'" ng-controller="FreightCtrl as freightCtrl" ng-init="freightCtrl.init(item.data)"></div>
-      </tab>
+      </uib-tab>
 
 </div>
 </div>

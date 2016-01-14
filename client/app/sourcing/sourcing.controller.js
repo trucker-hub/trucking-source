@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp').controller('SourcingCtrl',
-    function ($scope, $http, $modal, $q, ngTableParams, $filter, ngProgressFactory,
+    function ($scope, $http, $uibModal, $q, ngTableParams, $filter, ngProgressFactory,
               Auth, loadService, sourcingService) {
 
       $scope.loads = [];
