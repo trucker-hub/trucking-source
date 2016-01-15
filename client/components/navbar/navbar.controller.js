@@ -41,6 +41,11 @@ angular.module('servicesApp')
           'title': 'Loads',
           'link': '/loads',
           'alwaysShow': true
+        },
+        {
+          'title': 'Specials',
+          'link': '/interest',
+          'alwaysShow': true
         }
       ];
       $scope.managementMenu = [
