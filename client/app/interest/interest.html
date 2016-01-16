@@ -1,3 +1,61 @@
-<div class="col-md-12">
-This is the interest view.
+<br>
+<div class="row">
+    <div class="col-md-2 interest-nav-padding">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info"><b>Load Types</b></li>
+            <li class="list-group-item"><input type="checkbox" ng-model="types.ftl" ng-value="true" ng-change="fetch()"> FTL</li>
+            <li class="list-group-item"><input type="checkbox" ng-model="types.ltl" ng-value="true" ng-change="fetch()"> LTL</li>
+            <li class="list-group-item"><input type="checkbox" ng-model="types.air" ng-value="true" ng-change="fetch()"> AIR</li>
+            <li class="list-group-item list-group-item-info"><b>Date</b></li>
+            <li class="list-group-item"><input type="radio" ng-model="period" ng-value="1" name="period" ng-change="fetch()"> Today</li>
+            <li class="list-group-item"><input type="radio" ng-model="period" ng-value="3" name="period" ng-change="fetch()"> Last 3 Days</li>
+            <li class="list-group-item"><input type="radio" ng-model="period" ng-value="7" name="period" ng-change="fetch()"> Last week</li>
+            <li class="list-group-item"><input type="radio" ng-model="period" ng-value="-1" name="period" ng-change="fetch()"> All</li>
+            <li class="list-group-item list-group-item-info"><b>Discounts > </b></li>
+            <li class="list-group-item"><input type="number" ng-model="discount" ng-value="true" ng-change="fetch()"></li>
+            <li class="list-group-item list-group-item-info"><b>Action</b></li>
+            <li class="list-group-item"><button ng-click="fetch()">Fetch</button> </li>
+        </ul>
+    </div>
+
+    <div class="col-md-9">
+        <uib-tabset type="tabs">
+
+            <uib-tab>
+                <uib-tab-heading><span>Loads <span class="badge">{{loads.length}}</span></span></uib-tab-heading>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-default" type="button" ng-click="newFTLLoad()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Special</button>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <br>
+                <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover table-condensed">
+                    <tr ng-repeat="special in $data">
+                        <td class="col-md-3" data-title="'Company'" filter="{ 'company': 'text' }">
+                            {{special.loadTypes | json}} {{special.name}}
+                        </td>
+                        <td class="col-md-4" data-title="'Discount'">
+                            {{special.discountAmount | currency}}
+                        </td>
+                        <td class="col-md-2" data-title="'Effective'">
+                            {{special.effectiveDate | date: 'short'}}
+                        </td>
+                        <td class="col-md-4" data-title="'Expires'">
+                            {{special.effectiveDate | date: 'short'}}
+                        </td>
+
+                        <td class="col-md-3" data-title="'Areas'">
+
+                        </td>
+                    </tr>
+                    <tr ng-show="$data.length ==0">
+                        <td></td>
+                        <td colspan="4"><i class="fa fa-angle-double-right"></i> <b>No Discounts found for {{searchCriteria}}</b>. Maybe expand the search critera.</td>
+                    </tr>
+                </table>
+            </uib-tab>
+        </uib-tabset>
+    </div>
 </div>

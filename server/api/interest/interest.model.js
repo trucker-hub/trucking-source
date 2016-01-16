@@ -8,7 +8,7 @@ var InterestSchema = new Schema({
   active: Boolean,
   createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
   company: { type: Schema.Types.ObjectId, ref: 'TruckingCompany' },
-  loadType:  [{ type: String, required: true, enum: [ 'FTL', 'LTL', 'AIR']}],
+  loadTypes:  [{ type: String, required: true, enum: [ 'FTL', 'LTL', 'AIR']}],
   createdAt: { type: Date, required: true, default: Date.now },
   effectiveDate: { type: Date, required: true, default: Date.now },
   expiredBy: Date,

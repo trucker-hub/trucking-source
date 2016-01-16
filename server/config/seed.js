@@ -12,6 +12,7 @@ var FtlLoad = require('../api/load/ftl/ftlLoad.model');
 var LtlLoad = require('../api/load/ltl/ltl.model');
 var Warehouse = require('../api/warehouse/warehouse.model')
 var Counter = require('../api/counter/counter.model');
+var Interest = require('../api/interest/interest.model');
 
 
 Thing.find({}).remove(function () {
@@ -778,6 +779,25 @@ TruckingCompany.find({}).remove(function () {
             }
         }
     );
+});
+
+Interest.find({}).remove(function() {
+    console.log("removed all the Specials");
+    Interest.create({
+        name: "Aspeed Specials Jan/2016",
+        active: true,
+        company: null,
+        loadTypes:  [ 'FTL', 'LTL', 'AIR'],
+        notes: "Note for specials",
+        discountsByCity : [
+            { discountAmount: 20,
+                city: [
+                    { city: "Inglewood", county: "Los Angeles County", state: "CA", zip: "90301" },
+                    { city: "Torrance", county: "Los Angeles County", state: "CA", zip: "" }
+                ]
+            }
+        ]
+    });
 });
 
 Counter.find({}).remove(function () {
