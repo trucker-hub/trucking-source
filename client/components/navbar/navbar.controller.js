@@ -43,6 +43,11 @@ angular.module('servicesApp')
           'alwaysShow': true
         },
         {
+          'title': 'Load Map',
+          'link': '/load-map',
+          'alwaysShow': true
+        },
+        {
           'title': 'Specials',
           'link': '/interest',
           'alwaysShow': true

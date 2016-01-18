@@ -10,6 +10,7 @@ var serviceSubSchema = {
         county:     {type: String, required: true},
         city:       {type: String, required: true},
         zipCode:    {type: String, required: true},
+        coordinates: [Number, Number],
         warehouse:  { type: Schema.Types.ObjectId, ref: 'Warehouse' }
     },
     services: [{service: {

@@ -1,0 +1,84 @@
+{
+  "address_components": [
+    {
+      "long_name": "4489",
+      "short_name": "4489",
+      "types": [
+        "street_number"
+      ]
+    },
+    {
+      "long_name": "Paula Street",
+      "short_name": "Paula St",
+      "types": [
+        "route"
+      ]
+    },
+    {
+      "long_name": "Lakewood",
+      "short_name": "Lakewood",
+      "types": [
+        "locality",
+        "political"
+      ]
+    },
+    {
+      "long_name": "Los Angeles County",
+      "short_name": "Los Angeles County",
+      "types": [
+        "administrative_area_level_2",
+        "political"
+      ]
+    },
+    {
+      "long_name": "California",
+      "short_name": "CA",
+      "types": [
+        "administrative_area_level_1",
+        "political"
+      ]
+    },
+    {
+      "long_name": "United States",
+      "short_name": "US",
+      "types": [
+        "country",
+        "political"
+      ]
+    },
+    {
+      "long_name": "90713",
+      "short_name": "90713",
+      "types": [
+        "postal_code"
+      ]
+    },
+    {
+      "long_name": "3321",
+      "short_name": "3321",
+      "types": [
+        "postal_code_suffix"
+      ]
+    }
+  ],
+  "adr_address": "<span class=\"street-address\">4489 Paula St</span>, <span class=\"locality\">Lakewood</span>, <span class=\"region\">CA</span> <span class=\"postal-code\">90713-3321</span>, <span class=\"country-name\">USA</span>",
+  "formatted_address": "4489 Paula St, Lakewood, CA 90713, USA",
+  "geometry": {
+    "location": {
+      "lat": 33.8381789,
+      "lng": -118.09860700000002
+    }
+  },
+  "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+  "id": "b063911136de3dd16ad7e4af28b954c1e1ff5efc",
+  "name": "4489 Paula St",
+  "place_id": "ChIJXXO9w5It3YARpaX_mP-mBDA",
+  "reference": "CpQBhAAAAAfOpic16TIRKNoafSaGCnjLmJhlJuO_neWUTpYu1RJ_9M_NIdmhX9uVzo_HVQPibNcO2l643BPkdEAlIuYaNfDnQrRybDHodz3U1pPs0mXG0p4TULsTs4f17AGljt5O9FIRJuCTyJWFqhjm_XKxd_-oK-rw5MXVdB5JLt-yPCtGX9w2uZSuQnNTZx5cbQWcEBIQMPQqXMW-qazPAGs01hkKeRoUOFeYIRw9HE8mC5KIHIDiPksLDjc",
+  "scope": "GOOGLE",
+  "types": [
+    "street_address"
+  ],
+  "url": "https://maps.google.com/?q=4489+Paula+St,+Lakewood,+CA+90713,+USA&ftid=0x80dd2d92c3bd735d:0x3004a6ff98ffa5a5",
+  "vicinity": "Lakewood",
+  "html_attributions": []
+}

@@ -60,19 +60,19 @@ angular.module('servicesApp')
 
     vm.editNewFTLLoad = function () {
       console.log("calling createFTLLoad");
-      var load = loadService.create('FTL');
+      var load = vm.create('FTL');
       $rootScope.loadsOpened.ftl[load.tabId] = {data: load, active: true};
     };
 
     vm.editNewFreightLoad = function () {
       console.log("calling createLTLLoad");
-      var load = loadService.create('LTL');
+      var load = vm.create('LTL');
       $rootScope.loadsOpened.ltl[load.tabId] = {data: load, active: true};
     };
 
     vm.editNewAirLoad = function () {
       console.log("calling create AIR Load");
-      var load = loadService.create('AIR');
+      var load = vm.create('AIR');
       $rootScope.loadsOpened.ltl[load.tabId] = {data: load, active: true};
     };
 

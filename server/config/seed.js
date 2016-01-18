@@ -100,7 +100,8 @@ LtlLoad.find({}).remove(function() {
                     state:      "CA",
                     county:     "Los Angeles County",
                     city:       "Inglewood",
-                    zipCode:    "90301"
+                    zipCode:    "90301",
+                    coordinates: [33.953822, -118.370728]
                 },
                 services: [{service: 'Inside'}, {service: 'LifeGate'}]
             },
@@ -110,7 +111,8 @@ LtlLoad.find({}).remove(function() {
                     state:      "CA",
                     county:     "Los Angeles County",
                     city:       "Torrance",
-                    zipCode:    "90503"
+                    zipCode:    "90503",
+                    coordinates: [33.845385, -118.360726]
                 },
                 services: [{service: 'Inside'}, {service: 'LifeGate'}]
             },
@@ -137,7 +139,8 @@ LtlLoad.find({}).remove(function() {
                     state:      "CA",
                     county:     "Los Angeles County",
                     city:       "Inglewood",
-                    zipCode:    "90301"
+                    zipCode:    "90301",
+                    coordinates: [33.953822, -118.370728]
                 },
                 services: [{service: 'Inside'}, {service: 'LifeGate'}]
             },
@@ -147,7 +150,8 @@ LtlLoad.find({}).remove(function() {
                     state:      "CA",
                     county:     "Los Angeles County",
                     city:       "Torrance",
-                    zipCode:    "90503"
+                    zipCode:    "90503",
+                    coordinates: [33.845385, -118.360726]
                 },
                 services: [{service: 'Inside'}, {service: 'LifeGate'}]
             },
@@ -176,7 +180,8 @@ FtlLoad.find({}).remove(function() {
                     state:        "CA",
                     county:       "Los Angeles County",
                     city:         "Inglewood",
-                    zipCode:      "90301"
+                    zipCode:      "90301",
+                    coordinates: [33.953822, -118.370728]
                 }
             },
             shipFrom: {
@@ -185,7 +190,8 @@ FtlLoad.find({}).remove(function() {
                     state:        "CA",
                     county:       "Los Angeles County",
                     city:         "Torrance",
-                    zipCode:      "90503"
+                    zipCode:      "90503",
+                    coordinates: [33.848145, -118.346582]
                 }
             },
 
@@ -208,7 +214,8 @@ FtlLoad.find({}).remove(function() {
                     state:        "CA",
                     county:       "Los Angeles County",
                     city:          "Torrance",
-                    zipCode:       "90503"
+                    zipCode:       "90503",
+                    coordinates: [33.848145, -118.346582]
                 }
             },
             shipFrom: {
@@ -217,7 +224,8 @@ FtlLoad.find({}).remove(function() {
                     state:      "CA",
                     county:     "Los Angeles County",
                     city:       "Inglewood",
-                    zipCode:    "90301"
+                    zipCode:    "90301",
+                    coordinates: [33.953822, -118.370728]
                 }
             },
 

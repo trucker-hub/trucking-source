@@ -9,7 +9,8 @@ var serviceSubSchema = {
         state:      {type: String, required: true},
         county:     {type: String, required: true},
         city:       {type: String, required: true},
-        zipCode:    {type: String, required: true}
+        zipCode:    {type: String, required: true},
+        coordinates: [Number, Number]
     },
     locationType: {
         type: String, required: true,

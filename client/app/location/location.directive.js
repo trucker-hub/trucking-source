@@ -25,7 +25,7 @@ angular.module('servicesApp')
         scope.change = function() {
 
           var raw = scope.info.location.raw;
-          //console.log("google response " + JSON.stringify(raw));
+          console.log("google response " + JSON.stringify(raw));
           if(!scope.info.location.raw) {
             return;
           }
@@ -43,9 +43,20 @@ angular.module('servicesApp')
               result.zipCode = comp.short_name;
           }
           result.full_address = raw.formatted_address;
+
+          //"geometry": {
+          //  "location": {
+          //    "lat": 33.8381789,
+          //        "lng": -118.09860700000002
+          //  }
+          //},
+          console.log("Google Location Coordinates = " + JSON.stringify(raw.geometry.location));
+
+          result.coordinates = [raw.geometry.location.lat(), raw.geometry.location.lng()];
           result.raw = raw;
           scope.info.location = result;
           scope.info.changed = true;
+          console.log("Load Address= " + JSON.stringify(scope.info.location));
           scope.$emit("LocationChanged");
 
         }
