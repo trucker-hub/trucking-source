@@ -1,22 +1,68 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('LoadMapCtrl', function ($scope, loadService) {
+  .controller('LoadMapCtrl', function ($scope, loadService, ngProgressFactory) {
 
-    $scope.randomMarkers = [];
+    $scope.loads = loadService.getCombinedLoads();
+
+    $scope.searchCriteria = 'Today';
+
+    $scope.filters = {
+      period: 1,
+      types: {ftl: true, ltl: true, air: true},
+      status: {open: true, filled: false, paid: false}
+    };
+
+    $scope.fetch = function () {
+      var days = $scope.filters.period;
+      console.log('fetch loads from the db');
+      if (!$scope.filters.types.ftl && !$scope.filters.types.ltl && !$scope.filters.types.air) {
+        $scope.filters.types = {ftl: true, ltl: true, air: true}
+      }
+      if (days == 1) {
+        $scope.searchCriteria = "Today";
+      } else if (days > 1) {
+        $scope.searchCriteria = "Last " + days + " days";
+      } else if (days < 1) {
+        $scope.searchCriteria = "All open loads";
+      }
+      $scope.progressbar = ngProgressFactory.createInstance();
+      $scope.progressbar.start();
+      loadService.fetch($scope.filters, function () {
+            $scope.progressbar.complete();
+            updateMap();
+          },
+          function () {
+            console.log('ran into error ');
+            $scope.progressbar.stop();
+          });
+    };
+
+    var updateMap = function() {
+      console.log("update markers");
+      $scope.loads = loadService.getCombinedLoads();
+      var markers = [];
+      for (var i = 0; i < $scope.loads.length; i++) {
+        markers.push(createLoadMarker($scope.loads[i], $scope.map.bounds))
+      }
+      $scope.loadMarkers = markers;
+    };
+
+    $scope.loadMarkers = [];
+
     $scope.map = {
       center: {
-        latitude: 40.1451,
-        longitude: -99.6680
+        latitude: 33.845385,
+        longitude: -118.360726
       },
-      zoom: 4,
+      zoom: 11,
       bounds: {}
     };
     $scope.options = {
       scrollwheel: false
     };
 
-    var createRandomMarker = function(i, bounds, idKey) {
+    var createLoadMarker = function(load, bounds, idKey) {
       var lat_min = bounds.southwest.latitude,
           lat_range = bounds.northeast.latitude - lat_min,
           lng_min = bounds.southwest.longitude,
@@ -26,14 +72,14 @@ angular.module('servicesApp')
         idKey = "id";
       }
 
-      var latitude = lat_min + (Math.random() * lat_range);
-      var longitude = lng_min + (Math.random() * lng_range);
+      var latitude = load.shipTo.location.coordinates[0];
+      var longitude = load.shipTo.location.coordinates[1];
       var ret = {
         latitude: latitude,
         longitude: longitude,
-        title: 'm' + i
+        title: load.who
       };
-      ret[idKey] = i;
+      ret[idKey] = load._id;
       return ret;
     };
 
@@ -43,13 +89,9 @@ angular.module('servicesApp')
     }, function(nv, ov) {
       // Only need to regenerate once
       if (!ov.southwest && nv.southwest) {
-        var markers = [];
-        for (var i = 0; i < 50; i++) {
-          markers.push(createRandomMarker(i, $scope.map.bounds))
-        }
-        $scope.randomMarkers = markers;
+        console.log("update the map markers")
+        updateMap();
       }
     }, true);
-
 
   });
