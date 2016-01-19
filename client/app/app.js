@@ -143,11 +143,19 @@ angular.module('servicesApp', [
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
   })
-  .config(function (uiSelectConfig) {
-    uiSelectConfig.theme = 'bootstrap';
-    uiSelectConfig.resetSearchInput = true;
-    uiSelectConfig.appendToBody = true;
-  })
+  //.config(function (uiSelectConfig) {
+  //  uiSelectConfig.theme = 'bootstrap';
+  //  uiSelectConfig.resetSearchInput = true;
+  //  uiSelectConfig.appendToBody = true;
+  //})
+    .config(['uiGmapGoogleMapApiProvider', function (GoogleMapApi) {
+      GoogleMapApi.configure({
+        key: 'AIzaSyA8A0plzgJyy1fA4MbhfmGGgZ_aOMaQfUg',
+        v: '3.20',
+        libraries: 'weather,geometry,visualization'
+      });
+    }])
+
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {
       // Add authorization token to headers

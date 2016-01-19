@@ -1,4 +1,4 @@
-<div class="col-md-2 filter-nav-padding">
+<div class="col-md-2 map-nav-padding">
     <ul class="list-group">
         <li class="list-group-item list-group-item-info"><b>Load Types</b></li>
         <li class="list-group-item"><input type="checkbox" ng-model="filters.types.ftl" ng-value="true" ng-change="fetch()"> FTL</li>
@@ -14,15 +14,16 @@
         <li class="list-group-item"><input type="checkbox" ng-model="filters.status.filled" ng-value="true" ng-change="fetch()"> Filled</li>
         <li class="list-group-item"><input type="checkbox" ng-model="filters.status.paid" ng-value="true" ng-change="fetch()"> Paid</li>
         <li class="list-group-item list-group-item-info"><b>Query</b></li>
-        <li class="list-group-item"><button class="button button-default" ng-click="fetch()"> Fetch</button></li>
+        <li class="list-group-item"><button class="btn btn-default" type="button" ng-click="fetch()"> Fetch</button></li>
     </ul>
 </div>
-<div id="map_canvas" class="col-md-10">
-    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
-        <ui-gmap-markers models="loadMarkers" coords="'self'" icon="'icon'" click="onClick">
+<div id="map_canvas" class="col-md-10 angular-google-map-container">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds" >
+        <ui-gmap-markers models="loadMarkers" coords="'self'" icon="'icon'" click="onClick" doCluster="true">
             <ui-gmap-windows show="show">
                 <div ng-non-bindable>{{title}}</div>
             </ui-gmap-windows>
         </ui-gmap-markers>
     </ui-gmap-google-map>
 </div>
+
