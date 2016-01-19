@@ -79,7 +79,7 @@ angular.module('servicesApp')
           latitude: latitude,
           longitude: longitude,
           title: load.who,
-          icon: 'assets/images/trucking-NO-16x16.png'
+          icon: 'assets/images/trucking-YES-16x16.png'
         };
         ret[idKey] = load._id;
         return ret;
