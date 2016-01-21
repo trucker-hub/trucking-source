@@ -27,7 +27,7 @@ angular.module('servicesApp')
              return a.limit - b.limit;
          });
          $scope.sizeCharge.weightRanges = cleaned;
-          $modalInstance.close();
+        $uibModalInstance.close();
       };
       $scope.addLine = function() {
           $scope.weightRangesCopy.push({
@@ -42,6 +42,6 @@ angular.module('servicesApp')
       };
 
       $scope.cancel = function () {
-          $modalInstance.dismiss('Cancel');
+        $uibModalInstance.dismiss('Cancel');
       };
   });
