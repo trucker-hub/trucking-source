@@ -45,12 +45,12 @@ angular.module('servicesApp')
         {
           'title': 'Load Map',
           'link': '/load-map',
-          'alwaysShow': true
+          'alwaysShow': menuForOperator
         },
         {
           'title': 'Specials',
           'link': '/interest',
-          'alwaysShow': true
+          'alwaysShow': menuForOperator
         }
       ];
       $scope.managementMenu = [
@@ -82,7 +82,7 @@ angular.module('servicesApp')
         {
           'title': 'Playground',
           'link': '/playground',
-          'alwaysShow': true
+          'alwaysShow': menuForOperator
         },
         {
           'title': 'Map',
