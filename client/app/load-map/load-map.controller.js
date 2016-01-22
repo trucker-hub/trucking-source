@@ -7,11 +7,7 @@ angular.module('servicesApp')
 
       $scope.searchCriteria = 'Today';
 
-      $scope.filters = {
-        period: 1,
-        types: {ftl: true, ltl: true, air: true},
-        status: {open: true, filled: false, paid: false}
-      };
+      $scope.filters = loadService.filters;
 
       $scope.fetch = function () {
         var days = $scope.filters.period;
@@ -28,7 +24,7 @@ angular.module('servicesApp')
         }
         $scope.progressbar = ngProgressFactory.createInstance();
         $scope.progressbar.start();
-        loadService.fetch($scope.filters, function () {
+        loadService.fetch(function () {
               $scope.progressbar.complete();
               updateMap();
             },

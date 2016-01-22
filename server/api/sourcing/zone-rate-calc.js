@@ -23,6 +23,7 @@ exports.calc = function(tariff, load, matchEntry, lineName) {
   if(matchZone) {
     console.log("found a matching zone for zip code " + JSON.stringify(matchZone));
   }else {
+    console.log("did find a matching zone for zip code ");
     return {
       totalCost: -1,
       costItems: []
@@ -31,7 +32,7 @@ exports.calc = function(tariff, load, matchEntry, lineName) {
   result.push({charge:matchZone.dropOffCharge , description: "DropOff Charge" + lineName});
 
   var weight = weightCalculator.weight(load.lines);
-  //console.log("load weight is " + weight);
+  console.log("load weight is " + weight);
 
   //base rate
   var baseRate =0;
@@ -39,16 +40,21 @@ exports.calc = function(tariff, load, matchEntry, lineName) {
   if(rateRow) {
     baseRate = Math.max(rateRow.rate, matchZone.minCharge);
     result.push({charge: baseRate, description: "Basis rate for Zone " + matchEntry.zone + lineName});
-    //console.log("baseRate is " + baseRate + " min charge " + matchEntry.minCharge);
+    console.log("baseRate is " + baseRate + " min charge " + matchZone.minCharge);
   }else {
     rateRow = findZoneRate (tariff.rateDef.byZone.weightRates, weight, matchEntry.zone);
+    //console.log("rate weight table = " + JSON.stringify(tariff.rateDef.byZone.weightRates));
     if(rateRow) {
       baseRate = (rateRow.rate * weight)/(tariff.rateDef.byZone.zoneRateVariables.weightIncrement);
       baseRate = Math.max(baseRate, matchZone.minCharge);
       result.push({charge: baseRate, description: "Basis rate for Zone " + matchEntry.zone});
-      //console.log("baseRate is " + baseRate + " min charge " + matchEntry.minCharge);
+      console.log("baseRate is " + baseRate + " min charge " + matchZone.minCharge);
     }else {
-      result.push({charge: 0, description: "Basis rate Not Found!"});
+      console.log( "Basis rate Not Found!");
+      return {
+        totalCost: -1,
+        costItems: []
+      };
     }
   }
   var fuelSurcharge = (baseRate * tariff.fuelSurcharge*0.01);

@@ -65,6 +65,7 @@ exports.calc = function(load, company) {
     };
   }
 
+  console.log("company rate basis is " + freight.rateBasis + " for company:" + company.name);
   if(freight.rateBasis=='zone') {
     result = result.concat(zoneCostCalculator.calc(freight, load, matchEntry));
   }else {

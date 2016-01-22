@@ -180,8 +180,5 @@ angular.module('servicesApp')
 
     if(!truckingCompany.get()) {
       $scope.loadCompanies();
-    }else {
-      $scope.updateTable();
     }
-
   });

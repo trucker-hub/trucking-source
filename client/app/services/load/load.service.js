@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('servicesApp')
-  .service('loadService', function ($http, $rootScope) {
+  .service('loadService', function ($http, $q, $rootScope, ngProgressFactory) {
 
     var vm = this;
+    vm.progressbar = ngProgressFactory.createInstance();
     vm.newLoadId =0;
     vm.loads = {
       ltl: [],
@@ -12,6 +13,95 @@ angular.module('servicesApp')
 
     $rootScope.loadsOpened = $rootScope.loadsOpened || {ftl: {}, ltl: {}, air: {}};
 
+    vm.filters = {
+      period: 1,
+      types: {ftl: true, ltl: true, air: true},
+      status: {open: true, filled: false, paid: false}
+    };
+
+
+    var ltlPromise = function () {
+      console.log("started query ltl");
+      var deferred = $q.defer();
+      if(vm.filters.types.ltl || vm.filters.types.air) {
+        var typesString = '';
+        if(vm.filters.types.ltl && vm.filters.types.air) {
+          typesString='&types=LTL,AIR';
+        }else if(vm.filters.types.ltl && !vm.filters.types.air) {
+          typesString='&types=LTL';
+        }else if(!vm.filters.types.ltl && vm.filters.types.air) {
+          typesString='&types=AIR';
+        }
+        var url = '/api/load/ltl-loads?' + vm.filters.statusString + vm.filters.queryDaysString + typesString;
+        console.log("ltl/air loads url=" + url);
+        $http.get(url).then(
+            function(response) {
+              //console.log(JSON.stringify(response.data));
+              vm.loads.ltl = response.data;
+              deferred.resolve(vm.loads.ltl);
+
+            },
+            function(response) {
+              deferred.reject(response);
+            });
+      }else {
+        deferred.resolve(vm.loads);
+      }
+      return deferred.promise;
+    };
+
+    var ftlPromise = function () {
+      console.log("started query ftl");
+      var deferred = $q.defer();
+      if(vm.filters.types.ftl) {
+        var url = '/api/load/ftl-loads?' + vm.filters.statusString + vm.filters.queryDaysString;
+        console.log("load url =" + url);
+        $http.get(url).then(
+            function(response) {
+              //console.log(JSON.stringify(response.data));
+              vm.loads.ftl = response.data;
+              deferred.resolve(vm.loads.ftl);
+            },
+            function(response) {
+              deferred.reject(response);
+            });
+      }else {
+        deferred.resolve(vm.loads.ftl);
+      }
+      return deferred.promise;
+    };
+
+    vm.fetch = function(cbOK, cbErr) {
+
+      vm.progressbar.start();
+      vm.loads = {
+        ltl: [],
+        ftl: []
+      };
+
+      console.log('fetch loads from the db');
+      vm.filters.queryDaysString = vm.filters.period!=-1?('&days='+vm.filters.period):'';
+
+      var statusString ='status=';
+      if(vm.filters.status.open) {
+        statusString +='OPEN,'
+      }
+      if(vm.filters.status.filled) {
+        statusString +='FILLED,'
+      } if(vm.filters.status.paid) {
+        statusString +='PAID,'
+      }
+      vm.filters.statusString = statusString.substring(0, statusString.length-1);
+
+      ltlPromise().then(ftlPromise).then(function() {
+        cbOK();
+        vm.progressbar.complete();
+      }).catch(function(response) {
+        console.log('ran into error ' + response);
+        cbErr();
+        vm.progressbar.stop();
+      });
+    };
 
     var setEditingAttribute = function(id, xx) {
       var index;
@@ -160,65 +250,6 @@ angular.module('servicesApp')
       }
     };
 
-
-    vm.fetch = function(filters, cbOK, cbErr) {
-
-        vm.loads = {
-            ltl: [],
-            ftl: []
-        };
-      console.log('fetch loads from the db');
-        var queryDaysString = filters.period!=-1?('&days='+filters.period):'';
-
-      var statusString ='status=';
-      if(filters.status.open) {
-          statusString +='OPEN,'
-      }
-        if(filters.status.filled) {
-          statusString +='FILLED,'
-      } if(filters.status.paid) {
-          statusString +='PAID,'
-      }
-      statusString = statusString.substring(0, statusString.length-1);
-
-      if(filters.types.ftl) {
-        var url = '/api/load/ftl-loads?' + statusString + queryDaysString;
-        console.log("load url =" + url);
-        $http.get(url).then(
-          function(response) {
-            //console.log(JSON.stringify(response.data));
-            vm.loads.ftl = response.data;
-            cbOK();
-          },
-          function(response) {
-            console.log('ran into error ' + response);
-            cbErr();
-          });
-      }
-      if(filters.types.ltl || filters.types.air) {
-        var typesString = '';
-        if(filters.types.ltl && filters.types.air) {
-            typesString='&types=LTL,AIR';
-        }else if(filters.types.ltl && !filters.types.air) {
-            typesString='&types=LTL';
-        }else if(!filters.types.ltl && filters.types.air) {
-            typesString='&types=AIR';
-        }
-        var url = '/api/load/ltl-loads?' + statusString + queryDaysString + typesString;
-        console.log("ltl/air loads url=" + url);
-        $http.get(url).then(
-          function(response) {
-            //console.log(JSON.stringify(response.data));
-            vm.loads.ltl = response.data;
-            cbOK();
-          },
-          function(response) {
-            console.log('ran into error ' + response);
-            cbErr();
-          });
-      }
-    };
-
     vm.computeClass = function(line) {
       if(line.width && line.length && line.height && line.weight) {
         var density = line.weight * 1728.0 / (line.width * line.length * line.height);
@@ -290,10 +321,13 @@ angular.module('servicesApp')
 
     vm.save = function(load, cb, cbE) {
 
+      vm.progressbar.start();
       var url = load.loadType=='FTL'?'/api/load/ftl-loads':'/api/load/ltl-loads';
       if(!load.new) {
         url = url + "/" + load._id;
-        $http.put(url, load).then(cb, cbE)
+        $http.put(url, load).then(cb, cbE).then(function() {
+          vm.progressbar.complete();
+        });
       }else {
         $http.post(url, load).then(function(response) {
           console.log("created load " + JSON.stringify(response));
@@ -303,7 +337,9 @@ angular.module('servicesApp')
           load._id = created._id;
           console.log("created load " + JSON.stringify(created));
           cb(response);
-        }, cbE);
+        }, cbE).then(function() {
+          vm.progressbar.complete();
+        });
       }
     };
 

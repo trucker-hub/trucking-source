@@ -27,7 +27,7 @@ exports.rates = function(req, res) {
   var data = req.body;
   ups.freight_rate(data, function(err, rates) {
     console.error(err);
-    if(err) { return handleError(rates, err); }
+    if(err) { return handleError(res, err); }
     res.json(rates);
   });
 };

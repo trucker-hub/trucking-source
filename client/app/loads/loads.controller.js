@@ -10,11 +10,8 @@ angular.module('servicesApp')
 
     $scope.searchCriteria = 'Today';
 
-    $scope.filters = {
-      period: 1,
-      types: {ftl: true, ltl: true, air: true},
-      status: {open: true, filled: false, paid: false}
-    };
+    $scope.filters = loadService.filters;
+
     $scope.editLoad = function (id, type) {
       loadService.editLoad(id, type);
     };
@@ -54,7 +51,7 @@ angular.module('servicesApp')
       }
       $scope.progressbar = ngProgressFactory.createInstance();
       $scope.progressbar.start();
-      loadService.fetch($scope.filters, function () {
+      loadService.fetch(function () {
           $scope.updateTable();
         },
         function () {

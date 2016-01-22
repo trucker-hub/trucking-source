@@ -1,20 +1,24 @@
 'use strict';
 
 angular.module('servicesApp')
-  .service('truckingCompany', function ($http, $uibModal) {
+  .service('truckingCompany', function ($http, $uibModal, ngProgressFactory) {
 
     var vm = this;
+    vm.progressbar = ngProgressFactory.createInstance();
     this.fetch = function (callbackOK, callbackERR) {
+      vm.progressbar.start();
       $http.get("/api/trucking-companies").then(
         function (response) {
           //console.log(JSON.stringify(response.data));
           vm.list = response.data;
           callbackOK(response);
+          vm.progressbar.complete();
         },
         function (response) {
           vm.list = [];
           console.log("ran into error " + response);
           callbackERR(response);
+          vm.progressbar.stop();
         });
     };
 
@@ -62,6 +66,7 @@ angular.module('servicesApp')
     };
 
     this.delete = function (company, callbackOK, callbackERR) {
+      vm.progressbar.start();
       $http.delete('/api/trucking-companies/' + company._id).then(
         function (response) {
           var index;
@@ -73,9 +78,11 @@ angular.module('servicesApp')
             }
           }
           callbackOK(response);
+          vm.progressbar.complete();
         },
         function (response) {
           callbackERR(response);
+          vm.progressbar.stop();
         }
       );
     };
@@ -113,15 +120,18 @@ angular.module('servicesApp')
     };
 
     vm.add = function (newOne, callbackOK, callbackERR) {
+      vm.progressbar.start();
       $http.post("/api/trucking-companies", newOne).then(
         function (response) {
           console.log(JSON.stringify(response.data));
           vm.list.push(response.data);
           callbackOK(response);
+          vm.progressbar.complete();
         },
         function (response) {
           console.log("ran into error " + response);
           callbackERR(response);
+          vm.progressbar.stop();
         }
       );
     };
@@ -155,12 +165,18 @@ angular.module('servicesApp')
 
     vm.archive = function (cb, cbE) {
       console.log("test archiving companies");
-      $http.post('/api/trucking-companies/util/archives').then(cb, cbE);
+      vm.progressbar.start();
+      $http.post('/api/trucking-companies/util/archives').then(cb, cbE).then(function() {
+        vm.progressbar.complete();
+      });
     };
 
     vm.archiveOne = function (id, cb, cbE) {
       console.log("test archiving companies");
-      $http.put('/api/trucking-companies/util/archives/' +id).then(cb, cbE);
+      vm.progressbar.start();
+      $http.put('/api/trucking-companies/util/archives/' +id).then(cb, cbE).then(function() {
+        vm.progressbar.complete();
+      });
     };
 
     vm.archiveList = function (cb, cbE) {
@@ -169,13 +185,19 @@ angular.module('servicesApp')
     };
 
     vm.extract = function (cb, cbE) {
+      vm.progressbar.start();
       console.log("test extracting companies");
-      $http.post('/api/trucking-companies/util/extract').then(cb, cbE);
+      $http.post('/api/trucking-companies/util/extract').then(cb, cbE).then(function() {
+        vm.progressbar.complete();
+      });
     };
 
     vm.extractOne = function (name, cb, cbE) {
       console.log("test extracting companies");
-      $http.put('/api/trucking-companies/util/extract/' + name).then(cb, cbE);
+      vm.progressbar.start();
+      $http.put('/api/trucking-companies/util/extract/' + name).then(cb, cbE).then(function() {
+        vm.progressbar.complete();
+      });
     };
 
 
