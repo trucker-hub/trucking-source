@@ -15,7 +15,7 @@
     <div class="row">
       <div class="col-md-3">
         <location info="quickie.shipTo" label="'TO:'"
-                  uib-tooltip="Fill the complete address for the delivery"></location>
+                  uib-tooltip="Fill the complete address for the delivery" ></location>
       </div>
       <form name="mainForm" novalidate>
         <div class="col-md-2" ng-class="{'has-error':mainForm.weight.$invalid}">
@@ -34,10 +34,15 @@
                 </button> <i class="fa fa-spinner fa-spin fa-2x" ng-show="quickie.processing"></i></span>
       </div>
       <div class="col-md-3">
-        <b>Quote</b>:<b><span style="color:green" ng-show="quickie.quote.lowest">{{quickie.quote.average | currency:"$":2}}
+        <b>Quote</b>:<b>
+        <span style="color:green" ng-show="quickie.quote.lowest">{{quickie.quote.average | currency:"$":2}}
               <small>({{quickie.quote.lowest | currency:"$":2}} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> {{quickie.quote.highest | currency:"$":2}})</small>
-              </span></b><span ng-show="isLoggedIn && quickie.quote.lowest"><a href="" ng-click="editQuickie()" ><i class="fa fa-pencil"></i></a></span>
-        <small><span style="color:grey" ng-show="quickie.description"><i ng-show="quickie.description"><br>{{quickie.description}}</i></span>
+              </span></b>
+        <span ng-show="isLoggedIn && quickie.quote.lowest"><a href="" ng-click="editQuickie()" ><i class="fa fa-pencil"></i></a></span>
+        <small>
+          <span style="color:grey" ng-show="quickie.description"><i ng-show="quickie.description"><br>{{quickie.description}}
+          <i ng-show="isLoggedIn" class="fa fa-info-circle fa-lg" tooltip-placement="bottom-right" uib-tooltip-html="quickie.sourcesHtml"></i></i>
+          </span>
         </small> 
       </div>
     </div>
@@ -55,7 +60,7 @@
         <small ng-hide="isLoggedIn">4. To get detailed quote and trucking arrangement, please signup, login and go to <a
           href="/loads">Loads</a></small>
         <small ng-show="isLoggedIn">4. Proceed to get the accurate quote by filling all required information for the
-          load.
+          load by clicking the editing icon.
         </small>
       </div>
     </div>

@@ -79,8 +79,12 @@ angular.module('servicesApp')
                 return total + item.totalCost;
               }, 0) / (load.sources.length || 1);
             $scope.quickie.description = load.sources.length + " matches";
+            $scope.quickie.sourcesHtml = load.sources.reduce(function(str, item) {
+              return str + "<span>" + item.name + ": $" + item.totalCost + "</span><br>"
+            }, '');
           } else {
             $scope.quickie.description = "No Quote Found";
+            $scope.quickie.sourcesHtml ="";
           }
         },
         function (load) {
