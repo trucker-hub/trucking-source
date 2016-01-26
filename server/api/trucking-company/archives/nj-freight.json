@@ -15062,12 +15062,12 @@
     ],
     "additionalCharges": [
       {
-        "name": "Waiting time per hour",
-        "charge": 35
+        "charge": 35,
+        "description": "waiting time after free time expires"
       },
       {
-        "name": "COD",
-        "charge": 15
+        "charge": 15,
+        "description": "C.O.D"
       }
     ]
   },
