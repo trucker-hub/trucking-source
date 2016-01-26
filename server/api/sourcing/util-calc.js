@@ -13,6 +13,38 @@ exports.weight = function(lines) {
   return sum;
 };
 
+exports.getAdditionalCharges = function(type, company) {
+  var result = [];
+  if(type=='FTL') {
+    result = company.ftl.additionalCharges;
+  }else if(type=='LTL'){
+    result = company.ltl.additionalCharges;
+  }else if (type=='AIR') {
+    result = company.air.additionalCharges;
+  }
+  return result;
+};
+
+exports.getDropOffCharges = function(matchRate, lineName) {
+
+  //if this could be zoneObject, or a direct rateObject
+
+  var result = [];
+  if(matchRate.dropOffCharge) {
+    result.push({charge:matchRate.dropOffCharge , description: "Drop Off Charge for " + lineName});
+  }
+  if(matchRate.dropOffChargeOffhour) {
+    result.push({charge:matchRate.dropOffChargeOffhour , description: "Off Hour Drop Off Charge for " + lineName});
+  }
+  if(matchRate.dropOffChargeWeekend) {
+    result.push({charge:matchRate.dropOffChargeWeekend , description: "Weekend Drop Off Charge for " + lineName});
+  }
+  if(matchRate.dropOffChargeHoliday) {
+    result.push({charge:matchRate.dropOffChargeHoliday , description: "Holiday Drop Off Charge for " + lineName});
+  }
+  return result;
+};
+
 exports.matchEntry = function(freight, city, zipCode) {
   city = city.toLowerCase();
   var matchEntry;

@@ -7926,7 +7926,6 @@
     ],
     "additionalCharges": [
       {
-        "name": "Call before delivery",
         "charge": 10
       }
     ]
@@ -15852,7 +15851,7 @@
     "additionalCharges": []
   },
   "ftl": {
-    "fuelSurcharge": 15,
+    "fuelSurcharge": 20,
     "rateDef": {
       "byZone": {
         "rates": [],
@@ -26824,32 +26823,28 @@
     ],
     "additionalCharges": [
       {
-        "name": "Customer site waiting time: less than 45 miles and less than 1 hrs free, otherwise",
+        "description": "waiting time at customer site per hour",
         "charge": 60
       },
       {
-        "name": "Terminal waiting time: over 45 miles and less than 2 hrs free, otherwise",
+        "description": "waiting time at terminal site per hour",
         "charge": 40
       },
       {
-        "name": "20' Tri-axle",
-        "charge": 250
-      },
-      {
-        "name": "Prepull",
-        "charge": 85
-      },
-      {
-        "name": "Night gate",
-        "charge": 70
-      },
-      {
-        "name": "Extra stop",
+        "description": "Extra stop (min) + FSC",
         "charge": 75
       },
       {
-        "name": "Yard storage day and pallet",
-        "charge": 25
+        "description": "Night gate",
+        "charge": 70
+      },
+      {
+        "description": "Prepull",
+        "charge": 85
+      },
+      {
+        "description": "Dropoff charge varies by distance $30 - $110 less than 55 miles",
+        "charge": 110
       }
     ]
   }

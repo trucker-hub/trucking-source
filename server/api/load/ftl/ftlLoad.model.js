@@ -54,7 +54,7 @@ var FtlLoadSchema = new Schema({
       adjustment: {type: Number, default:0}
     }],
     additionalCharges: [{
-      name: String,
+      description: String,
       charge: Number
     }]
   },

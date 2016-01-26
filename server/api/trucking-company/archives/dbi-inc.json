@@ -40,7 +40,7142 @@
     "tradeShowCharge": 25,
     "rateDef": {
       "byZone": {
-        "rates": [],
+        "rates": [
+          {
+            "zipCode": "93510",
+            "city": "acton",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92301",
+            "city": "adelanto",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91301",
+            "city": "agoura hills",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91376",
+            "city": "agoura hills",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92536",
+            "city": "aguanga",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91801",
+            "city": "alhambra",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91802",
+            "city": "alhambra",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91803",
+            "city": "alhambra",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91804",
+            "city": "alhambra",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91896",
+            "city": "alhambra",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91899",
+            "city": "alhambra",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92656",
+            "city": "aliso viejo",
+            "state": "ca",
+            "zone": "E"
+          },
+          {
+            "zipCode": "92698",
+            "city": "aliso viejo",
+            "state": "ca",
+            "zone": "E"
+          },
+          {
+            "zipCode": "91901",
+            "city": "alpine",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91903",
+            "city": "alpine",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91701",
+            "city": "alta loma",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "91737",
+            "city": "alta loma",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "91001",
+            "city": "altadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91003",
+            "city": "altadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92304",
+            "city": "amboy",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92801",
+            "city": "anaheim",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92802",
+            "city": "anaheim",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92803",
+            "city": "anaheim",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92804",
+            "city": "anaheim",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92805",
+            "city": "anaheim",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92806",
+            "city": "anaheim",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92807",
+            "city": "anaheim",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92808",
+            "city": "anaheim",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92809",
+            "city": "anaheim",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92812",
+            "city": "anaheim",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92814",
+            "city": "anaheim",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92815",
+            "city": "anaheim",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92816",
+            "city": "anaheim",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92817",
+            "city": "anaheim",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92825",
+            "city": "anaheim",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92850",
+            "city": "anaheim",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92899",
+            "city": "anaheim",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92305",
+            "city": "angelus oaks",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92539",
+            "city": "anza",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92307",
+            "city": "apple valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92308",
+            "city": "apple valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91006",
+            "city": "arcadia",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91007",
+            "city": "arcadia",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91066",
+            "city": "arcadia",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91077",
+            "city": "arcadia",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "93420",
+            "city": "arroyo grande",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93421",
+            "city": "arroyo grande",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90701",
+            "city": "artesia",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90702",
+            "city": "artesia",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "93422",
+            "city": "atascadero",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93423",
+            "city": "atascadero",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92811",
+            "city": "atwood",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "90704",
+            "city": "avalon",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93424",
+            "city": "avila beach",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91702",
+            "city": "azusa",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92309",
+            "city": "baker",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91706",
+            "city": "baldwin park",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92220",
+            "city": "banning",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92311",
+            "city": "barstow",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92312",
+            "city": "barstow",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92223",
+            "city": "beaumont",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90201",
+            "city": "bell",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90202",
+            "city": "bell ",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90202",
+            "city": "bell gardens",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90201",
+            "city": "bell gardens ",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90706",
+            "city": "bellflower",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90707",
+            "city": "bellflower",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90209",
+            "city": "beverly hills",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90210",
+            "city": "beverly hills",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90211",
+            "city": "beverly hills",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90212",
+            "city": "beverly hills",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90213",
+            "city": "beverly hills",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "92314",
+            "city": "big bear city",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92315",
+            "city": "big bear lake",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92316",
+            "city": "bloomington",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92317",
+            "city": "blue jay",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92225",
+            "city": "blythe",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92226",
+            "city": "blythe",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91902",
+            "city": "bonita",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91908",
+            "city": "bonita",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92003",
+            "city": "bonsall",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92004",
+            "city": "borrego springs",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91905",
+            "city": "boulevard",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93064",
+            "city": "brandeis",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92821",
+            "city": "brea",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92822",
+            "city": "brea",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92823",
+            "city": "brea",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92318",
+            "city": "bryn mawr",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93427",
+            "city": "buellton",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90620",
+            "city": "buena park",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "90621",
+            "city": "buena park",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "90622",
+            "city": "buena park",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "90624",
+            "city": "buena park",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "91501",
+            "city": "burbank",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91502",
+            "city": "burbank",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91503",
+            "city": "burbank",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91504",
+            "city": "burbank",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91505",
+            "city": "burbank",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91506",
+            "city": "burbank",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91507",
+            "city": "burbank",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91508",
+            "city": "burbank",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91510",
+            "city": "burbank",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91521",
+            "city": "burbank",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91522",
+            "city": "burbank",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91523",
+            "city": "burbank",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91526",
+            "city": "burbank",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92230",
+            "city": "cabazon",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91302",
+            "city": "calabasas",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91372",
+            "city": "calabasas",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92320",
+            "city": "calimesa",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93010",
+            "city": "camarillo",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93011",
+            "city": "camarillo",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93012",
+            "city": "camarillo",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93428",
+            "city": "cambria",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92055",
+            "city": "camp pendleton",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91906",
+            "city": "campo",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91303",
+            "city": "canoga park",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91304",
+            "city": "canoga park",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91305",
+            "city": "canoga park",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91309",
+            "city": "canoga park",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91351",
+            "city": "canyon country",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91386",
+            "city": "canyon country",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91387",
+            "city": "canyon country",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92624",
+            "city": "capistrano beach",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92007",
+            "city": "cardiff by the sea",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92008",
+            "city": "carlsbad",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92009",
+            "city": "carlsbad",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92010",
+            "city": "carlsbad",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92011",
+            "city": "carlsbad",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92013",
+            "city": "carlsbad",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92018",
+            "city": "carlsbad",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93013",
+            "city": "carpinteria",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93014",
+            "city": "carpinteria",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90745",
+            "city": "carson",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90746",
+            "city": "carson",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90747",
+            "city": "carson",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90749",
+            "city": "carson",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90895",
+            "city": "carson",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "93429",
+            "city": "casmalia",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91310",
+            "city": "castaic",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91384",
+            "city": "castaic",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92234",
+            "city": "cathedral city",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92235",
+            "city": "cathedral city",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93430",
+            "city": "cayucos",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92321",
+            "city": "cedar glen",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92322",
+            "city": "cedarpines park",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90067",
+            "city": "century city",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90703",
+            "city": "cerritos",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91311",
+            "city": "chatsworth",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91313",
+            "city": "chatsworth",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91708",
+            "city": "chino",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "91710",
+            "city": "chino",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "91709",
+            "city": "chino hills",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "91909",
+            "city": "chula vista",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91910",
+            "city": "chula vista",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91911",
+            "city": "chula vista",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91912",
+            "city": "chula vista",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91913",
+            "city": "chula vista",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91914",
+            "city": "chula vista",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91915",
+            "city": "chula vista",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91921",
+            "city": "chula vista",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92323",
+            "city": "cima",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91714",
+            "city": "city of industry",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91715",
+            "city": "city of industry",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91716",
+            "city": "city of industry",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91711",
+            "city": "claremont",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92236",
+            "city": "coachella",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92324",
+            "city": "colton",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "90220",
+            "city": "compton",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90221",
+            "city": "compton",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90222",
+            "city": "compton",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90223",
+            "city": "compton",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90224",
+            "city": "compton",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "92877",
+            "city": "corona",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92878",
+            "city": "corona",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92879",
+            "city": "corona",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92880",
+            "city": "corona",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92881",
+            "city": "corona",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92882",
+            "city": "corona",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92883",
+            "city": "corona",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92625",
+            "city": "corona del mar",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "92118",
+            "city": "coronado",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92178",
+            "city": "coronado",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92626",
+            "city": "costa mesa",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92627",
+            "city": "costa mesa",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92628",
+            "city": "costa mesa",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "91722",
+            "city": "covina",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91723",
+            "city": "covina",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91724",
+            "city": "covina",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92325",
+            "city": "crestline",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93432",
+            "city": "creston",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90230",
+            "city": "culver city",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90231",
+            "city": "culver city",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90232",
+            "city": "culver city",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90233",
+            "city": "culver city",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90630",
+            "city": "cypress",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92327",
+            "city": "daggett",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92629",
+            "city": "dana point",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "92014",
+            "city": "del mar",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91916",
+            "city": "descanso",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92239",
+            "city": "desert center",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92240",
+            "city": "desert hot springs",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92241",
+            "city": "desert hot springs",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91765",
+            "city": "diamond bar",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "90090",
+            "city": "dodgertown",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90239",
+            "city": "downey",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90240",
+            "city": "downey",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90241",
+            "city": "downey",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90242",
+            "city": "downey",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91008",
+            "city": "duarte",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91009",
+            "city": "duarte",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91010",
+            "city": "duarte",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91917",
+            "city": "dulzura",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92242",
+            "city": "earp",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92650",
+            "city": "east irvine",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92019",
+            "city": "el cajon",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92020",
+            "city": "el cajon",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92021",
+            "city": "el cajon",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92022",
+            "city": "el cajon",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91731",
+            "city": "el monte",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91732",
+            "city": "el monte",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91734",
+            "city": "el monte",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91735",
+            "city": "el monte",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90245",
+            "city": "el segundo",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "92609",
+            "city": "el toro",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "92023",
+            "city": "encinitas",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92024",
+            "city": "encinitas",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91316",
+            "city": "encino",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91416",
+            "city": "encino",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91426",
+            "city": "encino",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91436",
+            "city": "encino",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92025",
+            "city": "escondido",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92026",
+            "city": "escondido",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92027",
+            "city": "escondido",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92029",
+            "city": "escondido",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92030",
+            "city": "escondido",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92033",
+            "city": "escondido",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92046",
+            "city": "escondido",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92332",
+            "city": "essex",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92028",
+            "city": "fallbrook",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92088",
+            "city": "fallbrook",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92333",
+            "city": "fawnskin",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93015",
+            "city": "fillmore",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93016",
+            "city": "fillmore",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92331",
+            "city": "fontana",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92334",
+            "city": "fontana",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92335",
+            "city": "fontana",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92336",
+            "city": "fontana",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92337",
+            "city": "fontana",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92610",
+            "city": "foothill ranch",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "92339",
+            "city": "forest falls",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92310",
+            "city": "fort irwin",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92708",
+            "city": "fountain valley",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92728",
+            "city": "fountain valley",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92831",
+            "city": "fullerton",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92832",
+            "city": "fullerton",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92833",
+            "city": "fullerton",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92834",
+            "city": "fullerton",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92835",
+            "city": "fullerton",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92836",
+            "city": "fullerton",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92837",
+            "city": "fullerton",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92838",
+            "city": "fullerton",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92840",
+            "city": "garden grove",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92841",
+            "city": "garden grove",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92842",
+            "city": "garden grove",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92843",
+            "city": "garden grove",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92844",
+            "city": "garden grove",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92845",
+            "city": "garden grove",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92846",
+            "city": "garden grove",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "90247",
+            "city": "gardena",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90248",
+            "city": "gardena",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90249",
+            "city": "gardena",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "91201",
+            "city": "glendale",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91202",
+            "city": "glendale",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91203",
+            "city": "glendale",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91204",
+            "city": "glendale",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91205",
+            "city": "glendale",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91206",
+            "city": "glendale",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91207",
+            "city": "glendale",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91208",
+            "city": "glendale",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91209",
+            "city": "glendale",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91210",
+            "city": "glendale",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91221",
+            "city": "glendale",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91222",
+            "city": "glendale",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91225",
+            "city": "glendale",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91226",
+            "city": "glendale",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91740",
+            "city": "glendora",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "91741",
+            "city": "glendora",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "93116",
+            "city": "goleta",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93117",
+            "city": "goleta",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93118",
+            "city": "goleta",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93199",
+            "city": "goleta",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91344",
+            "city": "granada hills",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91394",
+            "city": "granada hills",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92313",
+            "city": "grand terrace",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92341",
+            "city": "green valley lake",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93433",
+            "city": "grover beach",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93483",
+            "city": "grover beach",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93434",
+            "city": "guadalupe",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91743",
+            "city": "guasti",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91931",
+            "city": "guatay",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91745",
+            "city": "hacienda heights",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90710",
+            "city": "harbor city",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "93435",
+            "city": "harmony",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90716",
+            "city": "hawaiian gardens",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90250",
+            "city": "hawthorne",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90251",
+            "city": "hawthorne",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "92342",
+            "city": "helendale",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92543",
+            "city": "hemet",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92544",
+            "city": "hemet",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92545",
+            "city": "hemet",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92546",
+            "city": "hemet",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90254",
+            "city": "hermosa beach",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "92340",
+            "city": "hesperia",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92344",
+            "city": "hesperia",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92345",
+            "city": "hesperia",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91361",
+            "city": "hidden valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92346",
+            "city": "highland",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92347",
+            "city": "hinkley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92548",
+            "city": "homeland",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92605",
+            "city": "huntington beach",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92615",
+            "city": "huntington beach",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92646",
+            "city": "huntington beach",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92647",
+            "city": "huntington beach",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92648",
+            "city": "huntington beach",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92649",
+            "city": "huntington beach",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "90255",
+            "city": "huntington park",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "92549",
+            "city": "idyllwild",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91932",
+            "city": "imperial beach",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91933",
+            "city": "imperial beach",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92210",
+            "city": "indian wells",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92201",
+            "city": "indio",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92202",
+            "city": "indio",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92203",
+            "city": "indio",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90301",
+            "city": "inglewood",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90302",
+            "city": "inglewood",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90303",
+            "city": "inglewood",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90304",
+            "city": "inglewood",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90305",
+            "city": "inglewood",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90306",
+            "city": "inglewood",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90307",
+            "city": "inglewood",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90308",
+            "city": "inglewood",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90309",
+            "city": "inglewood",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90310",
+            "city": "inglewood",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90311",
+            "city": "inglewood",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90312",
+            "city": "inglewood",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "92602",
+            "city": "irvine",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92603",
+            "city": "irvine",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92604",
+            "city": "irvine",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92606",
+            "city": "irvine",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92612",
+            "city": "irvine",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92614",
+            "city": "irvine",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92616",
+            "city": "irvine",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92617",
+            "city": "irvine",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92618",
+            "city": "irvine",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92619",
+            "city": "irvine",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92620",
+            "city": "irvine",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92623",
+            "city": "irvine",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92697",
+            "city": "irvine",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "91934",
+            "city": "jacumba",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91935",
+            "city": "jamul",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92252",
+            "city": "joshua tree",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92036",
+            "city": "julian",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91011",
+            "city": "la canada flintridge",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "91012",
+            "city": "la canada flintridge",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "91214",
+            "city": "la crescenta",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91224",
+            "city": "la crescenta",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90631",
+            "city": "la habra",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90632",
+            "city": "la habra",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90633",
+            "city": "la habra",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92037",
+            "city": "la jolla",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92038",
+            "city": "la jolla",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92039",
+            "city": "la jolla",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92092",
+            "city": "la jolla",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92093",
+            "city": "la jolla",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91941",
+            "city": "la mesa",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91942",
+            "city": "la mesa",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91943",
+            "city": "la mesa",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91944",
+            "city": "la mesa",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90637",
+            "city": "la mirada",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90638",
+            "city": "la mirada",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90639",
+            "city": "la mirada",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90623",
+            "city": "la palma",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91744",
+            "city": "la puente",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91746",
+            "city": "la puente",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91747",
+            "city": "la puente",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91749",
+            "city": "la puente",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92247",
+            "city": "la quinta",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92248",
+            "city": "la quinta",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92253",
+            "city": "la quinta",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91750",
+            "city": "la verne",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92694",
+            "city": "ladera ranch ",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92651",
+            "city": "laguna beach",
+            "state": "ca",
+            "zone": "E"
+          },
+          {
+            "zipCode": "92652",
+            "city": "laguna beach",
+            "state": "ca",
+            "zone": "E"
+          },
+          {
+            "zipCode": "92637",
+            "city": "laguna hills",
+            "state": "ca",
+            "zone": "E"
+          },
+          {
+            "zipCode": "92653",
+            "city": "laguna hills",
+            "state": "ca",
+            "zone": "E"
+          },
+          {
+            "zipCode": "92654",
+            "city": "laguna hills",
+            "state": "ca",
+            "zone": "E"
+          },
+          {
+            "zipCode": "92607",
+            "city": "laguna niguel",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "92677",
+            "city": "laguna niguel",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "92637",
+            "city": "laguna woods ",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92352",
+            "city": "lake arrowhead",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92530",
+            "city": "lake elsinore",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92531",
+            "city": "lake elsinore",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92532",
+            "city": "lake elsinore",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92630",
+            "city": "lake forest",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93532",
+            "city": "lake hughes",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91361",
+            "city": "lake sherwood",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92040",
+            "city": "lakeside",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90711",
+            "city": "lakewood",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90712",
+            "city": "lakewood",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90713",
+            "city": "lakewood",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90714",
+            "city": "lakewood",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90715",
+            "city": "lakewood",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "93534",
+            "city": "lancaster",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93535",
+            "city": "lancaster",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93536",
+            "city": "lancaster",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93539",
+            "city": "lancaster",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93584",
+            "city": "lancaster",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93586",
+            "city": "lancaster",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92285",
+            "city": "landers",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90260",
+            "city": "lawndale",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90261",
+            "city": "lawndale",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "91945",
+            "city": "lemon grove",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91946",
+            "city": "lemon grove",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93543",
+            "city": "littlerock",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93544",
+            "city": "llano",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92350",
+            "city": "loma linda",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92354",
+            "city": "loma linda",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92357",
+            "city": "loma linda",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "90717",
+            "city": "lomita",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "93436",
+            "city": "lompoc",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93437",
+            "city": "lompoc",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93438",
+            "city": "lompoc",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90801",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90802",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90803",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90804",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90805",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90806",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90807",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90808",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90809",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90810",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90813",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90814",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90815",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90822",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90831",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90832",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90833",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90834",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90835",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90840",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90842",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90844",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90846",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90847",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90848",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90853",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90899",
+            "city": "long beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90720",
+            "city": "los alamitos",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90721",
+            "city": "los alamitos",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "93440",
+            "city": "los alamos",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90001",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90002",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90003",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90004",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90005",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90006",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90007",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90008",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90009",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90010",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90011",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90012",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90013",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90014",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90015",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90016",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90017",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90018",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90019",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90020",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90021",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90022",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90023",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90024",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90025",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90026",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90027",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90028",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90029",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90030",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90031",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90032",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90033",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90034",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90035",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90036",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90037",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90038",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90039",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90040",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90041",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90042",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90043",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90044",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90045",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90046",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90047",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90048",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90049",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90050",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90051",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90052",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90053",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90054",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90055",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90056",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90057",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90058",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90059",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90060",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90061",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90062",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90063",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90064",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90065",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90066",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90068",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90070",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90071",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90072",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90073",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90074",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90075",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90076",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90077",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90078",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90079",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90080",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90081",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90082",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90083",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90084",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90086",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90087",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90088",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90089",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90091",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90093",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90094",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90095",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90096",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90099",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90189",
+            "city": "los angeles",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90067",
+            "city": "los angeles ",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "93441",
+            "city": "los olivos",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93402",
+            "city": "los osos",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93412",
+            "city": "los osos",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92356",
+            "city": "lucerne valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92338",
+            "city": "ludlow",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90262",
+            "city": "lynwood",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "92358",
+            "city": "lytle creek",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90263",
+            "city": "malibu",
+            "state": "ca",
+            "zone": "D"
+          },
+          {
+            "zipCode": "90264",
+            "city": "malibu",
+            "state": "ca",
+            "zone": "D"
+          },
+          {
+            "zipCode": "90265",
+            "city": "malibu",
+            "state": "ca",
+            "zone": "D"
+          },
+          {
+            "zipCode": "90266",
+            "city": "manhattan beach",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90267",
+            "city": "manhattan beach",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "92518",
+            "city": "march air reserve base",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90292",
+            "city": "marina del rey",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90295",
+            "city": "marina del rey",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90270",
+            "city": "maywood",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "92254",
+            "city": "mecca",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92584",
+            "city": "menifee",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92359",
+            "city": "mentone",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92655",
+            "city": "midway city",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91752",
+            "city": "mira loma",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "91345",
+            "city": "mission hills",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91346",
+            "city": "mission hills",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91395",
+            "city": "mission hills",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92690",
+            "city": "mission viejo",
+            "state": "ca",
+            "zone": "E"
+          },
+          {
+            "zipCode": "92691",
+            "city": "mission viejo",
+            "state": "ca",
+            "zone": "E"
+          },
+          {
+            "zipCode": "92692",
+            "city": "mission viejo",
+            "state": "ca",
+            "zone": "E"
+          },
+          {
+            "zipCode": "92694",
+            "city": "mission viejo",
+            "state": "ca",
+            "zone": "E"
+          },
+          {
+            "zipCode": "91016",
+            "city": "monrovia",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91017",
+            "city": "monrovia",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91763",
+            "city": "montclair",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "90640",
+            "city": "montebello",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91754",
+            "city": "monterey park",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91755",
+            "city": "monterey park",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91756",
+            "city": "monterey park",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91020",
+            "city": "montrose",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91021",
+            "city": "montrose",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "93020",
+            "city": "moorpark",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93021",
+            "city": "moorpark",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92551",
+            "city": "moreno valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92552",
+            "city": "moreno valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92553",
+            "city": "moreno valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92554",
+            "city": "moreno valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92555",
+            "city": "moreno valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92556",
+            "city": "moreno valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92557",
+            "city": "moreno valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92256",
+            "city": "morono valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93442",
+            "city": "morro bay",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93443",
+            "city": "morro bay",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91948",
+            "city": "mount laguna",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91023",
+            "city": "mount wilson",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92561",
+            "city": "mountain center",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92366",
+            "city": "mountain pass",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91759",
+            "city": "mt baldy",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92562",
+            "city": "murrieta",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92563",
+            "city": "murrieta",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92564",
+            "city": "murrieta",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91950",
+            "city": "national city",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91951",
+            "city": "national city",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92363",
+            "city": "needles",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93254",
+            "city": "new cuyama",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92365",
+            "city": "newberry springs",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91319",
+            "city": "newbury park",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91320",
+            "city": "newbury park",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91321",
+            "city": "newhall",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91322",
+            "city": "newhall",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92658",
+            "city": "newport beach",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92659",
+            "city": "newport beach",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92660",
+            "city": "newport beach",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92661",
+            "city": "newport beach",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92662",
+            "city": "newport beach",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92663",
+            "city": "newport beach",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92657",
+            "city": "newport coast",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "93444",
+            "city": "nipomo",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92364",
+            "city": "nipton",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92860",
+            "city": "norco",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "91343",
+            "city": "north hills",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91393",
+            "city": "north hills",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91601",
+            "city": "north hollywood",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91602",
+            "city": "north hollywood",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91603",
+            "city": "north hollywood",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91605",
+            "city": "north hollywood",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91606",
+            "city": "north hollywood",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91609",
+            "city": "north hollywood",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91611",
+            "city": "north hollywood",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91612",
+            "city": "north hollywood",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91615",
+            "city": "north hollywood",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91616",
+            "city": "north hollywood",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91618",
+            "city": "north hollywood",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92258",
+            "city": "north palm springs",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91324",
+            "city": "northridge",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91325",
+            "city": "northridge",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91327",
+            "city": "northridge",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91328",
+            "city": "northridge",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91329",
+            "city": "northridge",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91330",
+            "city": "northridge",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90650",
+            "city": "norwalk",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90651",
+            "city": "norwalk",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90652",
+            "city": "norwalk",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92567",
+            "city": "nuevo",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91377",
+            "city": "oak park",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93022",
+            "city": "oak view",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93445",
+            "city": "oceano",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93475",
+            "city": "oceano",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92049",
+            "city": "oceanside",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92051",
+            "city": "oceanside",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92052",
+            "city": "oceanside",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92054",
+            "city": "oceanside",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92056",
+            "city": "oceanside",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92057",
+            "city": "oceanside",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92058",
+            "city": "oceanside",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93023",
+            "city": "ojai",
+            "state": "ca",
+            "zone": "D"
+          },
+          {
+            "zipCode": "93024",
+            "city": "ojai",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91758",
+            "city": "ontario",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "91761",
+            "city": "ontario",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "91762",
+            "city": "ontario",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "91764",
+            "city": "ontario",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92856",
+            "city": "orange",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92857",
+            "city": "orange",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92859",
+            "city": "orange",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92862",
+            "city": "orange",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92863",
+            "city": "orange",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92864",
+            "city": "orange",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92865",
+            "city": "orange",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92866",
+            "city": "orange",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92867",
+            "city": "orange",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92868",
+            "city": "orange",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92869",
+            "city": "orange",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92368",
+            "city": "oro grande",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93030",
+            "city": "oxnard",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93031",
+            "city": "oxnard",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93032",
+            "city": "oxnard",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93033",
+            "city": "oxnard",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93034",
+            "city": "oxnard",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93035",
+            "city": "oxnard",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93036",
+            "city": "oxnard",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90272",
+            "city": "pacific palisades",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91331",
+            "city": "pacoima",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91333",
+            "city": "pacoima",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91334",
+            "city": "pacoima",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92059",
+            "city": "pala",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92211",
+            "city": "palm desert",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92255",
+            "city": "palm desert",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92260",
+            "city": "palm desert",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92261",
+            "city": "palm desert",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92262",
+            "city": "palm springs",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92263",
+            "city": "palm springs",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92264",
+            "city": "palm springs",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93550",
+            "city": "palmdale",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93551",
+            "city": "palmdale",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93552",
+            "city": "palmdale",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93590",
+            "city": "palmdale",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93591",
+            "city": "palmdale",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93599",
+            "city": "palmdale",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92060",
+            "city": "palomar mountain",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90274",
+            "city": "palos verdes peninsula",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91402",
+            "city": "panorama city",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91412",
+            "city": "panorama city",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90723",
+            "city": "paramount",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92267",
+            "city": "parker dam",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91101",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91102",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91103",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91104",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91105",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91106",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91107",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91109",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91110",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91114",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91115",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91116",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91117",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91121",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91123",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91124",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91125",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91126",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91129",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91182",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91184",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91185",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91188",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91189",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91199",
+            "city": "pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "93446",
+            "city": "paso robles",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93447",
+            "city": "paso robles",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92369",
+            "city": "patton",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92061",
+            "city": "pauma valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93553",
+            "city": "pearblossom",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92570",
+            "city": "perris",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "92571",
+            "city": "perris",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "92572",
+            "city": "perris",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "92599",
+            "city": "perris",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "92570",
+            "city": "perris ",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "92571",
+            "city": "perris ",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "92329",
+            "city": "phelan",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92371",
+            "city": "phelan",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90660",
+            "city": "pico rivera",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90661",
+            "city": "pico rivera",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90662",
+            "city": "pico rivera",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91962",
+            "city": "pine valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92372",
+            "city": "pinon hills",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92268",
+            "city": "pioneertown",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93040",
+            "city": "piru",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93448",
+            "city": "pismo beach",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93449",
+            "city": "pismo beach",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92870",
+            "city": "placentia",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92871",
+            "city": "placentia",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "90293",
+            "city": "playa del rey",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90296",
+            "city": "playa del rey",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90094",
+            "city": "playa vista ",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "93042",
+            "city": "point mugu nawc",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91766",
+            "city": "pomona",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "91767",
+            "city": "pomona",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "91768",
+            "city": "pomona",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "91769",
+            "city": "pomona",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "93041",
+            "city": "port hueneme",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93044",
+            "city": "port hueneme",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93043",
+            "city": "port hueneme cbc base",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91326",
+            "city": "porter ranch",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91963",
+            "city": "potrero",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92064",
+            "city": "poway",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92074",
+            "city": "poway",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92587",
+            "city": "quail valley ",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92065",
+            "city": "ramona",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92066",
+            "city": "ranchita",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91729",
+            "city": "rancho cucamonga",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "91730",
+            "city": "rancho cucamonga",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "91739",
+            "city": "rancho cucamonga",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "91701",
+            "city": "rancho cucamonga ",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "91737",
+            "city": "rancho cucamonga ",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92270",
+            "city": "rancho mirage",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90275",
+            "city": "rancho palos verdes",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92067",
+            "city": "rancho santa fe",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92091",
+            "city": "rancho santa fe",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92688",
+            "city": "rancho santa margarita",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "92373",
+            "city": "redlands",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92374",
+            "city": "redlands",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92375",
+            "city": "redlands",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "90277",
+            "city": "redondo beach",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90278",
+            "city": "redondo beach",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "91335",
+            "city": "reseda",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91337",
+            "city": "reseda",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92376",
+            "city": "rialto",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92377",
+            "city": "rialto",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92378",
+            "city": "rimforest",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92501",
+            "city": "riverside",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92502",
+            "city": "riverside",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92503",
+            "city": "riverside",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92504",
+            "city": "riverside",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92505",
+            "city": "riverside",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92506",
+            "city": "riverside",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92507",
+            "city": "riverside",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92508",
+            "city": "riverside",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92509",
+            "city": "riverside",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92513",
+            "city": "riverside",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92514",
+            "city": "riverside",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92515",
+            "city": "riverside",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92516",
+            "city": "riverside",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92517",
+            "city": "riverside",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92519",
+            "city": "riverside",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92521",
+            "city": "riverside",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92522",
+            "city": "riverside",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "91770",
+            "city": "rosemead",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91771",
+            "city": "rosemead",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91772",
+            "city": "rosemead",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91748",
+            "city": "rowland heights",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92382",
+            "city": "running springs",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92401",
+            "city": "san bernardino",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92402",
+            "city": "san bernardino",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92403",
+            "city": "san bernardino",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92404",
+            "city": "san bernardino",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92405",
+            "city": "san bernardino",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92406",
+            "city": "san bernardino",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92407",
+            "city": "san bernardino",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92408",
+            "city": "san bernardino",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92410",
+            "city": "san bernardino",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92411",
+            "city": "san bernardino",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92413",
+            "city": "san bernardino",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92415",
+            "city": "san bernardino",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92418",
+            "city": "san bernardino",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92423",
+            "city": "san bernardino",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92427",
+            "city": "san bernardino",
+            "state": "ca",
+            "zone": "G"
+          },
+          {
+            "zipCode": "92672",
+            "city": "san clemente",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "92673",
+            "city": "san clemente",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "92674",
+            "city": "san clemente",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "92101",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92102",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92103",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92104",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92105",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92106",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92107",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92108",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92109",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92110",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92111",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92112",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92113",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92114",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92115",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92116",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92117",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92119",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92120",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92121",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92122",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92123",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92124",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92126",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92127",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92128",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92129",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92130",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92131",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92132",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92134",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92135",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92136",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92137",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92138",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92139",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92140",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92142",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92145",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92147",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92149",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92150",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92152",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92153",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92154",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92155",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92158",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92159",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92160",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92161",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92163",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92165",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92166",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92167",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92168",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92169",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92170",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92171",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92172",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92174",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92175",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92176",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92177",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92179",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92182",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92186",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92187",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92190",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92191",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92192",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92193",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92195",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92196",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92197",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92198",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92199",
+            "city": "san diego",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92101",
+            "city": "san diego ",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92108",
+            "city": "san diego ",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91773",
+            "city": "san dimas",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "91340",
+            "city": "san fernando",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91341",
+            "city": "san fernando",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91775",
+            "city": "san gabriel",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91776",
+            "city": "san gabriel",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91778",
+            "city": "san gabriel",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92581",
+            "city": "san jacinto",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92582",
+            "city": "san jacinto",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92583",
+            "city": "san jacinto",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92675",
+            "city": "san juan capistrano",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "92693",
+            "city": "san juan capistrano",
+            "state": "ca",
+            "zone": "F"
+          },
+          {
+            "zipCode": "93401",
+            "city": "san luis obispo",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93403",
+            "city": "san luis obispo",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93405",
+            "city": "san luis obispo",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93406",
+            "city": "san luis obispo",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93407",
+            "city": "san luis obispo",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93408",
+            "city": "san luis obispo",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93409",
+            "city": "san luis obispo",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92068",
+            "city": "san luis rey",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92069",
+            "city": "san marcos",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92078",
+            "city": "san marcos",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92079",
+            "city": "san marcos",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92096",
+            "city": "san marcos",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91108",
+            "city": "san marino",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91118",
+            "city": "san marino",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "93451",
+            "city": "san miguel",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90731",
+            "city": "san pedro",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90732",
+            "city": "san pedro",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90733",
+            "city": "san pedro",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90734",
+            "city": "san pedro",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "93452",
+            "city": "san simeon",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92143",
+            "city": "san ysidro",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92173",
+            "city": "san ysidro",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92701",
+            "city": "santa ana",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92702",
+            "city": "santa ana",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92703",
+            "city": "santa ana",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92704",
+            "city": "santa ana",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92705",
+            "city": "santa ana",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92706",
+            "city": "santa ana",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92707",
+            "city": "santa ana",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92711",
+            "city": "santa ana",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92712",
+            "city": "santa ana",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92735",
+            "city": "santa ana",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92799",
+            "city": "santa ana",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "93101",
+            "city": "santa barbara",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93102",
+            "city": "santa barbara",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93103",
+            "city": "santa barbara",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93105",
+            "city": "santa barbara",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93106",
+            "city": "santa barbara",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93107",
+            "city": "santa barbara",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93108",
+            "city": "santa barbara",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93109",
+            "city": "santa barbara",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93110",
+            "city": "santa barbara",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93111",
+            "city": "santa barbara",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93120",
+            "city": "santa barbara",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93121",
+            "city": "santa barbara",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93130",
+            "city": "santa barbara",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93140",
+            "city": "santa barbara",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93150",
+            "city": "santa barbara",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93160",
+            "city": "santa barbara",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93190",
+            "city": "santa barbara",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91350",
+            "city": "santa clarita",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91380",
+            "city": "santa clarita",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91382",
+            "city": "santa clarita",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91383",
+            "city": "santa clarita",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91390",
+            "city": "santa clarita",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90670",
+            "city": "santa fe springs",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90671",
+            "city": "santa fe springs",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "93453",
+            "city": "santa margarita",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93454",
+            "city": "santa maria",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93455",
+            "city": "santa maria",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93456",
+            "city": "santa maria",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93457",
+            "city": "santa maria",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93458",
+            "city": "santa maria",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90401",
+            "city": "santa monica",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90402",
+            "city": "santa monica",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90403",
+            "city": "santa monica",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90404",
+            "city": "santa monica",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90405",
+            "city": "santa monica",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90406",
+            "city": "santa monica",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90407",
+            "city": "santa monica",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90408",
+            "city": "santa monica",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90409",
+            "city": "santa monica",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90410",
+            "city": "santa monica",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90411",
+            "city": "santa monica",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "93060",
+            "city": "santa paula",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93061",
+            "city": "santa paula",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93460",
+            "city": "santa ynez",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92070",
+            "city": "santa ysabel",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92071",
+            "city": "santee",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92072",
+            "city": "santee",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90740",
+            "city": "seal beach",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "93461",
+            "city": "shandon",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "91403",
+            "city": "sherman oaks",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91413",
+            "city": "sherman oaks",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91423",
+            "city": "sherman oaks",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91495",
+            "city": "sherman oaks",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91024",
+            "city": "sierra madre",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91025",
+            "city": "sierra madre",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90755",
+            "city": "signal hill",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92676",
+            "city": "silverado",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93062",
+            "city": "simi valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93063",
+            "city": "simi valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93065",
+            "city": "simi valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93094",
+            "city": "simi valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93099",
+            "city": "simi valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92385",
+            "city": "skyforest",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92075",
+            "city": "solana beach",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93463",
+            "city": "solvang",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93464",
+            "city": "solvang",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93066",
+            "city": "somis",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91733",
+            "city": "south el monte",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "90280",
+            "city": "south gate",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "91030",
+            "city": "south pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91031",
+            "city": "south pasadena",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91976",
+            "city": "spring valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91977",
+            "city": "spring valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91978",
+            "city": "spring valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91979",
+            "city": "spring valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90680",
+            "city": "stanton",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "91381",
+            "city": "stevenson ranch",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91604",
+            "city": "studio city",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91614",
+            "city": "studio city",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92386",
+            "city": "sugarloaf",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93067",
+            "city": "summerland",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92585",
+            "city": "sun city",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92586",
+            "city": "sun city",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92587",
+            "city": "sun city",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91352",
+            "city": "sun valley",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91353",
+            "city": "sun valley",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91040",
+            "city": "sunland",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91041",
+            "city": "sunland",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90742",
+            "city": "sunset beach",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90743",
+            "city": "surfside",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91342",
+            "city": "sylmar",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91392",
+            "city": "sylmar",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91356",
+            "city": "tarzana",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91357",
+            "city": "tarzana",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91980",
+            "city": "tecate",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91987",
+            "city": "tecate",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92589",
+            "city": "temecula",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92590",
+            "city": "temecula",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92591",
+            "city": "temecula",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92592",
+            "city": "temecula",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92593",
+            "city": "temecula",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91780",
+            "city": "temple city",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "93465",
+            "city": "templeton",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92274",
+            "city": "thermal",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91358",
+            "city": "thousand oaks",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91360",
+            "city": "thousand oaks",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91361",
+            "city": "thousand oaks",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91362",
+            "city": "thousand oaks",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92276",
+            "city": "thousand palms",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91610",
+            "city": "toluca lake",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90290",
+            "city": "topanga",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90501",
+            "city": "torrance",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90502",
+            "city": "torrance",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90503",
+            "city": "torrance",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90504",
+            "city": "torrance",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90505",
+            "city": "torrance",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90506",
+            "city": "torrance",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90507",
+            "city": "torrance",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90508",
+            "city": "torrance",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90509",
+            "city": "torrance",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90510",
+            "city": "torrance",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "92678",
+            "city": "trabuco canyon",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92679",
+            "city": "trabuco canyon",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93562",
+            "city": "trona",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93592",
+            "city": "trona",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91042",
+            "city": "tujunga",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91043",
+            "city": "tujunga",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92780",
+            "city": "tustin",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92781",
+            "city": "tustin",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92782",
+            "city": "tustin",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92277",
+            "city": "twentynine palms",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92278",
+            "city": "twentynine palms",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92391",
+            "city": "twin peaks",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91608",
+            "city": "universal city",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "91784",
+            "city": "upland",
+            "state": "ca",
+            "zone": "D"
+          },
+          {
+            "zipCode": "91785",
+            "city": "upland",
+            "state": "ca",
+            "zone": "D"
+          },
+          {
+            "zipCode": "91786",
+            "city": "upland",
+            "state": "ca",
+            "zone": "D"
+          },
+          {
+            "zipCode": "91354",
+            "city": "valencia",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91355",
+            "city": "valencia",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91385",
+            "city": "valencia",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92082",
+            "city": "valley center",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91607",
+            "city": "valley village",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91617",
+            "city": "valley village",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93563",
+            "city": "valyermo",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91401",
+            "city": "van nuys",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91404",
+            "city": "van nuys",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91405",
+            "city": "van nuys",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91406",
+            "city": "van nuys",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91407",
+            "city": "van nuys",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91408",
+            "city": "van nuys",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91409",
+            "city": "van nuys",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91410",
+            "city": "van nuys",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91411",
+            "city": "van nuys",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91470",
+            "city": "van nuys",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91482",
+            "city": "van nuys",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91496",
+            "city": "van nuys",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91499",
+            "city": "van nuys",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90291",
+            "city": "venice",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "90294",
+            "city": "venice",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "93001",
+            "city": "ventura",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93002",
+            "city": "ventura",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93003",
+            "city": "ventura",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93004",
+            "city": "ventura",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93005",
+            "city": "ventura",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93006",
+            "city": "ventura",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93007",
+            "city": "ventura",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "93009",
+            "city": "ventura",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91046",
+            "city": "verdugo city",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92392",
+            "city": "victorville",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92393",
+            "city": "victorville",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92394",
+            "city": "victorville",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92395",
+            "city": "victorville",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92280",
+            "city": "vidal",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92861",
+            "city": "villa park",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92081",
+            "city": "vista",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92083",
+            "city": "vista",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92084",
+            "city": "vista",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92085",
+            "city": "vista",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91788",
+            "city": "walnut",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "91789",
+            "city": "walnut",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92086",
+            "city": "warner springs",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91790",
+            "city": "west covina",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91791",
+            "city": "west covina",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91792",
+            "city": "west covina",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91793",
+            "city": "west covina",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91307",
+            "city": "west hills",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91308",
+            "city": "west hills",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90069",
+            "city": "west hollywood",
+            "state": "ca",
+            "zone": "A"
+          },
+          {
+            "zipCode": "91359",
+            "city": "westlake village",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91361",
+            "city": "westlake village",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91361",
+            "city": "westlake village ",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92683",
+            "city": "westminster",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92684",
+            "city": "westminster",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92685",
+            "city": "westminster",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92282",
+            "city": "whitewater",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90601",
+            "city": "whittier",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90602",
+            "city": "whittier",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90603",
+            "city": "whittier",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90604",
+            "city": "whittier",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90605",
+            "city": "whittier",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90606",
+            "city": "whittier",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90607",
+            "city": "whittier",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90608",
+            "city": "whittier",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90609",
+            "city": "whittier",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90610",
+            "city": "whittier",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92595",
+            "city": "wildomar",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "90744",
+            "city": "wilmington",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "90748",
+            "city": "wilmington",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92596",
+            "city": "winchester",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91306",
+            "city": "winnetka",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91396",
+            "city": "winnetka",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "91364",
+            "city": "woodland hills",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91365",
+            "city": "woodland hills",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91367",
+            "city": "woodland hills",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "91371",
+            "city": "woodland hills",
+            "state": "ca",
+            "zone": "B"
+          },
+          {
+            "zipCode": "92397",
+            "city": "wrightwood",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92398",
+            "city": "yermo",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92885",
+            "city": "yorba linda",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92886",
+            "city": "yorba linda",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92887",
+            "city": "yorba linda",
+            "state": "ca",
+            "zone": "C"
+          },
+          {
+            "zipCode": "92399",
+            "city": "yucaipa",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92284",
+            "city": "yucca valley",
+            "state": "ca",
+            "zone": ""
+          },
+          {
+            "zipCode": "92286",
+            "city": "yucca valley",
+            "state": "ca",
+            "zone": ""
+          }
+        ],
         "weightRates": [
           {
             "tier": "1",
@@ -80,6 +7215,39 @@
             "rates": [
               {
                 "zone": "A",
+                "rate": 7.78
+              },
+              {
+                "zone": "B",
+                "rate": 8.14
+              },
+              {
+                "zone": "C",
+                "rate": 8.44
+              },
+              {
+                "zone": "E",
+                "rate": 8.63
+              },
+              {
+                "zone": "F",
+                "rate": 8.63
+              },
+              {
+                "zone": "G",
+                "rate": 8.63
+              }
+            ],
+            "ranges": [
+              100,
+              1000
+            ]
+          },
+          {
+            "tier": "3",
+            "rates": [
+              {
+                "zone": "A",
                 "rate": 6.49
               },
               {
@@ -104,12 +7272,12 @@
               }
             ],
             "ranges": [
-              100,
-              1000
+              1000,
+              3000
             ]
           },
           {
-            "tier": "3",
+            "tier": "4",
             "rates": [
               {
                 "zone": "A",
@@ -137,12 +7305,12 @@
               }
             ],
             "ranges": [
-              1000,
-              3000
+              3000,
+              5000
             ]
           },
           {
-            "tier": "4",
+            "tier": "5",
             "rates": [
               {
                 "zone": "A",
@@ -170,8 +7338,8 @@
               }
             ],
             "ranges": [
-              3000,
-              5000
+              5000,
+              40000
             ]
           }
         ],
@@ -262,16 +7430,16 @@
     ],
     "additionalCharges": [
       {
-        "name": "2 Man per hour with 2 hr min",
-        "charge": 35
+        "charge": 35,
+        "description": "2 Man wait time per hour"
       },
       {
-        "name": "Waiting time per hour",
-        "charge": 35
+        "charge": 35,
+        "description": "waiting time per hour after free time expires"
       },
       {
-        "name": "Hotel/Hospital/School delivery",
-        "charge": 10
+        "charge": 10,
+        "description": "Inside delivery per 20 LB"
       }
     ]
   },

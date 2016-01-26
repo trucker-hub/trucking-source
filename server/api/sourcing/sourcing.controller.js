@@ -8,22 +8,10 @@ var freightCalculator = require('./freight-calc');
 
 var calcCosts = function(load, company) {
   if(load.loadType=='FTL') {
-    return ftlCalculator.calc(load, company);
+    return ftlCalculator.quote(load, company);
   }else {
-    return freightCalculator.calc(load, company);
+    return freightCalculator.quote(load, company);
   }
-};
-
-var getAdditionalCharges = function(type, company) {
-  var result = [];
-  if(type=='FTL') {
-    result = company.ftl.additionalCharges;
-  }else if(type=='LTL'){
-    result = company.ltl.additionalCharges;
-  }else if (type=='AIR') {
-    result = company.air.additionalCharges;
-  }
-  return result;
 };
 
 
@@ -64,7 +52,7 @@ exports.index = function(req, res) {
         name: company.name,
         totalCost: cost.totalCost,
         costItems:cost.costItems,
-        additionalCharges: getAdditionalCharges(load.loadType, company),
+        additionalCharges: cost.additionalCharges,
         time:2,
         contact: company.phone,
         location: company.location,

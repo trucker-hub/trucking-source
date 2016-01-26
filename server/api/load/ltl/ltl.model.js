@@ -84,7 +84,7 @@ var LtlLoadSchema = new Schema({
       description: String,
       adjustment: {type: Number, default:0}
     }],
-    additionalCharges: [{name: String,charge: Number }]
+    additionalCharges: [{description: String,charge: Number }]
   },
 
   invoice: { referenceNumber: String },

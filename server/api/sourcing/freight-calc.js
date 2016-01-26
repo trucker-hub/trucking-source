@@ -7,6 +7,12 @@ var _ = require('lodash');
 var utilCalculator = require('./util-calc');
 var zoneCostCalculator = require('./zone-rate-calc');
 
+
+var populateAdditionalCharges = function(result, company, type, matchRate, suffix) {
+  result.push.apply(result, utilCalculator.getAdditionalCharges(type, company));
+  result.push.apply(result, utilCalculator.getDropOffCharges(matchRate, suffix));
+};
+
 var populateServiceCharges = function(result, services, freight, suffix) {
   var index;
 
@@ -47,8 +53,14 @@ var zipCodeCityCosts = function(tariff, matchEntry) {
   return result;
 };
 
-exports.calc = function(load, company) {
+exports.quote = function(load, company) {
   var result = [];
+  var additionalCharges = [];
+  var errorResult = {
+    totalCost: -1,
+    costItems: [],
+    additionalCharges: []
+  };
 
   var zipCode = load.shipTo.location.zipCode;
   var city = load.shipTo.location.city;
@@ -59,27 +71,31 @@ exports.calc = function(load, company) {
   if(matchEntry) {
     console.log("found a matching entry for zipCode " + zipCode + "=" + matchEntry.zone);
   }else {
-    return {
-      totalCost: -1,
-      costItems: []
-    };
+    return errorResult;
   }
-
   console.log("company rate basis is " + freight.rateBasis + " for company:" + company.name);
   if(freight.rateBasis=='zone') {
-    result = result.concat(zoneCostCalculator.calc(freight, load, matchEntry));
+    var matchZone = zoneCostCalculator.getZoneEntry(freight, matchEntry);
+    if(matchZone) {
+      result = result.concat(zoneCostCalculator.computeZoneBasedCost(freight, load, matchZone));
+      populateAdditionalCharges(additionalCharges, company, load.loadType, matchZone, "shipment");
+    } else {
+      return errorResult;
+    }
   }else {
     result = result.concat(zipCodeCityCosts(freight, matchEntry));
+    populateAdditionalCharges(additionalCharges, company, load.loadType, matchEntry, "shipment");
   }
 
   //service charges and drop off charges
-  populateServiceCharges(result, load.shipTo.services, freight, " Delivery");
-  populateServiceCharges(result, load.shipFrom.services, freight," Pickup");
+  populateServiceCharges(additionalCharges, load.shipTo.services, freight, " Delivery");
+  populateServiceCharges(additionalCharges, load.shipFrom.services, freight," Pickup");
 
   var totalCost = result.reduce(function(total, item) {return total + item.charge;}, 0);
 
   return {
     totalCost: totalCost,
-    costItems: result
+    costItems: result,
+    additionalCharges: additionalCharges
   };
 };

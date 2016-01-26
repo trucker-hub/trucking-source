@@ -121,7 +121,7 @@ angular.module('servicesApp', [
         if (!charges || charges.length==0) { return 'N/A'; }
 
         var str = charges.map(function(x) {
-          return "$"+x.charge + ":" + x.name;
+          return "$"+x.charge + ":" + x.description;
         }).join(";  ");
         if(str.length > 30) {
           str = str.substring(0,28);

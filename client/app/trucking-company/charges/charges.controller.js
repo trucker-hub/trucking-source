@@ -14,7 +14,7 @@ angular.module('servicesApp')
 
         $scope.add = function() {
             $scope.charges.push({
-                name: $scope.name,
+                description: $scope.description,
                 charge: $scope.charge
             });
             $scope.name = '';
@@ -25,13 +25,13 @@ angular.module('servicesApp')
             var list = [];
             for(var i=0; i < $scope.charges.length; ++i) {
                 var entry = $scope.charges[i];
-                if(entry.name && entry.charge > 0.0) {
+                if(entry.description && entry.charge > 0.0) {
                     list.push(entry);
                 }
             }
-            if($scope.name && $scope.charge > 0.0) {
+            if($scope.description && $scope.charge > 0.0) {
                 list.push({
-                    name: $scope.name,
+                    description: $scope.description,
                     charge: $scope.charge
                 });
             }

@@ -323,7 +323,7 @@ TruckingCompany.find({}).remove(function () {
                 liftGateCharge: 30,
                 insideCharge: 15,
                 tradeShowCharge: 20,
-                additionalCharges: [{ name: "Call before delivery",  charge: 10 }],
+                additionalCharges: [{ description: "Call before delivery",  charge: 10 }],
                 regions: [ { state: "CA", county: "Los Angeles County" }],
                 rateDef: {
                     byZone: {
@@ -447,7 +447,7 @@ TruckingCompany.find({}).remove(function () {
                 liftGateCharge: 30,
                 insideCharge: 15,
                 tradeShowCharge: 20,
-                additionalCharges: [{ name: "Call before delivery",  charge: 10 }],
+                additionalCharges: [{ description: "Call before delivery",  charge: 10 }],
                 regions: [ { state: "CA", county: "Los Angeles County" }],
                 rateDef: {
                     byZone: {
@@ -651,10 +651,10 @@ TruckingCompany.find({}).remove(function () {
                 insideCharge: 15,
                 tradeShowCharge: 20,
                 additionalCharges: [
-                    { name: "Call before delivery", charge: 10 },
-                    { name: "Wait time charge (Free wait time 1 hr)", charge: 50 },
-                    { name: "Extra stop", charge: 75 },
-                    { name: "2 Men delivery", charge: 35 }
+                    { description: "Call before delivery", charge: 10 },
+                    { description: "Wait time charge (Free wait time 1 hr)", charge: 50 },
+                    { description: "Extra stop", charge: 75 },
+                    { description: "2 Men delivery", charge: 35 }
 
                 ],
                 regions: [ { state: "CA", county: "Los Angeles County" } ],

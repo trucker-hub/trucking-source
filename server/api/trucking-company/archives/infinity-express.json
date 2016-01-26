@@ -25903,24 +25903,20 @@
     ],
     "additionalCharges": [
       {
-        "name": "Storage fee",
-        "charge": 20
+        "charge": 30,
+        "description": "waiting time per hour after free time expires (at terminal)"
       },
       {
-        "name": "waiting time at terminal after the first free hour",
-        "charge": 30
+        "charge": 35,
+        "description": "waiting time per hour after free time expires (at customer)"
       },
       {
-        "name": "waiting time at customer's site after the first free hour",
-        "charge": 35
+        "charge": 65,
+        "description": "residential delivery"
       },
       {
-        "name": "residential delivery",
-        "charge": 65
-      },
-      {
-        "name": "Dry run per shipment",
-        "charge": 35
+        "charge": 35,
+        "description": "dry run"
       }
     ]
   }

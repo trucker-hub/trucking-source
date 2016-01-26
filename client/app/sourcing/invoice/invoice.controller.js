@@ -32,7 +32,7 @@ angular.module('servicesApp')
       $uibModalInstance.close();
     };
 
-    $scope.cancel = function () {
+    $scope.close = function () {
       $uibModalInstance.dismiss('cancel');
     };
 

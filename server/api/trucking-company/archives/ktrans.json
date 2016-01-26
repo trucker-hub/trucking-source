@@ -11598,8 +11598,8 @@
     ],
     "additionalCharges": [
       {
-        "name": "Waiting time per hour after the free time expires",
-        "charge": 45
+        "charge": 45,
+        "description": "waiting time per hour after free time"
       }
     ]
   }

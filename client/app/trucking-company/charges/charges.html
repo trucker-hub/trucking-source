@@ -13,7 +13,7 @@
         </tr>
         <tr ng-repeat="c in charges track by $index">
             <td>{{$index+1}}:</td>
-            <td><input type="text" ng-model="c.name" class="form-control" required></td>
+            <td><input type="text" ng-model="c.description" class="form-control" required></td>
             <td>
                 <div class="input-group">
                     <div class="input-group-addon">$</div>
@@ -26,7 +26,7 @@
         </tr>
         <tr>
             <td>{{charges.length+1}}</td>
-            <td><input type="text" ng-model="name" class="form-control"></td>
+            <td><input type="text" ng-model="description" class="form-control"></td>
             <td>                <div class="input-group">
                 <div class="input-group-addon">$</div>
                 <input  type="number" class="form-control" size="5"

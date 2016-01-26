@@ -71,7 +71,7 @@ var TruckingCompanySchema = new Schema({
   ftl: {
     fuelSurcharge: Number,
     additionalCharges: [{
-      name: String,
+      description: String,
       charge: Number
     }],
     regions: [{
@@ -109,7 +109,7 @@ var TruckingCompanySchema = new Schema({
     tradeShowCharge: Number,
     upstairsCharge: Number,
     additionalCharges: [{
-      name: String,
+      description: String,
       charge: Number
     }],
     regions: [{
@@ -134,7 +134,7 @@ var TruckingCompanySchema = new Schema({
     tradeShowCharge: Number,
     upstairsCharge: Number,
     additionalCharges: [{
-      name: String,
+      description: String,
       charge: Number
     }],
     regions: [{
