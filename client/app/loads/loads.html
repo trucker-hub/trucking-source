@@ -33,7 +33,7 @@
                 <div class="col-md-1"></div>
             </div>
             <br>
-            <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover table-condensed">
+            <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover table-striped">
                 <tr ng-repeat="load in $data">
                     <td class="col-md-3" data-title="'Consignee'" filter="{ 'who': 'text' }">
                         <load-type type="load.loadType"></load-type> {{load.who}}

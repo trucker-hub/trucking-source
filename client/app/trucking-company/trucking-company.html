@@ -5,7 +5,7 @@
     <uib-tab>
       <uib-tab-heading><span>Companies <span class="badge">{{allCompanies.length}}</span></span></uib-tab-heading>
       <div class="panel panel-default">
-        <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover">
+        <table ng-table="tableParams" show-filter="true" class="table table-responsive table-hover table-striped">
           <tr ng-repeat="company in $data">
             <td><span ng-class="company.favorite? 'glyphicon glyphicon-star':'glyphicon glyphicon-star-empty' " aria-hidden="true" ng-click="toggleFavorite(company._id)"></span></td>
             <td data-title="'Name'" filter="{ 'name': 'text' }">
