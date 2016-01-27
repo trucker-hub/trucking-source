@@ -77,14 +77,24 @@ exports.quote = function(load, company) {
   if(freight.rateBasis=='zone') {
     var matchZone = zoneCostCalculator.getZoneEntry(freight, matchEntry);
     if(matchZone) {
-      result = result.concat(zoneCostCalculator.computeZoneBasedCost(freight, load, matchZone));
-      populateAdditionalCharges(additionalCharges, company, load.loadType, matchZone, "shipment");
+      var zoneCost = zoneCostCalculator.computeZoneBasedCost(freight, load, matchZone);
+      if(!zoneCost) {
+        return errorResult;
+      }else {
+        result = result.concat(zoneCost);
+        populateAdditionalCharges(additionalCharges, company, load.loadType, matchZone, "shipment");
+      }
     } else {
       return errorResult;
     }
   }else {
-    result = result.concat(zipCodeCityCosts(freight, matchEntry));
-    populateAdditionalCharges(additionalCharges, company, load.loadType, matchEntry, "shipment");
+    var zipCityCost = zipCodeCityCosts(freight, matchEntry);
+    if(!zipCityCost) {
+      return errorResult;
+    }else {
+      result = result.concat(zipCityCost);
+      populateAdditionalCharges(additionalCharges, company, load.loadType, matchEntry, "shipment");
+    }
   }
 
   //service charges and drop off charges

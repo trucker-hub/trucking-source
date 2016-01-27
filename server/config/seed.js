@@ -117,7 +117,7 @@ LtlLoad.find({}).remove(function() {
                 services: [{service: 'Inside'}, {service: 'LifeGate'}]
             },
             lines: [{
-                weight: 200,
+                weight: 2000,
                 quantity: 10,
                 packaging:"Cartons",
                 length: 10,

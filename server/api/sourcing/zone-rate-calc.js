@@ -3,9 +3,10 @@ var weightCalculator = require('./util-calc');
 
 var findZoneRate = function(rateTable, weight, zone) {
   var index;
+  var row;
   for(index=0; index < rateTable.length; ++index) {
-    var row = rateTable[index];
-    if(row.ranges[0] <= weight && row.ranges[1] >= weight ) {
+    row = rateTable[index];
+    if(row.ranges[0] <= weight && row.ranges[1] > weight ) {
       return _.find(row.rates, {zone:zone});
     }
   }
