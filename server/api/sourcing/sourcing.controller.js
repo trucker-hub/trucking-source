@@ -18,6 +18,7 @@ var calcCosts = function(load, company) {
 // Get list of sourcings
 exports.index = function(req, res) {
 
+  var startTime = Date.now();
   console.log("calling index api with req = " + req);
 
   var load = req.body;
@@ -63,9 +64,12 @@ exports.index = function(req, res) {
       return 0;
     });
 
+    var time = Date.now() - startTime;
+    console.log("sourcing take " + time  + " milliseconds");
     var cleaned = sources.filter(function(source) {
       return source.totalCost > 0;
     });
+    cleaned.time = time;
     return res.status(200).json(cleaned);
   });
 };

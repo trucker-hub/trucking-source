@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('TruckingCompanyCtrl', function($rootScope, $scope, $http, $filter, ngTableParams, truckingCompany) {
+  .controller('TruckingCompanyCtrl', function($scope, $http, $filter, ngTableParams, truckingCompany) {
 
     $scope.companiesOpened = truckingCompany.companiesOpened;
 
