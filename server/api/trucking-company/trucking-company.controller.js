@@ -127,7 +127,7 @@ exports.extractOne = function(req, res) {
 
 // Get list of trucking-companys
 exports.index = function(req, res) {
-  TruckingCompany.find(function (err, truckingCompanys) {
+  TruckingCompany.find({}, '-ftl -ltl -air', function (err, truckingCompanys) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(truckingCompanys);
   });

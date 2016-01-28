@@ -3,38 +3,24 @@
 angular.module('servicesApp')
   .controller('TruckingCompanyCtrl', function($rootScope, $scope, $http, $filter, ngTableParams, truckingCompany) {
 
-    $rootScope.companiesOpened = $rootScope.companiesOpened || {};
+    $scope.companiesOpened = truckingCompany.companiesOpened;
 
     $scope.alerts = [];
 
-    $scope.allCompanies = truckingCompany.get() || [];
+    $scope.allCompanies = truckingCompany.get();
 
     var editCompanyFunc = function(id) {
       console.log("edit a company whose id is " + id);
-
-      var detail = $rootScope.companiesOpened[id];
-      if(detail) {
-        detail.active = true;
-        return;
-      }
-
-      var index;
-      for (index =0; index < $scope.allCompanies.length; ++index) {
-        var company = $scope.allCompanies[index];
-        if(company._id == id) {
-          $rootScope.companiesOpened[id] = {data:company, active:true};
-          return;
-        }
-      }
+      truckingCompany.editCompany(id);
     };
 
     $scope.cancel = function(company) {
       console.log("cancel company info " + company._id);
-      $scope.closeTab(company._id);
+      truckingCompany.doneEditing(company._id);
     };
 
     $scope.closeTab = function(id) {
-      delete $rootScope.companiesOpened[id];
+      truckingCompany.doneEditing(id);
     };
 
     $scope.archive = function() {
@@ -178,7 +164,7 @@ angular.module('servicesApp')
         });
     };
 
-    if(!truckingCompany.get()) {
+    if(truckingCompany.get().length == 0) {
       $scope.loadCompanies();
     }
   });

@@ -1,11 +1,50 @@
 'use strict';
 
 angular.module('servicesApp')
-  .service('truckingCompany', function ($http, $uibModal, ngProgressFactory) {
+  .service('truckingCompany', function ($http, $q, $uibModal, ngProgressFactory) {
 
     var vm = this;
     vm.progressbar = ngProgressFactory.createInstance();
-    this.fetch = function (callbackOK, callbackERR) {
+
+    vm.companiesOpened = vm.companiesOpened || {};
+
+    vm.list = [];
+
+    var editCompanyFunc = function(company) {
+      var id = company._id;
+      if(company.ftl) {
+        vm.companiesOpened[id] = {data:company, active:true};
+        return;
+      }else {
+        fetchDetailsPromise(company).then(function() {
+          vm.companiesOpened[id] = {data:company, active:true};
+        }).catch(function(response) {
+          console.log("can't get the detail" + response);
+        });
+      }
+    };
+
+    vm.editCompany = function(id) {
+      var detail = vm.companiesOpened[id];
+      if(detail) {
+        detail.active = true;
+        return;
+      }else {
+        for (var index =0; index < vm.list.length; ++index) {
+          var company = vm.list[index];
+          if(company._id == id) {
+            editCompanyFunc(company);
+            return;
+          }
+        }
+      }
+    };
+
+    vm.doneEditing = function(id) {
+      delete vm.companiesOpened[id];
+    };
+
+    vm.fetch = function (callbackOK, callbackERR) {
       vm.progressbar.start();
       $http.get("/api/trucking-companies").then(
         function (response) {
@@ -22,7 +61,31 @@ angular.module('servicesApp')
         });
     };
 
-    this.newOne = {
+    var fetchDetailsPromise = function (company) {
+      console.log("fetching settings before sourcing");
+      var deferred = $q.defer();
+      vm.progressbar.start();
+      $http.get("/api/trucking-companies/" + company._id).then(
+          function (response) {
+            //console.log(JSON.stringify(response.data));
+            var full = response.data;
+            company.ftl = full.ftl;
+            company.ltl = full.ltl;
+            company.air = full.air;
+            deferred.resolve(company);
+            vm.progressbar.complete();
+          },
+          function (response) {
+            console.log("ran into error " + response);
+            deferred.reject("can't get details for company=" + company.name);
+            vm.progressbar.stop();
+          });
+      return deferred.promise;
+    };
+
+
+
+    vm.newOne = {
       name: "",
       location: "",
       phone: "(999)999-9999",
@@ -65,7 +128,7 @@ angular.module('servicesApp')
       air: {}
     };
 
-    this.delete = function (company, callbackOK, callbackERR) {
+    vm.delete = function (company, callbackOK, callbackERR) {
       vm.progressbar.start();
       $http.delete('/api/trucking-companies/' + company._id).then(
         function (response) {
