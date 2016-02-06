@@ -25,7 +25,7 @@ angular.module('servicesApp')
         scope.change = function() {
 
           var raw = scope.info.location.raw;
-          console.log("google response " + JSON.stringify(raw));
+          //console.log("google response " + JSON.stringify(raw));
           if(!scope.info.location.raw) {
             return;
           }
@@ -50,7 +50,7 @@ angular.module('servicesApp')
           //        "lng": -118.09860700000002
           //  }
           //},
-          console.log("Google Location Coordinates = " + JSON.stringify(raw.geometry.location));
+          //console.log("Google Location Coordinates = " + JSON.stringify(raw.geometry.location));
 
           result.coordinates = [raw.geometry.location.lat(), raw.geometry.location.lng()];
           result.raw = raw;
