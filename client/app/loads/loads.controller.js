@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .controller('LoadsCtrl', function ($rootScope, $scope, $http, $filter, ngTableParams, loadService, sourcingService, ngProgressFactory) {
+  .controller('LoadsCtrl', function ($rootScope, $scope, $http, $filter, socket, ngTableParams, loadService, sourcingService, ngProgressFactory) {
 
     // a list contains LTL, FTL and Air
     $rootScope.loadsOpened = $rootScope.loadsOpened || {ftl: {}, ltl: {}, air: {}};
@@ -11,6 +11,12 @@ angular.module('servicesApp')
     $scope.searchCriteria = 'Today';
 
     $scope.filters = loadService.filters;
+
+
+    $scope.$on('$destroy', function () {
+      socket.unsyncUpdates('thing');
+    });
+
 
     $scope.editLoad = function (id, type) {
       loadService.editLoad(id, type);
@@ -73,7 +79,7 @@ angular.module('servicesApp')
     $scope.updateTable = function () {
       $scope.loads = loadService.getCombinedLoads();
 
-      //console.log("loads = " + JSON.stringify(loads));
+      console.log("loads = " + $scope.loads.length);
       $scope.tableParams.reload();
       $scope.progressbar.complete();
     };

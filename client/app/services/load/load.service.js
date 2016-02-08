@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('servicesApp')
-  .service('loadService', function ($http, $q, $rootScope, ngProgressFactory) {
+  .service('loadService', function ($http, $q, $rootScope, socket, ngProgressFactory) {
 
     var vm = this;
     vm.progressbar = ngProgressFactory.createInstance();
@@ -38,8 +38,8 @@ angular.module('servicesApp')
             function(response) {
               //console.log(JSON.stringify(response.data));
               vm.loads.ltl = response.data;
+              socket.syncUpdates('ltl', vm.loads.ltl, vm.loads.cb);
               deferred.resolve(vm.loads.ltl);
-
             },
             function(response) {
               deferred.reject(response);
@@ -60,6 +60,7 @@ angular.module('servicesApp')
             function(response) {
               //console.log(JSON.stringify(response.data));
               vm.loads.ftl = response.data;
+              socket.syncUpdates('ftl', vm.loads.ftl, vm.loads.cb);
               deferred.resolve(vm.loads.ftl);
             },
             function(response) {
@@ -76,7 +77,8 @@ angular.module('servicesApp')
       vm.progressbar.start();
       vm.loads = {
         ltl: [],
-        ftl: []
+        ftl: [],
+        cb: cbOK
       };
 
       console.log('fetch loads from the db');

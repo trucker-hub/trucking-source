@@ -13,12 +13,12 @@ exports.register = function(socket) {
   FtlLoad.schema.post('remove', function (doc) {
     onRemove(socket, doc);
   });
-}
+};
 
 function onSave(socket, doc, cb) {
-  socket.emit('emptyFtlLoad:save', doc);
+  socket.emit('ftl:save', doc);
 }
 
 function onRemove(socket, doc, cb) {
-  socket.emit('emptyFtlLoad:remove', doc);
+  socket.emit('ftl:remove', doc);
 }
