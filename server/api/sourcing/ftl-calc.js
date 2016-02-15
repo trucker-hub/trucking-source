@@ -25,15 +25,14 @@ var zipCodeCityCosts = function(freight, matchEntry, lineName) {
 };
 
 
-var containerCost = function(line, freight, lineName) {
-  var result = [];
+var addContainerCost = function(line, freight, lineName, baseCharges, additionalCharges) {
 
   var containerCharges = _.find(freight.sizeCharges, {containerSize:line.packaging});
 
   if(containerCharges) {
-    result.push({charge:containerCharges.pierPassFee ,    description: "Pier Pass Fee for " + lineName});
-    result.push({charge:containerCharges.cleanTruckFee ,  description: "Clean Truck Fee for " + lineName});
-    result.push({charge:containerCharges.congestionFee ,  description: "Congestion Fee for " + lineName});
+    additionalCharges.push({charge:containerCharges.pierPassFee ,    description: "Pier Pass Fee for " + lineName});
+    additionalCharges.push({charge:containerCharges.cleanTruckFee ,  description: "Clean Truck Fee for " + lineName});
+    additionalCharges.push({charge:containerCharges.congestionFee ,  description: "Congestion Fee for " + lineName});
     var containerWeightCharge = 0;
     for(var index=0; index < containerCharges.weightRanges.length; ++index) {
       var range = containerCharges.weightRanges[index];
@@ -43,15 +42,13 @@ var containerCost = function(line, freight, lineName) {
     }
 
     if(containerWeightCharge >0 ) {
-      result.push({charge:containerCharges.congestionFee , description: "Container " + containerCharges.containerSize + " extra weight charge for " + lineName});
+      baseCharges.push({charge:containerWeightCharge , description: "Container " + containerCharges.containerSize + " extra weight charge for " + lineName});
     }
   }
-  return result;
-
 };
 
 exports.quote = function(load, company) {
-  var result = [];
+  var baseCharges = [];
   var additionalCharges = [];
   var errorResult = {
     totalCost: -1,
@@ -85,19 +82,19 @@ exports.quote = function(load, company) {
   for(var i=0; i < load.lines.length; ++i) {
     var line = load.lines[i];
     var lineName = " line #" + (i+1);
-    result = result.concat(containerCost(line, freight, lineName));
+    addContainerCost(line, freight, lineName, baseCharges, additionalCharges);
     if(freight.rateBasis=='zone') {
-      result = result.concat(zoneCostCalculator.computeZoneBasedCost(freight, load, matchEntry, lineName));
+      baseCharges = baseCharges.concat(zoneCostCalculator.computeZoneBasedCost(freight, load, matchEntry, lineName));
     }else  {
-      result = result.concat(zipCodeCityCosts(freight, matchEntry, lineName));
+      baseCharges = baseCharges.concat(zipCodeCityCosts(freight, matchEntry, lineName));
     }
   }
 
-  var totalCost = result.reduce(function(total, item) {return total + item.charge;}, 0);
+  var totalCost = baseCharges.reduce(function(total, item) {return total + item.charge;}, 0);
 
   return {
     totalCost: totalCost,
-    costItems: result,
+    costItems: baseCharges,
     additionalCharges: additionalCharges
   };
 };

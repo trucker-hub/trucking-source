@@ -40,21 +40,21 @@ var populateServiceCharges = function(result, services, freight, suffix) {
   }
 };
 
-var zipCodeCityCosts = function(tariff, matchEntry) {
+var zipCodeCityCosts = function(tariff, matchEntry, baseCharges, additionalCharges) {
   var result = [];
-  result.push({charge: matchEntry.rate, description: "Basis rate"});
+  baseCharges.push({charge: matchEntry.rate, description: "Basis rate"});
   if(matchEntry.dropOffCharge >0.001) {
-    result.push({charge:matchEntry.dropOffCharge , description: "Drop Off Charge"});
+    additionalCharges.push({charge:matchEntry.dropOffCharge , description: "Drop Off Charge"});
   }
   var fuelSurcharge = (matchEntry.rate * tariff.fuelSurcharge);
   var fuelSurchargePercentage = tariff.fuelSurcharge;
-  result.push({charge: fuelSurcharge, description: "Fuel Surcharge " + fuelSurchargePercentage + "%"});
+  baseCharges.push({charge: fuelSurcharge, description: "Fuel Surcharge " + fuelSurchargePercentage + "%"});
 
   return result;
 };
 
 exports.quote = function(load, company) {
-  var result = [];
+  var baseCharges = [];
   var additionalCharges = [];
   var errorResult = {
     totalCost: -1,
@@ -81,31 +81,26 @@ exports.quote = function(load, company) {
       if(!zoneCost) {
         return errorResult;
       }else {
-        result = result.concat(zoneCost);
+        baseCharges = baseCharges.concat(zoneCost);
         populateAdditionalCharges(additionalCharges, company, load.loadType, matchZone, "shipment");
       }
     } else {
       return errorResult;
     }
   }else {
-    var zipCityCost = zipCodeCityCosts(freight, matchEntry);
-    if(!zipCityCost) {
-      return errorResult;
-    }else {
-      result = result.concat(zipCityCost);
-      populateAdditionalCharges(additionalCharges, company, load.loadType, matchEntry, "shipment");
-    }
+    var zipCityCost = zipCodeCityCosts(freight, matchEntry, baseCharges, additionalCharges);
+    populateAdditionalCharges(additionalCharges, company, load.loadType, matchEntry, "shipment");
   }
 
   //service charges and drop off charges
   populateServiceCharges(additionalCharges, load.shipTo.services, freight, " Delivery");
   populateServiceCharges(additionalCharges, load.shipFrom.services, freight," Pickup");
 
-  var totalCost = result.reduce(function(total, item) {return total + item.charge;}, 0);
+  var totalCost = baseCharges.reduce(function(total, item) {return total + item.charge;}, 0);
 
   return {
     totalCost: totalCost,
-    costItems: result,
+    costItems: baseCharges,
     additionalCharges: additionalCharges
   };
 };
