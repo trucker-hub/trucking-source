@@ -51,11 +51,12 @@ var FtlLoadSchema = new Schema({
     costItems: [{
       charge: Number,
       description: String,
-      adjustment: {type: Number, default:0}
+      adjustment: { type: Number, default:0 }
     }],
     additionalCharges: [{
       description: String,
-      charge: Number
+      charge: Number,
+      adjustment: { type: Number, default:0 }
     }]
   },
 

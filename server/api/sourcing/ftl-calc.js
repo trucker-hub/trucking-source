@@ -40,7 +40,6 @@ var addContainerCost = function(line, freight, lineName, baseCharges, additional
           containerWeightCharge = range.charge;
       }
     }
-
     if(containerWeightCharge >0 ) {
       baseCharges.push({charge:containerWeightCharge , description: "Container " + containerCharges.containerSize + " extra weight charge for " + lineName});
     }

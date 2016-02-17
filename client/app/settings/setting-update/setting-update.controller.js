@@ -6,6 +6,7 @@ angular.module('servicesApp')
 
     $scope.customer = customer;
 
+    $scope.sameFeeStructure = true;
 
     customerSettingService.getCustomerSettings(customer._id,
       function (settings) {
@@ -22,7 +23,7 @@ angular.module('servicesApp')
 
         function () {
           console.log("saved successfully " + $scope.customer._id);
-          $modalInstance.close();
+          $uibModalInstance.close();
         },
         function () {
           console.log("saved not successfully " + $scope.customer._id);

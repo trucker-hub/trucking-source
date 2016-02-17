@@ -3,33 +3,18 @@
     <div style="float:right"> <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" ng-click="cancel()"></span></div>
 </div>
 <div class="modal-body">
+    <uib-tabset>
+        <uib-tab heading="FTL Broker Fee">
+            <fee-structure broker-fee="settings.ftlSettings.brokerFee"></fee-structure>
+        </uib-tab>
+        <uib-tab heading="LTL Broker Fee">
+            <fee-structure broker-fee="settings.ltlSettings.brokerFee"></fee-structure>
+        </uib-tab>
+        <uib-tab heading="AIR Broker Fee ">
+            <fee-structure broker-fee="settings.airSettings.brokerFee"></fee-structure>
+        </uib-tab>
+    </uib-tabset>
 
-    <table class="table">
-        <tr class="info">
-            <th colspan="3">FTL Fees</th>
-        </tr>
-        <tr ng-repeat="fee in settings.ftlSettings.brokerFees">
-            <th>{{fee.name}}</th>
-            <td><input type="number" class="form-control" size="13" ng-model="fee.charge"></td>
-            <td></td>
-        </tr>
-        <tr class="info">
-            <th colspan="3">LTL Fees</th>
-        </tr>
-        <tr ng-repeat="fee in settings.ltlSettings.brokerFees">
-            <th>{{fee.name}}</th>
-            <td><input type="number" class="form-control" size="13" ng-model="fee.charge"></td>
-            <td></td>
-        </tr>
-        <tr class="info">
-            <th colspan="3">Air Fees</th>
-        </tr>
-        <tr ng-repeat="fee in settings.airSettings.brokerFees">
-            <th>{{fee.name}}</th>
-            <td><input type="number" class="form-control" size="13" ng-model="fee.charge"></td>
-            <td></td>
-        </tr>
-    </table>
 </div>
 <div class="modal-footer">
     <button style="float:left" class="btn btn-warning" type="button" ng-click="cancel()">Close</button>

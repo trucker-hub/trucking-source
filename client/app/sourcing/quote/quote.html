@@ -71,29 +71,31 @@
                         </tr>
                         <tr>
                             <td colspan="3" align="right"><b>Total Trucking Cost:</b></td>
-                            <td>{{source.vendorChargeAmount | currency:"$":2}}</td>
+                            <td>{{source.baseCost | currency:"$":2}}</td>
                         </tr>
                         <tr>
                             <th></th>
                             <th colspan="2">Broker Fees</th>
-                            <td></td>
-                        </tr>
-                        <tr ng-repeat="entry in load.brokerFees">
-                            <td align="right">{{entry.name}}</td>
-                            <td colspan="2">
-                                <div class="input-group">
-                                    <div class="input-group-addon">$</div>
-                                    <input type="number" class="form-control" size="5" ng-model="entry.charge"
-                                           placeholder="00.00" ng-change="recalcAdjustments(source)">
-                                </div>
-                            </td>
-                            <td></td>
+                            <td>{{source.brokerFee | currency:"$":2}}</td>
                         </tr>
                         <tr>
                             <td colspan="3" align="right"><b>Total Charge</b></td>
                             <td colspan="1">{{source.totalAmount | currency:"$":2}}
                             </td>
                         </tr>
+                        <tr>
+                            <th></th>
+                            <th colspan="2">Other Applicables Charges</th>
+                            <td></td>
+                        </tr>
+                        <tr ng-repeat="entry in source.additionalCharges">
+                            <td align="right"></td>
+                            <td colspan="2">
+                                {{entry.description}}
+                            </td>
+                            <td>{{entry.charge | currency:"$":2}}</td>
+                        </tr>
+
                     </table>
                 </td>
             </tr>

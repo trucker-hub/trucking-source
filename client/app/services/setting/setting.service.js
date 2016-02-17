@@ -14,24 +14,30 @@ angular.module('servicesApp')
             $http.post(url, settings).then(cbOK, cbError);
         }
     };
+
+    var baseBrokerFee = {
+      minimumCharge: 20,
+      flatFee: false,
+      tiers: [
+        {underAmount: 200, brokerCharge: 30},
+        {underAmount: 500, brokerCharge: 25},
+        {underAmount: 1000, brokerCharge: 15},
+        {underAmount: 10000, brokerCharge: 10}
+      ]
+    };
+
     var defaultSettings = {
       ftlSettings: {
-        brokerFees: [
-          {name: "ABI-Customs Fee", charge: 15},
-          {name: "Chassis Fee", charge: 15},
-          {name: "Service Fee", charge: 50}]
+        brokerFee: angular.copy(baseBrokerFee)
       },
       ltlSettings: {
-        brokerFees: [
-          {name: "ABI-Customs Fee", charge: 15},
-          {name: "Service Fee", charge: 10}]
+        brokerFee: angular.copy(baseBrokerFee)
       },
       airSettings: {
-        brokerFees: [
-          {name: "ABI-Customs Fee", charge: 15},
-          {name: "Service Fee", charge: 10}]
+        brokerFee: angular.copy(baseBrokerFee)
       }
     };
+
     vm.getCustomerSettings = function (userId, cbOK, cbError) {
 
       var settings = (userId)?settingsRepo[userId]:defaultSettings;

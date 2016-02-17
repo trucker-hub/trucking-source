@@ -37,11 +37,11 @@ angular.module('servicesApp')
 
       var setBrokerFees = function (load, settings) {
         if (load.loadType == 'FTL') {
-          load.brokerFees = settings.ftlSettings.brokerFees;
+          load.brokerFee = settings.ftlSettings.brokerFee;
         } else if (load.loadType == 'LTL') {
-          load.brokerFees = settings.ltlSettings.brokerFees;
+          load.brokerFee = settings.ltlSettings.brokerFee;
         } else {
-          load.brokerFees = settings.airSettings.brokerFees;
+          load.brokerFee = settings.airSettings.brokerFee;
         }
       };
 
@@ -111,7 +111,7 @@ angular.module('servicesApp')
       var postProcessingPromise = function (load) {
         console.log("started post processing of sources");
         var deferred = $q.defer();
-        console.log("broker fee" + JSON.stringify(load.brokerFees));
+        console.log("broker fee" + JSON.stringify(load.brokerFee));
         augmentWithUPS(load, load.sources, function () {
           var index;
           for (index = 0; index < load.sources.length; ++index) {
@@ -141,13 +141,11 @@ angular.module('servicesApp')
             });
       };
 
-
       vm.getCustomerFeeSettings = function (load, cb, cbErr) {
         var user_id = load.createdBy;
         if (!user_id) {
           user_id = Auth.getCurrentUser()._id;
         }
-
         customerSettingService.getCustomerSettings(user_id,
             function (settings) {
               setBrokerFees(load, settings);
@@ -174,7 +172,17 @@ angular.module('servicesApp')
               callbackERR();
             }
         );
+      };
 
+      var computeBrokerFee = function(baseRate, brokerFeeStructure) {
+        var fee = 0;
+        for(var i =0; i < brokerFeeStructure.tiers.length; ++i) {
+          var tier = brokerFeeStructure.tiers[i];
+          if(tier.underAmount < baseRate) {
+            fee = brokerFeeStructure.flatFee ? tier.brokerCharge : (baseRate * tier.brokerCharge*0.01);
+          }
+        }
+        return Math.max(brokerFeeStructure.minimumCharge, fee);
       };
 
       vm.recalcAdjustment = function (load, source) {
@@ -184,19 +192,15 @@ angular.module('servicesApp')
           if (item.charge) sum += item.charge;
           if (item.adjustment) sum += item.adjustment;
         }
-        source.vendorChargeAmount = sum;
+        source.baseCost = sum;
+        source.brokerFee = computeBrokerFee(source.baseCost, load.brokerFee);
+        source.totalAmount = source.baseCost + source.brokerFee;
 
-        for (i = 0; i < load.brokerFees.length; ++i) {
-          var brokerFee = load.brokerFees[i];
-          if (brokerFee.charge) {
-            sum += brokerFee.charge;
-          }
-        }
-        source.totalAmount = sum;
         //if already selected, need to adjust the load charges
         if (load.fulfilledBy.source && load.fulfilledBy.source == source.id) {
           load.fulfilledBy.charge = source.totalAmount;
           load.fulfilledBy.costItems = source.costItems;
+          load.fulfilledBy.additionalCharges = source.additionalCharges;
         }
       };
 

@@ -3,16 +3,26 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
+var brokerFeeSubSchema = {
+    minimumCharge: Number,
+    //if not flatFee, the charge will be percentage of the basis rate.
+    flatFee: { type: Boolean, required: true, default: false },
+    tiers: [{
+        underAmount: Number,
+        brokerCharge: Number
+    }]
+};
+
 var SettingSchema = new Schema({
     user_id: { type: Schema.Types.ObjectId, ref: 'User' },
     ftlSettings: {
-        brokerFees: [ {name: String, charge: Number}]
+        brokerFee: brokerFeeSubSchema
     },
     ltlSettings: {
-        brokerFees: [ {name: String, charge: Number}]
+        brokerFee: brokerFeeSubSchema
     },
     airSettings: {
-        brokerFees: [ {name: String, charge: Number}]
+        brokerFee: brokerFeeSubSchema
     },
 
     usage: {
