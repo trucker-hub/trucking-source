@@ -1,6 +1,6 @@
-<div class="row">
-    <table class="table table-condensed">
-
+<div class="panel panel-default">
+    <div class="panel-body">
+    <table class="table table-striped">
         <tr>
             <td></td>
             <th>Flat Charge</th>
@@ -15,21 +15,41 @@
         </tr>
         <tr>
             <td></td>
-            <th>Below Amount</th>
-            <th>Broker Fee</th>
+            <th>Base Rate Below Amount</th>
+            <th>Broker Fee <span ng-hide="brokerFee.flatFee">(of the base rate)</span></th>
             <td></td>
         </tr>
         <tr ng-repeat="tier in brokerFee.tiers">
             <th>{{$index+1}}</th>
-            <td><input type="number" class="form-control" size="5" ng-model="tier.underAmount"></td>
-            <td><input type="number" class="form-control" size="5" ng-model="tier.brokerCharge"></td>
+            <td><div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input type="number" class="form-control" size="5" ng-model="tier.underAmount">
+            </div>
+            </td>
+            <td><div class="input-group">
+                <span class="input-group-addon" ng-show="brokerFee.flatFee">$</span>
+                <input type="number" class="form-control" size="5" ng-model="tier.brokerCharge">
+                <span class="input-group-addon" ng-hide="brokerFee.flatFee">%</span>
+            </div>
+            </td>
             <td><a ng-click="removeFeeTier(brokerFee.tiers, $index)"><i class="fa fa-minus fa-lg"></i></a></td>
         </tr>
         <tr>
             <th>{{brokerFee.tiers.length+1}}</th>
-            <td><input type="number" class="form-control" size="5" ng-model="newtier.underAmount"></td>
-            <td><input type="number" class="form-control" size="5" ng-model="newtier.brokerCharge"></td>
+            <td>
+                <div class="input-group">
+                <span class="input-group-addon">$</span><input type="number" class="form-control" size="5" ng-model="newtier.underAmount">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                <span class="input-group-addon" ng-show="brokerFee.flatFee">$</span>
+                <input type="number" class="form-control" size="5" ng-model="newtier.brokerCharge">
+                <span class="input-group-addon" ng-hide="brokerFee.flatFee">%</span>
+                </div>
+            </td>
             <td><a ng-click="addFeeTier(brokerFee.tiers, ftlSettings)"><i class="fa fa-plus fa-lg"></i></a></td>
         </tr>
     </table>
+        </div>
 </div>
