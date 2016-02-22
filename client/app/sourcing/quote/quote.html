@@ -70,12 +70,13 @@
                             <td>{{entry.charge + entry.adjustment | currency:"$":2}}</td>
                         </tr>
                         <tr>
-                            <td colspan="3" align="right"><b>Total Trucking Cost:</b></td>
+                            <th></th>
+                            <td colspan="2" align="right">Total Trucking Cost:</td>
                             <td>{{source.baseCost | currency:"$":2}}</td>
                         </tr>
                         <tr>
                             <th></th>
-                            <th colspan="2">Broker Fees</th>
+                            <td colspan="2" align="right">Broker Fees</td>
                             <td>{{source.brokerFee | currency:"$":2}}</td>
                         </tr>
                         <tr>
@@ -85,7 +86,7 @@
                         </tr>
                         <tr>
                             <th></th>
-                            <th colspan="2">Other Applicables Charges</th>
+                            <th colspan="2">Other Possible/Applicable Charges</th>
                             <td></td>
                         </tr>
                         <tr ng-repeat="entry in source.additionalCharges">

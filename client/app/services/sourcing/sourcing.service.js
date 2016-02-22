@@ -48,8 +48,8 @@ angular.module('servicesApp')
       var settingsPromise = function (load) {
         console.log("fetching settings before sourcing");
         var deferred = $q.defer();
-        console.log("broker fee" + JSON.stringify(load.brokerFees));
-        if (!load.brokerFees || load.brokerFees.length == 0) {
+        console.log("broker fee" + JSON.stringify(load.brokerFee));
+        if (!load.brokerFee ) {
           vm.getCustomerFeeSettings(load, function (response) {
             deferred.resolve(load);
           }, function (response) {
@@ -395,6 +395,7 @@ angular.module('servicesApp')
       vm.quickQuote = function (load, cb, cbErr) {
         load.brokerFees = [];
         vm.progressbar.start();
+        setBrokerFees(load, customerSettingService.getDefaultFeeSetting());
         sourcingPromise(load)
             .then(function (load) {
               var index;

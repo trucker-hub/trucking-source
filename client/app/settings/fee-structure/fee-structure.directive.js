@@ -6,15 +6,18 @@ angular.module('servicesApp')
       templateUrl: 'app/settings/fee-structure/fee-structure.html',
       restrict: 'EA',
       scope: {
-        brokerFee: '=brokerFee',
-        title: '=title'
+        brokerFee: '=brokerFee'
       },
       link: function (scope, element, attrs) {
 
+        scope.newtier = {
+          underAmount:0,
+          brokerCharge:0
+        };
         scope.addFeeTier = function(tiers, newtier) {
           tiers.push({
             underAmount:newtier.underAmount,
-            brokerCharge:newtier.brokerFee
+            brokerCharge:newtier.brokerCharge
           });
         };
 

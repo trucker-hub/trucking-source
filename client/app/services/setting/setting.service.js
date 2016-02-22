@@ -38,6 +38,10 @@ angular.module('servicesApp')
       }
     };
 
+    vm.getDefaultFeeSetting = function() {
+      return defaultSettings;
+    };
+
     vm.getCustomerSettings = function (userId, cbOK, cbError) {
 
       var settings = (userId)?settingsRepo[userId]:defaultSettings;
