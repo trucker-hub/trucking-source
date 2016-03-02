@@ -1,7 +1,32 @@
 var _ = require('lodash');
 var weightCalculator = require('./util-calc');
 
-var findZoneRate = function(rateTable, weight, zone) {
+
+
+var getWeightTier = function(rateTable, weight) {
+  return _.find(rateTable, function(row) {
+    return row.ranges[0] <= weight && row.ranges[1] > weight;
+  })
+};
+var getTierRate = function(tier, zone, weight, weightIncrement) {
+  var rowRate = _.find(tiers.rates, {zone:zone});
+  return (rowRate==null)? null: (rateRow.rate * weight)/weightIncrement;
+};
+
+var findZoneWeightRate = function(rateTable, weight, weightIncrement, zone) {
+
+  var result = null;
+  var tier = getWeightTier(rateTable, weight);
+  if(tier) {
+    var nextTier = getWeightTier(rateTable, tier.ranges[1]);
+    result = getTierRate(tier, zone, weight, weightIncrement);
+    var nextTierRate = getTierRate(nextTier, zone, tier.ranges[1], weightIncrement);
+    result = nextTierRate!=null? (Math.min(result, nextTierRate)): result;
+  }
+};
+
+
+var findZoneFlatRate = function(rateTable, weight, zone) {
   var index;
   var row;
   for(index=0; index < rateTable.length; ++index) {
@@ -38,16 +63,16 @@ exports.computeZoneBasedCost = function(tariff, load, matchZone, lineName) {
 
   //base rate
   var baseRate =0;
-  var rateRow = findZoneRate (tariff.rateDef.byZone.flatRates, weight, matchZone.label);
+  var rateRow = findZoneFlatRate (tariff.rateDef.byZone.flatRates, weight, matchZone.label);
   if(rateRow) {
     baseRate = Math.max(rateRow.rate, matchZone.minCharge);
     result.push({charge: baseRate, description: "Basis rate for Zone " + matchZone.label + lineName});
     console.log("baseRate is " + baseRate + " min charge " + matchZone.minCharge);
   }else {
-    rateRow = findZoneRate (tariff.rateDef.byZone.weightRates, weight, matchZone.label);
+    baseRate = findZoneWeightRate (tariff.rateDef.byZone.weightRates, weight,
+        tariff.rateDef.byZone.zoneRateVariables.weightIncrement, matchZone.label);
     //console.log("rate weight table = " + JSON.stringify(tariff.rateDef.byZone.weightRates));
-    if(rateRow) {
-      baseRate = (rateRow.rate * weight)/(tariff.rateDef.byZone.zoneRateVariables.weightIncrement);
+    if(baseRate) {
       baseRate = Math.max(baseRate, matchZone.minCharge);
       result.push({charge: baseRate, description: "Basis rate for Zone " + matchZone.label});
       console.log("baseRate is " + baseRate + " min charge " + matchZone.minCharge);
