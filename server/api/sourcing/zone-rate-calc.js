@@ -9,20 +9,28 @@ var getWeightTier = function(rateTable, weight) {
   })
 };
 var getTierRate = function(tier, zone, weight, weightIncrement) {
-  var rowRate = _.find(tiers.rates, {zone:zone});
-  return (rowRate==null)? null: (rateRow.rate * weight)/weightIncrement;
+  var rowRate = _.find(tier.rates, {zone:zone});
+  return (rowRate==null)? null: (rowRate.rate * weight)/weightIncrement;
 };
 
 var findZoneWeightRate = function(rateTable, weight, weightIncrement, zone) {
 
-  var result = null;
+  var result = {rate: null, weight: weight, useNextTier: false};
   var tier = getWeightTier(rateTable, weight);
   if(tier) {
+
+    var currentTierRate = getTierRate(tier, zone, weight, weightIncrement);
+    if(currentTierRate) {
+      result.rate = currentTierRate;
+    }
+
     var nextTier = getWeightTier(rateTable, tier.ranges[1]);
-    result = getTierRate(tier, zone, weight, weightIncrement);
     var nextTierRate = getTierRate(nextTier, zone, tier.ranges[1], weightIncrement);
-    result = nextTierRate!=null? (Math.min(result, nextTierRate)): result;
+    if(nextTierRate && nextTierRate < currentTierRate) {
+      result = {rate: nextTierRate, weight: tier.ranges[1], useNextTier: true}
+    }
   }
+  return result;
 };
 
 
@@ -73,15 +81,22 @@ exports.computeZoneBasedCost = function(tariff, load, matchZone, lineName) {
         tariff.rateDef.byZone.zoneRateVariables.weightIncrement, matchZone.label);
     //console.log("rate weight table = " + JSON.stringify(tariff.rateDef.byZone.weightRates));
     if(baseRate) {
-      baseRate = Math.max(baseRate, matchZone.minCharge);
-      result.push({charge: baseRate, description: "Basis rate for Zone " + matchZone.label});
-      console.log("baseRate is " + baseRate + " min charge " + matchZone.minCharge);
+      if(baseRate.rate < matchZone.minCharge) {
+        result.push({charge: matchZone.minCharge, description: "Basis rate for Zone using the minimum charge for zone:" + matchZone.label});
+      }else {
+        if(baseRate.useNextTier) {
+          result.push({charge: baseRate.rate, description: "Basis rate for Zone:" + matchZone.label + " using next tier weight: " + baseRate.weight + " for a better rate"});
+        }else {
+          result.push({charge: baseRate.rate, description: "Basis rate for Zone " + matchZone.label + " weight: " + baseRate.weight});
+        }
+      }
+      console.log("baseRate is " + JSON.stringify(baseRate) + " min charge " + matchZone.minCharge);
     }else {
       console.log( "Basis rate Not Found!");
       return null;
     }
   }
-  var fuelSurcharge = (baseRate * tariff.fuelSurcharge*0.01);
+  var fuelSurcharge = (baseRate.rate * tariff.fuelSurcharge*0.01);
   var fuelSurchargePercentage = tariff.fuelSurcharge;
   result.push({charge: fuelSurcharge, description: "Fuel Surcharge " + fuelSurchargePercentage + "%" + lineName});
 

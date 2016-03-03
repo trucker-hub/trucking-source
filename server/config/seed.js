@@ -89,8 +89,7 @@ Warehouse.find({}).remove(function() {
 
 LtlLoad.find({}).remove(function() {
     LtlLoad.create({
-
-            who: "Home and Body",
+            who: "Home and Body-1 (2000lbs)",
             email: "jinbo.chen@gmail.com",
             loadType:  'LTL',
             notes: "A note",
@@ -117,7 +116,7 @@ LtlLoad.find({}).remove(function() {
                 services: [{service: 'Inside'}, {service: 'LifeGate'}]
             },
             lines: [{
-                weight: 2000,
+                weight: 200,
                 quantity: 10,
                 packaging:"Cartons",
                 length: 10,
@@ -128,8 +127,45 @@ LtlLoad.find({}).remove(function() {
             fulfilledBy: {},
             deliveryOrderContact: {}
         }, {
-
-            who: "Home and Body",
+            who: "Home and Body-2 (200lbs)",
+            email: "jinbo.chen@gmail.com",
+            loadType:  'LTL',
+            notes: "A note",
+            shipTo: {
+                location: {
+                    full_address: "9111 S La Cienega Blvd, Inglewood, CA 90301",
+                    state:      "CA",
+                    county:     "Los Angeles County",
+                    city:       "Inglewood",
+                    zipCode:    "90301",
+                    coordinates: [33.953822, -118.370728]
+                },
+                services: [{service: 'Inside'}, {service: 'LifeGate'}]
+            },
+            shipFrom: {
+                location: {
+                    full_address:     "4489 Spencer St, Torrance, CA 90503",
+                    state:      "CA",
+                    county:     "Los Angeles County",
+                    city:       "Torrance",
+                    zipCode:    "90503",
+                    coordinates: [33.845385, -118.360726]
+                },
+                services: [{service: 'Inside'}, {service: 'LifeGate'}]
+            },
+            lines: [{
+                weight: 200,
+                quantity: 1,
+                packaging:"Cartons",
+                length: 10,
+                width: 10,
+                height: 10,
+                description: "Dumper"
+            }],
+            fulfilledBy: {},
+            deliveryOrderContact: {}
+        }, {
+            who: "Home and Body-3",
             email: "jinbo.chen@gmail.com",
             loadType:  'AIR',
             notes: "A note",
@@ -157,7 +193,7 @@ LtlLoad.find({}).remove(function() {
             },
             lines: [{
                 weight: 200,
-                quantity: 10,
+                quantity: 1,
                 packaging:"Cartons",
                 length: 10,
                 width: 10,
@@ -332,7 +368,7 @@ TruckingCompany.find({}).remove(function () {
                             zones: [
                                 {
                                     label:"A",
-                                    minCharge:35,
+                                    minCharge:55,
                                     dropOffCharge: 10,
                                     dropOffChargeOffhour: 20,
                                     dropOffChargeWeekend: 30,
@@ -367,58 +403,39 @@ TruckingCompany.find({}).remove(function () {
                                     dropOffChargeHoliday: 40
                                 }]
                         },
-                        flatRates: [
+                        flatRates: [],
+                        weightRates: [
                             {
                                 tier:"1",
                                 ranges: [0,1000],
                                 rates:[
-                                    {zone: "A", rate:35},
-                                    {zone: "B", rate:45},
-                                    {zone: "C", rate:55},
-                                    {zone: "D", rate:65},
-                                    {zone: "E", rate:75}]
-                            }, {
-                                tier: "2",
-                                ranges: [1000, 2000],
-                                rates:[
-                                    {zone: "A", rate:55},
-                                    {zone: "B", rate:65},
-                                    {zone: "C", rate:75},
-                                    {zone: "D", rate:85},
-                                    {zone: "E", rate:95}
+                                    {zone: "A", rate:6.5},
+                                    {zone: "B", rate:6.4},
+                                    {zone: "C", rate:7.3},
+                                    {zone: "D", rate:8.1},
+                                    {zone: "E", rate:9.0}
                                 ]
-                            }
-                        ],
-                        weightRates: [
+                            },
                             {
-                                tier:"3",
-                                ranges: [3000,4000],
+                                tier:"2",
+                                ranges: [1000,2500],
                                 rates:[
                                     {zone: "A", rate:5.5},
-                                    {zone: "B", rate:3.3},
-                                    {zone: "C", rate:2.3},
-                                    {zone: "D", rate:8.9},
-                                    {zone: "E", rate:2.0}
-                                ]},
+                                    {zone: "B", rate:6.4},
+                                    {zone: "C", rate:7.3},
+                                    {zone: "D", rate:8.1},
+                                    {zone: "E", rate:9.0}
+                                ]
+                            },
                             {
-                                tier: "4",
-                                ranges: [4000, 5000],
+                                tier: "2",
+                                ranges: [2500, 6000],
                                 rates:[
-                                    {zone: "A", rate:55},
-                                    {zone: "B", rate:33},
-                                    {zone: "C", rate:23},
-                                    {zone: "D", rate:89},
-                                    {zone: "E", rate:20}
-                                ]},
-                            {
-                                tier: "5",
-                                ranges: [5000, 6000],
-                                rates:[
-                                    {zone: "A", rate:55},
-                                    {zone: "B", rate:33},
-                                    {zone: "C", rate:23},
-                                    {zone: "D", rate:89},
-                                    {zone: "E", rate:20}
+                                    {zone: "A", rate:4.2},
+                                    {zone: "B", rate:3.5},
+                                    {zone: "C", rate:5.5},
+                                    {zone: "D", rate:6.6},
+                                    {zone: "E", rate:7.2}
                                 ]}
                         ],
                         rates: [ {
@@ -428,14 +445,19 @@ TruckingCompany.find({}).remove(function () {
                             zone: "A"
                         }, {
                             state: "CA",
-                            city: "Torrance",
-                            zipCode: "90503",
-                            zone: "B"
+                            city: "Inglewood",
+                            zipCode: "90301",
+                            zone: "A"
                         }, {
-                            state: "CA",
-                            city: "Rancho Palos Verdes",
-                            zipCode: "90275",
-                            zone: "C"
+                                state: "CA",
+                                city: "Torrance",
+                                zipCode: "90503",
+                                zone: "B"
+                        }, {
+                                state: "CA",
+                                city: "Rancho Palos Verdes",
+                                zipCode: "90275",
+                                zone: "C"
                         }]
                     }
                 }
@@ -456,7 +478,7 @@ TruckingCompany.find({}).remove(function () {
                             zones: [
                                 {
                                     label:"A",
-                                    minCharge:35,
+                                    minCharge:55,
                                     dropOffCharge: 10,
                                     dropOffChargeOffhour: 20,
                                     dropOffChargeWeekend: 30,
@@ -560,7 +582,7 @@ TruckingCompany.find({}).remove(function () {
                             state: "CA",
                             city: "Inglewood",
                             zipCode: "90301",
-                            zone: "E"
+                            zone: "A"
                         }, {
                             state: "CA",
                             city: "Santa Clara",
@@ -767,11 +789,6 @@ TruckingCompany.find({}).remove(function () {
                             city: "Torrance",
                             zipCode: "90503",
                             zone: "B"
-                        }, {
-                            state: "CA",
-                            city: "Inglewood",
-                            zipCode: "90301",
-                            zone: "E"
                         }, {
                             state: "CA",
                             city: "Santa Clara",
