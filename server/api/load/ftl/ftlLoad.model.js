@@ -53,14 +53,13 @@ var FtlLoadSchema = new Schema({
       description: String,
       adjustment: { type: Number, default:0 }
     }],
+    brokerFee: Number,
     additionalCharges: [{
       description: String,
       charge: Number,
       adjustment: { type: Number, default:0 }
     }]
   },
-
-  brokerFees: [ {name: String, charge: Number}],
 
   invoice: { referenceNumber: String },
 

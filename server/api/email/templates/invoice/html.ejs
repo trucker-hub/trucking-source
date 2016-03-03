@@ -25,17 +25,15 @@
     <td>$<%= fulfilledBy.costItems[i].charge + fulfilledBy.costItems[i].adjustment%></td>
   </tr>
   <% }; %>
-  <% for(var j=0; j < brokerFees.length; ++j) { %>
   <tr>
-    <td align="right"> #<%= fulfilledBy.costItems.length + j +1 %></td>
-    <td><%= brokerFees[j].name%></td>
-    <td>$<%= brokerFees[j].charge %></td>
+    <td align="right"> #<%= fulfilledBy.costItems.length +1 %></td>
+    <td><b>Service Charge</b></td>
+    <td>$<%= fulfilledBy.brokerFee%></td>
   </tr>
-  <% };%>
   <tr>
     <td></td>
     <td align="right"><b>Total Amount</b></td>
-    <td>$<%=totalAmount%></td>
+    <td>$<%=fulfilledBy.charge%></td>
   </tr>
   </table>
 
@@ -43,7 +41,7 @@
   <tr><th colspan="2">Additional Applicable Charges</th></tr>
   <% for(var j=0; j < fulfilledBy.additionalCharges.length; ++j) {%>
   <tr>
-    <td><%=fulfilledBy.additionalCharges[j].name %></td><td> $<%=fulfilledBy.additionalCharges[j].charge %></td>
+    <td><%=fulfilledBy.additionalCharges[j].description %></td><td> $<%=fulfilledBy.additionalCharges[j].charge %></td>
   </tr>
   <% };%>
 </table>

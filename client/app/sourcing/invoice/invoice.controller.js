@@ -4,30 +4,7 @@ angular.module('servicesApp')
   .controller('InvoiceCtrl', function ($scope, $http, $uibModalInstance, load) {
 
     $scope.load = load;
-    var computeTotalCost = function() {
-      var i, sum=0;
-
-      for(i=0; i < $scope.load.fulfilledBy.costItems.length; ++i) {
-        var item = $scope.load.fulfilledBy.costItems[i];
-        if(item.charge) {
-          sum += item.charge;
-        }
-        if(item.adjustment) {
-          sum += item.adjustment;
-        }else {
-          item.adjustment = 0;
-        }
-      }
-
-      for(i=0; i < $scope.load.brokerFees.length; ++i) {
-        var brokerFee = $scope.load.brokerFees[i];
-        if(brokerFee.charge) {
-          sum += brokerFee.charge;
-        }
-      }
-      $scope.load.totalAmount = sum;
-    };
-
+    
     $scope.send = function () {
       $uibModalInstance.close();
     };
@@ -54,7 +31,5 @@ angular.module('servicesApp')
           $scope.sending = false;
         });
     };
-
-    computeTotalCost();
 
   });

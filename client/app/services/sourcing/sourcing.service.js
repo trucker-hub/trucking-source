@@ -200,6 +200,7 @@ angular.module('servicesApp')
         if (load.fulfilledBy.source && load.fulfilledBy.source == source.id) {
           load.fulfilledBy.charge = source.totalAmount;
           load.fulfilledBy.costItems = source.costItems;
+          load.fulfilledBy.brokerFee = source.brokerFee;
           load.fulfilledBy.additionalCharges = source.additionalCharges;
         }
       };
@@ -217,6 +218,7 @@ angular.module('servicesApp')
             name: source.name,
             source: source.id,
             charge: source.totalAmount,
+            brokerFee: source.brokerFee,
             costItems: source.costItems,
             additionalCharges: source.additionalCharges
           };
@@ -227,6 +229,7 @@ angular.module('servicesApp')
             source: null,
             charge: null,
             costItems: [],
+            brokerFee: null,
             additionalCharges: []
           }
         }
@@ -240,6 +243,7 @@ angular.module('servicesApp')
           source: null,
           charge: null,
           costItems: [],
+          brokerFee: null,
           additionalCharges: []
         };
         load.sources = [];

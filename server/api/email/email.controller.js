@@ -12,11 +12,17 @@ var invoiceTemplate = new EmailTemplate(invoiceTemplateDir);
 var async = require('async');
 
 // create reusable transporter object using SMTP transport
+
+var smtpURL = 'smtps://user%40gmail.com:pass@smtp.gmail.com';
+
 var transporter = nodemailer.createTransport({
-  service: 'Gmail',
+  host: 'smtp.office365.com',
+  port: 587,
+  secureConnection: 'false',
+  tls: { ciphers: 'SSLv3' },
   auth: {
-    user: 'jinbo.chen@gmail.com',
-    pass: 'chunfeng2'
+    user: 'it@trucking-hub.com',
+    pass: 'Itstest09!'
   }
 });
 
@@ -56,7 +62,7 @@ exports.invoice = function(req, res) {
     }
     console.log("cost info =" + JSON.stringify(load.fulfilledBy));
     transporter.sendMail({
-      from:'Service Team <jinbo.chen@gmail.com>', // sender address
+      from:'Trucking-hub <it@trucking-hub.com>', // sender address
       to: email,
       subject: "Invoice for Your load:" + loadSummary(load),
       html: results.html,
@@ -81,7 +87,7 @@ exports.send = function(req, res) {
   console.log(JSON.stringify(contact));
 
   var replyMailOptions = {
-    from: 'Service Team <jinbo.chen@gmail.com>', // sender address
+    from:'Trucking-hub <it@trucking-hub.com>', // sender address
     to: contact.from, // list of receivers
     subject: 'Thanks for your inquiry',
     text: 'We have received your message: ' + contact.message + "We will reach to you shortly",
