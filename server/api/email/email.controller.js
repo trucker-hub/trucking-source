@@ -7,14 +7,10 @@ var nodemailer = require('nodemailer');
 var EmailTemplate = require('email-templates').EmailTemplate;
 var path = require('path');
 
-var invoiceTemplateDir = path.join(__dirname, 'templates', 'invoice');
-var invoiceTemplate = new EmailTemplate(invoiceTemplateDir);
+
 var async = require('async');
 
 // create reusable transporter object using SMTP transport
-
-var smtpURL = 'smtps://user%40gmail.com:pass@smtp.gmail.com';
-
 var transporter = nodemailer.createTransport({
   host: 'smtp.office365.com',
   port: 587,
@@ -26,6 +22,7 @@ var transporter = nodemailer.createTransport({
   }
 });
 
+// jinbo.chen@gmail.com
 // NB! No need to recreate the transporter object. You can use
 // the same transporter object for all e-mails
 //  who: String,
@@ -50,6 +47,8 @@ var loadSummary = function(load) {
   return result;
 };
 
+var invoiceTemplateDir = path.join(__dirname, 'templates', 'invoice');
+var invoiceTemplate = new EmailTemplate(invoiceTemplateDir);
 exports.invoice = function(req, res) {
 
   var load = req.body.load;
@@ -79,32 +78,38 @@ exports.invoice = function(req, res) {
   });
 };
 
-exports.send = function(req, res) {
+
+var contactTemplateDir = path.join(__dirname, 'templates', 'contact');
+var contactTemplate = new EmailTemplate(contactTemplateDir);
+exports.contact = function(req, res) {
 
   var contact = req.body;
   // setup e-mail data with unicode symbols
 
   console.log(JSON.stringify(contact));
 
-  var replyMailOptions = {
-    from:'Trucking-hub <it@trucking-hub.com>', // sender address
-    to: contact.from, // list of receivers
-    subject: 'Thanks for your inquiry',
-    text: 'We have received your message: ' + contact.message + "We will reach to you shortly",
-    html: 'We have received your message: <i>' + contact.message + "</i>. We will reach to you shortly."
-  };
 
-  // send mail with defined transport object
-  transporter.sendMail(replyMailOptions, function(error, info){
-    if(error){
-      console.log(error);
+  contactTemplate.render(contact, function(err, results) {
+    if(err) {
+      console.error(err);
       return res.status(404).send('send email failed');
-    }else{
-      console.log('Message sent: ' + info.response);
-      return res.status(200).json(info);
     }
-  })
-
+    console.log(JSON.stringify(contact));
+    transporter.sendMail({
+      from:'Trucking-hub <it@trucking-hub.com>', // sender address
+      to: contact.from,
+      subject: "Thanks for your inquery",
+      html: results.html,
+      text: results.text
+    }, function(err, response) {
+      if(err) {
+        console.error(err);
+        return res.status(404).send('send email failed');
+      }
+      console.log("sending email succesfully");
+      return res.status(200).send('send email succesfully');
+    });
+  });
 };
 
 // Get list of emails

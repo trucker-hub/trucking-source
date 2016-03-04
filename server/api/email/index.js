@@ -12,7 +12,7 @@ router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 
-router.post('/send', controller.send);
+router.post('/contact', controller.contact);
 router.post('/invoice', controller.invoice);
 
 module.exports = router;
