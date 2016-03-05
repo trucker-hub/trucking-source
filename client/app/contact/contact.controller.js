@@ -13,10 +13,10 @@ angular.module('servicesApp')
           subject: 'Web Inquery',
           message: ''
       };
-      $scope.send = function() {
+      $scope.sendContact = function() {
         $scope.progressbar = ngProgressFactory.createInstance();
         $scope.progressbar.start();
-        $http.post('/api/emails/send', $scope.contact).then(
+        $http.post('/api/emails/contact', $scope.contact).then(
             function(response) {
               console.log(JSON.stringify(response.data));
               $scope.progressbar.complete();

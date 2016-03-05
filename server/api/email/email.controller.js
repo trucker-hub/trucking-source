@@ -79,7 +79,7 @@ exports.invoice = function(req, res) {
   });
 };
 
-exports.send = function(req, res) {
+exports.contact = function(req, res) {
 
   var contact = req.body;
   // setup e-mail data with unicode symbols
