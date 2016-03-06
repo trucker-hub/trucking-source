@@ -71,12 +71,11 @@ exports.invoice = function(req, res) {
         console.error(err);
         return res.status(404).send('send email failed');
       }
+      console.log("sending email successfully");
       return res.status(200).send('send email succesfully')
-      console.log("sending email succesfully");
     });
-
   });
-}
+};
 
 var contactTemplateDir = path.join(__dirname, 'templates', 'contact');
 var contactTemplate = new EmailTemplate(contactTemplateDir);
@@ -97,7 +96,7 @@ exports.contact = function(req, res) {
     transporter.sendMail({
       from:'Trucking-hub <it@trucking-hub.com>', // sender address
       to: contact.from,
-      subject: "Thanks for your inquery",
+      subject: "Thanks for your inquiry",
       html: results.html,
       text: results.text
     }, function(err, response) {
@@ -105,7 +104,7 @@ exports.contact = function(req, res) {
         console.error(err);
         return res.status(404).send('send email failed');
       }
-      console.log("sending email succesfully");
+      console.log("sending email successfully");
       return res.status(200).send('send email succesfully');
     });
   });
