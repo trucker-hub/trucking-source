@@ -93,6 +93,7 @@ LtlLoad.find({}).remove(function() {
             email: "jinbo.chen@gmail.com",
             loadType:  'LTL',
             notes: "A note",
+            expectedBy: new Date(),
             shipTo: {
                 location: {
                     full_address: "9111 S La Cienega Blvd, Inglewood, CA 90301",
@@ -131,6 +132,7 @@ LtlLoad.find({}).remove(function() {
             email: "jinbo.chen@gmail.com",
             loadType:  'LTL',
             notes: "A note",
+            expectedBy: new Date(),
             shipTo: {
                 location: {
                     full_address: "9111 S La Cienega Blvd, Inglewood, CA 90301",
@@ -169,6 +171,7 @@ LtlLoad.find({}).remove(function() {
             email: "jinbo.chen@gmail.com",
             loadType:  'AIR',
             notes: "A note",
+            expectedBy: new Date(),
             shipTo: {
                 location: {
                     full_address:     "9111 S La Cienega Blvd, Inglewood, CA 90301",
@@ -210,6 +213,7 @@ FtlLoad.find({}).remove(function() {
     FtlLoad.create({
             who: "Elite Toner",
             email: "jinbo.chen@gmail.com",
+            expectedBy: new Date(),
             shipTo: {
                 location: {
                     full_address: "9111 S La Cienega Blvd, #211, Inglewood, CA 90301",
@@ -244,6 +248,7 @@ FtlLoad.find({}).remove(function() {
         {
             who: "Beverly Furniture",
             email: "jinbo.chen@gmail.com",
+            expectedBy: new Date(),
             shipTo: {
                 location: {
                     full_address: "3476 Del Amo Blvd, Torrance, CA 90503",

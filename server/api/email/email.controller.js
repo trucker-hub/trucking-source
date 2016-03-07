@@ -40,10 +40,10 @@ var transporter = nodemailer.createTransport({
 //  },
 
 var loadSummary = function(load) {
-  var result =load.loadType + ",";
+  var result ="";
   result += load.shipFrom.location.state + load.shipFrom.location.zipCode;
   result += "->";
-  result += load.shipTo.location.state + load.shipFrom.location.zipCode;
+  result += load.shipTo.location.state + load.shipTo.location.zipCode;
   return result;
 };
 
@@ -52,18 +52,20 @@ var invoiceTemplate = new EmailTemplate(invoiceTemplateDir);
 exports.invoice = function(req, res) {
 
   var load = req.body.load;
-  var email = req.body.email;
+  var email = load.email;
 
+  load.invoice.sentOn = new Date();
   invoiceTemplate.render(load, function(err, results) {
     if(err) {
       console.error(err);
       return res.status(404).send('send email failed');
     }
     console.log("cost info =" + JSON.stringify(load.fulfilledBy));
+
     transporter.sendMail({
       from:'Trucking-hub <it@trucking-hub.com>', // sender address
       to: email,
-      subject: "Invoice for Your load:" + loadSummary(load),
+      subject: "Invoice:" + loadSummary(load),
       html: results.html,
       text: results.text
     }, function(err, response) {
@@ -72,7 +74,7 @@ exports.invoice = function(req, res) {
         return res.status(404).send('send email failed');
       }
       console.log("sending email successfully");
-      return res.status(200).send('send email succesfully')
+      return res.status(200).send('send email successfully')
     });
   });
 };
@@ -82,11 +84,6 @@ var contactTemplate = new EmailTemplate(contactTemplateDir);
 exports.contact = function(req, res) {
 
   var contact = req.body;
-  // setup e-mail data with unicode symbols
-
-  console.log(JSON.stringify(contact));
-
-
   contactTemplate.render(contact, function(err, results) {
     if(err) {
       console.error(err);

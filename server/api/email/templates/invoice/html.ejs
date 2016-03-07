@@ -625,15 +625,21 @@
                                 <h1 style="text-align: left;"><span style="font-size:18px">Dear Customer,</span></h1>
                                 <br>
                                 <span style="font-size:14px">Here is the invoice for your shipment <span style="color:#DAA520"> <%= who %></span>. &nbsp;Please payment freight cost amount&nbsp;<span style="font-family:georgia,times,times new roman,serif"><span style="color:#DAA520">$<%=fulfilledBy.charge%></span><span style="color:#006400"><span style="font-family:georgia,times,times new roman,serif"> </span></span>as in your payment schedule.</span></span><br>
-                                &nbsp;
-                                <div style="text-align: right;"><span style="color:#DAA520">Trucking-Hub Team</span></div>
+                                <br>
+                                <span style="font-family:georgia,times,times new roman,serif">Invoice: <span style="color:#DAA520"><%= invoice.referenceNumber%></span><br>
+                                    Date: <span style="color:#DAA520"><%= expectedBy.toLocaleString() %></span></span><br>
+                                  <span style="font-family:georgia,times,times new roman,serif; line-height:1.6">To:&nbsp;
+                                    <span style="color:#DAA520"><%=shipTo.location.full_address %></span> </span> <br>
+                                  <span style="font-family:georgia,times,times new roman,serif; line-height:1.6">From:&nbsp;
+                                    <span style="color:#DAA520"><%=shipFrom.location.full_address %></span></span><br>
+                                  <span style="font-family:georgia,times,times new roman,serif; line-height:1.6">Description:<%=loadType%></span><br>
 
-                                <hr>
-                                <h1 style="text-align: left;"><span style="font-size:16px"><span style="font-family:georgia,times,times new roman,serif">Invoice: <%= invoice.referenceNumber%> <br>
-Date: <%= expectedBy%></span></span><br>
-                                  <span style="font-family:georgia,times,times new roman,serif; font-size:16px; line-height:1.6">To:&nbsp;<%=shipTo.location.state %> <%=shipTo.location.zipCode%></span> <br>
-                                  <span style="font-family:georgia,times,times new roman,serif; font-size:16px; line-height:1.6">From:&nbsp;<%=shipFrom.location.state %> <%=shipFrom.location.zipCode%></span><br>
-                                  <span style="font-family:georgia,times,times new roman,serif; font-size:16px; line-height:1.6">Description:<%=loadType%></span></h1>
+                                <% for(var i=0; i < lines.length; ++i) {%>
+                                <span style="color:#DAA520"><%= i+1%></span>: &nbsp;<%= lines[i].description%>, <%= lines[i].quantity%> x <%= lines[i].packaging%> (unit weight: <%= lines[i].weight%>) <br>
+                                <% }; %>
+
+                                <br>
+                                <div style="text-align: right;"><span style="color:#DAA520">Trucking-Hub Team</span></div>
 
                                 <hr><br>
                                 <span style="color:#000000"><span style="font-size:18px"><span style="font-family:georgia,times,times new roman,serif">Freight cost Description: </span></span></span><span style="color:#DAA520"><span style="font-size:18px"><span style="font-family:georgia,times,times new roman,serif">$<%=fulfilledBy.charge%></span></span></span>
@@ -657,7 +663,7 @@ Date: <%= expectedBy%></span></span><br>
                                   <% }; %>
                                 </ul>
 
-                                <p style="text-align: right;">Sent on 3/5/2016</p>
+                                <p style="text-align: right;">Sent on <%= invoice.sentOn.toLocaleString()%></p>
 
                               </td>
                             </tr>
@@ -837,7 +843,7 @@ Date: <%= expectedBy%></span></span><br>
                     </table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
                       <tbody class="mcnTextBlockOuter">
                       <tr>
-                        <td valign="top" class="mcnTextBlockInner">
+                        <td valign="top" align="center" class="mcnTextBlockInner">
 
                           <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnTextContentContainer">
                             <tbody><tr>
