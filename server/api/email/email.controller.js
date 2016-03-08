@@ -6,8 +6,6 @@ var Email = require('./email.model');
 var nodemailer = require('nodemailer');
 var EmailTemplate = require('email-templates').EmailTemplate;
 var path = require('path');
-
-
 var async = require('async');
 
 // create reusable transporter object using SMTP transport
@@ -25,19 +23,6 @@ var transporter = nodemailer.createTransport({
 // jinbo.chen@gmail.com
 // NB! No need to recreate the transporter object. You can use
 // the same transporter object for all e-mails
-//  who: String,
-//loadType:  { type: String, default: 'FTL'},
-//createdAt: { type: Date, required: true, default: Date.now },
-//expectedBy: Date,
-//  notes: String,
-//  shipTo: {
-//  location: {
-//    full_address:     String,
-//      state:      {type: String, required: true},
-//    county:     {type: String, required: true},
-//    city:       {type: String, required: true},
-//    zipCode:    {type: String, required: true}
-//  },
 
 var loadSummary = function(load) {
   var result ="";
@@ -91,9 +76,9 @@ exports.contact = function(req, res) {
     }
     console.log(JSON.stringify(contact));
     transporter.sendMail({
-      from:'Trucking-hub <it@trucking-hub.com>', // sender address
+      from:'Trucking-Hub <it@trucking-hub.com>', // sender address
       to: contact.from,
-      subject: "Thanks for your inquiry",
+      subject: 'Thanks for your inquiry',
       html: results.html,
       text: results.text
     }, function(err, response) {
