@@ -8,6 +8,8 @@ var EmailTemplate = require('email-templates').EmailTemplate;
 var path = require('path');
 var async = require('async');
 
+var senderEmail = 'Trucking-Hub <it@trucking-hub.com>';
+
 // create reusable transporter object using SMTP transport
 var transporter = nodemailer.createTransport({
   host: 'smtp.office365.com',
@@ -50,6 +52,7 @@ exports.invoice = function(req, res) {
     transporter.sendMail({
       from:'Trucking-hub <it@trucking-hub.com>', // sender address
       to: email,
+      bcc: senderEmail,
       subject: "Invoice:" + loadSummary(load),
       html: results.html,
       text: results.text
@@ -76,8 +79,9 @@ exports.contact = function(req, res) {
     }
     console.log(JSON.stringify(contact));
     transporter.sendMail({
-      from:'Trucking-Hub <it@trucking-hub.com>', // sender address
+      from:senderEmail, // sender address
       to: contact.from,
+      bcc: senderEmail,
       subject: 'Thanks for your inquiry',
       html: results.html,
       text: results.text
