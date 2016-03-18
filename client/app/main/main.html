@@ -8,19 +8,19 @@
 
 <div class="section">
   <div class="container">
-  <h3>Quick Quote</h3>
-  <hr>
-  <div class="row">
-    <div class="col-md-3">
-      <location info="quickie.shipTo" label="'TO:'"
-                uib-tooltip="Fill the complete address for the delivery" ></location>
-    </div>
-    <form name="mainForm" novalidate>
-      <div class="col-md-2" ng-class="{'has-error':mainForm.weight.$invalid}">
-        <input type="number" class="form-control" size="6" ng-model="quickie.weight" name="weight"
-               placeholder="Total Weight" required min="1" uib-tooltip="Fill the total weight"></div>
-    </form>
-    <div class="col-md-4"><span>
+    <h3>Quick Quote</h3>
+    <hr>
+    <div class="row">
+      <div class="col-md-3">
+        <location info="quickie.shipTo" label="'TO:'"
+                  uib-tooltip="Fill the complete address for the delivery" ></location>
+      </div>
+      <form name="mainForm" novalidate>
+        <div class="col-md-2" ng-class="{'has-error':mainForm.weight.$invalid}">
+          <input type="number" class="form-control" size="6" ng-model="quickie.weight" name="weight"
+                 placeholder="Total Weight" required min="1" uib-tooltip="Fill the total weight"></div>
+      </form>
+      <div class="col-md-4"><span>
                 <button class="btn btn-default" type="button" ng-click="quickFTL()" ng-disabled="disableQuickQuote()"><i
                         class="fa fa-lg fa-ship"></i> FTL
                 </button>
@@ -30,38 +30,38 @@
                 <button class="btn btn-default" type="button" ng-click="quickAIR()" ng-disabled="disableQuickQuote()"><i
                         class="fa fa-lg fa-plane"></i> AIR
                 </button> <i class="fa fa-spinner fa-spin fa-2x" ng-show="quickie.processing"></i></span>
-    </div>
-    <div class="col-md-3">
-      <b>Quote</b>:<b>
+      </div>
+      <div class="col-md-3">
+        <b>Quote</b>:<b>
         <span style="color:green" ng-show="quickie.quote.lowest">{{quickie.quote.average | currency:"$":2}}
               <small>({{quickie.quote.lowest | currency:"$":2}} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> {{quickie.quote.highest | currency:"$":2}})</small>
               </span></b>
-      <span ng-show="isLoggedIn && quickie.quote.lowest"><a href="" ng-click="editQuickie()" ><i class="fa fa-pencil"></i></a></span>
-      <small>
+        <span ng-show="isLoggedIn && quickie.quote.lowest"><a href="" ng-click="editQuickie()" ><i class="fa fa-pencil"></i></a></span>
+        <small>
           <span style="color:grey" ng-show="quickie.description"><i ng-show="quickie.description"><br>{{quickie.description}}
             <i ng-show="isLoggedIn" class="fa fa-info-circle fa-lg" tooltip-placement="bottom-right" uib-tooltip-html="quickie.sourcesHtml"></i></i>
           </span>
-      </small>
+        </small>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3">
-      <small>1. Use location auto-completion to fill the address quickly and accurately</small>
+    <div class="row">
+      <div class="col-md-3">
+        <small>1. Use location auto-completion to fill the address quickly and accurately</small>
+      </div>
+      <div class="col-md-2">
+        <small>2. Use total weight to estimate the cost</small>
+      </div>
+      <div class="col-md-4">
+        <small>3. Click one of the buttons to get competitive quotes offered from Trucking-Hub.com</small>
+      </div>
+      <div class="col-md-3">
+        <small ng-hide="isLoggedIn">4. To get detailed quote and trucking arrangement, please signup, login and go to <a
+                href="/loads">Loads</a></small>
+        <small ng-show="isLoggedIn">4. Proceed to get the accurate quote by filling all required information for the
+          load by clicking the editing icon.
+        </small>
+      </div>
     </div>
-    <div class="col-md-2">
-      <small>2. Use total weight to estimate the cost</small>
-    </div>
-    <div class="col-md-4">
-      <small>3. Click one of the buttons to get competitive quotes offered from Trucking-Hub.com</small>
-    </div>
-    <div class="col-md-3">
-      <small ng-hide="isLoggedIn">4. To get detailed quote and trucking arrangement, please signup, login and go to <a
-              href="/loads">Loads</a></small>
-      <small ng-show="isLoggedIn">4. Proceed to get the accurate quote by filling all required information for the
-        load by clicking the editing icon.
-      </small>
-    </div>
-  </div>
   </div>
 </div>
 
@@ -113,13 +113,7 @@
         </ul>
         </p>
         <p>Interested? Please contact us (310)641-8897 or visit <a href="/contact">Contact</a></p>
+      </div>
     </div>
   </div>
 </div>
-
-
-<footer class="footer">
-  <div class="container">
-    <p>Trucking-hub.com <i class="fa fa-copyright"></i> Copyright 2016 </p>
-  </div>
-</footer>
