@@ -69,34 +69,46 @@ exports.quote = function(load, company) {
   var matchEntry = utilCalculator.matchEntry(freight, city, zipCode);
 
   if(matchEntry) {
-    console.log("found a matching entry for zipCode " + zipCode + "=" + matchEntry.zone);
+    console.log("1.0 found a matching entry for zipCode " + zipCode + "=" + matchEntry.zone);
+    console.log("1.1 company rate basis is " + freight.rateBasis + " for company:" + company.name);
   }else {
+    console.log("1.0, did not a matching entry for zipCode " + zipCode + "=" + matchEntry.zone);
+    console.log("1.0, No zone cost can be calculated, so skip this company " + company.name);
     return errorResult;
   }
-  console.log("company rate basis is " + freight.rateBasis + " for company:" + company.name);
+
   if(freight.rateBasis=='zone') {
+    console.log("2.0, cost will be computed via zone based from: " + company.name);
     var matchZone = zoneCostCalculator.getZoneEntry(freight, matchEntry);
     if(matchZone) {
       var zoneCost = zoneCostCalculator.computeZoneBasedCost(freight, load, matchZone);
       if(!zoneCost) {
+        console.log("2.1, No zone cost can be calculated, so skip this company " + company.name);
         return errorResult;
       }else {
         baseCharges = baseCharges.concat(zoneCost);
         populateAdditionalCharges(additionalCharges, company, load.loadType, matchZone, "shipment");
+        console.log("3.2, added additional charges from company: " + company.name);
       }
     } else {
+      console.log("2.1, No zone is matched for matchEntry " + matchEntry.zone);
+      console.log("2.1, No zone cost can be calculated, so skip this company " + company.name);
       return errorResult;
     }
   }else {
     var zipCityCost = zipCodeCityCosts(freight, matchEntry, baseCharges, additionalCharges);
+    console.log("3.1, used zip code or city to compute the quote  [" + company.name + "]");
     populateAdditionalCharges(additionalCharges, company, load.loadType, matchEntry, "shipment");
+    console.log("3.2, added additional charges from company: " + company.name);
   }
 
   //service charges and drop off charges
   populateServiceCharges(additionalCharges, load.shipTo.services, freight, " Delivery");
   populateServiceCharges(additionalCharges, load.shipFrom.services, freight," Pickup");
+  console.log("3.3, added additional pickup/delivery charges from company: " + company.name);
 
   var totalCost = baseCharges.reduce(function(total, item) {return total + item.charge;}, 0);
+  console.log("4, computed quote using this company : " + company.name + " with total cost=" + totalCost);
 
   return {
     totalCost: totalCost,

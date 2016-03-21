@@ -13,6 +13,27 @@ exports.weight = function(lines) {
   return sum;
 };
 
+//The volumetric divisor has changed to 139 for inches/pounds (5,000 for cm/kg) and applies to
+// DHL Express' Same Day, Time Definite and Day Definite services as per the below formula:
+//Units of Measure
+//CM/KG
+//length*width*height/5000
+//
+//Inches/Pounds
+//length*width*height/139
+
+var volumeWeightPerLine = function(line) {
+  return (line.height * line.length * line.width) / 139.0;
+};
+
+exports.volumeWeight = function(lines) {
+  var index, sum=0;
+  for(index=0; index < lines.length; ++index) {
+    sum += volumeWeightPerLine(lines[index]) * lines[index].quantity;
+  }
+  return (sum | 0);
+};
+
 exports.getAdditionalCharges = function(type, company) {
   var result = [];
   if(type=='FTL') {

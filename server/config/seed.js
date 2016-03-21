@@ -205,7 +205,86 @@ LtlLoad.find({}).remove(function() {
             }],
             fulfilledBy: {},
             deliveryOrderContact: {}
+        }, {
+            who: "Home and Body-4 (Volume Weight)",
+            email: "jinbo.chen@gmail.com",
+            loadType:  'LTL',
+            notes: "A note: the chargeable weight should be around 1200 lb",
+            expectedBy: new Date(),
+            shipTo: {
+                location: {
+                    full_address:     "9111 S La Cienega Blvd, Inglewood, CA 90301",
+                    state:      "CA",
+                    county:     "Los Angeles County",
+                    city:       "Inglewood",
+                    zipCode:    "90301",
+                    coordinates: [33.953822, -118.370728]
+                },
+                services: [{service: 'Inside'}, {service: 'LifeGate'}]
+            },
+            shipFrom: {
+                location: {
+                    full_address:     "4489 Spencer St, Torrance, CA 90503",
+                    state:      "CA",
+                    county:     "Los Angeles County",
+                    city:       "Torrance",
+                    zipCode:    "90503",
+                    coordinates: [33.845385, -118.360726]
+                },
+                services: [{service: 'Inside'}, {service: 'LifeGate'}]
+            },
+            lines: [{
+                weight: 200,
+                quantity: 1,
+                packaging:"Cartons",
+                length: 120,
+                width: 12,
+                height: 120,
+                description: "Cotton"
+            }],
+            fulfilledBy: {},
+            deliveryOrderContact: {}
+        }, {
+            who: "Home and Body-5 (Volume Weight)",
+            email: "jinbo.chen@gmail.com",
+            loadType:  'AIR',
+            notes: "A note: the chargeable weight should be around 1200 lb",
+            expectedBy: new Date(),
+            shipTo: {
+                location: {
+                    full_address:     "9111 S La Cienega Blvd, Inglewood, CA 90301",
+                    state:      "CA",
+                    county:     "Los Angeles County",
+                    city:       "Inglewood",
+                    zipCode:    "90301",
+                    coordinates: [33.953822, -118.370728]
+                },
+                services: [{service: 'Inside'}, {service: 'LifeGate'}]
+            },
+            shipFrom: {
+                location: {
+                    full_address:     "4489 Spencer St, Torrance, CA 90503",
+                    state:      "CA",
+                    county:     "Los Angeles County",
+                    city:       "Torrance",
+                    zipCode:    "90503",
+                    coordinates: [33.845385, -118.360726]
+                },
+                services: [{service: 'Inside'}, {service: 'LifeGate'}]
+            },
+            lines: [{
+                weight: 200,
+                quantity: 1,
+                packaging:"Cartons",
+                length: 120,
+                width: 12,
+                height: 120,
+                description: "Cotton"
+            }],
+            fulfilledBy: {},
+            deliveryOrderContact: {}
         }
+
     )
 });
 

@@ -45,7 +45,7 @@ exports.index = function(req, res) {
       console.log("run into error " + err);
       return handleError(res, err);
     }
-    console.log("found " + companies.length + " companies serving this region");
+    console.log("Found " + companies.length + " companies serving this region");
     var x;
     var sources = companies.map(function(company) {
       var cost = calcCosts(load, company);
@@ -65,10 +65,12 @@ exports.index = function(req, res) {
     });
 
     var time = Date.now() - startTime;
-    console.log("sourcing take " + time  + " milliseconds");
+    console.log("The sourcing step took about " + time  + " milliseconds with " + sources.length + " companies");
     var cleaned = sources.filter(function(source) {
       return source.totalCost > 0;
     });
+    console.log("The sourcing step removed the companies with negative cost, the list now is " + sources.length);
+
     cleaned.time = time;
     return res.status(200).json(cleaned);
   });

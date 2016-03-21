@@ -63,19 +63,24 @@ exports.computeZoneBasedCost = function(tariff, load, matchZone, lineName) {
 
   var result = [];
 
-  console.log("match Zone " + JSON.stringify(matchZone));
+  console.log("1.3 match Zone " + JSON.stringify(matchZone));
   lineName = (lineName)?(" for " + lineName):'';
 
   var weight = weightCalculator.weight(load.lines);
-  console.log("load weight is " + weight);
+  var volumeWeight = weightCalculator.volumeWeight(load.lines);
+  if(volumeWeight > weight) {
+    console.log("1.4 volume weight " + volumeWeight + " is greater than actual weight " + weight + ", will use volume weight");
+    weight = volumeWeight;
+  }
+  console.log("1.4 load weight is " + weight);
 
   //base rate
-  var baseRate =0;
+  var baseRate ={rate: null, weight: weight, useNextTier: false};
   var rateRow = findZoneFlatRate (tariff.rateDef.byZone.flatRates, weight, matchZone.label);
   if(rateRow) {
-    baseRate = Math.max(rateRow.rate, matchZone.minCharge);
-    result.push({charge: baseRate, description: "Basis rate for Zone " + matchZone.label + lineName});
-    console.log("baseRate is " + baseRate + " min charge " + matchZone.minCharge);
+    baseRate.rate = Math.max(rateRow.rate, matchZone.minCharge);
+    result.push({charge: baseRate.rate, description: "Basis rate for Zone " + matchZone.label + lineName});
+    console.log("1.5 baseRate is " + baseRate.rate + " min charge " + matchZone.minCharge);
   }else {
     baseRate = findZoneWeightRate (tariff.rateDef.byZone.weightRates, weight,
         tariff.rateDef.byZone.zoneRateVariables.weightIncrement, matchZone.label);
@@ -90,15 +95,16 @@ exports.computeZoneBasedCost = function(tariff, load, matchZone, lineName) {
           result.push({charge: baseRate.rate, description: "Basis rate for Zone " + matchZone.label + " weight: " + baseRate.weight});
         }
       }
-      console.log("baseRate is " + JSON.stringify(baseRate) + " min charge " + matchZone.minCharge);
+      console.log("1.5 baseRate is " + JSON.stringify(baseRate) + " min charge " + matchZone.minCharge);
     }else {
-      console.log( "Basis rate Not Found!");
+      console.log( "1.5 Basis rate Not Found!");
       return null;
     }
   }
+  
   var fuelSurcharge = (baseRate.rate * tariff.fuelSurcharge*0.01);
   var fuelSurchargePercentage = tariff.fuelSurcharge;
   result.push({charge: fuelSurcharge, description: "Fuel Surcharge " + fuelSurchargePercentage + "%" + lineName});
-
+  console.log("1.6 fuelSurcharge is " + fuelSurcharge + " with base rate " + baseRate.rate + " surcharge=" + tariff.fuelSurcharge + "%");
   return result;
 };
