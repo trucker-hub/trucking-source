@@ -69,16 +69,16 @@ exports.quote = function(load, company) {
   var matchEntry = utilCalculator.matchEntry(freight, city, zipCode);
 
   if(matchEntry) {
-    console.log("1.0 found a matching entry for zipCode " + zipCode + "=" + matchEntry.zone);
-    console.log("1.1 company rate basis is " + freight.rateBasis + " for company:" + company.name);
+    console.log("1.0 found a matching entry for " + city + " " + zipCode + "=" + matchEntry.zone);
+    console.log("1.1 company rate basis is *" + freight.rateBasis + "* for company:" + company.name);
   }else {
-    console.log("1.0, did not a matching entry for zipCode " + zipCode + "=" + matchEntry.zone);
+    console.log("1.0, did not a matching entry for " + city + " " + zipCode);
     console.log("1.0, No zone cost can be calculated, so skip this company " + company.name);
     return errorResult;
   }
 
   if(freight.rateBasis=='zone') {
-    console.log("2.0, cost will be computed via zone based from: " + company.name);
+    console.log("2.0, the cost will be computed via zone based from: " + company.name);
     var matchZone = zoneCostCalculator.getZoneEntry(freight, matchEntry);
     if(matchZone) {
       var zoneCost = zoneCostCalculator.computeZoneBasedCost(freight, load, matchZone);

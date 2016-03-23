@@ -101,7 +101,7 @@ exports.computeZoneBasedCost = function(tariff, load, matchZone, lineName) {
       return null;
     }
   }
-  
+
   var fuelSurcharge = (baseRate.rate * tariff.fuelSurcharge*0.01);
   var fuelSurchargePercentage = tariff.fuelSurcharge;
   result.push({charge: fuelSurcharge, description: "Fuel Surcharge " + fuelSurchargePercentage + "%" + lineName});
