@@ -624,7 +624,7 @@
 
                                 <h1 style="text-align: left;"><span style="font-size:18px">Dear Customer,</span></h1>
                                 <br>
-                                <span style="font-size:14px">Here is the invoice for your shipment <span style="color:#DAA520"> <%= who %></span>. &nbsp;Please payment freight cost amount&nbsp;<span style="font-family:georgia,times,times new roman,serif"><span style="color:#DAA520">$<%=fulfilledBy.charge%></span><span style="color:#006400"><span style="font-family:georgia,times,times new roman,serif"> </span></span>as in your payment schedule.</span></span><br>
+                                <span style="font-size:14px">Here is the invoice for your shipment <span style="color:#DAA520"> <%= who %></span>. &nbsp;Please payment freight cost amount&nbsp;<span style="font-family:georgia,times,times new roman,serif"><span style="color:#DAA520">$<%=fulfilledBy.charge.toFixed(2)%></span><span style="color:#006400"><span style="font-family:georgia,times,times new roman,serif"> </span></span>as in your payment schedule.</span></span><br>
                                 <br>
                                 <span style="font-family:georgia,times,times new roman,serif">Invoice: <span style="color:#DAA520"><%= invoice.referenceNumber%></span><br>
                                     Date: <span style="color:#DAA520"><%= expectedBy.toLocaleString() %></span></span><br>
@@ -642,7 +642,7 @@
                                 <div style="text-align: right;"><span style="color:#DAA520">Trucking-Hub Team</span></div>
 
                                 <hr><br>
-                                <span style="color:#000000"><span style="font-size:18px"><span style="font-family:georgia,times,times new roman,serif">Freight cost Description: </span></span></span><span style="color:#DAA520"><span style="font-size:18px"><span style="font-family:georgia,times,times new roman,serif">$<%=fulfilledBy.charge%></span></span></span>
+                                <span style="color:#000000"><span style="font-size:18px"><span style="font-family:georgia,times,times new roman,serif">Freight cost Description: </span></span></span><span style="color:#DAA520"><span style="font-size:18px"><span style="font-family:georgia,times,times new roman,serif">$<%=fulfilledBy.charge.toFixed(2)%></span></span></span>
 
                                 <p>Base Charge items for your shipment</p>
 

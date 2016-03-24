@@ -547,6 +547,7 @@ TruckingCompany.find({}).remove(function () {
                 }
 
             },
+        
             air: {
                 fuelSurcharge: 20,
                 residentialCharge: 60,
