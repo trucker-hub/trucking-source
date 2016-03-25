@@ -43,11 +43,6 @@ angular.module('servicesApp')
           'alwaysShow': true
         },
         {
-          'title': 'Load Map',
-          'link': '/load-map',
-          'alwaysShow': menuForOperator
-        },
-        {
           'title': 'Specials',
           'link': '/interest',
           'alwaysShow': menuForOperator
@@ -73,7 +68,10 @@ angular.module('servicesApp')
           'title': 'Availability',
           'link': '/availability',
           'alwaysShow': menuForOperator
-        },
+        }
+      ];
+
+      $scope.toolsMenu = [
         {
           'title': 'DDP',
           'link': '/ddp',
@@ -82,6 +80,11 @@ angular.module('servicesApp')
         {
           'title': 'Playground',
           'link': '/playground',
+          'alwaysShow': menuForOperator
+        },
+        {
+          'title': 'Load Map',
+          'link': '/load-map',
           'alwaysShow': menuForOperator
         },
         {
@@ -96,6 +99,7 @@ angular.module('servicesApp')
           'alwaysShow': menuForOperator
         }
       ];
+
     };
 
     $scope.logout = function () {
