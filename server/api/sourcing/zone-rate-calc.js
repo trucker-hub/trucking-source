@@ -10,7 +10,7 @@ var getWeightTier = function(rateTable, weight) {
 };
 var getTierRate = function(tier, zone, weight, weightIncrement) {
   var rowRate = _.find(tier.rates, {zone:zone});
-  return (rowRate==null)? null: (rowRate.rate * weight)/weightIncrement;
+  return (rowRate)?(rowRate.rate * weight)/weightIncrement :  null;
 };
 
 var findZoneWeightRate = function(rateTable, weight, weightIncrement, zone) {
@@ -25,7 +25,7 @@ var findZoneWeightRate = function(rateTable, weight, weightIncrement, zone) {
     }
 
     var nextTier = getWeightTier(rateTable, tier.ranges[1]);
-    var nextTierRate = getTierRate(nextTier, zone, tier.ranges[1], weightIncrement);
+    var nextTierRate = nextTier?getTierRate(nextTier, zone, tier.ranges[1], weightIncrement):null;
     if(nextTierRate && nextTierRate < currentTierRate) {
       result = {rate: nextTierRate, weight: tier.ranges[1], useNextTier: true}
     }

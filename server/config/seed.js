@@ -512,7 +512,7 @@ TruckingCompany.find({}).remove(function () {
                                 ]
                             },
                             {
-                                tier: "2",
+                                tier: "3",
                                 ranges: [2500, 6000],
                                 rates:[
                                     {zone: "A", rate:4.2},
@@ -520,6 +520,16 @@ TruckingCompany.find({}).remove(function () {
                                     {zone: "C", rate:5.5},
                                     {zone: "D", rate:6.6},
                                     {zone: "E", rate:7.2}
+                                ]},
+                            {
+                                tier: "4",
+                                ranges: [6000, 25000],
+                                rates:[
+                                    {zone: "A", rate:3.7},
+                                    {zone: "B", rate:3.2},
+                                    {zone: "C", rate:5.2},
+                                    {zone: "D", rate:6.1},
+                                    {zone: "E", rate:6.6}
                                 ]}
                         ],
                         rates: [ {
