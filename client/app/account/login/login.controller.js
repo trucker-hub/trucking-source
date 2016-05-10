@@ -5,6 +5,9 @@ angular.module('servicesApp')
     $scope.user = {};
     $scope.errors = {};
 
+    $scope.loginAsGuest = function() {
+        console.log("log in as a guest");
+    }
     $scope.login = function(form) {
       $scope.submitted = true;
 

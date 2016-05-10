@@ -32,12 +32,15 @@
         </div>
 
         <div>
-          <button class="btn btn-inverse btn-lg btn-login" type="submit">
+          <button class="btn btn-primary btn-lg btn-login" type="submit">
             Login
           </button>
-          <a class="btn btn-default btn-lg btn-register" href="/signup">
-            Register
+          <a class="btn btn-default btn-lg btn-register" style="float: right; padding-right: 10px;" href="/signup">
+            Sign Up
           </a>
+            <a class="btn btn-default btn-lg btn-register" ng-click="loginAsGuest()">
+                Proceed As Guest
+            </a>
         </div>
 
       </form>
