@@ -7,4 +7,10 @@
         <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
     </li>
   </ul>
+  <br>
+    <div>
+        <button class="btn btn-inverse btn-lg btn-login" ng-click="addGuest()" ng-hide="hasGuestAccount()">
+            Add Guest Account
+        </button>
+    </div>
 </div>

@@ -9,7 +9,7 @@ var UserSchema = new Schema({
   email: { type: String, lowercase: true },
   role: {
     type: String, required: true,
-    enum: ['user', 'carrier', 'operator', 'admin'],
+    enum: ['guest', 'user', 'carrier', 'operator', 'admin'],
     default: 'user'
   },
   hashedPassword: String,

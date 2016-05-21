@@ -7,6 +7,14 @@ angular.module('servicesApp')
       currentUser = User.get();
     }
 
+    var getGuestLogin = function() {
+      return {
+        name: 'GUEST',
+        email: 'no-exist@test.com',
+        role:'guest',
+        password: 'password'}
+    };
+
     return {
 
       /**
@@ -161,6 +169,27 @@ angular.module('servicesApp')
 
       isOperator: function() {
         return currentUser.role === 'operator';
+      },
+
+      isGuest: function() {
+        return currentUser.role == 'guest';
+      },
+
+      getGuestCredentials: getGuestLogin,
+
+      createGuestAccount: function(callback) {
+
+        var cb = callback || angular.noop;
+
+        var user = getGuestLogin();
+
+        return User.save(user,
+            function(data) {
+              return cb(user);
+            },
+            function(err) {
+              return cb(err);
+            }.bind(this)).$promise;
       },
 
       /**

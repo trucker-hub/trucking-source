@@ -42,8 +42,7 @@ var all = {
         safe: true
       }
     }
-  },
-
+  }
 };
 
 // Export the config object based on the NODE_ENV

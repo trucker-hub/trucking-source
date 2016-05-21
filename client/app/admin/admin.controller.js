@@ -14,4 +14,27 @@ angular.module('servicesApp')
                 }
             });
         };
+
+      $scope.hasGuestAccount = function() {
+        var result = false;
+        angular.forEach($scope.users, function (u, i) {
+          //console.log("u=" + JSON.stringify(u));
+          if(u.role=='guest') {
+            result= true;
+          }
+        });
+        return result;
+      };
+
+      $scope.addGuest = function(user) {
+        Auth.createGuestAccount()
+            .then( function() {
+              // Account created, redirect to home
+              console.log("guest account created");
+              $scope.users = User.query();
+            })
+            .catch( function(err) {
+              console.log("failed to create guest account");
+            });
+      };
     });
