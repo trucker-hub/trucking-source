@@ -5,7 +5,6 @@ angular.module('servicesApp')
         $scope.errors = {};
 
         $scope.isGuest = Auth.isGuest();
-        console.log("user " + $scope.user.role + " is guest=" + $scope.isGuest);
         $scope.changePassword = function (form) {
             $scope.submitted = true;
             if (form.$valid) {
