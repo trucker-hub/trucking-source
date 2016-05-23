@@ -4,6 +4,8 @@ angular.module('servicesApp')
     .controller('SettingsCtrl', function ($scope, User, Auth) {
         $scope.errors = {};
 
+        $scope.isGuest = Auth.isGuest();
+        console.log("user " + $scope.user.role + " is guest=" + $scope.isGuest);
         $scope.changePassword = function (form) {
             $scope.submitted = true;
             if (form.$valid) {

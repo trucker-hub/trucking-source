@@ -6,6 +6,8 @@ angular.module('servicesApp').controller('SourcingCtrl',
 
       $scope.loads = [];
 
+      $scope.isGuest = Auth.isGuest();
+
       $scope.searchCriteria = "Today";
 
         $scope.filters = {

@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('servicesApp')
-    .controller('QuoteCtrl', function ($scope, $http, $uibModal, $uibModalInstance, ngProgressFactory,
+    .controller('QuoteCtrl', function ($scope, $http, $uibModal, $uibModalInstance, ngProgressFactory, Auth,
                                        sourcingService, load) {
 
       $scope.load = load;
+      $scope.isGuest = Auth.isGuest();
 
       $scope.recalcAdjustments = function (source) {
         sourcingService.recalcAdjustment($scope.load, source);
