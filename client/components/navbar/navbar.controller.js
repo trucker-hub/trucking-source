@@ -29,9 +29,9 @@ angular.module('servicesApp')
       console.log('setVisibilityBasedOnRole: operator = ' + $scope.isOperator());
       console.log('setVisibilityBasedOnRole: admin = ' + $scope.isAdmin());
 
-      var menuForOperator = $scope.isLoggedIn() && ($scope.isOperator() || $scope.isAdmin());
+      $scope.menuForOperator = $scope.isLoggedIn() && ($scope.isOperator() || $scope.isAdmin());
 
-      console.log("user visibility=" + menuForOperator);
+      console.log("user visibility=" + $scope.menuForOperator);
       $scope.menu = [{
         'title': 'Home',
         'link': '/',
@@ -45,29 +45,29 @@ angular.module('servicesApp')
         {
           'title': 'Specials',
           'link': '/interest',
-          'alwaysShow': menuForOperator
+          'alwaysShow': $scope.menuForOperator
         }
       ];
       $scope.managementMenu = [
         {
           'title': 'Trucking Companies',
           'link': '/trucking-company',
-          'alwaysShow': menuForOperator
+          'alwaysShow': $scope.menuForOperator
         },
         {
           'title': 'Customer Settings',
           'link': '/customer-settings',
-          'alwaysShow': true
+          'alwaysShow': $scope.menuForOperator
         },
         {
           'title': 'Warehouse',
           'link': '/warehouse',
-          'alwaysShow': menuForOperator
+          'alwaysShow': $scope.menuForOperator
         },
         {
           'title': 'Availability',
           'link': '/availability',
-          'alwaysShow': menuForOperator
+          'alwaysShow': $scope.menuForOperator
         }
       ];
 
@@ -80,23 +80,23 @@ angular.module('servicesApp')
         {
           'title': 'Playground',
           'link': '/playground',
-          'alwaysShow': menuForOperator
+          'alwaysShow': $scope.menuForOperator
         },
         {
           'title': 'Load Map',
           'link': '/load-map',
-          'alwaysShow': menuForOperator
+          'alwaysShow': $scope.menuForOperator
         },
         {
           'title': 'Map',
           'link': '/map',
-          'alwaysShow': menuForOperator
+          'alwaysShow': $scope.menuForOperator
         },
 
         {
           'title': 'Charts',
           'link': '/charts',
-          'alwaysShow': menuForOperator
+          'alwaysShow': $scope.menuForOperator
         }
       ];
 
